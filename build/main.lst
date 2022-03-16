@@ -1,0 +1,1167 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 1
+
+
+   1              		.file	"main.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.init_sw,"ax",@progbits
+  10              		.align	1
+  11              		.globl	init_sw
+  13              	init_sw:
+  14              	.LFB2:
+  15              		.file 1 "main.c"
+   1:main.c        **** //Interupt tests
+   2:main.c        **** //If switch #0 turns on, LED0 get enabled
+   3:main.c        **** 
+   4:main.c        **** 
+   5:main.c        **** //TODO
+   6:main.c        **** //
+   7:main.c        **** 
+   8:main.c        **** #include "gd32vf103.h"
+   9:main.c        **** 
+  10:main.c        **** #define CLOCK	108000000		//system clock
+  11:main.c        **** #define PSC		10800				//prescalar
+  12:main.c        **** 
+  13:main.c        **** static bit_status state_LED = RESET;
+  14:main.c        **** 
+  15:main.c        **** //initialize switch 1
+  16:main.c        **** void init_sw() {
+  16              		.loc 1 16 16
+  17              		.cfi_startproc
+  17:main.c        ****     rcu_periph_clock_enable(RCU_GPIOA);
+  18              		.loc 1 17 5
+  16:main.c        ****     rcu_periph_clock_enable(RCU_GPIOA);
+  19              		.loc 1 16 16 is_stmt 0
+  20 0000 4111     		addi	sp,sp,-16
+  21              	.LCFI0:
+  22              		.cfi_def_cfa_offset 16
+  23              		.loc 1 17 5
+  24 0002 13052060 		li	a0,1538
+  16:main.c        ****     rcu_periph_clock_enable(RCU_GPIOA);
+  25              		.loc 1 16 16
+  26 0006 06C6     		sw	ra,12(sp)
+  27              		.cfi_offset 1, -4
+  28              		.loc 1 17 5
+  29 0008 97000000 		call	rcu_periph_clock_enable
+  29      E7800000 
+  30              	.LVL0:
+  18:main.c        ****     gpio_init(GPIOA, GPIO_MODE_IN_FLOATING, GPIO_OSPEED_50MHZ, GPIO_PIN_8);
+  31              		.loc 1 18 5 is_stmt 1
+  19:main.c        **** }
+  32              		.loc 1 19 1 is_stmt 0
+  33 0010 B240     		lw	ra,12(sp)
+  34              		.cfi_restore 1
+  18:main.c        ****     gpio_init(GPIOA, GPIO_MODE_IN_FLOATING, GPIO_OSPEED_50MHZ, GPIO_PIN_8);
+  35              		.loc 1 18 5
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 2
+
+
+  36 0012 37150140 		li	a0,1073811456
+  37              		.loc 1 19 1
+  18:main.c        ****     gpio_init(GPIOA, GPIO_MODE_IN_FLOATING, GPIO_OSPEED_50MHZ, GPIO_PIN_8);
+  38              		.loc 1 18 5
+  39 0016 93060010 		li	a3,256
+  40 001a 0D46     		li	a2,3
+  41 001c 9145     		li	a1,4
+  42 001e 13050580 		addi	a0,a0,-2048
+  43              		.loc 1 19 1
+  44 0022 4101     		addi	sp,sp,16
+  45              	.LCFI1:
+  46              		.cfi_def_cfa_offset 0
+  18:main.c        ****     gpio_init(GPIOA, GPIO_MODE_IN_FLOATING, GPIO_OSPEED_50MHZ, GPIO_PIN_8);
+  47              		.loc 1 18 5
+  48 0024 17030000 		tail	gpio_init
+  48      67000300 
+  49              	.LVL1:
+  50              		.cfi_endproc
+  51              	.LFE2:
+  53              		.section	.text.init_led,"ax",@progbits
+  54              		.align	1
+  55              		.globl	init_led
+  57              	init_led:
+  58              	.LFB3:
+  20:main.c        **** 
+  21:main.c        **** //initialize LED B0
+  22:main.c        **** void init_led() {
+  59              		.loc 1 22 17 is_stmt 1
+  60              		.cfi_startproc
+  23:main.c        **** 	rcu_periph_clock_enable(RCU_GPIOB);
+  61              		.loc 1 23 2
+  22:main.c        **** 	rcu_periph_clock_enable(RCU_GPIOB);
+  62              		.loc 1 22 17 is_stmt 0
+  63 0000 4111     		addi	sp,sp,-16
+  64              	.LCFI2:
+  65              		.cfi_def_cfa_offset 16
+  66              		.loc 1 23 2
+  67 0002 13053060 		li	a0,1539
+  22:main.c        **** 	rcu_periph_clock_enable(RCU_GPIOB);
+  68              		.loc 1 22 17
+  69 0006 06C6     		sw	ra,12(sp)
+  70              		.cfi_offset 1, -4
+  71              		.loc 1 23 2
+  72 0008 97000000 		call	rcu_periph_clock_enable
+  72      E7800000 
+  73              	.LVL2:
+  24:main.c        **** 	gpio_init(GPIOB, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_0);
+  74              		.loc 1 24 2 is_stmt 1
+  25:main.c        **** }
+  75              		.loc 1 25 1 is_stmt 0
+  76 0010 B240     		lw	ra,12(sp)
+  77              		.cfi_restore 1
+  24:main.c        **** 	gpio_init(GPIOB, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_0);
+  78              		.loc 1 24 2
+  79 0012 37150140 		li	a0,1073811456
+  80              		.loc 1 25 1
+  24:main.c        **** 	gpio_init(GPIOB, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_0);
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 3
+
+
+  81              		.loc 1 24 2
+  82 0016 8546     		li	a3,1
+  83 0018 0D46     		li	a2,3
+  84 001a C145     		li	a1,16
+  85 001c 130505C0 		addi	a0,a0,-1024
+  86              		.loc 1 25 1
+  87 0020 4101     		addi	sp,sp,16
+  88              	.LCFI3:
+  89              		.cfi_def_cfa_offset 0
+  24:main.c        **** 	gpio_init(GPIOB, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_0);
+  90              		.loc 1 24 2
+  91 0022 17030000 		tail	gpio_init
+  91      67000300 
+  92              	.LVL3:
+  93              		.cfi_endproc
+  94              	.LFE3:
+  96              		.section	.text.initTimer6,"ax",@progbits
+  97              		.align	1
+  98              		.globl	initTimer6
+ 100              	initTimer6:
+ 101              	.LFB4:
+  26:main.c        **** 
+  27:main.c        **** //init timer 6, n*0,1ms
+  28:main.c        **** void initTimer6(int delay_100us) {
+ 102              		.loc 1 28 34 is_stmt 1
+ 103              		.cfi_startproc
+ 104              	.LVL4:
+  29:main.c        **** 	rcu_periph_clock_enable(RCU_TIMER6);									//enable RCU timer6
+ 105              		.loc 1 29 2
+  28:main.c        **** 	rcu_periph_clock_enable(RCU_TIMER6);									//enable RCU timer6
+ 106              		.loc 1 28 34 is_stmt 0
+ 107 0000 0111     		addi	sp,sp,-32
+ 108              	.LCFI4:
+ 109              		.cfi_def_cfa_offset 32
+ 110 0002 26CA     		sw	s1,20(sp)
+ 111              		.cfi_offset 9, -12
+ 112 0004 AA84     		mv	s1,a0
+ 113              		.loc 1 29 2
+ 114 0006 13055070 		li	a0,1797
+ 115              	.LVL5:
+  28:main.c        **** 	rcu_periph_clock_enable(RCU_TIMER6);									//enable RCU timer6
+ 116              		.loc 1 28 34
+ 117 000a 06CE     		sw	ra,28(sp)
+ 118 000c 22CC     		sw	s0,24(sp)
+ 119              		.cfi_offset 1, -4
+ 120              		.cfi_offset 8, -8
+ 121              		.loc 1 29 2
+ 122 000e 97000000 		call	rcu_periph_clock_enable
+ 122      E7800000 
+ 123              	.LVL6:
+  30:main.c        **** 	
+  31:main.c        **** 	timer_parameter_struct timer_initpara;									//timer struct
+ 124              		.loc 1 31 2 is_stmt 1
+  32:main.c        **** 	timer_struct_para_init(&timer_initpara);
+ 125              		.loc 1 32 2
+ 126 0016 0A85     		mv	a0,sp
+  33:main.c        **** 	timer_init(TIMER6, &timer_initpara);
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 4
+
+
+ 127              		.loc 1 33 2 is_stmt 0
+ 128 0018 37140040 		li	s0,1073745920
+  32:main.c        **** 	timer_struct_para_init(&timer_initpara);
+ 129              		.loc 1 32 2
+ 130 001c 97000000 		call	timer_struct_para_init
+ 130      E7800000 
+ 131              	.LVL7:
+ 132              		.loc 1 33 2 is_stmt 1
+ 133 0024 8A85     		mv	a1,sp
+ 134 0026 13050440 		addi	a0,s0,1024
+ 135 002a 97000000 		call	timer_init
+ 135      E7800000 
+ 136              	.LVL8:
+  34:main.c        **** 	timer_prescaler_config(TIMER6, PSC-1, TIMER_PSC_RELOAD_NOW);			//timer, prescaler, load now
+ 137              		.loc 1 34 2
+ 138 0032 8D65     		li	a1,12288
+ 139 0034 0546     		li	a2,1
+ 140 0036 13050440 		addi	a0,s0,1024
+ 141 003a 9385F5A2 		addi	a1,a1,-1489
+ 142 003e 97000000 		call	timer_prescaler_config
+ 142      E7800000 
+ 143              	.LVL9:
+  35:main.c        **** 	timer_autoreload_value_config(TIMER6, delay_100us-1);					//timer, counter auto-reload value (0-65
+ 144              		.loc 1 35 2
+ 145 0046 9385F4FF 		addi	a1,s1,-1
+ 146 004a C205     		slli	a1,a1,16
+ 147 004c 13050440 		addi	a0,s0,1024
+ 148 0050 C181     		srli	a1,a1,16
+ 149 0052 97000000 		call	timer_autoreload_value_config
+ 149      E7800000 
+ 150              	.LVL10:
+  36:main.c        **** 	timer_interrupt_flag_clear(TIMER6, TIMER_INT_FLAG_UP);
+ 151              		.loc 1 36 2
+ 152 005a 13050440 		addi	a0,s0,1024
+ 153 005e 8545     		li	a1,1
+ 154 0060 97000000 		call	timer_interrupt_flag_clear
+ 154      E7800000 
+ 155              	.LVL11:
+  37:main.c        **** 	timer_interrupt_enable(TIMER6, TIMER_INT_UP);
+ 156              		.loc 1 37 2
+ 157 0068 13050440 		addi	a0,s0,1024
+ 158 006c 8545     		li	a1,1
+ 159 006e 97000000 		call	timer_interrupt_enable
+ 159      E7800000 
+ 160              	.LVL12:
+  38:main.c        **** 	timer_enable(TIMER6);
+ 161              		.loc 1 38 2
+ 162 0076 13050440 		addi	a0,s0,1024
+ 163 007a 97000000 		call	timer_enable
+ 163      E7800000 
+ 164              	.LVL13:
+  39:main.c        **** 
+  40:main.c        **** //optional init:
+  41:main.c        **** /*
+  42:main.c        ****     timer_parameter_struct timer_initpara;
+  43:main.c        **** 
+  44:main.c        ****     rcu_periph_clock_enable(RCU_TIMER6);
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 5
+
+
+  45:main.c        **** 
+  46:main.c        ****     timer_deinit(TIMER6);
+  47:main.c        ****     timer_struct_para_init(&timer_initpara);
+  48:main.c        ****     timer_initpara.prescaler         = PSC-1;
+  49:main.c        ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
+  50:main.c        ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
+  51:main.c        ****     timer_initpara.period            = delay_100us-1;
+  52:main.c        ****     timer_initpara.clockdivision     = TIMER_CKDIV_DIV1;
+  53:main.c        ****     timer_init(TIMER6, &timer_initpara);
+  54:main.c        **** 
+  55:main.c        ****     timer_interrupt_enable(TIMER6, TIMER_INT_UP);
+  56:main.c        ****     timer_enable(TIMER6);
+  57:main.c        **** */
+  58:main.c        **** }
+ 165              		.loc 1 58 1 is_stmt 0
+ 166 0082 F240     		lw	ra,28(sp)
+ 167              		.cfi_restore 1
+ 168 0084 6244     		lw	s0,24(sp)
+ 169              		.cfi_restore 8
+ 170 0086 D244     		lw	s1,20(sp)
+ 171              		.cfi_restore 9
+ 172              	.LVL14:
+ 173 0088 0561     		addi	sp,sp,32
+ 174              	.LCFI5:
+ 175              		.cfi_def_cfa_offset 0
+ 176 008a 8280     		jr	ra
+ 177              		.cfi_endproc
+ 178              	.LFE4:
+ 180              		.section	.text.init_eclic,"ax",@progbits
+ 181              		.align	1
+ 182              		.globl	init_eclic
+ 184              	init_eclic:
+ 185              	.LFB5:
+  59:main.c        **** 
+  60:main.c        **** void init_eclic() {
+ 186              		.loc 1 60 19 is_stmt 1
+ 187              		.cfi_startproc
+  61:main.c        ****     rcu_periph_clock_enable(RCU_AF);
+ 188              		.loc 1 61 5
+  60:main.c        ****     rcu_periph_clock_enable(RCU_AF);
+ 189              		.loc 1 60 19 is_stmt 0
+ 190 0000 4111     		addi	sp,sp,-16
+ 191              	.LCFI6:
+ 192              		.cfi_def_cfa_offset 16
+ 193              		.loc 1 61 5
+ 194 0002 13050060 		li	a0,1536
+  60:main.c        ****     rcu_periph_clock_enable(RCU_AF);
+ 195              		.loc 1 60 19
+ 196 0006 06C6     		sw	ra,12(sp)
+ 197              		.cfi_offset 1, -4
+ 198              		.loc 1 61 5
+ 199 0008 97000000 		call	rcu_periph_clock_enable
+ 199      E7800000 
+ 200              	.LVL15:
+  62:main.c        ****     
+  63:main.c        ****     gpio_exti_source_select(GPIO_PORT_SOURCE_GPIOA, GPIO_PIN_SOURCE_8);
+ 201              		.loc 1 63 5 is_stmt 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 6
+
+
+ 202 0010 A145     		li	a1,8
+ 203 0012 0145     		li	a0,0
+ 204 0014 97000000 		call	gpio_exti_source_select
+ 204      E7800000 
+ 205              	.LVL16:
+  64:main.c        ****     exti_init(EXTI_8, EXTI_INTERRUPT, EXTI_TRIG_BOTH);
+ 206              		.loc 1 64 5
+ 207 001c 0946     		li	a2,2
+ 208 001e 8145     		li	a1,0
+ 209 0020 13050010 		li	a0,256
+ 210 0024 97000000 		call	exti_init
+ 210      E7800000 
+ 211              	.LVL17:
+  65:main.c        ****     exti_interrupt_flag_clear(EXTI_8);
+ 212              		.loc 1 65 5
+ 213 002c 13050010 		li	a0,256
+ 214 0030 97000000 		call	exti_interrupt_flag_clear
+ 214      E7800000 
+ 215              	.LVL18:
+  66:main.c        **** 	
+  67:main.c        **** 	timer_interrupt_flag_clear(TIMER6, TIMER_INT_FLAG_UP);
+ 216              		.loc 1 67 2
+ 217 0038 37150040 		li	a0,1073745920
+ 218 003c 8545     		li	a1,1
+ 219 003e 13050540 		addi	a0,a0,1024
+ 220 0042 97000000 		call	timer_interrupt_flag_clear
+ 220      E7800000 
+ 221              	.LVL19:
+  68:main.c        **** 	
+  69:main.c        **** 	eclic_priority_group_set(ECLIC_PRIGROUP_LEVEL3_PRIO1);
+ 222              		.loc 1 69 2
+ 223 004a 0D45     		li	a0,3
+ 224 004c 97000000 		call	eclic_priority_group_set
+ 224      E7800000 
+ 225              	.LVL20:
+  70:main.c        **** 	eclic_irq_enable(EXTI5_9_IRQn, 1, 0);		//IRQ EXTI pin 8
+ 226              		.loc 1 70 2
+ 227 0054 0146     		li	a2,0
+ 228 0056 8545     		li	a1,1
+ 229 0058 1305A002 		li	a0,42
+ 230 005c 97000000 		call	eclic_irq_enable
+ 230      E7800000 
+ 231              	.LVL21:
+  71:main.c        **** 	eclic_irq_enable(TIMER6_IRQn, 1, 0);		//IRQ TIMER 6
+ 232              		.loc 1 71 2
+ 233 0064 0146     		li	a2,0
+ 234 0066 8545     		li	a1,1
+ 235 0068 1305A004 		li	a0,74
+ 236 006c 97000000 		call	eclic_irq_enable
+ 236      E7800000 
+ 237              	.LVL22:
+  72:main.c        **** 
+  73:main.c        **** 	eclic_global_interrupt_enable();
+ 238              		.loc 1 73 2
+  74:main.c        **** }
+ 239              		.loc 1 74 1 is_stmt 0
+ 240 0074 B240     		lw	ra,12(sp)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 7
+
+
+ 241              		.cfi_restore 1
+ 242 0076 4101     		addi	sp,sp,16
+ 243              	.LCFI7:
+ 244              		.cfi_def_cfa_offset 0
+  73:main.c        **** }
+ 245              		.loc 1 73 2
+ 246 0078 17030000 		tail	eclic_global_interrupt_enable
+ 246      67000300 
+ 247              	.LVL23:
+ 248              		.cfi_endproc
+ 249              	.LFE5:
+ 251              		.section	.text.EXTI5_9_IRQHandler,"ax",@progbits
+ 252              		.align	1
+ 253              		.globl	EXTI5_9_IRQHandler
+ 255              	EXTI5_9_IRQHandler:
+ 256              	.LFB6:
+  75:main.c        **** 
+  76:main.c        **** //Interupt handler. See Table 3-170 "Enum IRQn_Type"
+  77:main.c        **** //in firmware manual. Member name + "Handler".
+  78:main.c        **** 
+  79:main.c        **** void EXTI5_9_IRQHandler(void) {
+ 257              		.loc 1 79 31 is_stmt 1
+ 258              		.cfi_startproc
+  80:main.c        **** 	if(state_LED==SET) gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=RESET);
+ 259              		.loc 1 80 2
+ 260              		.loc 1 80 14 is_stmt 0
+ 261 0000 B7070000 		lui	a5,%hi(.LANCHOR0)
+ 262 0004 93870700 		addi	a5,a5,%lo(.LANCHOR0)
+ 263              		.loc 1 80 4
+ 264 0008 9443     		lw	a3,0(a5)
+  79:main.c        **** 	if(state_LED==SET) gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=RESET);
+ 265              		.loc 1 79 31
+ 266 000a 4111     		addi	sp,sp,-16
+ 267              	.LCFI8:
+ 268              		.cfi_def_cfa_offset 16
+ 269 000c 06C6     		sw	ra,12(sp)
+ 270              		.cfi_offset 1, -4
+ 271              		.loc 1 80 4
+ 272 000e 0547     		li	a4,1
+ 273 0010 638BE602 		beq	a3,a4,.L14
+  81:main.c        **** 	else gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 274              		.loc 1 81 7 is_stmt 1
+ 275 0014 37150140 		li	a0,1073811456
+ 276 0018 0546     		li	a2,1
+ 277 001a 8545     		li	a1,1
+ 278 001c 130505C0 		addi	a0,a0,-1024
+ 279 0020 98C3     		sw	a4,0(a5)
+ 280 0022 97000000 		call	gpio_bit_write
+ 280      E7800000 
+ 281              	.LVL24:
+  82:main.c        **** 	
+  83:main.c        **** 	//both required
+  84:main.c        **** 	exti_interrupt_flag_clear(EXTI_8);
+ 282              		.loc 1 84 2
+ 283 002a 13050010 		li	a0,256
+ 284 002e 97000000 		call	exti_interrupt_flag_clear
+ 284      E7800000 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 8
+
+
+ 285              	.LVL25:
+  85:main.c        **** 	exti_flag_clear(EXTI_8);
+ 286              		.loc 1 85 2
+  86:main.c        **** }
+ 287              		.loc 1 86 1 is_stmt 0
+ 288 0036 B240     		lw	ra,12(sp)
+ 289              		.cfi_remember_state
+ 290              		.cfi_restore 1
+  85:main.c        **** 	exti_flag_clear(EXTI_8);
+ 291              		.loc 1 85 2
+ 292 0038 13050010 		li	a0,256
+ 293              		.loc 1 86 1
+ 294 003c 4101     		addi	sp,sp,16
+ 295              	.LCFI9:
+ 296              		.cfi_def_cfa_offset 0
+  85:main.c        **** 	exti_flag_clear(EXTI_8);
+ 297              		.loc 1 85 2
+ 298 003e 17030000 		tail	exti_flag_clear
+ 298      67000300 
+ 299              	.LVL26:
+ 300              	.L14:
+ 301              	.LCFI10:
+ 302              		.cfi_restore_state
+  80:main.c        **** 	else gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 303              		.loc 1 80 21 is_stmt 1 discriminator 1
+ 304 0046 37150140 		li	a0,1073811456
+ 305 004a 0146     		li	a2,0
+ 306 004c 8545     		li	a1,1
+ 307 004e 130505C0 		addi	a0,a0,-1024
+ 308 0052 23A00700 		sw	zero,0(a5)
+ 309 0056 97000000 		call	gpio_bit_write
+ 309      E7800000 
+ 310              	.LVL27:
+  84:main.c        **** 	exti_flag_clear(EXTI_8);
+ 311              		.loc 1 84 2 discriminator 1
+ 312 005e 13050010 		li	a0,256
+ 313 0062 97000000 		call	exti_interrupt_flag_clear
+ 313      E7800000 
+ 314              	.LVL28:
+  85:main.c        **** }
+ 315              		.loc 1 85 2 discriminator 1
+ 316              		.loc 1 86 1 is_stmt 0 discriminator 1
+ 317 006a B240     		lw	ra,12(sp)
+ 318              		.cfi_restore 1
+  85:main.c        **** }
+ 319              		.loc 1 85 2 discriminator 1
+ 320 006c 13050010 		li	a0,256
+ 321              		.loc 1 86 1 discriminator 1
+ 322 0070 4101     		addi	sp,sp,16
+ 323              	.LCFI11:
+ 324              		.cfi_def_cfa_offset 0
+  85:main.c        **** }
+ 325              		.loc 1 85 2 discriminator 1
+ 326 0072 17030000 		tail	exti_flag_clear
+ 326      67000300 
+ 327              	.LVL29:
+ 328              		.cfi_endproc
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 9
+
+
+ 329              	.LFE6:
+ 331              		.section	.text.TIMER6_IRQHandler,"ax",@progbits
+ 332              		.align	1
+ 333              		.globl	TIMER6_IRQHandler
+ 335              	TIMER6_IRQHandler:
+ 336              	.LFB7:
+  87:main.c        **** 
+  88:main.c        **** void TIMER6_IRQHandler(void) {
+ 337              		.loc 1 88 30 is_stmt 1
+ 338              		.cfi_startproc
+  89:main.c        **** 	timer_interrupt_flag_clear(TIMER6, TIMER_INT_FLAG_UP);
+ 339              		.loc 1 89 2
+ 340 0000 37150040 		li	a0,1073745920
+  88:main.c        **** 	timer_interrupt_flag_clear(TIMER6, TIMER_INT_FLAG_UP);
+ 341              		.loc 1 88 30 is_stmt 0
+ 342 0004 4111     		addi	sp,sp,-16
+ 343              	.LCFI12:
+ 344              		.cfi_def_cfa_offset 16
+ 345              		.loc 1 89 2
+ 346 0006 8545     		li	a1,1
+ 347 0008 13050540 		addi	a0,a0,1024
+  88:main.c        **** 	timer_interrupt_flag_clear(TIMER6, TIMER_INT_FLAG_UP);
+ 348              		.loc 1 88 30
+ 349 000c 06C6     		sw	ra,12(sp)
+ 350              		.cfi_offset 1, -4
+ 351              		.loc 1 89 2
+ 352 000e 97000000 		call	timer_interrupt_flag_clear
+ 352      E7800000 
+ 353              	.LVL30:
+  90:main.c        **** 
+  91:main.c        **** 	if(state_LED==SET) gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=RESET);
+ 354              		.loc 1 91 2 is_stmt 1
+ 355              		.loc 1 91 14 is_stmt 0
+ 356 0016 B7070000 		lui	a5,%hi(.LANCHOR0)
+ 357 001a 93870700 		addi	a5,a5,%lo(.LANCHOR0)
+ 358              		.loc 1 91 4
+ 359 001e 9443     		lw	a3,0(a5)
+ 360 0020 0547     		li	a4,1
+ 361 0022 638FE600 		beq	a3,a4,.L18
+  92:main.c        **** 	else gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 362              		.loc 1 92 7 is_stmt 1
+  93:main.c        **** }
+ 363              		.loc 1 93 1 is_stmt 0
+ 364 0026 B240     		lw	ra,12(sp)
+ 365              		.cfi_remember_state
+ 366              		.cfi_restore 1
+  92:main.c        **** 	else gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 367              		.loc 1 92 7
+ 368 0028 37150140 		li	a0,1073811456
+ 369 002c 98C3     		sw	a4,0(a5)
+ 370              		.loc 1 93 1
+  92:main.c        **** 	else gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 371              		.loc 1 92 7
+ 372 002e 0546     		li	a2,1
+ 373 0030 8545     		li	a1,1
+ 374 0032 130505C0 		addi	a0,a0,-1024
+ 375              		.loc 1 93 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 10
+
+
+ 376 0036 4101     		addi	sp,sp,16
+ 377              	.LCFI13:
+ 378              		.cfi_def_cfa_offset 0
+  92:main.c        **** 	else gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 379              		.loc 1 92 7
+ 380 0038 17030000 		tail	gpio_bit_write
+ 380      67000300 
+ 381              	.LVL31:
+ 382              	.L18:
+ 383              	.LCFI14:
+ 384              		.cfi_restore_state
+  91:main.c        **** 	else gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 385              		.loc 1 91 21 is_stmt 1 discriminator 1
+ 386              		.loc 1 93 1 is_stmt 0 discriminator 1
+ 387 0040 B240     		lw	ra,12(sp)
+ 388              		.cfi_restore 1
+  91:main.c        **** 	else gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 389              		.loc 1 91 21 discriminator 1
+ 390 0042 37150140 		li	a0,1073811456
+ 391 0046 23A00700 		sw	zero,0(a5)
+ 392              		.loc 1 93 1 discriminator 1
+  91:main.c        **** 	else gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 393              		.loc 1 91 21 discriminator 1
+ 394 004a 0146     		li	a2,0
+ 395 004c 8545     		li	a1,1
+ 396 004e 130505C0 		addi	a0,a0,-1024
+ 397              		.loc 1 93 1 discriminator 1
+ 398 0052 4101     		addi	sp,sp,16
+ 399              	.LCFI15:
+ 400              		.cfi_def_cfa_offset 0
+  91:main.c        **** 	else gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 401              		.loc 1 91 21 discriminator 1
+ 402 0054 17030000 		tail	gpio_bit_write
+ 402      67000300 
+ 403              	.LVL32:
+ 404              		.cfi_endproc
+ 405              	.LFE7:
+ 407              		.section	.text.startup.main,"ax",@progbits
+ 408              		.align	1
+ 409              		.globl	main
+ 411              	main:
+ 412              	.LFB8:
+  94:main.c        **** 
+  95:main.c        **** void main() {
+ 413              		.loc 1 95 13 is_stmt 1
+ 414              		.cfi_startproc
+  96:main.c        **** 	init_sw();
+ 415              		.loc 1 96 2
+  95:main.c        **** 	init_sw();
+ 416              		.loc 1 95 13 is_stmt 0
+ 417 0000 4111     		addi	sp,sp,-16
+ 418              	.LCFI16:
+ 419              		.cfi_def_cfa_offset 16
+ 420 0002 06C6     		sw	ra,12(sp)
+ 421              		.cfi_offset 1, -4
+ 422              		.loc 1 96 2
+ 423 0004 97000000 		call	init_sw
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 11
+
+
+ 423      E7800000 
+ 424              	.LVL33:
+  97:main.c        **** 	init_led();
+ 425              		.loc 1 97 2 is_stmt 1
+ 426 000c 97000000 		call	init_led
+ 426      E7800000 
+ 427              	.LVL34:
+  98:main.c        **** 	initTimer6(20000);	//n*0.1ms timer
+ 428              		.loc 1 98 2
+ 429 0014 1565     		li	a0,20480
+ 430 0016 130505E2 		addi	a0,a0,-480
+ 431 001a 97000000 		call	initTimer6
+ 431      E7800000 
+ 432              	.LVL35:
+  99:main.c        **** 	init_eclic();
+ 433              		.loc 1 99 2
+ 434 0022 97000000 		call	init_eclic
+ 434      E7800000 
+ 435              	.LVL36:
+ 100:main.c        **** 
+ 101:main.c        **** 	gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=SET);
+ 436              		.loc 1 101 2
+ 437 002a 37150140 		li	a0,1073811456
+ 438 002e B7070000 		lui	a5,%hi(.LANCHOR0)
+ 439 0032 0547     		li	a4,1
+ 440 0034 0546     		li	a2,1
+ 441 0036 8545     		li	a1,1
+ 442 0038 130505C0 		addi	a0,a0,-1024
+ 443 003c 23A0E700 		sw	a4,%lo(.LANCHOR0)(a5)
+ 444 0040 97000000 		call	gpio_bit_write
+ 444      E7800000 
+ 445              	.LVL37:
+ 446              	.L20:
+ 102:main.c        **** 	//gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED=RESET);
+ 103:main.c        **** 	//gpio_bit_write(GPIOB, GPIO_PIN_0, state_LED= SET);
+ 104:main.c        **** 
+ 105:main.c        **** 	while(1);
+ 447              		.loc 1 105 2 discriminator 1
+ 448              		.loc 1 105 10 discriminator 1
+ 449              		.loc 1 105 2 discriminator 1
+ 450              		.loc 1 105 10 discriminator 1
+ 451 0048 01A0     		j	.L20
+ 452              		.cfi_endproc
+ 453              	.LFE8:
+ 455              		.section	.sbss.state_LED,"aw",@nobits
+ 456              		.align	2
+ 457              		.set	.LANCHOR0,. + 0
+ 460              	state_LED:
+ 461 0000 00000000 		.zero	4
+ 462              		.text
+ 463              	.Letext0:
+ 464              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 465              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 466              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 467              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_ext
+ 468              		.file 6 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_gpi
+ 469              		.file 7 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 12
+
+
+ 470              		.file 8 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_tim
+ 471              		.file 9 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_ecl
+ 472              		.file 10 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:13     .text.init_sw:0000000000000000 init_sw
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:17     .text.init_sw:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:18     .text.init_sw:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:19     .text.init_sw:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:20     .text.init_sw:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:22     .text.init_sw:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:24     .text.init_sw:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:26     .text.init_sw:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:27     .text.init_sw:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:29     .text.init_sw:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:32     .text.init_sw:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:33     .text.init_sw:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:34     .text.init_sw:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:36     .text.init_sw:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:38     .text.init_sw:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:39     .text.init_sw:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:44     .text.init_sw:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:46     .text.init_sw:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:48     .text.init_sw:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:50     .text.init_sw:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:57     .text.init_led:0000000000000000 init_led
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:60     .text.init_led:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:61     .text.init_led:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:62     .text.init_led:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:63     .text.init_led:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:65     .text.init_led:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:67     .text.init_led:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:69     .text.init_led:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:70     .text.init_led:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:72     .text.init_led:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:75     .text.init_led:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:76     .text.init_led:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:77     .text.init_led:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:79     .text.init_led:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:81     .text.init_led:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:82     .text.init_led:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:87     .text.init_led:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:89     .text.init_led:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:91     .text.init_led:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:93     .text.init_led:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:100    .text.initTimer6:0000000000000000 initTimer6
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:103    .text.initTimer6:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:105    .text.initTimer6:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:106    .text.initTimer6:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:107    .text.initTimer6:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:109    .text.initTimer6:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:111    .text.initTimer6:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:114    .text.initTimer6:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:117    .text.initTimer6:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:119    .text.initTimer6:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:120    .text.initTimer6:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:122    .text.initTimer6:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:125    .text.initTimer6:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:126    .text.initTimer6:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:128    .text.initTimer6:0000000000000018 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 14
+
+
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:130    .text.initTimer6:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:133    .text.initTimer6:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:138    .text.initTimer6:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:145    .text.initTimer6:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:152    .text.initTimer6:000000000000005a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:157    .text.initTimer6:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:162    .text.initTimer6:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:166    .text.initTimer6:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:167    .text.initTimer6:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:169    .text.initTimer6:0000000000000086 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:171    .text.initTimer6:0000000000000088 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:175    .text.initTimer6:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:177    .text.initTimer6:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:184    .text.init_eclic:0000000000000000 init_eclic
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:187    .text.init_eclic:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:188    .text.init_eclic:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:189    .text.init_eclic:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:190    .text.init_eclic:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:192    .text.init_eclic:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:194    .text.init_eclic:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:196    .text.init_eclic:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:197    .text.init_eclic:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:199    .text.init_eclic:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:202    .text.init_eclic:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:207    .text.init_eclic:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:213    .text.init_eclic:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:217    .text.init_eclic:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:223    .text.init_eclic:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:227    .text.init_eclic:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:233    .text.init_eclic:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:239    .text.init_eclic:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:240    .text.init_eclic:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:241    .text.init_eclic:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:244    .text.init_eclic:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:246    .text.init_eclic:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:248    .text.init_eclic:0000000000000080 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:255    .text.EXTI5_9_IRQHandler:0000000000000000 EXTI5_9_IRQHandler
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:258    .text.EXTI5_9_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:259    .text.EXTI5_9_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:260    .text.EXTI5_9_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:261    .text.EXTI5_9_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:264    .text.EXTI5_9_IRQHandler:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:266    .text.EXTI5_9_IRQHandler:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:268    .text.EXTI5_9_IRQHandler:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:270    .text.EXTI5_9_IRQHandler:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:272    .text.EXTI5_9_IRQHandler:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:275    .text.EXTI5_9_IRQHandler:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:283    .text.EXTI5_9_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:287    .text.EXTI5_9_IRQHandler:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:288    .text.EXTI5_9_IRQHandler:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:289    .text.EXTI5_9_IRQHandler:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:290    .text.EXTI5_9_IRQHandler:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:292    .text.EXTI5_9_IRQHandler:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:294    .text.EXTI5_9_IRQHandler:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:296    .text.EXTI5_9_IRQHandler:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:298    .text.EXTI5_9_IRQHandler:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:302    .text.EXTI5_9_IRQHandler:0000000000000046 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 15
+
+
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:304    .text.EXTI5_9_IRQHandler:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:312    .text.EXTI5_9_IRQHandler:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:316    .text.EXTI5_9_IRQHandler:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:317    .text.EXTI5_9_IRQHandler:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:318    .text.EXTI5_9_IRQHandler:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:320    .text.EXTI5_9_IRQHandler:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:322    .text.EXTI5_9_IRQHandler:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:324    .text.EXTI5_9_IRQHandler:0000000000000072 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:326    .text.EXTI5_9_IRQHandler:0000000000000072 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:328    .text.EXTI5_9_IRQHandler:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:335    .text.TIMER6_IRQHandler:0000000000000000 TIMER6_IRQHandler
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:338    .text.TIMER6_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:339    .text.TIMER6_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:340    .text.TIMER6_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:342    .text.TIMER6_IRQHandler:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:344    .text.TIMER6_IRQHandler:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:346    .text.TIMER6_IRQHandler:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:349    .text.TIMER6_IRQHandler:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:350    .text.TIMER6_IRQHandler:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:352    .text.TIMER6_IRQHandler:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:355    .text.TIMER6_IRQHandler:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:356    .text.TIMER6_IRQHandler:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:359    .text.TIMER6_IRQHandler:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:363    .text.TIMER6_IRQHandler:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:364    .text.TIMER6_IRQHandler:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:365    .text.TIMER6_IRQHandler:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:366    .text.TIMER6_IRQHandler:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:368    .text.TIMER6_IRQHandler:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:371    .text.TIMER6_IRQHandler:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:372    .text.TIMER6_IRQHandler:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:376    .text.TIMER6_IRQHandler:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:378    .text.TIMER6_IRQHandler:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:380    .text.TIMER6_IRQHandler:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:384    .text.TIMER6_IRQHandler:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:386    .text.TIMER6_IRQHandler:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:387    .text.TIMER6_IRQHandler:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:388    .text.TIMER6_IRQHandler:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:390    .text.TIMER6_IRQHandler:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:393    .text.TIMER6_IRQHandler:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:394    .text.TIMER6_IRQHandler:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:398    .text.TIMER6_IRQHandler:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:400    .text.TIMER6_IRQHandler:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:402    .text.TIMER6_IRQHandler:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:404    .text.TIMER6_IRQHandler:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:411    .text.startup.main:0000000000000000 main
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:414    .text.startup.main:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:415    .text.startup.main:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:416    .text.startup.main:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:417    .text.startup.main:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:419    .text.startup.main:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:421    .text.startup.main:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:423    .text.startup.main:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:426    .text.startup.main:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:429    .text.startup.main:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:434    .text.startup.main:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:437    .text.startup.main:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:448    .text.startup.main:0000000000000048 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 16
+
+
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:449    .text.startup.main:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:450    .text.startup.main:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:451    .text.startup.main:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:452    .text.startup.main:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:457    .sbss.state_LED:0000000000000000 .LANCHOR0
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:460    .sbss.state_LED:0000000000000000 state_LED
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:53     .text.init_sw:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:96     .text.init_led:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:180    .text.initTimer6:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:251    .text.init_eclic:0000000000000080 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:331    .text.EXTI5_9_IRQHandler:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:407    .text.TIMER6_IRQHandler:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:455    .text.startup.main:000000000000004a .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:300    .text.EXTI5_9_IRQHandler:0000000000000046 .L14
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:382    .text.TIMER6_IRQHandler:0000000000000040 .L18
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:446    .text.startup.main:0000000000000048 .L20
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:1865   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2693   .debug_str:0000000000000521 .LASF180
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2511   .debug_str:000000000000006f .LASF181
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2529   .debug_str:00000000000000f3 .LASF182
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2469   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2487   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2741   .debug_str:00000000000006d9 .LASF183
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2743   .debug_str:00000000000006de .LASF0
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2759   .debug_str:0000000000000745 .LASF1
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2701   .debug_str:00000000000005ca .LASF2
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2767   .debug_str:0000000000000778 .LASF3
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2715   .debug_str:0000000000000626 .LASF4
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2843   .debug_str:0000000000000971 .LASF5
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2557   .debug_str:00000000000001e8 .LASF6
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2855   .debug_str:00000000000009d2 .LASF7
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2749   .debug_str:0000000000000709 .LASF8
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2609   .debug_str:0000000000000305 .LASF9
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2699   .debug_str:00000000000005bd .LASF10
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2543   .debug_str:000000000000019d .LASF11
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2775   .debug_str:00000000000007a6 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2629   .debug_str:0000000000000389 .LASF13
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2839   .debug_str:0000000000000961 .LASF14
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2705   .debug_str:00000000000005e3 .LASF15
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2829   .debug_str:0000000000000918 .LASF16
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2647   .debug_str:00000000000003f3 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2537   .debug_str:000000000000016f .LASF18
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2765   .debug_str:0000000000000765 .LASF19
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2573   .debug_str:0000000000000252 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2823   .debug_str:00000000000008ef .LASF21
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2695   .debug_str:000000000000059b .LASF22
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2533   .debug_str:0000000000000156 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2615   .debug_str:0000000000000331 .LASF24
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2635   .debug_str:00000000000003a8 .LASF25
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2521   .debug_str:00000000000000b8 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2791   .debug_str:0000000000000813 .LASF27
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2783   .debug_str:00000000000007da .LASF28
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2813   .debug_str:00000000000008b8 .LASF29
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2717   .debug_str:0000000000000635 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2847   .debug_str:0000000000000986 .LASF31
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2515   .debug_str:0000000000000080 .LASF32
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 17
+
+
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2539   .debug_str:0000000000000182 .LASF33
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2769   .debug_str:0000000000000786 .LASF34
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2627   .debug_str:000000000000037d .LASF35
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2797   .debug_str:000000000000083e .LASF36
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2661   .debug_str:0000000000000446 .LASF37
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2729   .debug_str:0000000000000694 .LASF38
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2777   .debug_str:00000000000007b1 .LASF39
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2721   .debug_str:000000000000064e .LASF40
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2567   .debug_str:000000000000021e .LASF41
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2553   .debug_str:00000000000001d1 .LASF42
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2757   .debug_str:0000000000000739 .LASF43
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2611   .debug_str:000000000000030e .LASF44
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2751   .debug_str:0000000000000712 .LASF45
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2753   .debug_str:0000000000000721 .LASF46
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2787   .debug_str:00000000000007fa .LASF47
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2565   .debug_str:0000000000000214 .LASF48
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2827   .debug_str:000000000000090c .LASF49
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2809   .debug_str:0000000000000894 .LASF50
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2689   .debug_str:00000000000004f8 .LASF51
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2555   .debug_str:00000000000001dd .LASF52
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2703   .debug_str:00000000000005d7 .LASF53
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2561   .debug_str:00000000000001ff .LASF54
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2785   .debug_str:00000000000007e7 .LASF55
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2643   .debug_str:00000000000003d1 .LASF56
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2531   .debug_str:0000000000000143 .LASF57
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2723   .debug_str:0000000000000658 .LASF58
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2569   .debug_str:0000000000000228 .LASF59
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2733   .debug_str:00000000000006ac .LASF60
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2745   .debug_str:00000000000006f0 .LASF61
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2599   .debug_str:00000000000002c2 .LASF62
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2707   .debug_str:00000000000005ee .LASF63
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2653   .debug_str:000000000000041a .LASF64
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2795   .debug_str:0000000000000829 .LASF65
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2535   .debug_str:0000000000000162 .LASF66
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2651   .debug_str:000000000000040e .LASF67
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2819   .debug_str:00000000000008da .LASF70
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2801   .debug_str:0000000000000856 .LASF68
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2547   .debug_str:00000000000001b1 .LASF69
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2595   .debug_str:00000000000002af .LASF71
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2837   .debug_str:000000000000094e .LASF72
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2755   .debug_str:0000000000000730 .LASF73
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2805   .debug_str:000000000000086b .LASF74
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2781   .debug_str:00000000000007c8 .LASF75
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2675   .debug_str:000000000000049e .LASF76
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2571   .debug_str:000000000000023b .LASF77
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2649   .debug_str:0000000000000406 .LASF78
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2739   .debug_str:00000000000006d0 .LASF79
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2563   .debug_str:000000000000020b .LASF80
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2509   .debug_str:000000000000005f .LASF184
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2763   .debug_str:000000000000075f .LASF81
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2737   .debug_str:00000000000006c5 .LASF82
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2577   .debug_str:0000000000000270 .LASF83
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2579   .debug_str:0000000000000277 .LASF84
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2581   .debug_str:000000000000027e .LASF85
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2583   .debug_str:0000000000000285 .LASF86
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2585   .debug_str:000000000000028c .LASF87
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2587   .debug_str:0000000000000293 .LASF88
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 18
+
+
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2589   .debug_str:000000000000029a .LASF89
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2591   .debug_str:00000000000002a1 .LASF90
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2593   .debug_str:00000000000002a8 .LASF91
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2803   .debug_str:0000000000000864 .LASF92
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2491   .debug_str:0000000000000017 .LASF93
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2493   .debug_str:000000000000001f .LASF94
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2495   .debug_str:0000000000000027 .LASF95
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2497   .debug_str:000000000000002f .LASF96
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2499   .debug_str:0000000000000037 .LASF97
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2501   .debug_str:000000000000003f .LASF98
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2503   .debug_str:0000000000000047 .LASF99
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2505   .debug_str:000000000000004f .LASF100
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2507   .debug_str:0000000000000057 .LASF101
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2673   .debug_str:000000000000048f .LASF102
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2799   .debug_str:000000000000084b .LASF103
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2833   .debug_str:0000000000000932 .LASF104
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2683   .debug_str:00000000000004ca .LASF105
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2645   .debug_str:00000000000003e4 .LASF106
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2849   .debug_str:000000000000099a .LASF107
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2731   .debug_str:00000000000006a1 .LASF108
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2523   .debug_str:00000000000000c6 .LASF109
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2525   .debug_str:00000000000000cf .LASF110
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2857   .debug_str:00000000000009de .LASF111
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2789   .debug_str:000000000000080a .LASF112
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2825   .debug_str:0000000000000902 .LASF113
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2655   .debug_str:0000000000000425 .LASF114
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2657   .debug_str:0000000000000430 .LASF115
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2659   .debug_str:000000000000043b .LASF116
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2519   .debug_str:00000000000000ad .LASF117
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2663   .debug_str:0000000000000453 .LASF118
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2665   .debug_str:000000000000045e .LASF119
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2623   .debug_str:000000000000035c .LASF120
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2639   .debug_str:00000000000003bf .LASF121
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2641   .debug_str:00000000000003c8 .LASF122
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2747   .debug_str:00000000000006fe .LASF123
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2821   .debug_str:00000000000008e4 .LASF124
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2771   .debug_str:0000000000000792 .LASF125
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2773   .debug_str:000000000000079c .LASF126
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2619   .debug_str:000000000000034a .LASF127
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2621   .debug_str:0000000000000353 .LASF128
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2711   .debug_str:0000000000000614 .LASF129
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2713   .debug_str:000000000000061d .LASF130
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2545   .debug_str:00000000000001a8 .LASF131
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2859   .debug_str:00000000000009e6 .LASF132
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2597   .debug_str:00000000000002ba .LASF133
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2667   .debug_str:0000000000000469 .LASF134
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2793   .debug_str:0000000000000822 .LASF135
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2677   .debug_str:00000000000004ac .LASF136
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2679   .debug_str:00000000000004b6 .LASF137
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2681   .debug_str:00000000000004c0 .LASF138
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2513   .debug_str:0000000000000076 .LASF139
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2685   .debug_str:00000000000004dc .LASF140
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2815   .debug_str:00000000000008c8 .LASF141
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2817   .debug_str:00000000000008d1 .LASF142
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2575   .debug_str:0000000000000265 .LASF143
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2637   .debug_str:00000000000003b6 .LASF144
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2631   .debug_str:0000000000000394 .LASF145
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 19
+
+
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2719   .debug_str:0000000000000644 .LASF146
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2617   .debug_str:000000000000033e .LASF147
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2725   .debug_str:000000000000066b .LASF148
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2831   .debug_str:000000000000092b .LASF149
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2559   .debug_str:00000000000001f1 .LASF150
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2687   .debug_str:00000000000004e6 .LASF151
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2625   .debug_str:0000000000000366 .LASF152
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2735   .debug_str:00000000000006b9 .LASF153
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2779   .debug_str:00000000000007be .LASF159
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2841   .debug_str:000000000000096c .LASF156
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:412    .text.startup.main:0000000000000000 .LFB8
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:453    .text.startup.main:000000000000004a .LFE8
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2285   .debug_loc:0000000000000000 .LLST7
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:424    .text.startup.main:000000000000000c .LVL33
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:427    .text.startup.main:0000000000000014 .LVL34
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:432    .text.startup.main:0000000000000022 .LVL35
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:435    .text.startup.main:000000000000002a .LVL36
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:445    .text.startup.main:0000000000000048 .LVL37
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2607   .debug_str:00000000000002f3 .LASF154
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:336    .text.TIMER6_IRQHandler:0000000000000000 .LFB7
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:405    .text.TIMER6_IRQHandler:000000000000005c .LFE7
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2298   .debug_loc:0000000000000020 .LLST6
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:353    .text.TIMER6_IRQHandler:0000000000000016 .LVL30
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:381    .text.TIMER6_IRQHandler:0000000000000040 .LVL31
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:403    .text.TIMER6_IRQHandler:000000000000005c .LVL32
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2671   .debug_str:000000000000047c .LASF155
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:256    .text.EXTI5_9_IRQHandler:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:329    .text.EXTI5_9_IRQHandler:000000000000007a .LFE6
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2326   .debug_loc:0000000000000064 .LLST5
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:281    .text.EXTI5_9_IRQHandler:000000000000002a .LVL24
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:285    .text.EXTI5_9_IRQHandler:0000000000000036 .LVL25
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:299    .text.EXTI5_9_IRQHandler:0000000000000046 .LVL26
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:310    .text.EXTI5_9_IRQHandler:000000000000005e .LVL27
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:314    .text.EXTI5_9_IRQHandler:000000000000006a .LVL28
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:327    .text.EXTI5_9_IRQHandler:000000000000007a .LVL29
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2669   .debug_str:0000000000000471 .LASF157
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:185    .text.init_eclic:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:249    .text.init_eclic:0000000000000080 .LFE5
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2354   .debug_loc:00000000000000a8 .LLST4
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:200    .text.init_eclic:0000000000000010 .LVL15
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:205    .text.init_eclic:000000000000001c .LVL16
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:211    .text.init_eclic:000000000000002c .LVL17
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:215    .text.init_eclic:0000000000000038 .LVL18
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:221    .text.init_eclic:000000000000004a .LVL19
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:225    .text.init_eclic:0000000000000054 .LVL20
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:231    .text.init_eclic:0000000000000064 .LVL21
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:237    .text.init_eclic:0000000000000074 .LVL22
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:247    .text.init_eclic:0000000000000080 .LVL23
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2601   .debug_str:00000000000002d0 .LASF158
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:101    .text.initTimer6:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:178    .text.initTimer6:000000000000008c .LFE4
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2372   .debug_loc:00000000000000d4 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2551   .debug_str:00000000000001c5 .LASF185
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2390   .debug_loc:0000000000000100 .LLST3
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2697   .debug_str:00000000000005ae .LASF160
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:123    .text.initTimer6:0000000000000016 .LVL6
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:131    .text.initTimer6:0000000000000024 .LVL7
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 20
+
+
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:136    .text.initTimer6:0000000000000032 .LVL8
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:143    .text.initTimer6:0000000000000046 .LVL9
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:150    .text.initTimer6:000000000000005a .LVL10
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:155    .text.initTimer6:0000000000000068 .LVL11
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:160    .text.initTimer6:0000000000000076 .LVL12
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:164    .text.initTimer6:0000000000000082 .LVL13
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2633   .debug_str:000000000000039f .LASF161
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:58     .text.init_led:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:94     .text.init_led:000000000000002a .LFE3
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2408   .debug_loc:000000000000012c .LLST1
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:73     .text.init_led:0000000000000010 .LVL2
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:92     .text.init_led:000000000000002a .LVL3
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2603   .debug_str:00000000000002db .LASF162
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:14     .text.init_sw:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:51     .text.init_sw:000000000000002c .LFE2
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2426   .debug_loc:0000000000000158 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:30     .text.init_sw:0000000000000010 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:49     .text.init_sw:000000000000002c .LVL1
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2541   .debug_str:000000000000018e .LASF163
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2527   .debug_str:00000000000000d8 .LASF164
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2811   .debug_str:000000000000089e .LASF165
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2605   .debug_str:00000000000002e3 .LASF166
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2853   .debug_str:00000000000009ba .LASF167
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2727   .debug_str:000000000000067c .LASF168
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2845   .debug_str:000000000000097c .LASF169
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2517   .debug_str:0000000000000094 .LASF170
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2851   .debug_str:00000000000009a9 .LASF171
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2807   .debug_str:0000000000000876 .LASF172
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2709   .debug_str:00000000000005fd .LASF173
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2835   .debug_str:0000000000000943 .LASF174
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2489   .debug_str:0000000000000000 .LASF175
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2691   .debug_str:0000000000000503 .LASF176
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2613   .debug_str:000000000000031a .LASF177
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2761   .debug_str:0000000000000752 .LASF178
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:2549   .debug_str:00000000000001bb .LASF179
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:418    .text.startup.main:0000000000000002 .LCFI16
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:343    .text.TIMER6_IRQHandler:0000000000000006 .LCFI12
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:377    .text.TIMER6_IRQHandler:0000000000000038 .LCFI13
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:383    .text.TIMER6_IRQHandler:0000000000000040 .LCFI14
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:399    .text.TIMER6_IRQHandler:0000000000000054 .LCFI15
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:267    .text.EXTI5_9_IRQHandler:000000000000000c .LCFI8
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:295    .text.EXTI5_9_IRQHandler:000000000000003e .LCFI9
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:301    .text.EXTI5_9_IRQHandler:0000000000000046 .LCFI10
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:323    .text.EXTI5_9_IRQHandler:0000000000000072 .LCFI11
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:191    .text.init_eclic:0000000000000002 .LCFI6
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:243    .text.init_eclic:0000000000000078 .LCFI7
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:108    .text.initTimer6:0000000000000002 .LCFI4
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:174    .text.initTimer6:000000000000008a .LCFI5
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:104    .text.initTimer6:0000000000000000 .LVL4
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:115    .text.initTimer6:000000000000000a .LVL5
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:172    .text.initTimer6:0000000000000088 .LVL14
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:64     .text.init_led:0000000000000002 .LCFI2
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:88     .text.init_led:0000000000000022 .LCFI3
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:21     .text.init_sw:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:45     .text.init_sw:0000000000000024 .LCFI1
+C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s:474    .debug_info:0000000000000000 .Ldebug_info0
+
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccbwZtHa.s 			page 21
+
+
+UNDEFINED SYMBOLS
+rcu_periph_clock_enable
+gpio_init
+timer_struct_para_init
+timer_init
+timer_prescaler_config
+timer_autoreload_value_config
+timer_interrupt_flag_clear
+timer_interrupt_enable
+timer_enable
+gpio_exti_source_select
+exti_init
+exti_interrupt_flag_clear
+eclic_priority_group_set
+eclic_irq_enable
+eclic_global_interrupt_enable
+gpio_bit_write
+exti_flag_clear

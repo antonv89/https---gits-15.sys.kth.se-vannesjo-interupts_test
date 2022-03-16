@@ -1,0 +1,768 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 1
+
+
+   1              		.file	"gd32vf103_exmc.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.exmc_norsram_deinit,"ax",@progbits
+  10              		.align	1
+  11              		.globl	exmc_norsram_deinit
+  13              	exmc_norsram_deinit:
+  14              	.LFB2:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_exmc
+   1:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** /*!
+   2:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \file    gd32vf103_exmc.c
+   3:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \brief   EXMC driver
+   4:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+   5:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \version 2019-06-05, V1.0.0, firmware for GD32VF103
+   6:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \version 2020-08-04, V1.1.0, firmware for GD32VF103
+   7:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** */
+   8:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+   9:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** /*
+  10:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  12:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     Redistribution and use in source and binary forms, with or without modification,
+  13:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** are permitted provided that the following conditions are met:
+  14:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  15:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  16:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****        list of conditions and the following disclaimer.
+  17:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  18:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****        this list of conditions and the following disclaimer in the documentation
+  19:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****        and/or other materials provided with the distribution.
+  20:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  21:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****        may be used to endorse or promote products derived from this software without
+  22:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****        specific prior written permission.
+  23:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  24:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  25:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  26:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  27:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  28:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  29:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  30:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  31:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  32:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  33:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** OF SUCH DAMAGE.
+  34:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** */
+  35:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  36:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** #include "gd32vf103_exmc.h"
+  37:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  38:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** /* EXMC bank0 register reset value */
+  39:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** #define BANK0_SNCTL0_REGION_RESET         ((uint32_t)0x000030DAU)
+  40:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** #define BANK0_SNTCFG_RESET                ((uint32_t)0x0FFFFFFFU)
+  41:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  42:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** /* EXMC register bit offset */
+  43:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** #define SNCTL_NRMUX_OFFSET                ((uint32_t)1U)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 2
+
+
+  44:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** #define SNCTL_WREN_OFFSET                 ((uint32_t)12U)
+  45:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** #define SNCTL_NRWTEN_OFFSET               ((uint32_t)13U)
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** #define SNCTL_ASYNCWAIT_OFFSET            ((uint32_t)15U)
+  47:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  48:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** #define SNTCFG_AHLD_OFFSET                ((uint32_t)4U)
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** #define SNTCFG_DSET_OFFSET                ((uint32_t)8U)
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** #define SNTCFG_BUSLAT_OFFSET              ((uint32_t)16U)
+  51:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** /*!
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \brief      deinitialize EXMC NOR/SRAM region
+  54:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \param[in]  norsram_region: select the region of bank0
+  55:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****       \arg        EXMC_BANK0_NORSRAM_REGIONx(x=0)
+  56:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \param[out] none
+  57:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \retval     none
+  58:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** */
+  59:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** void exmc_norsram_deinit(uint32_t norsram_region)
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** {
+  16              		.loc 1 60 1
+  17              		.cfi_startproc
+  18              	.LVL0:
+  61:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     /* reset the registers */
+  62:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     if(EXMC_BANK0_NORSRAM_REGION0 == norsram_region){
+  19              		.loc 1 62 5
+  20              		.loc 1 62 7 is_stmt 0
+  21 0000 19E5     		bne	a0,zero,.L2
+  63:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****         EXMC_SNCTL(norsram_region) = BANK0_SNCTL0_REGION_RESET;
+  22              		.loc 1 63 9 is_stmt 1
+  23              		.loc 1 63 36 is_stmt 0
+  24 0002 8D67     		li	a5,12288
+  25 0004 370700A0 		li	a4,-1610612736
+  26 0008 9387A70D 		addi	a5,a5,218
+  27 000c 1CC3     		sw	a5,0(a4)
+  28              	.L2:
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     }
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  66:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     EXMC_SNTCFG(norsram_region) = BANK0_SNTCFG_RESET;
+  29              		.loc 1 66 5 is_stmt 1
+  30 000e B70700A0 		li	a5,-1610612736
+  31 0012 9107     		addi	a5,a5,4
+  32 0014 0E05     		slli	a0,a0,3
+  33              	.LVL1:
+  34 0016 3E95     		add	a0,a0,a5
+  35              		.loc 1 66 33 is_stmt 0
+  36 0018 B7070010 		li	a5,268435456
+  37 001c FD17     		addi	a5,a5,-1
+  38 001e 1CC1     		sw	a5,0(a0)
+  67:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** }
+  39              		.loc 1 67 1
+  40 0020 8280     		ret
+  41              		.cfi_endproc
+  42              	.LFE2:
+  44              		.section	.text.exmc_norsram_struct_para_init,"ax",@progbits
+  45              		.align	1
+  46              		.globl	exmc_norsram_struct_para_init
+  48              	exmc_norsram_struct_para_init:
+  49              	.LFB3:
+  68:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 3
+
+
+  69:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** /*!
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \brief      initialize the structure exmc_norsram_parameter_struct
+  71:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \param[in]  none
+  72:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \param[out] exmc_norsram_init_struct: the initialized structure exmc_norsram_parameter_struct p
+  73:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \retval     none
+  74:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** */
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** void exmc_norsram_struct_para_init(exmc_norsram_parameter_struct* exmc_norsram_init_struct)
+  76:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** {
+  50              		.loc 1 76 1 is_stmt 1
+  51              		.cfi_startproc
+  52              	.LVL2:
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     /* configure the structure with default value */
+  78:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->norsram_region = EXMC_BANK0_NORSRAM_REGION0;
+  53              		.loc 1 78 5
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->address_data_mux = ENABLE;
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->memory_type = EXMC_MEMORY_TYPE_SRAM;
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->databus_width = EXMC_NOR_DATABUS_WIDTH_16B;
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->nwait_polarity = EXMC_NWAIT_POLARITY_LOW;
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->memory_write = ENABLE;
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->nwait_signal = ENABLE;
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->asyn_wait = DISABLE;
+  86:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  87:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     /* read/write timing configure */
+  88:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->read_write_timing->asyn_address_setuptime = 0xFU;
+  54              		.loc 1 88 29 is_stmt 0
+  55 0000 1C51     		lw	a5,32(a0)
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->address_data_mux = ENABLE;
+  56              		.loc 1 79 48
+  57 0002 0547     		li	a4,1
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->nwait_polarity = EXMC_NWAIT_POLARITY_LOW;
+  58              		.loc 1 81 45
+  59 0004 C146     		li	a3,16
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->address_data_mux = ENABLE;
+  60              		.loc 1 79 48
+  61 0006 58CD     		sw	a4,28(a0)
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->nwait_polarity = EXMC_NWAIT_POLARITY_LOW;
+  62              		.loc 1 81 45
+  63 0008 54C9     		sw	a3,20(a0)
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->nwait_signal = ENABLE;
+  64              		.loc 1 83 44
+  65 000a 58C5     		sw	a4,12(a0)
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->asyn_wait = DISABLE;
+  66              		.loc 1 84 44
+  67 000c 18C5     		sw	a4,8(a0)
+  78:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->address_data_mux = ENABLE;
+  68              		.loc 1 78 46
+  69 000e 23200500 		sw	zero,0(a0)
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->memory_type = EXMC_MEMORY_TYPE_SRAM;
+  70              		.loc 1 79 5 is_stmt 1
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->databus_width = EXMC_NOR_DATABUS_WIDTH_16B;
+  71              		.loc 1 80 5
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->databus_width = EXMC_NOR_DATABUS_WIDTH_16B;
+  72              		.loc 1 80 43 is_stmt 0
+  73 0012 232C0500 		sw	zero,24(a0)
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->nwait_polarity = EXMC_NWAIT_POLARITY_LOW;
+  74              		.loc 1 81 5 is_stmt 1
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->memory_write = ENABLE;
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 4
+
+
+  75              		.loc 1 82 5
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->memory_write = ENABLE;
+  76              		.loc 1 82 46 is_stmt 0
+  77 0016 23280500 		sw	zero,16(a0)
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->nwait_signal = ENABLE;
+  78              		.loc 1 83 5 is_stmt 1
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->asyn_wait = DISABLE;
+  79              		.loc 1 84 5
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  80              		.loc 1 85 5
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  81              		.loc 1 85 41 is_stmt 0
+  82 001a 23220500 		sw	zero,4(a0)
+  83              		.loc 1 88 5 is_stmt 1
+  84              		.loc 1 88 73 is_stmt 0
+  85 001e 3D47     		li	a4,15
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->read_write_timing->asyn_address_holdtime = 0xFU;
+  90:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->read_write_timing->asyn_data_setuptime = 0xFFU;
+  86              		.loc 1 90 70
+  87 0020 9306F00F 		li	a3,255
+  88:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->read_write_timing->asyn_address_holdtime = 0xFU;
+  88              		.loc 1 88 73
+  89 0024 D8C7     		sw	a4,12(a5)
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->read_write_timing->asyn_address_holdtime = 0xFU;
+  90              		.loc 1 89 5 is_stmt 1
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->read_write_timing->asyn_address_holdtime = 0xFU;
+  91              		.loc 1 89 72 is_stmt 0
+  92 0026 98C7     		sw	a4,8(a5)
+  93              		.loc 1 90 5 is_stmt 1
+  94              		.loc 1 90 70 is_stmt 0
+  95 0028 D4C3     		sw	a3,4(a5)
+  91:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     exmc_norsram_init_struct->read_write_timing->bus_latency = 0xFU;
+  96              		.loc 1 91 5 is_stmt 1
+  97              		.loc 1 91 62 is_stmt 0
+  98 002a 98C3     		sw	a4,0(a5)
+  92:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** }
+  99              		.loc 1 92 1
+ 100 002c 8280     		ret
+ 101              		.cfi_endproc
+ 102              	.LFE3:
+ 104              		.section	.text.exmc_norsram_init,"ax",@progbits
+ 105              		.align	1
+ 106              		.globl	exmc_norsram_init
+ 108              	exmc_norsram_init:
+ 109              	.LFB4:
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** /*!
+  95:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \brief      initialize EXMC NOR/SRAM region
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \param[in]  exmc_norsram_parameter_struct: configure the EXMC NOR/SRAM parameter
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                   norsram_region: EXMC_BANK0_NORSRAM_REGIONx,x=0
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                   asyn_wait: ENABLE or DISABLE
+  99:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                   nwait_signal: ENABLE or DISABLE
+ 100:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                   memory_write: ENABLE or DISABLE
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                   nwait_polarity: EXMC_NWAIT_POLARITY_LOW,EXMC_NWAIT_POLARITY_HIGH
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                   databus_width: EXMC_NOR_DATABUS_WIDTH_8B,EXMC_NOR_DATABUS_WIDTH_16B
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                   memory_type: EXMC_MEMORY_TYPE_SRAM,EXMC_MEMORY_TYPE_PSRAM,EXMC_MEMORY_TYPE_NOR
+ 104:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                   address_data_mux: ENABLE
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 5
+
+
+ 105:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                   read_write_timing: structure exmc_norsram_timing_parameter_struct set the time
+ 106:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \param[out] none
+ 107:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \retval     none
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** */
+ 109:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** void exmc_norsram_init(exmc_norsram_parameter_struct* exmc_norsram_init_struct)
+ 110:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** {
+ 110              		.loc 1 110 1 is_stmt 1
+ 111              		.cfi_startproc
+ 112              	.LVL3:
+ 111:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     uint32_t snctl = 0x00000000U, sntcfg = 0x00000000U;
+ 113              		.loc 1 111 5
+ 112:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 113:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     /* get the register value */
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     snctl = EXMC_SNCTL(exmc_norsram_init_struct->norsram_region);
+ 114              		.loc 1 114 5
+ 115:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 116:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     /* clear relative bits */
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     snctl &= ((uint32_t)~(EXMC_SNCTL_NREN | EXMC_SNCTL_NRTP | EXMC_SNCTL_NRW | EXMC_SNCTL_NRWTPOL |
+ 118:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                           EXMC_SNCTL_WREN | EXMC_SNCTL_NRWTEN | EXMC_SNCTL_ASYNCWAIT | EXMC_SNCTL_N
+ 119:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     snctl |= (uint32_t)((uint32_t)exmc_norsram_init_struct->address_data_mux << SNCTL_NRMUX_OFFSET)
+ 121:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->memory_type |
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->databus_width |
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->nwait_polarity |
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        ((uint32_t)exmc_norsram_init_struct->memory_write << SNCTL_WREN_OFFSET) |
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        ((uint32_t)exmc_norsram_init_struct->nwait_signal << SNCTL_NRWTEN_OFFSET) |
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        ((uint32_t)exmc_norsram_init_struct->asyn_wait << SNCTL_ASYNCWAIT_OFFSET);
+ 127:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     sntcfg = (uint32_t)((exmc_norsram_init_struct->read_write_timing->asyn_address_setuptime - 1U )
+ 115              		.loc 1 128 50 is_stmt 0
+ 116 0000 1051     		lw	a2,32(a0)
+ 121:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->databus_width |
+ 117              		.loc 1 121 49
+ 118 0002 83288501 		lw	a7,24(a0)
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->nwait_polarity |
+ 119              		.loc 1 122 65
+ 120 0006 5849     		lw	a4,20(a0)
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 121              		.loc 1 114 13
+ 122 0008 03230500 		lw	t1,0(a0)
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->nwait_polarity |
+ 123              		.loc 1 122 65
+ 124 000c 032E0501 		lw	t3,16(a0)
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_address_holdtime - 1U )
+ 125              		.loc 1 129 94
+ 126 0010 1446     		lw	a3,8(a2)
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->memory_type |
+ 127              		.loc 1 120 14
+ 128 0012 5C4D     		lw	a5,28(a0)
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_data_setuptime - 1U ) <
+ 129              		.loc 1 130 92
+ 130 0014 4C42     		lw	a1,4(a2)
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 131              		.loc 1 114 13
+ 132 0016 37080014 		li	a6,335544320
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->nwait_polarity |
+ 133              		.loc 1 122 65
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 6
+
+
+ 134 001a 33E7E800 		or	a4,a7,a4
+ 135 001e 3367C701 		or	a4,a4,t3
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 136              		.loc 1 114 13
+ 137 0022 1A98     		add	a6,a6,t1
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_data_setuptime - 1U ) <
+ 138              		.loc 1 129 94
+ 139 0024 FD16     		addi	a3,a3,-1
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_address_holdtime - 1U )
+ 140              		.loc 1 128 94
+ 141 0026 0323C600 		lw	t1,12(a2)
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        ((uint32_t)exmc_norsram_init_struct->nwait_signal << SNCTL_NRWTEN_OFFSET) |
+ 142              		.loc 1 124 74
+ 143 002a 832FC500 		lw	t6,12(a0)
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->memory_type |
+ 144              		.loc 1 120 14
+ 145 002e 8607     		slli	a5,a5,1
+ 131:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->bus_latency - 1U ) << SNTCFG
+ 146              		.loc 1 131 84
+ 147 0030 1042     		lw	a2,0(a2)
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->nwait_polarity |
+ 148              		.loc 1 122 65
+ 149 0032 D98F     		or	a5,a4,a5
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        ((uint32_t)exmc_norsram_init_struct->asyn_wait << SNCTL_ASYNCWAIT_OFFSET);
+ 150              		.loc 1 125 74
+ 151 0034 032F8500 		lw	t5,8(a0)
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_data_setuptime - 1U ) <
+ 152              		.loc 1 129 101
+ 153 0038 13974600 		slli	a4,a3,4
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->bus_latency - 1U ) << SNTCFG
+ 154              		.loc 1 130 92
+ 155 003c FD15     		addi	a1,a1,-1
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->bus_latency - 1U ) << SNTCFG
+ 156              		.loc 1 130 123
+ 157 003e C166     		li	a3,65536
+ 158 0040 FD16     		addi	a3,a3,-1
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 159              		.loc 1 114 13
+ 160 0042 0E08     		slli	a6,a6,3
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 161              		.loc 1 126 71
+ 162 0044 832E4500 		lw	t4,4(a0)
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->bus_latency - 1U ) << SNTCFG
+ 163              		.loc 1 130 99
+ 164 0048 A205     		slli	a1,a1,8
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->bus_latency - 1U ) << SNTCFG
+ 165              		.loc 1 130 123
+ 166 004a F58D     		and	a1,a1,a3
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 167              		.loc 1 114 11
+ 168 004c 032E0800 		lw	t3,0(a6)
+ 169              	.LVL4:
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                           EXMC_SNCTL_WREN | EXMC_SNCTL_NRWTEN | EXMC_SNCTL_ASYNCWAIT | EXMC_SNCTL_N
+ 170              		.loc 1 117 5 is_stmt 1
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        ((uint32_t)exmc_norsram_init_struct->nwait_signal << SNCTL_NRWTEN_OFFSET) |
+ 171              		.loc 1 124 74 is_stmt 0
+ 172 0050 B20F     		slli	t6,t6,12
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 7
+
+
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_data_setuptime - 1U ) <
+ 173              		.loc 1 129 125
+ 174 0052 1377F70F 		andi	a4,a4,255
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_address_holdtime - 1U )
+ 175              		.loc 1 128 94
+ 176 0056 7D13     		addi	t1,t1,-1
+ 177              		.loc 1 131 84
+ 178 0058 9306F6FF 		addi	a3,a2,-1
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_data_setuptime - 1U ) <
+ 179              		.loc 1 129 146
+ 180 005c 4D8F     		or	a4,a4,a1
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_address_holdtime - 1U )
+ 181              		.loc 1 128 14
+ 182 005e 1376F300 		andi	a2,t1,15
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        ((uint32_t)exmc_norsram_init_struct->memory_write << SNCTL_WREN_OFFSET) |
+ 183              		.loc 1 123 66
+ 184 0062 B3E7F701 		or	a5,a5,t6
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        ((uint32_t)exmc_norsram_init_struct->asyn_wait << SNCTL_ASYNCWAIT_OFFSET);
+ 185              		.loc 1 125 74
+ 186 0066 360F     		slli	t5,t5,13
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                           EXMC_SNCTL_WREN | EXMC_SNCTL_NRWTEN | EXMC_SNCTL_ASYNCWAIT | EXMC_SNCTL_N
+ 187              		.loc 1 117 11
+ 188 0068 D575     		li	a1,-45056
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_data_setuptime - 1U ) <
+ 189              		.loc 1 129 146
+ 190 006a 518F     		or	a4,a4,a2
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        ((uint32_t)exmc_norsram_init_struct->nwait_signal << SNCTL_NRWTEN_OFFSET) |
+ 191              		.loc 1 124 96
+ 192 006c B3E7E701 		or	a5,a5,t5
+ 193              		.loc 1 131 117
+ 194 0070 37060F00 		li	a2,983040
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 195              		.loc 1 126 71
+ 196 0074 BE0E     		slli	t4,t4,15
+ 197              		.loc 1 131 91
+ 198 0076 C206     		slli	a3,a3,16
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                           EXMC_SNCTL_WREN | EXMC_SNCTL_NRWTEN | EXMC_SNCTL_ASYNCWAIT | EXMC_SNCTL_N
+ 199              		.loc 1 117 11
+ 200 0078 938515D8 		addi	a1,a1,-639
+ 201              		.loc 1 131 117
+ 202 007c F18E     		and	a3,a3,a2
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                           EXMC_SNCTL_WREN | EXMC_SNCTL_NRWTEN | EXMC_SNCTL_ASYNCWAIT | EXMC_SNCTL_N
+ 203              		.loc 1 117 11
+ 204 007e B375BE00 		and	a1,t3,a1
+ 205              	.LVL5:
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->memory_type |
+ 206              		.loc 1 120 5 is_stmt 1
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        ((uint32_t)exmc_norsram_init_struct->asyn_wait << SNCTL_ASYNCWAIT_OFFSET);
+ 207              		.loc 1 125 98 is_stmt 0
+ 208 0082 B3E7D701 		or	a5,a5,t4
+ 132:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 133:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     /* nor flash access enable */
+ 134:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     if(EXMC_MEMORY_TYPE_NOR == exmc_norsram_init_struct->memory_type){
+ 209              		.loc 1 134 7
+ 210 0086 2146     		li	a2,8
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                         exmc_norsram_init_struct->memory_type |
+ 211              		.loc 1 120 11
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 8
+
+
+ 212 0088 CD8F     		or	a5,a5,a1
+ 213              	.LVL6:
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_address_holdtime - 1U )
+ 214              		.loc 1 128 5 is_stmt 1
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****                        (((exmc_norsram_init_struct->read_write_timing->asyn_address_holdtime - 1U )
+ 215              		.loc 1 128 12 is_stmt 0
+ 216 008a 558F     		or	a4,a4,a3
+ 217              	.LVL7:
+ 218              		.loc 1 134 5 is_stmt 1
+ 219              		.loc 1 134 7 is_stmt 0
+ 220 008c 6394C800 		bne	a7,a2,.L6
+ 135:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****         snctl |= (uint32_t)EXMC_SNCTL_NREN;
+ 221              		.loc 1 135 9 is_stmt 1
+ 222              		.loc 1 135 15 is_stmt 0
+ 223 0090 93E70704 		ori	a5,a5,64
+ 224              	.LVL8:
+ 225              	.L6:
+ 136:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     }
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 138:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     /* configure the registers */
+ 139:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     EXMC_SNCTL(exmc_norsram_init_struct->norsram_region) = snctl;
+ 226              		.loc 1 139 5 is_stmt 1
+ 227              		.loc 1 139 58 is_stmt 0
+ 228 0094 2320F800 		sw	a5,0(a6)
+ 140:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     EXMC_SNTCFG(exmc_norsram_init_struct->norsram_region) = sntcfg;
+ 229              		.loc 1 140 5 is_stmt 1
+ 230 0098 1C41     		lw	a5,0(a0)
+ 231              	.LVL9:
+ 232 009a B70600A0 		li	a3,-1610612736
+ 233 009e 9106     		addi	a3,a3,4
+ 234 00a0 8E07     		slli	a5,a5,3
+ 235 00a2 B697     		add	a5,a5,a3
+ 236              		.loc 1 140 59 is_stmt 0
+ 237 00a4 98C3     		sw	a4,0(a5)
+ 238              	.LVL10:
+ 141:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** }
+ 239              		.loc 1 141 1
+ 240 00a6 8280     		ret
+ 241              		.cfi_endproc
+ 242              	.LFE4:
+ 244              		.section	.text.exmc_norsram_enable,"ax",@progbits
+ 245              		.align	1
+ 246              		.globl	exmc_norsram_enable
+ 248              	exmc_norsram_enable:
+ 249              	.LFB5:
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** /*!
+ 144:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \brief      enable EXMC NOR/PSRAM bank region
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \param[in]  norsram_region: specify the region of NOR/PSRAM bank
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****       \arg        EXMC_BANK0_NORSRAM_REGIONx(x=0)
+ 147:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \param[out] none
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \retval     none
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** */
+ 150:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** void exmc_norsram_enable(uint32_t norsram_region)
+ 151:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** {
+ 250              		.loc 1 151 1 is_stmt 1
+ 251              		.cfi_startproc
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 9
+
+
+ 252              	.LVL11:
+ 152:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     EXMC_SNCTL(norsram_region) |= (uint32_t)EXMC_SNCTL_NRBKEN;
+ 253              		.loc 1 152 5
+ 254              		.loc 1 152 32 is_stmt 0
+ 255 0000 B7070014 		li	a5,335544320
+ 256 0004 3E95     		add	a0,a0,a5
+ 257              	.LVL12:
+ 258 0006 0E05     		slli	a0,a0,3
+ 259              	.LVL13:
+ 260 0008 1C41     		lw	a5,0(a0)
+ 261 000a 93E71700 		ori	a5,a5,1
+ 262 000e 1CC1     		sw	a5,0(a0)
+ 153:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** }
+ 263              		.loc 1 153 1
+ 264 0010 8280     		ret
+ 265              		.cfi_endproc
+ 266              	.LFE5:
+ 268              		.section	.text.exmc_norsram_disable,"ax",@progbits
+ 269              		.align	1
+ 270              		.globl	exmc_norsram_disable
+ 272              	exmc_norsram_disable:
+ 273              	.LFB6:
+ 154:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** 
+ 155:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** /*!
+ 156:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \brief      disable EXMC NOR/PSRAM bank region
+ 157:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \param[in]  norsram_region: specify the region of NOR/PSRAM bank
+ 158:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****       \arg        EXMC_BANK0_NORSRAM_REGIONx(x=0)
+ 159:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \param[out] none
+ 160:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     \retval     none
+ 161:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** */
+ 162:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** void exmc_norsram_disable(uint32_t norsram_region)
+ 163:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** {
+ 274              		.loc 1 163 1 is_stmt 1
+ 275              		.cfi_startproc
+ 276              	.LVL14:
+ 164:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c ****     EXMC_SNCTL(norsram_region) &= ~(uint32_t)EXMC_SNCTL_NRBKEN;
+ 277              		.loc 1 164 5
+ 278              		.loc 1 164 32 is_stmt 0
+ 279 0000 B7070014 		li	a5,335544320
+ 280 0004 3E95     		add	a0,a0,a5
+ 281              	.LVL15:
+ 282 0006 0E05     		slli	a0,a0,3
+ 283              	.LVL16:
+ 284 0008 1C41     		lw	a5,0(a0)
+ 285 000a F99B     		andi	a5,a5,-2
+ 286 000c 1CC1     		sw	a5,0(a0)
+ 165:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exmc.c **** }
+ 287              		.loc 1 165 1
+ 288 000e 8280     		ret
+ 289              		.cfi_endproc
+ 290              	.LFE6:
+ 292              		.text
+ 293              	.Letext0:
+ 294              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 295              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 296              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 297              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_exm
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 10
+
+
+ 298              		.file 6 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32vf103_exmc.c
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:13     .text.exmc_norsram_deinit:0000000000000000 exmc_norsram_deinit
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:17     .text.exmc_norsram_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:19     .text.exmc_norsram_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:20     .text.exmc_norsram_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:21     .text.exmc_norsram_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:23     .text.exmc_norsram_deinit:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:24     .text.exmc_norsram_deinit:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:30     .text.exmc_norsram_deinit:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:36     .text.exmc_norsram_deinit:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:40     .text.exmc_norsram_deinit:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:41     .text.exmc_norsram_deinit:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:48     .text.exmc_norsram_struct_para_init:0000000000000000 exmc_norsram_struct_para_init
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:51     .text.exmc_norsram_struct_para_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:53     .text.exmc_norsram_struct_para_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:54     .text.exmc_norsram_struct_para_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:55     .text.exmc_norsram_struct_para_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:57     .text.exmc_norsram_struct_para_init:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:59     .text.exmc_norsram_struct_para_init:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:61     .text.exmc_norsram_struct_para_init:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:63     .text.exmc_norsram_struct_para_init:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:65     .text.exmc_norsram_struct_para_init:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:67     .text.exmc_norsram_struct_para_init:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:69     .text.exmc_norsram_struct_para_init:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:71     .text.exmc_norsram_struct_para_init:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:72     .text.exmc_norsram_struct_para_init:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:73     .text.exmc_norsram_struct_para_init:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:75     .text.exmc_norsram_struct_para_init:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:76     .text.exmc_norsram_struct_para_init:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:77     .text.exmc_norsram_struct_para_init:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:79     .text.exmc_norsram_struct_para_init:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:80     .text.exmc_norsram_struct_para_init:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:81     .text.exmc_norsram_struct_para_init:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:82     .text.exmc_norsram_struct_para_init:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:84     .text.exmc_norsram_struct_para_init:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:85     .text.exmc_norsram_struct_para_init:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:87     .text.exmc_norsram_struct_para_init:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:89     .text.exmc_norsram_struct_para_init:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:91     .text.exmc_norsram_struct_para_init:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:92     .text.exmc_norsram_struct_para_init:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:94     .text.exmc_norsram_struct_para_init:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:95     .text.exmc_norsram_struct_para_init:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:97     .text.exmc_norsram_struct_para_init:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:98     .text.exmc_norsram_struct_para_init:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:100    .text.exmc_norsram_struct_para_init:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:101    .text.exmc_norsram_struct_para_init:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:108    .text.exmc_norsram_init:0000000000000000 exmc_norsram_init
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:111    .text.exmc_norsram_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:113    .text.exmc_norsram_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:114    .text.exmc_norsram_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:115    .text.exmc_norsram_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:116    .text.exmc_norsram_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:118    .text.exmc_norsram_init:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:120    .text.exmc_norsram_init:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:122    .text.exmc_norsram_init:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:124    .text.exmc_norsram_init:000000000000000c .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 12
+
+
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:126    .text.exmc_norsram_init:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:128    .text.exmc_norsram_init:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:130    .text.exmc_norsram_init:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:132    .text.exmc_norsram_init:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:134    .text.exmc_norsram_init:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:137    .text.exmc_norsram_init:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:139    .text.exmc_norsram_init:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:141    .text.exmc_norsram_init:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:143    .text.exmc_norsram_init:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:145    .text.exmc_norsram_init:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:147    .text.exmc_norsram_init:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:149    .text.exmc_norsram_init:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:151    .text.exmc_norsram_init:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:153    .text.exmc_norsram_init:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:155    .text.exmc_norsram_init:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:157    .text.exmc_norsram_init:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:160    .text.exmc_norsram_init:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:162    .text.exmc_norsram_init:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:164    .text.exmc_norsram_init:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:166    .text.exmc_norsram_init:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:168    .text.exmc_norsram_init:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:171    .text.exmc_norsram_init:0000000000000050 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:172    .text.exmc_norsram_init:0000000000000050 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:174    .text.exmc_norsram_init:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:176    .text.exmc_norsram_init:0000000000000056 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:178    .text.exmc_norsram_init:0000000000000058 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:180    .text.exmc_norsram_init:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:182    .text.exmc_norsram_init:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:184    .text.exmc_norsram_init:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:186    .text.exmc_norsram_init:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:188    .text.exmc_norsram_init:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:190    .text.exmc_norsram_init:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:192    .text.exmc_norsram_init:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:194    .text.exmc_norsram_init:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:196    .text.exmc_norsram_init:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:198    .text.exmc_norsram_init:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:200    .text.exmc_norsram_init:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:202    .text.exmc_norsram_init:000000000000007c .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:204    .text.exmc_norsram_init:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:207    .text.exmc_norsram_init:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:208    .text.exmc_norsram_init:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:210    .text.exmc_norsram_init:0000000000000086 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:212    .text.exmc_norsram_init:0000000000000088 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:215    .text.exmc_norsram_init:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:216    .text.exmc_norsram_init:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:219    .text.exmc_norsram_init:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:220    .text.exmc_norsram_init:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:222    .text.exmc_norsram_init:0000000000000090 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:223    .text.exmc_norsram_init:0000000000000090 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:227    .text.exmc_norsram_init:0000000000000094 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:228    .text.exmc_norsram_init:0000000000000094 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:230    .text.exmc_norsram_init:0000000000000098 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:237    .text.exmc_norsram_init:00000000000000a4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:240    .text.exmc_norsram_init:00000000000000a6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:241    .text.exmc_norsram_init:00000000000000a8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:248    .text.exmc_norsram_enable:0000000000000000 exmc_norsram_enable
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:251    .text.exmc_norsram_enable:0000000000000000 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 13
+
+
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:253    .text.exmc_norsram_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:254    .text.exmc_norsram_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:255    .text.exmc_norsram_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:264    .text.exmc_norsram_enable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:265    .text.exmc_norsram_enable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:272    .text.exmc_norsram_disable:0000000000000000 exmc_norsram_disable
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:275    .text.exmc_norsram_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:277    .text.exmc_norsram_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:278    .text.exmc_norsram_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:279    .text.exmc_norsram_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:288    .text.exmc_norsram_disable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:289    .text.exmc_norsram_disable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:44     .text.exmc_norsram_deinit:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:104    .text.exmc_norsram_struct_para_init:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:244    .text.exmc_norsram_init:00000000000000a8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:268    .text.exmc_norsram_enable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:292    .text.exmc_norsram_disable:0000000000000010 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:28     .text.exmc_norsram_deinit:000000000000000e .L2
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:225    .text.exmc_norsram_init:0000000000000094 .L6
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:675    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1058   .debug_str:000000000000000e .LASF37
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1064   .debug_str:00000000000000b5 .LASF38
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1100   .debug_str:0000000000000212 .LASF39
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1040   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1054   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1094   .debug_str:00000000000001e2 .LASF0
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1074   .debug_str:0000000000000147 .LASF1
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1076   .debug_str:0000000000000153 .LASF2
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1118   .debug_str:0000000000000312 .LASF3
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1082   .debug_str:0000000000000187 .LASF4
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1126   .debug_str:000000000000034a .LASF5
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1090   .debug_str:00000000000001d1 .LASF9
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1078   .debug_str:0000000000000161 .LASF6
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1056   .debug_str:0000000000000000 .LASF7
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1096   .debug_str:00000000000001ef .LASF8
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1124   .debug_str:0000000000000341 .LASF10
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1112   .debug_str:00000000000002ce .LASF40
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1134   .debug_str:0000000000000377 .LASF11
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1072   .debug_str:0000000000000140 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1122   .debug_str:0000000000000333 .LASF13
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1132   .debug_str:000000000000036b .LASF14
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1098   .debug_str:0000000000000206 .LASF15
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1108   .debug_str:00000000000002ae .LASF16
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1116   .debug_str:00000000000002fc .LASF17
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1120   .debug_str:000000000000031c .LASF18
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1104   .debug_str:0000000000000277 .LASF19
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1070   .debug_str:0000000000000131 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1086   .debug_str:00000000000001ae .LASF21
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1136   .debug_str:000000000000037f .LASF22
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1138   .debug_str:000000000000038c .LASF23
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1062   .debug_str:00000000000000a6 .LASF24
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1068   .debug_str:0000000000000123 .LASF25
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1110   .debug_str:00000000000002c2 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1130   .debug_str:000000000000035a .LASF27
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1066   .debug_str:0000000000000111 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1114   .debug_str:00000000000002de .LASF29
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s 			page 14
+
+
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1102   .debug_str:0000000000000262 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:273    .text.exmc_norsram_disable:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:290    .text.exmc_norsram_disable:0000000000000010 .LFE6
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:928    .debug_loc:0000000000000000 .LLST4
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1084   .debug_str:000000000000019a .LASF31
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:249    .text.exmc_norsram_enable:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:266    .text.exmc_norsram_enable:0000000000000012 .LFE5
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:948    .debug_loc:0000000000000032 .LLST3
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1106   .debug_str:000000000000029c .LASF32
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:109    .text.exmc_norsram_init:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:242    .text.exmc_norsram_init:00000000000000a8 .LFE4
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1088   .debug_str:00000000000001b8 .LASF33
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1092   .debug_str:00000000000001dc .LASF34
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:968    .debug_loc:0000000000000064 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1128   .debug_str:0000000000000353 .LASF35
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:993    .debug_loc:00000000000000a5 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1060   .debug_str:0000000000000088 .LASF36
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:49     .text.exmc_norsram_struct_para_init:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:102    .text.exmc_norsram_struct_para_init:000000000000002e .LFE3
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1080   .debug_str:0000000000000173 .LASF41
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:14     .text.exmc_norsram_deinit:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:42     .text.exmc_norsram_deinit:0000000000000022 .LFE2
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:1005   .debug_loc:00000000000000c4 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:276    .text.exmc_norsram_disable:0000000000000000 .LVL14
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:281    .text.exmc_norsram_disable:0000000000000006 .LVL15
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:283    .text.exmc_norsram_disable:0000000000000008 .LVL16
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:252    .text.exmc_norsram_enable:0000000000000000 .LVL11
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:257    .text.exmc_norsram_enable:0000000000000006 .LVL12
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:259    .text.exmc_norsram_enable:0000000000000008 .LVL13
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:112    .text.exmc_norsram_init:0000000000000000 .LVL3
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:169    .text.exmc_norsram_init:0000000000000050 .LVL4
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:205    .text.exmc_norsram_init:0000000000000082 .LVL5
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:213    .text.exmc_norsram_init:000000000000008a .LVL6
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:231    .text.exmc_norsram_init:000000000000009a .LVL9
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:238    .text.exmc_norsram_init:00000000000000a6 .LVL10
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:217    .text.exmc_norsram_init:000000000000008c .LVL7
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:18     .text.exmc_norsram_deinit:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:33     .text.exmc_norsram_deinit:0000000000000016 .LVL1
+C:\Users\anton\AppData\Local\Temp\ccmdWyTf.s:300    .debug_info:0000000000000000 .Ldebug_info0
+
+NO UNDEFINED SYMBOLS

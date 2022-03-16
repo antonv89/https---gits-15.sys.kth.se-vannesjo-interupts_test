@@ -1,0 +1,1078 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 1
+
+
+   1              		.file	"usart.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.u0_TX_Queue,"ax",@progbits
+  10              		.align	1
+  11              		.globl	u0_TX_Queue
+  13              	u0_TX_Queue:
+  14              	.LFB2:
+  15              		.file 1 "usart.c"
+   1:usart.c       **** #include "gd32vf103.h"
+   2:usart.c       **** #include "usart.h" 
+   3:usart.c       **** #include "eclicw.h"   
+   4:usart.c       **** 
+   5:usart.c       **** int txr=0, txw=0, txq[256]={0};                     // 256 Byte wr queue
+   6:usart.c       **** 
+   7:usart.c       **** void u0_TX_Queue(void){
+  16              		.loc 1 7 23
+  17              		.cfi_startproc
+   8:usart.c       ****     if (txr!=txw) {                                 // Buffer empty?
+  18              		.loc 1 8 5
+   7:usart.c       ****     if (txr!=txw) {                                 // Buffer empty?
+  19              		.loc 1 7 23 is_stmt 0
+  20 0000 4111     		addi	sp,sp,-16
+  21              	.LCFI0:
+  22              		.cfi_def_cfa_offset 16
+  23 0002 22C4     		sw	s0,8(sp)
+  24              		.cfi_offset 8, -8
+  25              		.loc 1 8 12
+  26 0004 37040000 		lui	s0,%hi(.LANCHOR0)
+  27 0008 13040400 		addi	s0,s0,%lo(.LANCHOR0)
+  28              		.loc 1 8 8
+  29 000c B7070000 		lui	a5,%hi(.LANCHOR1)
+  30 0010 1840     		lw	a4,0(s0)
+  31 0012 83A70700 		lw	a5,%lo(.LANCHOR1)(a5)
+   7:usart.c       ****     if (txr!=txw) {                                 // Buffer empty?
+  32              		.loc 1 7 23
+  33 0016 06C6     		sw	ra,12(sp)
+  34 0018 26C2     		sw	s1,4(sp)
+  35              		.cfi_offset 1, -4
+  36              		.cfi_offset 9, -12
+  37              		.loc 1 8 8
+  38 001a 6300F706 		beq	a4,a5,.L2
+   9:usart.c       ****        if (usart_flag_get(USART0,USART_FLAG_TBE)) { // ...no! Device redy?
+  39              		.loc 1 9 8 is_stmt 1
+  40              		.loc 1 9 12 is_stmt 0
+  41 001e B7440140 		li	s1,1073823744
+  42 0022 9D45     		li	a1,7
+  43 0024 13850480 		addi	a0,s1,-2048
+  44 0028 97000000 		call	usart_flag_get
+  44      E7800000 
+  45              	.LVL0:
+  46              		.loc 1 9 11
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 2
+
+
+  47 0030 11E5     		bne	a0,zero,.L9
+  10:usart.c       ****           usart_data_transmit(USART0, txq[txr++]);  //        Yes Write!
+  11:usart.c       ****           txr%=256;                                 //            wrap around.
+  12:usart.c       ****         }                                           //        No! Return!
+  13:usart.c       ****     } else 
+  14:usart.c       ****        usart_interrupt_disable(USART0, USART_INT_TBE);
+  15:usart.c       **** }
+  48              		.loc 1 15 1
+  49 0032 B240     		lw	ra,12(sp)
+  50              		.cfi_remember_state
+  51              		.cfi_restore 1
+  52 0034 2244     		lw	s0,8(sp)
+  53              		.cfi_restore 8
+  54 0036 9244     		lw	s1,4(sp)
+  55              		.cfi_restore 9
+  56 0038 4101     		addi	sp,sp,16
+  57              	.LCFI1:
+  58              		.cfi_def_cfa_offset 0
+  59 003a 8280     		jr	ra
+  60              	.L9:
+  61              	.LCFI2:
+  62              		.cfi_restore_state
+  63              	.LBB4:
+  64              	.LBB5:
+  10:usart.c       ****           usart_data_transmit(USART0, txq[txr++]);  //        Yes Write!
+  65              		.loc 1 10 11 is_stmt 1
+  10:usart.c       ****           usart_data_transmit(USART0, txq[txr++]);  //        Yes Write!
+  66              		.loc 1 10 46 is_stmt 0
+  67 003c 1840     		lw	a4,0(s0)
+  10:usart.c       ****           usart_data_transmit(USART0, txq[txr++]);  //        Yes Write!
+  68              		.loc 1 10 42
+  69 003e B7070000 		lui	a5,%hi(.LANCHOR2)
+  70 0042 93870700 		addi	a5,a5,%lo(.LANCHOR2)
+  71 0046 93162700 		slli	a3,a4,2
+  72 004a B697     		add	a5,a5,a3
+  10:usart.c       ****           usart_data_transmit(USART0, txq[txr++]);  //        Yes Write!
+  73              		.loc 1 10 11
+  74 004c 8C43     		lw	a1,0(a5)
+  10:usart.c       ****           usart_data_transmit(USART0, txq[txr++]);  //        Yes Write!
+  75              		.loc 1 10 46
+  76 004e 0507     		addi	a4,a4,1
+  10:usart.c       ****           usart_data_transmit(USART0, txq[txr++]);  //        Yes Write!
+  77              		.loc 1 10 11
+  78 0050 13850480 		addi	a0,s1,-2048
+  10:usart.c       ****           usart_data_transmit(USART0, txq[txr++]);  //        Yes Write!
+  79              		.loc 1 10 46
+  80 0054 18C0     		sw	a4,0(s0)
+  10:usart.c       ****           usart_data_transmit(USART0, txq[txr++]);  //        Yes Write!
+  81              		.loc 1 10 11
+  82 0056 97000000 		call	usart_data_transmit
+  82      E7800000 
+  83              	.LVL1:
+  11:usart.c       ****         }                                           //        No! Return!
+  84              		.loc 1 11 11 is_stmt 1
+  11:usart.c       ****         }                                           //        No! Return!
+  85              		.loc 1 11 14 is_stmt 0
+  86 005e 1C40     		lw	a5,0(s0)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 3
+
+
+  87              	.LBE5:
+  88              	.LBE4:
+  89              		.loc 1 15 1
+  90 0060 B240     		lw	ra,12(sp)
+  91              		.cfi_remember_state
+  92              		.cfi_restore 1
+  93 0062 9244     		lw	s1,4(sp)
+  94              		.cfi_restore 9
+  95              	.LBB7:
+  96              	.LBB6:
+  11:usart.c       ****         }                                           //        No! Return!
+  97              		.loc 1 11 14
+  98 0064 13D7F741 		srai	a4,a5,31
+  99 0068 6183     		srli	a4,a4,24
+ 100 006a BA97     		add	a5,a5,a4
+ 101 006c 93F7F70F 		andi	a5,a5,255
+ 102 0070 998F     		sub	a5,a5,a4
+ 103 0072 1CC0     		sw	a5,0(s0)
+ 104              	.LBE6:
+ 105              	.LBE7:
+ 106              		.loc 1 15 1
+ 107 0074 2244     		lw	s0,8(sp)
+ 108              		.cfi_restore 8
+ 109 0076 4101     		addi	sp,sp,16
+ 110              	.LCFI3:
+ 111              		.cfi_def_cfa_offset 0
+ 112 0078 8280     		jr	ra
+ 113              	.L2:
+ 114              	.LCFI4:
+ 115              		.cfi_restore_state
+  14:usart.c       **** }
+ 116              		.loc 1 14 8 is_stmt 1
+ 117              		.loc 1 15 1 is_stmt 0
+ 118 007a 2244     		lw	s0,8(sp)
+ 119              		.cfi_restore 8
+ 120 007c B240     		lw	ra,12(sp)
+ 121              		.cfi_restore 1
+ 122 007e 9244     		lw	s1,4(sp)
+ 123              		.cfi_restore 9
+  14:usart.c       **** }
+ 124              		.loc 1 14 8
+ 125 0080 37450140 		li	a0,1073823744
+ 126              		.loc 1 15 1
+  14:usart.c       **** }
+ 127              		.loc 1 14 8
+ 128 0084 93057030 		li	a1,775
+ 129 0088 13050580 		addi	a0,a0,-2048
+ 130              		.loc 1 15 1
+ 131 008c 4101     		addi	sp,sp,16
+ 132              	.LCFI5:
+ 133              		.cfi_def_cfa_offset 0
+  14:usart.c       **** }
+ 134              		.loc 1 14 8
+ 135 008e 17030000 		tail	usart_interrupt_disable
+ 135      67000300 
+ 136              	.LVL2:
+ 137              		.cfi_endproc
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 4
+
+
+ 138              	.LFE2:
+ 140              		.section	.text.putch,"ax",@progbits
+ 141              		.align	1
+ 142              		.globl	putch
+ 144              	putch:
+ 145              	.LFB3:
+  16:usart.c       **** 
+  17:usart.c       **** void putch(char ch){
+ 146              		.loc 1 17 20 is_stmt 1
+ 147              		.cfi_startproc
+ 148              	.LVL3:
+  18:usart.c       ****    while (((txw+1)%256)==txr) u0_TX_Queue(); //If buffer full then spin...
+ 149              		.loc 1 18 4
+  17:usart.c       ****    while (((txw+1)%256)==txr) u0_TX_Queue(); //If buffer full then spin...
+ 150              		.loc 1 17 20 is_stmt 0
+ 151 0000 4111     		addi	sp,sp,-16
+ 152              	.LCFI6:
+ 153              		.cfi_def_cfa_offset 16
+ 154 0002 22C4     		sw	s0,8(sp)
+ 155              		.cfi_offset 8, -8
+ 156              		.loc 1 18 16
+ 157 0004 37040000 		lui	s0,%hi(.LANCHOR1)
+ 158 0008 13040400 		addi	s0,s0,%lo(.LANCHOR1)
+ 159 000c 1440     		lw	a3,0(s0)
+  17:usart.c       ****    while (((txw+1)%256)==txr) u0_TX_Queue(); //If buffer full then spin...
+ 160              		.loc 1 17 20
+ 161 000e 26C2     		sw	s1,4(sp)
+ 162              		.cfi_offset 9, -12
+ 163              		.loc 1 18 24
+ 164 0010 B7040000 		lui	s1,%hi(.LANCHOR0)
+ 165              		.loc 1 18 16
+ 166 0014 13871600 		addi	a4,a3,1
+ 167              		.loc 1 18 19
+ 168 0018 9357F741 		srai	a5,a4,31
+ 169 001c 13D68701 		srli	a2,a5,24
+ 170              		.loc 1 18 24
+ 171 0020 93840400 		addi	s1,s1,%lo(.LANCHOR0)
+ 172              		.loc 1 18 19
+ 173 0024 B307C700 		add	a5,a4,a2
+ 174              		.loc 1 18 10
+ 175 0028 9840     		lw	a4,0(s1)
+ 176              		.loc 1 18 19
+ 177 002a 93F7F70F 		andi	a5,a5,255
+  17:usart.c       ****    while (((txw+1)%256)==txr) u0_TX_Queue(); //If buffer full then spin...
+ 178              		.loc 1 17 20
+ 179 002e 4AC0     		sw	s2,0(sp)
+ 180 0030 06C6     		sw	ra,12(sp)
+ 181              		.cfi_offset 18, -16
+ 182              		.cfi_offset 1, -4
+ 183              		.loc 1 18 19
+ 184 0032 918F     		sub	a5,a5,a2
+  17:usart.c       ****    while (((txw+1)%256)==txr) u0_TX_Queue(); //If buffer full then spin...
+ 185              		.loc 1 17 20
+ 186 0034 2A89     		mv	s2,a0
+ 187              		.loc 1 18 10
+ 188 0036 6393E702 		bne	a5,a4,.L11
+ 189              	.LVL4:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 5
+
+
+ 190              	.L12:
+ 191              		.loc 1 18 31 is_stmt 1 discriminator 2
+ 192 003a 97000000 		call	u0_TX_Queue
+ 192      E7800000 
+ 193              	.LVL5:
+ 194              		.loc 1 18 16 is_stmt 0 discriminator 2
+ 195 0042 1440     		lw	a3,0(s0)
+ 196              		.loc 1 18 10 discriminator 2
+ 197 0044 9040     		lw	a2,0(s1)
+ 198              		.loc 1 18 16 discriminator 2
+ 199 0046 93871600 		addi	a5,a3,1
+ 200              		.loc 1 18 19 discriminator 2
+ 201 004a 13D7F741 		srai	a4,a5,31
+ 202 004e 6183     		srli	a4,a4,24
+ 203 0050 BA97     		add	a5,a5,a4
+ 204 0052 93F7F70F 		andi	a5,a5,255
+ 205 0056 998F     		sub	a5,a5,a4
+ 206              		.loc 1 18 10 discriminator 2
+ 207 0058 E381C7FE 		beq	a5,a2,.L12
+ 208              	.L11:
+  19:usart.c       ****    txq[txw++]=ch;                            //...If/when not then store data...
+ 209              		.loc 1 19 4 is_stmt 1
+ 210              		.loc 1 19 14 is_stmt 0
+ 211 005c 37070000 		lui	a4,%hi(.LANCHOR2)
+ 212 0060 8A06     		slli	a3,a3,2
+ 213 0062 13070700 		addi	a4,a4,%lo(.LANCHOR2)
+  20:usart.c       ****    txw%=256;                                 //...and advance write index!
+ 214              		.loc 1 20 7
+ 215 0066 1CC0     		sw	a5,0(s0)
+  19:usart.c       ****    txq[txw++]=ch;                            //...If/when not then store data...
+ 216              		.loc 1 19 14
+ 217 0068 BA96     		add	a3,a4,a3
+  21:usart.c       ****    usart_interrupt_enable(USART0, USART_INT_TBE);
+  22:usart.c       **** }
+ 218              		.loc 1 22 1
+ 219 006a 2244     		lw	s0,8(sp)
+ 220              		.cfi_restore 8
+  19:usart.c       ****    txw%=256;                                 //...and advance write index!
+ 221              		.loc 1 19 14
+ 222 006c 23A02601 		sw	s2,0(a3)
+  20:usart.c       ****    txw%=256;                                 //...and advance write index!
+ 223              		.loc 1 20 4 is_stmt 1
+  21:usart.c       ****    usart_interrupt_enable(USART0, USART_INT_TBE);
+ 224              		.loc 1 21 4
+ 225              		.loc 1 22 1 is_stmt 0
+ 226 0070 B240     		lw	ra,12(sp)
+ 227              		.cfi_restore 1
+ 228 0072 9244     		lw	s1,4(sp)
+ 229              		.cfi_restore 9
+ 230 0074 0249     		lw	s2,0(sp)
+ 231              		.cfi_restore 18
+  21:usart.c       ****    usart_interrupt_enable(USART0, USART_INT_TBE);
+ 232              		.loc 1 21 4
+ 233 0076 37450140 		li	a0,1073823744
+ 234              		.loc 1 22 1
+  21:usart.c       ****    usart_interrupt_enable(USART0, USART_INT_TBE);
+ 235              		.loc 1 21 4
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 6
+
+
+ 236 007a 93057030 		li	a1,775
+ 237 007e 13050580 		addi	a0,a0,-2048
+ 238              		.loc 1 22 1
+ 239 0082 4101     		addi	sp,sp,16
+ 240              	.LCFI7:
+ 241              		.cfi_def_cfa_offset 0
+  21:usart.c       ****    usart_interrupt_enable(USART0, USART_INT_TBE);
+ 242              		.loc 1 21 4
+ 243 0084 17030000 		tail	usart_interrupt_enable
+ 243      67000300 
+ 244              	.LVL6:
+ 245              		.cfi_endproc
+ 246              	.LFE3:
+ 248              		.section	.text.putstr,"ax",@progbits
+ 249              		.align	1
+ 250              		.globl	putstr
+ 252              	putstr:
+ 253              	.LFB4:
+  23:usart.c       **** /*
+  24:usart.c       **** void putch(char ch){
+  25:usart.c       ****   while (!usart_flag_get(USART0,USART_FLAG_TBE)); // Spin util buffer empty!
+  26:usart.c       ****   usart_data_transmit(USART0, ch);                // USART0 TX!
+  27:usart.c       **** }
+  28:usart.c       **** */
+  29:usart.c       **** void putstr(char str[]){
+ 254              		.loc 1 29 24 is_stmt 1
+ 255              		.cfi_startproc
+ 256              	.LVL7:
+  30:usart.c       ****   while (*str) putch(*str++);
+ 257              		.loc 1 30 3
+  29:usart.c       ****   while (*str) putch(*str++);
+ 258              		.loc 1 29 24 is_stmt 0
+ 259 0000 4111     		addi	sp,sp,-16
+ 260              	.LCFI8:
+ 261              		.cfi_def_cfa_offset 16
+ 262 0002 22C4     		sw	s0,8(sp)
+ 263 0004 06C6     		sw	ra,12(sp)
+ 264              		.cfi_offset 8, -8
+ 265              		.cfi_offset 1, -4
+  29:usart.c       ****   while (*str) putch(*str++);
+ 266              		.loc 1 29 24
+ 267 0006 2A84     		mv	s0,a0
+ 268              		.loc 1 30 10
+ 269 0008 03450500 		lbu	a0,0(a0)
+ 270              	.LVL8:
+ 271              		.loc 1 30 9
+ 272 000c 09C9     		beq	a0,zero,.L15
+ 273              	.L17:
+ 274              		.loc 1 30 16 is_stmt 1 discriminator 2
+ 275              		.loc 1 30 26 is_stmt 0 discriminator 2
+ 276 000e 0504     		addi	s0,s0,1
+ 277              	.LVL9:
+ 278              		.loc 1 30 16 discriminator 2
+ 279 0010 97000000 		call	putch
+ 279      E7800000 
+ 280              	.LVL10:
+ 281              		.loc 1 30 10 discriminator 2
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 7
+
+
+ 282 0018 03450400 		lbu	a0,0(s0)
+ 283              		.loc 1 30 9 discriminator 2
+ 284 001c 6DF9     		bne	a0,zero,.L17
+ 285              	.L15:
+  31:usart.c       **** }
+ 286              		.loc 1 31 1
+ 287 001e B240     		lw	ra,12(sp)
+ 288              		.cfi_restore 1
+ 289 0020 2244     		lw	s0,8(sp)
+ 290              		.cfi_restore 8
+ 291              	.LVL11:
+ 292 0022 4101     		addi	sp,sp,16
+ 293              	.LCFI9:
+ 294              		.cfi_def_cfa_offset 0
+ 295 0024 8280     		jr	ra
+ 296              		.cfi_endproc
+ 297              	.LFE4:
+ 299              		.section	.text.u0init,"ax",@progbits
+ 300              		.align	1
+ 301              		.globl	u0init
+ 303              	u0init:
+ 304              	.LFB5:
+  32:usart.c       ****  
+  33:usart.c       **** void u0init(int enable){
+ 305              		.loc 1 33 24 is_stmt 1
+ 306              		.cfi_startproc
+ 307              	.LVL12:
+  34:usart.c       ****     rcu_periph_clock_enable(RCU_GPIOA);
+ 308              		.loc 1 34 5
+  33:usart.c       ****     rcu_periph_clock_enable(RCU_GPIOA);
+ 309              		.loc 1 33 24 is_stmt 0
+ 310 0000 4111     		addi	sp,sp,-16
+ 311              	.LCFI10:
+ 312              		.cfi_def_cfa_offset 16
+ 313 0002 26C2     		sw	s1,4(sp)
+ 314              		.cfi_offset 9, -12
+ 315 0004 AA84     		mv	s1,a0
+ 316              		.loc 1 34 5
+ 317 0006 13052060 		li	a0,1538
+ 318              	.LVL13:
+  33:usart.c       ****     rcu_periph_clock_enable(RCU_GPIOA);
+ 319              		.loc 1 33 24
+ 320 000a 06C6     		sw	ra,12(sp)
+ 321 000c 22C4     		sw	s0,8(sp)
+ 322              		.cfi_offset 1, -4
+ 323              		.cfi_offset 8, -8
+ 324              		.loc 1 34 5
+ 325 000e 97000000 		call	rcu_periph_clock_enable
+ 325      E7800000 
+ 326              	.LVL14:
+  35:usart.c       ****     gpio_init(GPIOA, GPIO_MODE_AF_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_9);
+ 327              		.loc 1 35 5 is_stmt 1
+ 328 0016 37140140 		li	s0,1073811456
+ 329 001a 13050480 		addi	a0,s0,-2048
+ 330 001e 93060020 		li	a3,512
+ 331 0022 0D46     		li	a2,3
+ 332 0024 E145     		li	a1,24
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 8
+
+
+ 333 0026 97000000 		call	gpio_init
+ 333      E7800000 
+ 334              	.LVL15:
+  36:usart.c       ****     gpio_init(GPIOA, GPIO_MODE_IN_FLOATING, GPIO_OSPEED_50MHZ, GPIO_PIN_10);
+ 335              		.loc 1 36 5
+ 336 002e 93060040 		li	a3,1024
+ 337 0032 0D46     		li	a2,3
+ 338 0034 9145     		li	a1,4
+ 339 0036 13050480 		addi	a0,s0,-2048
+ 340 003a 97000000 		call	gpio_init
+ 340      E7800000 
+ 341              	.LVL16:
+  37:usart.c       **** 
+  38:usart.c       ****     rcu_periph_clock_enable(RCU_USART0);
+ 342              		.loc 1 38 5
+ 343 0042 1305E060 		li	a0,1550
+  39:usart.c       ****     usart_deinit(USART0);
+ 344              		.loc 1 39 5 is_stmt 0
+ 345 0046 37440140 		li	s0,1073823744
+  38:usart.c       ****     usart_deinit(USART0);
+ 346              		.loc 1 38 5
+ 347 004a 97000000 		call	rcu_periph_clock_enable
+ 347      E7800000 
+ 348              	.LVL17:
+ 349              		.loc 1 39 5 is_stmt 1
+ 350 0052 13050480 		addi	a0,s0,-2048
+ 351 0056 97000000 		call	usart_deinit
+ 351      E7800000 
+ 352              	.LVL18:
+  40:usart.c       ****     usart_baudrate_set(USART0, 9600);
+ 353              		.loc 1 40 5
+ 354 005e 8965     		li	a1,8192
+ 355 0060 93850558 		addi	a1,a1,1408
+ 356 0064 13050480 		addi	a0,s0,-2048
+ 357 0068 97000000 		call	usart_baudrate_set
+ 357      E7800000 
+ 358              	.LVL19:
+  41:usart.c       ****     usart_parity_config(USART0, USART_PM_NONE);
+ 359              		.loc 1 41 5
+ 360 0070 8145     		li	a1,0
+ 361 0072 13050480 		addi	a0,s0,-2048
+ 362 0076 97000000 		call	usart_parity_config
+ 362      E7800000 
+ 363              	.LVL20:
+  42:usart.c       ****     usart_word_length_set(USART0, USART_WL_8BIT);
+ 364              		.loc 1 42 5
+ 365 007e 8145     		li	a1,0
+ 366 0080 13050480 		addi	a0,s0,-2048
+ 367 0084 97000000 		call	usart_word_length_set
+ 367      E7800000 
+ 368              	.LVL21:
+  43:usart.c       ****     usart_stop_bit_set(USART0,USART_STB_2BIT);
+ 369              		.loc 1 43 5
+ 370 008c 8965     		li	a1,8192
+ 371 008e 13050480 		addi	a0,s0,-2048
+ 372 0092 97000000 		call	usart_stop_bit_set
+ 372      E7800000 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 9
+
+
+ 373              	.LVL22:
+  44:usart.c       ****     usart_hardware_flow_rts_config(USART0, USART_RTS_DISABLE);
+ 374              		.loc 1 44 5
+ 375 009a 8145     		li	a1,0
+ 376 009c 13050480 		addi	a0,s0,-2048
+ 377 00a0 97000000 		call	usart_hardware_flow_rts_config
+ 377      E7800000 
+ 378              	.LVL23:
+  45:usart.c       ****     usart_hardware_flow_cts_config(USART0, USART_CTS_DISABLE);
+ 379              		.loc 1 45 5
+ 380 00a8 8145     		li	a1,0
+ 381 00aa 13050480 		addi	a0,s0,-2048
+ 382 00ae 97000000 		call	usart_hardware_flow_cts_config
+ 382      E7800000 
+ 383              	.LVL24:
+  46:usart.c       ****     usart_enable(USART0);
+ 384              		.loc 1 46 5
+ 385 00b6 13050480 		addi	a0,s0,-2048
+ 386 00ba 97000000 		call	usart_enable
+ 386      E7800000 
+ 387              	.LVL25:
+  47:usart.c       ****     usart_transmit_config(USART0,USART_TRANSMIT_ENABLE);
+ 388              		.loc 1 47 5
+ 389 00c2 A145     		li	a1,8
+ 390 00c4 13050480 		addi	a0,s0,-2048
+ 391 00c8 97000000 		call	usart_transmit_config
+ 391      E7800000 
+ 392              	.LVL26:
+  48:usart.c       ****     usart_receive_config(USART0,USART_RECEIVE_ENABLE);
+ 393              		.loc 1 48 5
+ 394 00d0 9145     		li	a1,4
+ 395 00d2 13050480 		addi	a0,s0,-2048
+ 396 00d6 97000000 		call	usart_receive_config
+ 396      E7800000 
+ 397              	.LVL27:
+  49:usart.c       **** 
+  50:usart.c       ****     if (enable) {
+ 398              		.loc 1 50 5
+ 399              		.loc 1 50 8 is_stmt 0
+ 400 00de 91E4     		bne	s1,zero,.L26
+  51:usart.c       ****         eclicw_enable(USART0_IRQn, 3, 1, &u0_TX_Queue);
+  52:usart.c       ****     }
+  53:usart.c       **** }...
+ 401              		.loc 1 53 1
+ 402 00e0 B240     		lw	ra,12(sp)
+ 403              		.cfi_remember_state
+ 404              		.cfi_restore 1
+ 405 00e2 2244     		lw	s0,8(sp)
+ 406              		.cfi_restore 8
+ 407 00e4 9244     		lw	s1,4(sp)
+ 408              		.cfi_restore 9
+ 409              	.LVL28:
+ 410 00e6 4101     		addi	sp,sp,16
+ 411              	.LCFI11:
+ 412              		.cfi_def_cfa_offset 0
+ 413 00e8 8280     		jr	ra
+ 414              	.LVL29:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 10
+
+
+ 415              	.L26:
+ 416              	.LCFI12:
+ 417              		.cfi_restore_state
+  51:usart.c       ****         eclicw_enable(USART0_IRQn, 3, 1, &u0_TX_Queue);
+ 418              		.loc 1 51 9 is_stmt 1
+ 419              		.loc 1 53 1 is_stmt 0
+ 420 00ea 2244     		lw	s0,8(sp)
+ 421              		.cfi_restore 8
+ 422 00ec B240     		lw	ra,12(sp)
+ 423              		.cfi_restore 1
+ 424 00ee 9244     		lw	s1,4(sp)
+ 425              		.cfi_restore 9
+ 426              	.LVL30:
+  51:usart.c       ****         eclicw_enable(USART0_IRQn, 3, 1, &u0_TX_Queue);
+ 427              		.loc 1 51 9
+ 428 00f0 B7060000 		lui	a3,%hi(u0_TX_Queue)
+ 429              		.loc 1 53 1
+  51:usart.c       ****         eclicw_enable(USART0_IRQn, 3, 1, &u0_TX_Queue);
+ 430              		.loc 1 51 9
+ 431 00f4 93860600 		addi	a3,a3,%lo(u0_TX_Queue)
+ 432 00f8 0546     		li	a2,1
+ 433 00fa 8D45     		li	a1,3
+ 434 00fc 13058003 		li	a0,56
+ 435              		.loc 1 53 1
+ 436 0100 4101     		addi	sp,sp,16
+ 437              	.LCFI13:
+ 438              		.cfi_def_cfa_offset 0
+  51:usart.c       ****         eclicw_enable(USART0_IRQn, 3, 1, &u0_TX_Queue);
+ 439              		.loc 1 51 9
+ 440 0102 17030000 		tail	eclicw_enable
+ 440      67000300 
+ 441              	.LVL31:
+ 442              		.cfi_endproc
+ 443              	.LFE5:
+ 445              		.globl	txq
+ 446              		.globl	txw
+ 447              		.globl	txr
+ 448              		.section	.bss.txq,"aw",@nobits
+ 449              		.align	2
+ 450              		.set	.LANCHOR2,. + 0
+ 453              	txq:
+ 454 0000 00000000 		.zero	1024
+ 454      00000000 
+ 454      00000000 
+ 454      00000000 
+ 454      00000000 
+ 455              		.section	.sbss.txr,"aw",@nobits
+ 456              		.align	2
+ 457              		.set	.LANCHOR0,. + 0
+ 460              	txr:
+ 461 0000 00000000 		.zero	4
+ 462              		.section	.sbss.txw,"aw",@nobits
+ 463              		.align	2
+ 464              		.set	.LANCHOR1,. + 0
+ 467              	txw:
+ 468 0000 00000000 		.zero	4
+ 469              		.text
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 11
+
+
+ 470              	.Letext0:
+ 471              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 472              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 473              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu
+ 474              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_usa
+ 475              		.file 6 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_gpi
+ 476              		.file 7 "eclicw.h"
+ 477              		.file 8 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 478              		.file 9 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 usart.c
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:13     .text.u0_TX_Queue:0000000000000000 u0_TX_Queue
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:17     .text.u0_TX_Queue:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:18     .text.u0_TX_Queue:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:19     .text.u0_TX_Queue:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:20     .text.u0_TX_Queue:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:22     .text.u0_TX_Queue:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:24     .text.u0_TX_Queue:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:26     .text.u0_TX_Queue:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:29     .text.u0_TX_Queue:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:33     .text.u0_TX_Queue:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:35     .text.u0_TX_Queue:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:36     .text.u0_TX_Queue:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:38     .text.u0_TX_Queue:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:40     .text.u0_TX_Queue:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:41     .text.u0_TX_Queue:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:47     .text.u0_TX_Queue:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:49     .text.u0_TX_Queue:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:50     .text.u0_TX_Queue:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:51     .text.u0_TX_Queue:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:53     .text.u0_TX_Queue:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:55     .text.u0_TX_Queue:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:58     .text.u0_TX_Queue:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:62     .text.u0_TX_Queue:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:66     .text.u0_TX_Queue:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:67     .text.u0_TX_Queue:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:69     .text.u0_TX_Queue:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:74     .text.u0_TX_Queue:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:76     .text.u0_TX_Queue:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:78     .text.u0_TX_Queue:0000000000000050 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:80     .text.u0_TX_Queue:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:82     .text.u0_TX_Queue:0000000000000056 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:85     .text.u0_TX_Queue:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:86     .text.u0_TX_Queue:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:90     .text.u0_TX_Queue:0000000000000060 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:91     .text.u0_TX_Queue:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:92     .text.u0_TX_Queue:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:94     .text.u0_TX_Queue:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:98     .text.u0_TX_Queue:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:107    .text.u0_TX_Queue:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:108    .text.u0_TX_Queue:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:111    .text.u0_TX_Queue:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:115    .text.u0_TX_Queue:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:117    .text.u0_TX_Queue:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:118    .text.u0_TX_Queue:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:119    .text.u0_TX_Queue:000000000000007c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:121    .text.u0_TX_Queue:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:123    .text.u0_TX_Queue:0000000000000080 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:125    .text.u0_TX_Queue:0000000000000080 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:127    .text.u0_TX_Queue:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:128    .text.u0_TX_Queue:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:131    .text.u0_TX_Queue:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:133    .text.u0_TX_Queue:000000000000008e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:135    .text.u0_TX_Queue:000000000000008e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:137    .text.u0_TX_Queue:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:144    .text.putch:0000000000000000 putch
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 13
+
+
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:147    .text.putch:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:149    .text.putch:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:150    .text.putch:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:151    .text.putch:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:153    .text.putch:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:155    .text.putch:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:157    .text.putch:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:161    .text.putch:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:162    .text.putch:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:164    .text.putch:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:166    .text.putch:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:168    .text.putch:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:171    .text.putch:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:173    .text.putch:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:175    .text.putch:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:177    .text.putch:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:179    .text.putch:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:181    .text.putch:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:182    .text.putch:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:184    .text.putch:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:186    .text.putch:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:188    .text.putch:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:192    .text.putch:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:195    .text.putch:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:197    .text.putch:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:199    .text.putch:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:201    .text.putch:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:207    .text.putch:0000000000000058 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:210    .text.putch:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:211    .text.putch:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:215    .text.putch:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:217    .text.putch:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:219    .text.putch:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:220    .text.putch:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:222    .text.putch:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:224    .text.putch:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:225    .text.putch:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:226    .text.putch:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:227    .text.putch:0000000000000072 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:229    .text.putch:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:231    .text.putch:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:233    .text.putch:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:235    .text.putch:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:236    .text.putch:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:239    .text.putch:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:241    .text.putch:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:243    .text.putch:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:245    .text.putch:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:252    .text.putstr:0000000000000000 putstr
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:255    .text.putstr:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:257    .text.putstr:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:258    .text.putstr:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:259    .text.putstr:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:261    .text.putstr:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:264    .text.putstr:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:265    .text.putstr:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:267    .text.putstr:0000000000000006 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 14
+
+
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:269    .text.putstr:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:272    .text.putstr:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:275    .text.putstr:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:276    .text.putstr:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:279    .text.putstr:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:282    .text.putstr:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:284    .text.putstr:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:287    .text.putstr:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:288    .text.putstr:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:290    .text.putstr:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:294    .text.putstr:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:296    .text.putstr:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:303    .text.u0init:0000000000000000 u0init
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:306    .text.u0init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:308    .text.u0init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:309    .text.u0init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:310    .text.u0init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:312    .text.u0init:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:314    .text.u0init:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:317    .text.u0init:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:320    .text.u0init:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:322    .text.u0init:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:323    .text.u0init:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:325    .text.u0init:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:328    .text.u0init:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:336    .text.u0init:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:343    .text.u0init:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:345    .text.u0init:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:347    .text.u0init:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:350    .text.u0init:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:354    .text.u0init:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:360    .text.u0init:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:365    .text.u0init:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:370    .text.u0init:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:375    .text.u0init:000000000000009a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:380    .text.u0init:00000000000000a8 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:385    .text.u0init:00000000000000b6 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:389    .text.u0init:00000000000000c2 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:394    .text.u0init:00000000000000d0 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:399    .text.u0init:00000000000000de .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:400    .text.u0init:00000000000000de .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:402    .text.u0init:00000000000000e0 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:403    .text.u0init:00000000000000e2 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:404    .text.u0init:00000000000000e2 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:406    .text.u0init:00000000000000e4 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:408    .text.u0init:00000000000000e6 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:412    .text.u0init:00000000000000e8 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:417    .text.u0init:00000000000000ea .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:419    .text.u0init:00000000000000ea .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:420    .text.u0init:00000000000000ea .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:421    .text.u0init:00000000000000ec .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:423    .text.u0init:00000000000000ee .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:425    .text.u0init:00000000000000f0 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:428    .text.u0init:00000000000000f0 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:430    .text.u0init:00000000000000f4 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:431    .text.u0init:00000000000000f4 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:436    .text.u0init:0000000000000100 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 15
+
+
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:438    .text.u0init:0000000000000102 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:440    .text.u0init:0000000000000102 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:442    .text.u0init:000000000000010a .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:453    .bss.txq:0000000000000000 txq
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:467    .sbss.txw:0000000000000000 txw
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:460    .sbss.txr:0000000000000000 txr
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:450    .bss.txq:0000000000000000 .LANCHOR2
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:457    .sbss.txr:0000000000000000 .LANCHOR0
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:464    .sbss.txw:0000000000000000 .LANCHOR1
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:140    .text.u0_TX_Queue:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:248    .text.putch:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:299    .text.putstr:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:448    .text.u0init:000000000000010a .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:113    .text.u0_TX_Queue:000000000000007a .L2
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:60     .text.u0_TX_Queue:000000000000003c .L9
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:208    .text.putch:000000000000005c .L11
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:190    .text.putch:000000000000003a .L12
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:285    .text.putstr:000000000000001e .L15
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:273    .text.putstr:000000000000000e .L17
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:415    .text.u0init:00000000000000ea .L26
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:1558   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2318   .debug_str:0000000000000438 .LASF158
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2280   .debug_str:0000000000000365 .LASF159
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2178   .debug_str:0000000000000082 .LASF160
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2140   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2158   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2364   .debug_str:00000000000005e6 .LASF161
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2366   .debug_str:00000000000005eb .LASF0
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2384   .debug_str:000000000000065f .LASF1
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2324   .debug_str:00000000000004d2 .LASF2
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2392   .debug_str:00000000000006a1 .LASF3
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2336   .debug_str:0000000000000517 .LASF4
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2468   .debug_str:00000000000008ac .LASF5
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2204   .debug_str:000000000000016b .LASF6
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2482   .debug_str:000000000000091b .LASF7
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2374   .debug_str:0000000000000623 .LASF8
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2234   .debug_str:0000000000000230 .LASF9
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2322   .debug_str:00000000000004c5 .LASF10
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2190   .debug_str:000000000000011d .LASF11
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2400   .debug_str:00000000000006cf .LASF12
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2256   .debug_str:00000000000002be .LASF13
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2466   .debug_str:00000000000008a1 .LASF14
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2328   .debug_str:00000000000004eb .LASF15
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2462   .debug_str:000000000000087b .LASF16
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2272   .debug_str:000000000000031f .LASF17
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2186   .debug_str:00000000000000fe .LASF18
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2390   .debug_str:000000000000068e .LASF19
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2222   .debug_str:00000000000001ea .LASF20
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2454   .debug_str:000000000000083c .LASF21
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2320   .debug_str:00000000000004b2 .LASF22
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2182   .debug_str:00000000000000e5 .LASF23
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2242   .debug_str:0000000000000268 .LASF24
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2260   .debug_str:00000000000002d4 .LASF25
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2172   .debug_str:0000000000000062 .LASF26
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2420   .debug_str:0000000000000750 .LASF27
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2410   .debug_str:0000000000000710 .LASF28
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 16
+
+
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2442   .debug_str:00000000000007ed .LASF29
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2338   .debug_str:0000000000000526 .LASF30
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2476   .debug_str:00000000000008e1 .LASF31
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2168   .debug_str:000000000000003e .LASF32
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2188   .debug_str:0000000000000111 .LASF33
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2394   .debug_str:00000000000006af .LASF34
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2252   .debug_str:00000000000002a1 .LASF35
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2432   .debug_str:00000000000007b5 .LASF36
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2290   .debug_str:0000000000000399 .LASF37
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2352   .debug_str:0000000000000593 .LASF38
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2406   .debug_str:00000000000006f1 .LASF39
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2346   .debug_str:0000000000000568 .LASF40
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2216   .debug_str:00000000000001b6 .LASF41
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2200   .debug_str:0000000000000154 .LASF42
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2382   .debug_str:0000000000000653 .LASF43
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2236   .debug_str:0000000000000239 .LASF44
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2376   .debug_str:000000000000062c .LASF45
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2378   .debug_str:000000000000063b .LASF46
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2414   .debug_str:0000000000000730 .LASF47
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2214   .debug_str:00000000000001ac .LASF48
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2460   .debug_str:000000000000086f .LASF49
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2440   .debug_str:00000000000007e3 .LASF50
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2314   .debug_str:000000000000041e .LASF51
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2202   .debug_str:0000000000000160 .LASF52
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2326   .debug_str:00000000000004df .LASF53
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2206   .debug_str:0000000000000174 .LASF54
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2412   .debug_str:000000000000071d .LASF55
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2270   .debug_str:000000000000030c .LASF56
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2180   .debug_str:00000000000000d2 .LASF57
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2348   .debug_str:0000000000000572 .LASF58
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2218   .debug_str:00000000000001c0 .LASF59
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2358   .debug_str:00000000000005bd .LASF60
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2370   .debug_str:000000000000060a .LASF61
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2230   .debug_str:000000000000021b .LASF62
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2330   .debug_str:00000000000004f6 .LASF63
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2282   .debug_str:000000000000036d .LASF64
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2428   .debug_str:0000000000000793 .LASF65
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2184   .debug_str:00000000000000f1 .LASF66
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2278   .debug_str:0000000000000359 .LASF67
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2450   .debug_str:0000000000000827 .LASF72
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2434   .debug_str:00000000000007c2 .LASF68
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2194   .debug_str:0000000000000131 .LASF69
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2464   .debug_str:000000000000088e .LASF70
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2380   .debug_str:000000000000064a .LASF71
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2438   .debug_str:00000000000007d8 .LASF73
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2408   .debug_str:00000000000006fe .LASF74
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2298   .debug_str:00000000000003c4 .LASF75
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2220   .debug_str:00000000000001d3 .LASF76
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2276   .debug_str:0000000000000351 .LASF77
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2210   .debug_str:0000000000000193 .LASF78
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2362   .debug_str:00000000000005d6 .LASF135
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2174   .debug_str:0000000000000070 .LASF79
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2176   .debug_str:0000000000000079 .LASF80
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2484   .debug_str:0000000000000927 .LASF81
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2418   .debug_str:0000000000000747 .LASF82
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2456   .debug_str:000000000000084f .LASF83
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2284   .debug_str:0000000000000378 .LASF84
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 17
+
+
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2286   .debug_str:0000000000000383 .LASF85
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2288   .debug_str:000000000000038e .LASF86
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2226   .debug_str:0000000000000208 .LASF87
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2292   .debug_str:00000000000003a6 .LASF88
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2294   .debug_str:00000000000003b1 .LASF89
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2250   .debug_str:0000000000000297 .LASF90
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2264   .debug_str:00000000000002eb .LASF91
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2266   .debug_str:00000000000002f4 .LASF92
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2372   .debug_str:0000000000000618 .LASF93
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2452   .debug_str:0000000000000831 .LASF94
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2396   .debug_str:00000000000006bb .LASF95
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2398   .debug_str:00000000000006c5 .LASF96
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2246   .debug_str:0000000000000285 .LASF97
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2248   .debug_str:000000000000028e .LASF98
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2332   .debug_str:0000000000000505 .LASF99
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2334   .debug_str:000000000000050e .LASF100
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2192   .debug_str:0000000000000128 .LASF101
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2436   .debug_str:00000000000007d0 .LASF102
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2228   .debug_str:0000000000000213 .LASF103
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2296   .debug_str:00000000000003bc .LASF104
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2426   .debug_str:000000000000078c .LASF105
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2300   .debug_str:00000000000003d2 .LASF106
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2302   .debug_str:00000000000003dc .LASF107
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2304   .debug_str:00000000000003e6 .LASF108
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2306   .debug_str:00000000000003f0 .LASF109
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2308   .debug_str:00000000000003fa .LASF110
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2446   .debug_str:0000000000000815 .LASF111
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2448   .debug_str:000000000000081e .LASF112
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2224   .debug_str:00000000000001fd .LASF113
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2262   .debug_str:00000000000002e2 .LASF114
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2258   .debug_str:00000000000002c9 .LASF115
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2198   .debug_str:0000000000000145 .LASF116
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2316   .debug_str:0000000000000429 .LASF117
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2386   .debug_str:000000000000066c .LASF118
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2478   .debug_str:00000000000008f5 .LASF119
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2342   .debug_str:0000000000000549 .LASF120
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2244   .debug_str:0000000000000275 .LASF121
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2254   .debug_str:00000000000002ad .LASF122
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2170   .debug_str:0000000000000052 .LASF123
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2402   .debug_str:00000000000006da .LASF124
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2212   .debug_str:000000000000019c .LASF125
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2268   .debug_str:00000000000002fd .LASF126
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2310   .debug_str:0000000000000404 .LASF127
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2430   .debug_str:00000000000007a8 .LASF128
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2354   .debug_str:00000000000005a0 .LASF129
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2344   .debug_str:0000000000000559 .LASF130
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2240   .debug_str:000000000000025a .LASF131
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2474   .debug_str:00000000000008d3 .LASF132
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2356   .debug_str:00000000000005af .LASF133
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2360   .debug_str:00000000000005ca .LASF134
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2416   .debug_str:0000000000000740 .LASF136
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:304    .text.u0init:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:443    .text.u0init:000000000000010a .LFE5
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:1965   .debug_loc:0000000000000000 .LLST5
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2232   .debug_str:0000000000000229 .LASF138
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:1993   .debug_loc:0000000000000044 .LLST6
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:326    .text.u0init:0000000000000016 .LVL14
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 18
+
+
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:334    .text.u0init:000000000000002e .LVL15
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:341    .text.u0init:0000000000000042 .LVL16
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:348    .text.u0init:0000000000000052 .LVL17
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:352    .text.u0init:000000000000005e .LVL18
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:358    .text.u0init:0000000000000070 .LVL19
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:363    .text.u0init:000000000000007e .LVL20
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:368    .text.u0init:000000000000008c .LVL21
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:373    .text.u0init:000000000000009a .LVL22
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:378    .text.u0init:00000000000000a8 .LVL23
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:383    .text.u0init:00000000000000b6 .LVL24
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:387    .text.u0init:00000000000000c2 .LVL25
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:392    .text.u0init:00000000000000d0 .LVL26
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:397    .text.u0init:00000000000000de .LVL27
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:441    .text.u0init:000000000000010a .LVL31
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2404   .debug_str:00000000000006ea .LASF137
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:253    .text.putstr:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:297    .text.putstr:0000000000000026 .LFE4
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2022   .debug_loc:0000000000000089 .LLST3
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2040   .debug_loc:00000000000000b5 .LLST4
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:280    .text.putstr:0000000000000018 .LVL10
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2166   .debug_str:0000000000000039 .LASF139
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2164   .debug_str:0000000000000033 .LASF140
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:145    .text.putch:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:246    .text.putch:000000000000008c .LFE3
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2051   .debug_loc:00000000000000d3 .LLST1
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2069   .debug_loc:00000000000000ff .LLST2
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:193    .text.putch:0000000000000042 .LVL5
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:244    .text.putch:000000000000008c .LVL6
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2312   .debug_str:0000000000000412 .LASF162
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:14     .text.u0_TX_Queue:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:138    .text.u0_TX_Queue:0000000000000096 .LFE2
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2083   .debug_loc:0000000000000120 .LLST0
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:63     .text.u0_TX_Queue:000000000000003c .LBB4
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:83     .text.u0_TX_Queue:000000000000005e .LVL1
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:45     .text.u0_TX_Queue:0000000000000030 .LVL0
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:136    .text.u0_TX_Queue:0000000000000096 .LVL2
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2480   .debug_str:0000000000000903 .LASF141
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2196   .debug_str:000000000000013b .LASF142
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2368   .debug_str:00000000000005fd .LASF143
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2388   .debug_str:000000000000067b .LASF144
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2340   .debug_str:0000000000000535 .LASF145
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2458   .debug_str:0000000000000859 .LASF146
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2208   .debug_str:0000000000000180 .LASF147
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2274   .debug_str:0000000000000332 .LASF148
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2160   .debug_str:0000000000000000 .LASF149
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2472   .debug_str:00000000000008c6 .LASF150
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2422   .debug_str:000000000000075f .LASF151
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2238   .debug_str:0000000000000245 .LASF152
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2350   .debug_str:0000000000000585 .LASF153
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2424   .debug_str:0000000000000775 .LASF154
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2162   .debug_str:000000000000001f .LASF155
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2470   .debug_str:00000000000008b7 .LASF156
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:2444   .debug_str:00000000000007fd .LASF157
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:311    .text.u0init:0000000000000002 .LCFI10
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:411    .text.u0init:00000000000000e8 .LCFI11
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:416    .text.u0init:00000000000000ea .LCFI12
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:437    .text.u0init:0000000000000102 .LCFI13
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s 			page 19
+
+
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:307    .text.u0init:0000000000000000 .LVL12
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:318    .text.u0init:000000000000000a .LVL13
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:409    .text.u0init:00000000000000e6 .LVL28
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:414    .text.u0init:00000000000000ea .LVL29
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:426    .text.u0init:00000000000000f0 .LVL30
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:260    .text.putstr:0000000000000002 .LCFI8
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:293    .text.putstr:0000000000000024 .LCFI9
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:256    .text.putstr:0000000000000000 .LVL7
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:270    .text.putstr:000000000000000c .LVL8
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:291    .text.putstr:0000000000000022 .LVL11
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:152    .text.putch:0000000000000002 .LCFI6
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:240    .text.putch:0000000000000084 .LCFI7
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:148    .text.putch:0000000000000000 .LVL3
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:189    .text.putch:000000000000003a .LVL4
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:21     .text.u0_TX_Queue:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:57     .text.u0_TX_Queue:000000000000003a .LCFI1
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:61     .text.u0_TX_Queue:000000000000003c .LCFI2
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:110    .text.u0_TX_Queue:0000000000000078 .LCFI3
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:114    .text.u0_TX_Queue:000000000000007a .LCFI4
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:132    .text.u0_TX_Queue:000000000000008e .LCFI5
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:480    .debug_info:0000000000000000 .Ldebug_info0
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:88     .text.u0_TX_Queue:0000000000000060 .LBE4
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:95     .text.u0_TX_Queue:0000000000000064 .LBB7
+C:\Users\anton\AppData\Local\Temp\cc7aPiGM.s:105    .text.u0_TX_Queue:0000000000000074 .LBE7
+
+UNDEFINED SYMBOLS
+usart_flag_get
+usart_data_transmit
+usart_interrupt_disable
+usart_interrupt_enable
+rcu_periph_clock_enable
+gpio_init
+usart_deinit
+usart_baudrate_set
+usart_parity_config
+usart_word_length_set
+usart_stop_bit_set
+usart_hardware_flow_rts_config
+usart_hardware_flow_cts_config
+usart_enable
+usart_transmit_config
+usart_receive_config
+eclicw_enable

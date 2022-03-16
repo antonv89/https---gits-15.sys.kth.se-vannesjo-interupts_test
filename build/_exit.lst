@@ -1,0 +1,210 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s 			page 1
+
+
+   1              		.file	"_exit.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text._exit,"ax",@progbits
+  10              		.align	1
+  11              		.globl	_exit
+  13              	_exit:
+  14              	.LFB1:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs/_exit.c"
+   1:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** /* See LICENSE of license details. */
+   2:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** 
+   3:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** #include <unistd.h>
+   4:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** 
+   5:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** #include "stub.h"
+   6:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** 
+   7:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** 
+   8:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** void _exit(int code)
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** {
+  16              		.loc 1 9 1
+  17              		.cfi_startproc
+  18              	.LVL0:
+  10:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c ****   const char message[] = "\nProgram has exited with code:";
+  19              		.loc 1 10 3
+  20              		.loc 1 10 14 is_stmt 0
+  21 0000 B7070000 		lui	a5,%hi(.LC0)
+  22 0004 93870700 		addi	a5,a5,%lo(.LC0)
+  23 0008 03AF0700 		lw	t5,0(a5)
+  24 000c 83AE4700 		lw	t4,4(a5)
+  25 0010 03AE8700 		lw	t3,8(a5)
+  26 0014 03A3C700 		lw	t1,12(a5)
+  27 0018 83A80701 		lw	a7,16(a5)
+  28 001c 03A84701 		lw	a6,20(a5)
+  29 0020 944F     		lw	a3,24(a5)
+  30 0022 03D7C701 		lhu	a4,28(a5)
+  31 0026 83C7E701 		lbu	a5,30(a5)
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c ****   const char message[] = "\nProgram has exited with code:";
+  32              		.loc 1 9 1
+  33 002a 7971     		addi	sp,sp,-48
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 48
+  11:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** 
+  12:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c ****   write(STDERR_FILENO, message, sizeof(message) - 1);
+  36              		.loc 1 12 3
+  37 002c 7946     		li	a2,30
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c ****   const char message[] = "\nProgram has exited with code:";
+  38              		.loc 1 9 1
+  39 002e 22D4     		sw	s0,40(sp)
+  40              		.loc 1 12 3
+  41 0030 8A85     		mv	a1,sp
+  42              		.cfi_offset 8, -8
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c ****   const char message[] = "\nProgram has exited with code:";
+  43              		.loc 1 9 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s 			page 2
+
+
+  44 0032 2A84     		mv	s0,a0
+  45              		.loc 1 12 3
+  46 0034 0945     		li	a0,2
+  47              	.LVL1:
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c ****   const char message[] = "\nProgram has exited with code:";
+  48              		.loc 1 9 1
+  49 0036 06D6     		sw	ra,44(sp)
+  50              		.cfi_offset 1, -4
+  10:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** 
+  51              		.loc 1 10 14
+  52 0038 7AC0     		sw	t5,0(sp)
+  53 003a 76C2     		sw	t4,4(sp)
+  54 003c 72C4     		sw	t3,8(sp)
+  55 003e 1AC6     		sw	t1,12(sp)
+  56 0040 46C8     		sw	a7,16(sp)
+  57 0042 42CA     		sw	a6,20(sp)
+  58 0044 36CC     		sw	a3,24(sp)
+  59 0046 231EE100 		sh	a4,28(sp)
+  60 004a 230FF100 		sb	a5,30(sp)
+  61              		.loc 1 12 3 is_stmt 1
+  62 004e 97000000 		call	write
+  62      E7800000 
+  63              	.LVL2:
+  13:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c ****   write_hex(STDERR_FILENO, code);
+  64              		.loc 1 13 3
+  65 0056 A285     		mv	a1,s0
+  66 0058 0945     		li	a0,2
+  67 005a 97000000 		call	write_hex
+  67      E7800000 
+  68              	.LVL3:
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c ****   write(STDERR_FILENO, "\n", 1);
+  69              		.loc 1 14 3
+  70 0062 B7050000 		lui	a1,%hi(.LC1)
+  71 0066 0546     		li	a2,1
+  72 0068 93850500 		addi	a1,a1,%lo(.LC1)
+  73 006c 0945     		li	a0,2
+  74 006e 97000000 		call	write
+  74      E7800000 
+  75              	.LVL4:
+  76              	.L2:
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c **** 
+  16:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\_exit.c ****   for (;;);
+  77              		.loc 1 16 3 discriminator 1
+  78              		.loc 1 16 11 discriminator 1
+  79              		.loc 1 16 3 discriminator 1
+  80              		.loc 1 16 11 discriminator 1
+  81 0076 01A0     		j	.L2
+  82              		.cfi_endproc
+  83              	.LFE1:
+  85              		.section	.rodata._exit.str1.4,"aMS",@progbits,1
+  86              		.align	2
+  87              	.LC1:
+  88 0000 0A00     		.string	"\n"
+  89 0002 0000     		.zero	2
+  90              	.LC0:
+  91 0004 0A50726F 		.string	"\nProgram has exited with code:"
+  91      6772616D 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s 			page 3
+
+
+  91      20686173 
+  91      20657869 
+  91      74656420 
+  92              		.text
+  93              	.Letext0:
+  94              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\unistd.h"
+  95              		.file 3 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs/stub.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 _exit.c
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:13     .text._exit:0000000000000000 _exit
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:17     .text._exit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:19     .text._exit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:20     .text._exit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:21     .text._exit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:33     .text._exit:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:35     .text._exit:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:37     .text._exit:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:39     .text._exit:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:41     .text._exit:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:42     .text._exit:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:44     .text._exit:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:46     .text._exit:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:49     .text._exit:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:50     .text._exit:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:52     .text._exit:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:62     .text._exit:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:65     .text._exit:0000000000000056 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:70     .text._exit:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:78     .text._exit:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:79     .text._exit:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:80     .text._exit:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:81     .text._exit:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:82     .text._exit:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:85     .text._exit:0000000000000078 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:90     .rodata._exit.str1.4:0000000000000004 .LC0
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:87     .rodata._exit.str1.4:0000000000000000 .LC1
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:76     .text._exit:0000000000000076 .L2
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:329    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:599    .debug_str:000000000000005a .LASF19
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:613    .debug_str:0000000000000106 .LASF20
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:617    .debug_str:0000000000000147 .LASF21
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:577    .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:583    .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:621    .debug_str:00000000000001aa .LASF0
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:607    .debug_str:00000000000000ea .LASF1
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:629    .debug_str:00000000000001d2 .LASF2
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:619    .debug_str:0000000000000197 .LASF3
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:611    .debug_str:00000000000000fd .LASF4
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:595    .debug_str:0000000000000031 .LASF5
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:585    .debug_str:0000000000000000 .LASF6
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:597    .debug_str:0000000000000043 .LASF7
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:587    .debug_str:000000000000000e .LASF8
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:609    .debug_str:00000000000000f8 .LASF9
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:625    .debug_str:00000000000001bf .LASF10
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:631    .debug_str:00000000000001dc .LASF11
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:627    .debug_str:00000000000001cb .LASF12
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:591    .debug_str:0000000000000023 .LASF13
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:593    .debug_str:000000000000002a .LASF14
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:615    .debug_str:0000000000000140 .LASF15
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:623    .debug_str:00000000000001b6 .LASF16
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:605    .debug_str:00000000000000e4 .LASF22
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:14     .text._exit:0000000000000000 .LFB1
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:83     .text._exit:0000000000000078 .LFE1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s 			page 5
+
+
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:540    .debug_loc:0000000000000000 .LLST0
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:633    .debug_str:00000000000001e4 .LASF23
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:553    .debug_loc:0000000000000020 .LLST1
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:589    .debug_str:000000000000001b .LASF24
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:63     .text._exit:0000000000000056 .LVL2
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:68     .text._exit:0000000000000062 .LVL3
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:75     .text._exit:0000000000000076 .LVL4
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:603    .debug_str:00000000000000de .LASF17
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:601    .debug_str:00000000000000d4 .LASF18
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:34     .text._exit:000000000000002c .LCFI0
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:18     .text._exit:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:47     .text._exit:0000000000000036 .LVL1
+C:\Users\anton\AppData\Local\Temp\cc0jgCTp.s:97     .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+write
+write_hex

@@ -1,0 +1,326 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccCrRfea.s 			page 1
+
+
+   1              		.file	"write_hex.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.write_hex,"ax",@progbits
+  10              		.align	1
+  11              		.globl	write_hex
+  13              	write_hex:
+  14              	.LFB0:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs/write_hex.c"
+   1:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c **** /* See LICENSE of license details. */
+   2:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c **** 
+   3:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c **** #include <stdint.h>
+   4:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c **** #include <unistd.h>
+   5:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c **** 
+   6:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c **** void write_hex(int fd, unsigned long int hex)
+   7:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c **** {
+  16              		.loc 1 7 1
+  17              		.cfi_startproc
+  18              	.LVL0:
+   8:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****   uint8_t ii;
+  19              		.loc 1 8 3
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****   uint8_t jj;
+  20              		.loc 1 9 3
+  10:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****   char towrite;
+  21              		.loc 1 10 3
+  11:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****   write(fd , "0x", 2);
+  22              		.loc 1 11 3
+   7:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****   uint8_t ii;
+  23              		.loc 1 7 1 is_stmt 0
+  24 0000 7971     		addi	sp,sp,-48
+  25              	.LCFI0:
+  26              		.cfi_def_cfa_offset 48
+  27 0002 56CA     		sw	s5,20(sp)
+  28              		.cfi_offset 21, -28
+  29 0004 AE8A     		mv	s5,a1
+  30              		.loc 1 11 3
+  31 0006 B7050000 		lui	a1,%hi(.LC0)
+  32              	.LVL1:
+  33 000a 0946     		li	a2,2
+  34 000c 93850500 		addi	a1,a1,%lo(.LC0)
+   7:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****   uint8_t ii;
+  35              		.loc 1 7 1
+  36 0010 22D4     		sw	s0,40(sp)
+  37 0012 26D2     		sw	s1,36(sp)
+  38 0014 4AD0     		sw	s2,32(sp)
+  39 0016 4ECE     		sw	s3,28(sp)
+  40 0018 52CC     		sw	s4,24(sp)
+  41 001a 06D6     		sw	ra,44(sp)
+  42              		.cfi_offset 8, -8
+  43              		.cfi_offset 9, -12
+  44              		.cfi_offset 18, -16
+  45              		.cfi_offset 19, -20
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccCrRfea.s 			page 2
+
+
+  46              		.cfi_offset 20, -24
+  47              		.cfi_offset 1, -4
+   7:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****   uint8_t ii;
+  48              		.loc 1 7 1
+  49 001c 2A8A     		mv	s4,a0
+  50              		.loc 1 11 3
+  51 001e 7144     		li	s0,28
+  52 0020 97000000 		call	write
+  52      E7800000 
+  53              	.LVL2:
+  12:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****   for (ii = sizeof(unsigned long int) * 2 ; ii > 0; ii--) {
+  54              		.loc 1 12 3 is_stmt 1
+  55              	.LBB2:
+  13:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     jj = ii - 1;
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     uint8_t digit = ((hex & (0xF << (jj*4))) >> (jj*4));
+  56              		.loc 1 14 34 is_stmt 0
+  57 0028 BD49     		li	s3,15
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     towrite = digit < 0xA ? ('0' + digit) : ('A' +  (digit - 0xA));
+  58              		.loc 1 15 13
+  59 002a 2549     		li	s2,9
+  60              	.LBE2:
+  12:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****   for (ii = sizeof(unsigned long int) * 2 ; ii > 0; ii--) {
+  61              		.loc 1 12 3
+  62 002c F154     		li	s1,-4
+  63 002e 05A0     		j	.L4
+  64              	.LVL3:
+  65              	.L9:
+  66              	.LBB3:
+  67              		.loc 1 15 13 discriminator 1
+  68 0030 93F7F60F 		andi	a5,a3,0xff
+  69              	.LVL4:
+  70 0034 7114     		addi	s0,s0,-4
+  16:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     write(fd, &towrite, 1);
+  71              		.loc 1 16 5 discriminator 1
+  72 0036 0546     		li	a2,1
+  73 0038 9305F100 		addi	a1,sp,15
+  74 003c 5285     		mv	a0,s4
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     towrite = digit < 0xA ? ('0' + digit) : ('A' +  (digit - 0xA));
+  75              		.loc 1 15 13 discriminator 1
+  76 003e A307F100 		sb	a5,15(sp)
+  77              		.loc 1 16 5 is_stmt 1 discriminator 1
+  78 0042 97000000 		call	write
+  78      E7800000 
+  79              	.LVL5:
+  80              	.LBE3:
+  12:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     jj = ii - 1;
+  81              		.loc 1 12 3 is_stmt 0 discriminator 1
+  82 004a 630F9402 		beq	s0,s1,.L8
+  83              	.L4:
+  84              	.LBB4:
+  13:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     uint8_t digit = ((hex & (0xF << (jj*4))) >> (jj*4));
+  85              		.loc 1 13 5 is_stmt 1
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     towrite = digit < 0xA ? ('0' + digit) : ('A' +  (digit - 0xA));
+  86              		.loc 1 14 5
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     towrite = digit < 0xA ? ('0' + digit) : ('A' +  (digit - 0xA));
+  87              		.loc 1 14 34 is_stmt 0
+  88 004e B3978900 		sll	a5,s3,s0
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccCrRfea.s 			page 3
+
+
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     towrite = digit < 0xA ? ('0' + digit) : ('A' +  (digit - 0xA));
+  89              		.loc 1 14 27
+  90 0052 B3F75701 		and	a5,a5,s5
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     towrite = digit < 0xA ? ('0' + digit) : ('A' +  (digit - 0xA));
+  91              		.loc 1 14 46
+  92 0056 B3D78700 		srl	a5,a5,s0
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     towrite = digit < 0xA ? ('0' + digit) : ('A' +  (digit - 0xA));
+  93              		.loc 1 14 13
+  94 005a 93F7F70F 		andi	a5,a5,0xff
+  95              	.LVL6:
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     write(fd, &towrite, 1);
+  96              		.loc 1 15 5 is_stmt 1
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     write(fd, &towrite, 1);
+  97              		.loc 1 15 13 is_stmt 0
+  98 005e 93860703 		addi	a3,a5,48
+  99 0062 13877703 		addi	a4,a5,55
+ 100 0066 E375F9FC 		bleu	a5,s2,.L9
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     write(fd, &towrite, 1);
+ 101              		.loc 1 15 13 discriminator 2
+ 102 006a 9377F70F 		andi	a5,a4,0xff
+ 103              	.LVL7:
+ 104 006e 7114     		addi	s0,s0,-4
+ 105              		.loc 1 16 5 discriminator 2
+ 106 0070 0546     		li	a2,1
+ 107 0072 9305F100 		addi	a1,sp,15
+ 108 0076 5285     		mv	a0,s4
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     write(fd, &towrite, 1);
+ 109              		.loc 1 15 13 discriminator 2
+ 110 0078 A307F100 		sb	a5,15(sp)
+ 111              		.loc 1 16 5 is_stmt 1 discriminator 2
+ 112 007c 97000000 		call	write
+ 112      E7800000 
+ 113              	.LVL8:
+ 114              	.LBE4:
+  12:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****     jj = ii - 1;
+ 115              		.loc 1 12 3 is_stmt 0 discriminator 2
+ 116 0084 E31594FC 		bne	s0,s1,.L4
+ 117              	.L8:
+  17:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c ****   }
+  18:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\write_hex.c **** }
+ 118              		.loc 1 18 1
+ 119 0088 B250     		lw	ra,44(sp)
+ 120              		.cfi_restore 1
+ 121 008a 2254     		lw	s0,40(sp)
+ 122              		.cfi_restore 8
+ 123 008c 9254     		lw	s1,36(sp)
+ 124              		.cfi_restore 9
+ 125 008e 0259     		lw	s2,32(sp)
+ 126              		.cfi_restore 18
+ 127 0090 F249     		lw	s3,28(sp)
+ 128              		.cfi_restore 19
+ 129 0092 624A     		lw	s4,24(sp)
+ 130              		.cfi_restore 20
+ 131              	.LVL9:
+ 132 0094 D24A     		lw	s5,20(sp)
+ 133              		.cfi_restore 21
+ 134              	.LVL10:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccCrRfea.s 			page 4
+
+
+ 135 0096 4561     		addi	sp,sp,48
+ 136              	.LCFI1:
+ 137              		.cfi_def_cfa_offset 0
+ 138 0098 8280     		jr	ra
+ 139              		.cfi_endproc
+ 140              	.LFE0:
+ 142              		.section	.rodata.write_hex.str1.4,"aMS",@progbits,1
+ 143              		.align	2
+ 144              	.LC0:
+ 145 0000 307800   		.string	"0x"
+ 146              		.text
+ 147              	.Letext0:
+ 148              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 149              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 150              		.file 4 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\unistd.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccCrRfea.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 write_hex.c
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:13     .text.write_hex:0000000000000000 write_hex
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:17     .text.write_hex:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:19     .text.write_hex:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:20     .text.write_hex:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:21     .text.write_hex:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:22     .text.write_hex:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:23     .text.write_hex:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:24     .text.write_hex:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:26     .text.write_hex:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:28     .text.write_hex:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:31     .text.write_hex:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:36     .text.write_hex:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:42     .text.write_hex:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:43     .text.write_hex:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:44     .text.write_hex:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:45     .text.write_hex:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:46     .text.write_hex:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:47     .text.write_hex:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:49     .text.write_hex:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:51     .text.write_hex:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:56     .text.write_hex:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:57     .text.write_hex:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:59     .text.write_hex:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:62     .text.write_hex:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:68     .text.write_hex:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:72     .text.write_hex:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:76     .text.write_hex:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:78     .text.write_hex:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:82     .text.write_hex:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:86     .text.write_hex:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:87     .text.write_hex:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:88     .text.write_hex:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:90     .text.write_hex:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:92     .text.write_hex:0000000000000056 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:94     .text.write_hex:000000000000005a .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:97     .text.write_hex:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:98     .text.write_hex:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:102    .text.write_hex:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:106    .text.write_hex:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:110    .text.write_hex:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:112    .text.write_hex:000000000000007c .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:116    .text.write_hex:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:119    .text.write_hex:0000000000000088 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:120    .text.write_hex:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:122    .text.write_hex:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:124    .text.write_hex:000000000000008e .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:126    .text.write_hex:0000000000000090 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:128    .text.write_hex:0000000000000092 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:130    .text.write_hex:0000000000000094 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:133    .text.write_hex:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:137    .text.write_hex:0000000000000098 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:139    .text.write_hex:000000000000009a .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:142    .text.write_hex:000000000000009a .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:144    .rodata.write_hex.str1.4:0000000000000000 .LC0
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccCrRfea.s 			page 6
+
+
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:83     .text.write_hex:000000000000004e .L4
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:117    .text.write_hex:0000000000000088 .L8
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:65     .text.write_hex:0000000000000030 .L9
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:414    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:785    .debug_str:0000000000000000 .LASF21
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:789    .debug_str:0000000000000084 .LASF22
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:821    .debug_str:0000000000000164 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:769    .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:783    .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:835    .debug_str:00000000000001ee .LASF0
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:787    .debug_str:000000000000007a .LASF9
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:797    .debug_str:00000000000000db .LASF1
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:827    .debug_str:00000000000001c7 .LASF2
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:803    .debug_str:0000000000000102 .LASF3
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:831    .debug_str:00000000000001d9 .LASF4
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:801    .debug_str:00000000000000f0 .LASF5
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:823    .debug_str:00000000000001b4 .LASF6
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:815    .debug_str:000000000000013e .LASF7
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:809    .debug_str:0000000000000124 .LASF8
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:817    .debug_str:0000000000000155 .LASF10
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:825    .debug_str:00000000000001c2 .LASF11
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:833    .debug_str:00000000000001e2 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:829    .debug_str:00000000000001d1 .LASF13
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:811    .debug_str:0000000000000131 .LASF14
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:799    .debug_str:00000000000000e9 .LASF15
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:793    .debug_str:00000000000000ca .LASF16
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:819    .debug_str:000000000000015d .LASF17
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:805    .debug_str:0000000000000115 .LASF18
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:795    .debug_str:00000000000000d1 .LASF24
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:14     .text.write_hex:0000000000000000 .LFB0
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:140    .text.write_hex:000000000000009a .LFE0
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:671    .debug_loc:0000000000000000 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:689    .debug_loc:000000000000002c .LLST1
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:707    .debug_loc:0000000000000058 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:725    .debug_loc:0000000000000084 .LLST3
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:791    .debug_str:00000000000000c2 .LASF19
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:813    .debug_str:0000000000000138 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:733    .debug_loc:0000000000000098 .LLST4
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:79     .text.write_hex:000000000000004a .LVL5
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:113    .text.write_hex:0000000000000084 .LVL8
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:53     .text.write_hex:0000000000000028 .LVL2
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:807    .debug_str:000000000000011e .LASF25
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:25     .text.write_hex:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:136    .text.write_hex:0000000000000098 .LCFI1
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:18     .text.write_hex:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:131    .text.write_hex:0000000000000094 .LVL9
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:32     .text.write_hex:000000000000000a .LVL1
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:134    .text.write_hex:0000000000000096 .LVL10
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:64     .text.write_hex:0000000000000030 .LVL3
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:69     .text.write_hex:0000000000000034 .LVL4
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:95     .text.write_hex:000000000000005e .LVL6
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:103    .text.write_hex:000000000000006e .LVL7
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:152    .debug_info:0000000000000000 .Ldebug_info0
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:55     .text.write_hex:0000000000000028 .LBB2
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:60     .text.write_hex:000000000000002c .LBE2
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:66     .text.write_hex:0000000000000030 .LBB3
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:80     .text.write_hex:000000000000004a .LBE3
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccCrRfea.s 			page 7
+
+
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:84     .text.write_hex:000000000000004e .LBB4
+C:\Users\anton\AppData\Local\Temp\ccCrRfea.s:114    .text.write_hex:0000000000000084 .LBE4
+
+UNDEFINED SYMBOLS
+write

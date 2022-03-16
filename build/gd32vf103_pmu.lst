@@ -1,0 +1,1544 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 1
+
+
+   1              		.file	"gd32vf103_pmu.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.pmu_deinit,"ax",@progbits
+  10              		.align	1
+  11              		.globl	pmu_deinit
+  13              	pmu_deinit:
+  14              	.LFB2:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.
+   1:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+   2:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \file    gd32vf103_pmu.c
+   3:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief   PMU driver
+   4:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+   5:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \version 2019-06-05, V1.0.0, firmware for GD32VF103
+   6:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \version 2020-08-04, V1.1.0, firmware for GD32VF103
+   7:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+   8:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+   9:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*
+  10:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+  12:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     Redistribution and use in source and binary forms, with or without modification,
+  13:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** are permitted provided that the following conditions are met:
+  14:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+  15:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  16:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****        list of conditions and the following disclaimer.
+  17:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  18:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****        this list of conditions and the following disclaimer in the documentation
+  19:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****        and/or other materials provided with the distribution.
+  20:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  21:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****        may be used to endorse or promote products derived from this software without
+  22:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****        specific prior written permission.
+  23:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+  24:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  25:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  26:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  27:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  28:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  29:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  30:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  31:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  32:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  33:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** OF SUCH DAMAGE.
+  34:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+  35:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+  36:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** #include "gd32vf103_pmu.h"
+  37:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** #include "riscv_encoding.h"
+  38:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+  39:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+  40:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      reset PMU register
+  41:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  none
+  42:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+  43:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 2
+
+
+  44:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+  45:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_deinit(void)
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+  16              		.loc 1 46 1
+  17              		.cfi_startproc
+  47:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* reset PMU */
+  48:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     rcu_periph_reset_enable(RCU_PMURST);
+  18              		.loc 1 48 5
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* reset PMU */
+  19              		.loc 1 46 1 is_stmt 0
+  20 0000 4111     		addi	sp,sp,-16
+  21              	.LCFI0:
+  22              		.cfi_def_cfa_offset 16
+  23              		.loc 1 48 5
+  24 0002 1305C041 		li	a0,1052
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* reset PMU */
+  25              		.loc 1 46 1
+  26 0006 06C6     		sw	ra,12(sp)
+  27              		.cfi_offset 1, -4
+  28              		.loc 1 48 5
+  29 0008 97000000 		call	rcu_periph_reset_enable
+  29      E7800000 
+  30              	.LVL0:
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     rcu_periph_reset_disable(RCU_PMURST);
+  31              		.loc 1 49 5 is_stmt 1
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+  32              		.loc 1 50 1 is_stmt 0
+  33 0010 B240     		lw	ra,12(sp)
+  34              		.cfi_restore 1
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     rcu_periph_reset_disable(RCU_PMURST);
+  35              		.loc 1 49 5
+  36 0012 1305C041 		li	a0,1052
+  37              		.loc 1 50 1
+  38 0016 4101     		addi	sp,sp,16
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 0
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     rcu_periph_reset_disable(RCU_PMURST);
+  41              		.loc 1 49 5
+  42 0018 17030000 		tail	rcu_periph_reset_disable
+  42      67000300 
+  43              	.LVL1:
+  44              		.cfi_endproc
+  45              	.LFE2:
+  47              		.section	.text.pmu_lvd_select,"ax",@progbits
+  48              		.align	1
+  49              		.globl	pmu_lvd_select
+  51              	pmu_lvd_select:
+  52              	.LFB3:
+  51:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      select low voltage detector threshold
+  54:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  lvdt_n:
+  55:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****                 only one parameter can be selected which is shown as below:
+  56:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_LVDT_0: voltage threshold is 2.2V
+  57:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_LVDT_1: voltage threshold is 2.3V
+  58:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_LVDT_2: voltage threshold is 2.4V
+  59:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_LVDT_3: voltage threshold is 2.5V
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 3
+
+
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_LVDT_4: voltage threshold is 2.6V
+  61:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_LVDT_5: voltage threshold is 2.7V
+  62:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_LVDT_6: voltage threshold is 2.8V
+  63:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_LVDT_7: voltage threshold is 2.9V
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+  66:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+  67:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_lvd_select(uint32_t lvdt_n)
+  68:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+  53              		.loc 1 68 1 is_stmt 1
+  54              		.cfi_startproc
+  55              	.LVL2:
+  69:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* disable LVD */
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL &= ~PMU_CTL_LVDEN;
+  56              		.loc 1 70 5
+  57              		.loc 1 70 13 is_stmt 0
+  58 0000 B7770040 		li	a5,1073770496
+  59 0004 9843     		lw	a4,0(a5)
+  60 0006 3D9B     		andi	a4,a4,-17
+  61 0008 98C3     		sw	a4,0(a5)
+  71:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* clear LVDT bits */
+  72:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL &= ~PMU_CTL_LVDT;
+  62              		.loc 1 72 5 is_stmt 1
+  63              		.loc 1 72 13 is_stmt 0
+  64 000a 9843     		lw	a4,0(a5)
+  65 000c 1377F7F1 		andi	a4,a4,-225
+  66 0010 98C3     		sw	a4,0(a5)
+  73:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* set LVDT bits according to lvdt_n */
+  74:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL |= lvdt_n;
+  67              		.loc 1 74 5 is_stmt 1
+  68              		.loc 1 74 13 is_stmt 0
+  69 0012 9843     		lw	a4,0(a5)
+  70 0014 598D     		or	a0,a4,a0
+  71              	.LVL3:
+  72 0016 88C3     		sw	a0,0(a5)
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* enable LVD */
+  76:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL |= PMU_CTL_LVDEN;
+  73              		.loc 1 76 5 is_stmt 1
+  74              		.loc 1 76 13 is_stmt 0
+  75 0018 9843     		lw	a4,0(a5)
+  76 001a 13670701 		ori	a4,a4,16
+  77 001e 98C3     		sw	a4,0(a5)
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+  78              		.loc 1 77 1
+  79 0020 8280     		ret
+  80              		.cfi_endproc
+  81              	.LFE3:
+  83              		.section	.text.pmu_lvd_disable,"ax",@progbits
+  84              		.align	1
+  85              		.globl	pmu_lvd_disable
+  87              	pmu_lvd_disable:
+  88              	.LFB4:
+  78:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      disable PMU lvd
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  none
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 4
+
+
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_lvd_disable(void)
+  86:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+  89              		.loc 1 86 1 is_stmt 1
+  90              		.cfi_startproc
+  87:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* disable LVD */
+  88:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL &= ~PMU_CTL_LVDEN;
+  91              		.loc 1 88 5
+  92              		.loc 1 88 13 is_stmt 0
+  93 0000 37770040 		li	a4,1073770496
+  94 0004 1C43     		lw	a5,0(a4)
+  95 0006 BD9B     		andi	a5,a5,-17
+  96 0008 1CC3     		sw	a5,0(a4)
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+  97              		.loc 1 89 1
+  98 000a 8280     		ret
+  99              		.cfi_endproc
+ 100              	.LFE4:
+ 102              		.section	.text.pmu_to_sleepmode,"ax",@progbits
+ 103              		.align	1
+ 104              		.globl	pmu_to_sleepmode
+ 106              	pmu_to_sleepmode:
+ 107              	.LFB5:
+  90:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+  91:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+  92:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      PMU work at sleep mode
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  sleepmodecmd:
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****                 only one parameter can be selected which is shown as below:
+  95:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        WFI_CMD: use WFI command
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        WFE_CMD: use WFE command
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+  99:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+ 100:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_to_sleepmode(uint8_t sleepmodecmd)
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+ 108              		.loc 1 101 1 is_stmt 1
+ 109              		.cfi_startproc
+ 110              	.LVL4:
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* clear sleepdeep bit of RISC-V system control register */
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     clear_csr(0x811U, 0x1U);
+ 111              		.loc 1 103 5
+ 112              	.LBB31:
+ 113              		.loc 1 103 5
+ 114              		.loc 1 103 5
+ 115              		.loc 1 103 5
+ 116              	 #APP
+ 117              	# 103 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 104              	
+ 118              		csrrc a5, 0x811U, 1
+ 119              	# 0 "" 2
+ 120              	.LVL5:
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     clear_csr(0x811U, 0x1U);
+ 121              		.loc 1 103 5
+ 122              	 #NO_APP
+ 123              	.LBE31:
+ 105:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* select WFI or WFE command to enter sleep mode */
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 5
+
+
+ 106:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     if(WFI_CMD == sleepmodecmd){
+ 124              		.loc 1 106 5
+ 125              		.loc 1 106 7 is_stmt 0
+ 126 0004 01E5     		bne	a0,zero,.L7
+ 107:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 127              		.loc 1 107 9 is_stmt 1
+ 128              	.LBB32:
+ 129              	.LBB33:
+ 130              		.file 2 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers/n200_func.h"
+   1:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** /* See LICENSE file for licence details */
+   2:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+   3:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** #ifndef N200_FUNC_H
+   4:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** #define N200_FUNC_H
+   5:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+   6:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+   7:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** #include <stddef.h>
+   8:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** #include "n200_timer.h"
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** #include "n200_eclic.h"
+  10:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  11:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** #define	ECLIC_GROUP_LEVEL0_PRIO4        0
+  12:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** #define	ECLIC_GROUP_LEVEL1_PRIO3        1
+  13:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** #define	ECLIC_GROUP_LEVEL2_PRIO2        2
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** #define	ECLIC_GROUP_LEVEL3_PRIO1        3
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** #define	ECLIC_GROUP_LEVEL4_PRIO0        4
+  16:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  17:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void pmp_open_all_space(void);
+  18:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  19:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void switch_m2u_mode(void);
+  20:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  21:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint32_t get_mtime_freq(void);
+  22:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  23:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint32_t mtime_lo(void);
+  24:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  25:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint32_t mtime_hi(void);
+  26:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  27:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint64_t get_mtime_value(void);
+  28:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  29:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint64_t get_instret_value(void);
+  30:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  31:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint64_t get_cycle_value(void);
+  32:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  33:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint32_t get_cpu_freq(void);
+  34:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  35:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint32_t __attribute__((noinline)) measure_cpu_freq(size_t n);
+  36:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  37:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** /* ECLIC relevant functions */
+  38:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_init ( uint32_t num_irq );
+  39:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint64_t get_timer_value(void);
+  40:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_enable_interrupt (uint32_t source);
+  41:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_disable_interrupt (uint32_t source);
+  42:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  43:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_pending(uint32_t source);
+  44:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_clear_pending(uint32_t source);
+  45:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  46:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_intctrl (uint32_t source, uint8_t intctrl);
+  47:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint8_t eclic_get_intctrl  (uint32_t source);
+  48:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 6
+
+
+  49:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_intattr (uint32_t source, uint8_t intattr);
+  50:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint8_t eclic_get_intattr  (uint32_t source);
+  51:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  52:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_cliccfg (uint8_t cliccfg);
+  53:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint8_t eclic_get_cliccfg (void);
+  54:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  55:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_mth (uint8_t mth);
+  56:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint8_t eclic_get_mth(void);
+  57:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  58:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** /* sets nlbits */
+  59:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_nlbits(uint8_t nlbits);
+  60:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  61:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  62:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** /* get nlbits */
+  63:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint8_t eclic_get_nlbits(void);
+  64:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  65:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_irq_lvl(uint32_t source, uint8_t lvl);
+  66:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint8_t eclic_get_irq_lvl(uint32_t source);
+  67:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  68:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_irq_lvl_abs(uint32_t source, uint8_t lvl_abs);
+  69:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint8_t eclic_get_irq_lvl_abs(uint32_t source);
+  70:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  71:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint8_t eclic_set_irq_priority(uint32_t source, uint8_t priority);
+  72:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** uint8_t eclic_get_irq_priority(uint32_t source);
+  73:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  74:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_mode_enable(void);
+  75:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  76:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_vmode(uint32_t source);
+  77:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_nonvmode(uint32_t source);
+  78:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  79:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_level_trig(uint32_t source);
+  80:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_posedge_trig(uint32_t source);
+  81:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** void eclic_set_negedge_trig(uint32_t source);
+  82:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  83:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  84:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** /** \brief  Wait For Interrupt
+  85:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** 
+  86:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h ****     Wait For Interrupt is a hint instruction that suspends execution
+  87:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h ****     until one of a number of events occurs.
+  88:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h ****  */
+  89:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** __attribute__( ( always_inline ) ) static inline void __WFI(void) {
+  90:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h ****     __asm volatile ("wfi");
+ 131              		.loc 2 90 5
+ 132              	 #APP
+ 133              	# 90 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers/n200_func.h" 1
+  91              	}
+ 134              		wfi
+ 135              	# 0 "" 2
+ 136              	 #NO_APP
+ 137 000a 8280     		ret
+ 138              	.L7:
+ 139              	.LBE33:
+ 140              	.LBE32:
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }else{
+ 109:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         clear_csr(mstatus, MSTATUS_MIE);
+ 141              		.loc 1 109 9 discriminator 1
+ 142              	.LBB34:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 7
+
+
+ 143              		.loc 1 109 9 discriminator 1
+ 144              		.loc 1 109 9 discriminator 1
+ 145              		.loc 1 109 9 discriminator 1
+ 146              	 #APP
+ 147              	# 109 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 110              	        set_csr(0x810U, 0x1U);
+ 148              		csrrc a5, mstatus, 8
+ 149              	# 0 "" 2
+ 150              	.LVL6:
+ 109:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         clear_csr(mstatus, MSTATUS_MIE);
+ 151              		.loc 1 109 9 discriminator 1
+ 152              	 #NO_APP
+ 153              	.LBE34:
+ 154              		.loc 1 110 9 discriminator 1
+ 155              	.LBB35:
+ 156              		.loc 1 110 9 discriminator 1
+ 157              		.loc 1 110 9 discriminator 1
+ 158              		.loc 1 110 9 discriminator 1
+ 159              	 #APP
+ 160              	# 110 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 111              	        __WFI();
+ 161              		csrrs a5, 0x810U, 1
+ 162              	# 0 "" 2
+ 163              	.LVL7:
+ 110:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 164              		.loc 1 110 9 discriminator 1
+ 165              	 #NO_APP
+ 166              	.LBE35:
+ 167              		.loc 1 111 9 discriminator 1
+ 168              	.LBB36:
+ 169              	.LBB37:
+  90:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** }
+ 170              		.loc 2 90 5 discriminator 1
+ 171              	 #APP
+ 172              	# 90 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers/n200_func.h" 1
+ 173              		wfi
+ 174              	# 0 "" 2
+ 175              	 #NO_APP
+ 176              	.LBE37:
+ 177              	.LBE36:
+ 112:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         clear_csr(0x810U, 0x1U);
+ 178              		.loc 1 112 9 discriminator 1
+ 179              	.LBB38:
+ 180              		.loc 1 112 9 discriminator 1
+ 181              		.loc 1 112 9 discriminator 1
+ 182              		.loc 1 112 9 discriminator 1
+ 183              	 #APP
+ 184              	# 112 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 113              	        set_csr(mstatus, MSTATUS_MIE);
+ 185              		csrrc a5, 0x810U, 1
+ 186              	# 0 "" 2
+ 187              	.LVL8:
+ 112:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         clear_csr(0x810U, 0x1U);
+ 188              		.loc 1 112 9 discriminator 1
+ 189              	 #NO_APP
+ 190              	.LBE38:
+ 191              		.loc 1 113 9 discriminator 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 8
+
+
+ 192              	.LBB39:
+ 193              		.loc 1 113 9 discriminator 1
+ 194              		.loc 1 113 9 discriminator 1
+ 195              		.loc 1 113 9 discriminator 1
+ 196              	 #APP
+ 197              	# 113 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 114              	    }
+ 198              		csrrs a5, mstatus, 8
+ 199              	# 0 "" 2
+ 200              	.LVL9:
+ 113:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 201              		.loc 1 113 9 discriminator 1
+ 202              	 #NO_APP
+ 203              	.LBE39:
+ 115:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 204              		.loc 1 115 1 is_stmt 0 discriminator 1
+ 205 0020 8280     		ret
+ 206              		.cfi_endproc
+ 207              	.LFE5:
+ 209              		.section	.text.pmu_to_deepsleepmode,"ax",@progbits
+ 210              		.align	1
+ 211              		.globl	pmu_to_deepsleepmode
+ 213              	pmu_to_deepsleepmode:
+ 214              	.LFB6:
+ 116:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+ 118:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      PMU work at deepsleep mode
+ 119:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  ldo:
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****                 only one parameter can be selected which is shown as below:
+ 121:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_LDO_NORMAL: LDO work at normal power mode when pmu enter deepsleep mode
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_LDO_LOWPOWER: LDO work at low power mode when pmu enter deepsleep mode
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  deepsleepmodecmd:
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****                 only one parameter can be selected which is shown as below:
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        WFI_CMD: use WFI command
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        WFE_CMD: use WFE command
+ 127:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_to_deepsleepmode(uint32_t ldo,uint8_t deepsleepmodecmd)
+ 131:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+ 215              		.loc 1 131 1 is_stmt 1
+ 216              		.cfi_startproc
+ 217              	.LVL10:
+ 132:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* clear stbmod and ldolp bits */
+ 133:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL &= ~((uint32_t)(PMU_CTL_STBMOD | PMU_CTL_LDOLP));
+ 218              		.loc 1 133 5
+ 219              		.loc 1 133 13 is_stmt 0
+ 220 0000 B7770040 		li	a5,1073770496
+ 221 0004 9843     		lw	a4,0(a5)
+ 222 0006 719B     		andi	a4,a4,-4
+ 223 0008 98C3     		sw	a4,0(a5)
+ 134:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* set ldolp bit according to pmu_ldo */
+ 135:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL |= ldo;
+ 224              		.loc 1 135 5 is_stmt 1
+ 225              		.loc 1 135 13 is_stmt 0
+ 226 000a 9843     		lw	a4,0(a5)
+ 227 000c 598D     		or	a0,a4,a0
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 9
+
+
+ 228              	.LVL11:
+ 229 000e 88C3     		sw	a0,0(a5)
+ 136:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* set CSR_SLEEPVALUE bit of RISC-V system control register */
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     set_csr(0x811U, 0x1U);
+ 230              		.loc 1 137 5 is_stmt 1
+ 231              	.LBB40:
+ 232              		.loc 1 137 5
+ 233              		.loc 1 137 5
+ 234              		.loc 1 137 5
+ 235              	 #APP
+ 236              	# 137 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 138              	    /* select WFI or WFE command to enter deepsleep mode */
+ 237              		csrrs a5, 0x811U, 1
+ 238              	# 0 "" 2
+ 239              	.LVL12:
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     set_csr(0x811U, 0x1U);
+ 240              		.loc 1 137 5
+ 241              	 #NO_APP
+ 242              	.LBE40:
+ 139:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     if(WFI_CMD == deepsleepmodecmd){
+ 243              		.loc 1 139 5
+ 244              		.loc 1 139 7 is_stmt 0
+ 245 0014 91E5     		bne	a1,zero,.L10
+ 140:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 246              		.loc 1 140 9 is_stmt 1
+ 247              	.LBB41:
+ 248              	.LBB42:
+  90:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** }
+ 249              		.loc 2 90 5
+ 250              	 #APP
+ 251              	# 90 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers/n200_func.h" 1
+ 252              		wfi
+ 253              	# 0 "" 2
+ 254              	 #NO_APP
+ 255              	.LBE42:
+ 256              	.LBE41:
+ 141:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }else{
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         clear_csr(mstatus, MSTATUS_MIE);
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 144:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         clear_csr(0x810U, 0x1U);
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 147:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* reset sleepdeep bit of RISC-V system control register */
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     clear_csr(0x811U, 0x1U);
+ 257              		.loc 1 149 5
+ 258              	.LBB43:
+ 259              		.loc 1 149 5
+ 260              		.loc 1 149 5
+ 261              		.loc 1 149 5
+ 262              	 #APP
+ 263              	# 149 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 150              	}
+ 264              		csrrc a5, 0x811U, 1
+ 265              	# 0 "" 2
+ 266              	.LVL13:
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     clear_csr(0x811U, 0x1U);
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 10
+
+
+ 267              		.loc 1 149 5
+ 268              	 #NO_APP
+ 269              	.LBE43:
+ 270              		.loc 1 150 1 is_stmt 0
+ 271 001e 8280     		ret
+ 272              	.L10:
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 273              		.loc 1 142 9 is_stmt 1 discriminator 1
+ 274              	.LBB44:
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 275              		.loc 1 142 9 discriminator 1
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 276              		.loc 1 142 9 discriminator 1
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 277              		.loc 1 142 9 discriminator 1
+ 278              	 #APP
+ 279              	# 142 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 280              		csrrc a5, mstatus, 8
+ 281              	# 0 "" 2
+ 282              	.LVL14:
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 283              		.loc 1 142 9 discriminator 1
+ 284              	 #NO_APP
+ 285              	.LBE44:
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 286              		.loc 1 143 9 discriminator 1
+ 287              	.LBB45:
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 288              		.loc 1 143 9 discriminator 1
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 289              		.loc 1 143 9 discriminator 1
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 290              		.loc 1 143 9 discriminator 1
+ 291              	 #APP
+ 292              	# 143 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 293              		csrrs a5, 0x810U, 1
+ 294              	# 0 "" 2
+ 295              	.LVL15:
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 296              		.loc 1 143 9 discriminator 1
+ 297              	 #NO_APP
+ 298              	.LBE45:
+ 144:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         clear_csr(0x810U, 0x1U);
+ 299              		.loc 1 144 9 discriminator 1
+ 300              	.LBB46:
+ 301              	.LBB47:
+  90:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** }
+ 302              		.loc 2 90 5 discriminator 1
+ 303              	 #APP
+ 304              	# 90 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers/n200_func.h" 1
+ 305              		wfi
+ 306              	# 0 "" 2
+ 307              	 #NO_APP
+ 308              	.LBE47:
+ 309              	.LBE46:
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 310              		.loc 1 145 9 discriminator 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 11
+
+
+ 311              	.LBB48:
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 312              		.loc 1 145 9 discriminator 1
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 313              		.loc 1 145 9 discriminator 1
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 314              		.loc 1 145 9 discriminator 1
+ 315              	 #APP
+ 316              	# 145 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 317              		csrrc a5, 0x810U, 1
+ 318              	# 0 "" 2
+ 319              	.LVL16:
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 320              		.loc 1 145 9 discriminator 1
+ 321              	 #NO_APP
+ 322              	.LBE48:
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 323              		.loc 1 146 9 discriminator 1
+ 324              	.LBB49:
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 325              		.loc 1 146 9 discriminator 1
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 326              		.loc 1 146 9 discriminator 1
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 327              		.loc 1 146 9 discriminator 1
+ 328              	 #APP
+ 329              	# 146 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 330              		csrrs a5, mstatus, 8
+ 331              	# 0 "" 2
+ 332              	.LVL17:
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 333              		.loc 1 146 9 discriminator 1
+ 334              	 #NO_APP
+ 335              	.LBE49:
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 336              		.loc 1 149 5 discriminator 1
+ 337              	.LBB50:
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 338              		.loc 1 149 5 discriminator 1
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 339              		.loc 1 149 5 discriminator 1
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 340              		.loc 1 149 5 discriminator 1
+ 341              	 #APP
+ 342              	# 149 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 343              		csrrc a5, 0x811U, 1
+ 344              	# 0 "" 2
+ 345              		.loc 1 149 5 discriminator 1
+ 346              	 #NO_APP
+ 347              	.LBE50:
+ 348              		.loc 1 150 1 is_stmt 0 discriminator 1
+ 349 0038 8280     		ret
+ 350              		.cfi_endproc
+ 351              	.LFE6:
+ 353              		.section	.text.pmu_to_standbymode,"ax",@progbits
+ 354              		.align	1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 12
+
+
+ 355              		.globl	pmu_to_standbymode
+ 357              	pmu_to_standbymode:
+ 358              	.LFB7:
+ 151:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+ 152:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+ 153:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      pmu work at standby mode
+ 154:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  standbymodecmd:
+ 155:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****                 only one parameter can be selected which is shown as below:
+ 156:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        WFI_CMD: use WFI command
+ 157:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        WFE_CMD: use WFE command
+ 158:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+ 159:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+ 160:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+ 161:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_to_standbymode(uint8_t standbymodecmd)
+ 162:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+ 359              		.loc 1 162 1 is_stmt 1
+ 360              		.cfi_startproc
+ 361              	.LVL18:
+ 163:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* set CSR_SLEEPVALUE bit of RISC-V system control register */
+ 164:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     set_csr(0x811U, 0x1U);
+ 362              		.loc 1 164 5
+ 363              	.LBB51:
+ 364              		.loc 1 164 5
+ 365              		.loc 1 164 5
+ 366              		.loc 1 164 5
+ 367              	 #APP
+ 368              	# 164 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 165              	
+ 369              		csrrs a5, 0x811U, 1
+ 370              	# 0 "" 2
+ 371              	.LVL19:
+ 164:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     set_csr(0x811U, 0x1U);
+ 372              		.loc 1 164 5
+ 373              	 #NO_APP
+ 374              	.LBE51:
+ 166:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* set stbmod bit */
+ 167:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL |= PMU_CTL_STBMOD;
+ 375              		.loc 1 167 5
+ 376              		.loc 1 167 13 is_stmt 0
+ 377 0004 B7770040 		li	a5,1073770496
+ 378 0008 9843     		lw	a4,0(a5)
+ 379 000a 13672700 		ori	a4,a4,2
+ 380 000e 98C3     		sw	a4,0(a5)
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+ 169:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* reset wakeup flag */
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL |= PMU_CTL_WURST;
+ 381              		.loc 1 170 5 is_stmt 1
+ 382              		.loc 1 170 13 is_stmt 0
+ 383 0010 9843     		lw	a4,0(a5)
+ 384 0012 13674700 		ori	a4,a4,4
+ 385 0016 98C3     		sw	a4,0(a5)
+ 171:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+ 172:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     /* select WFI or WFE command to enter standby mode */
+ 173:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     if(WFI_CMD == standbymodecmd){
+ 386              		.loc 1 173 5 is_stmt 1
+ 387              		.loc 1 173 7 is_stmt 0
+ 388 0018 11E5     		bne	a0,zero,.L13
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 13
+
+
+ 174:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 389              		.loc 1 174 9 is_stmt 1
+ 390              	.LBB52:
+ 391              	.LBB53:
+  90:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** }
+ 392              		.loc 2 90 5
+ 393              	 #APP
+ 394              	# 90 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers/n200_func.h" 1
+ 395              		wfi
+ 396              	# 0 "" 2
+ 397              	 #NO_APP
+ 398              	.LBE53:
+ 399              	.LBE52:
+ 175:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }else{
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         clear_csr(mstatus, MSTATUS_MIE);
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 178:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         clear_csr(0x810U, 0x1U);
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 181:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     clear_csr(0x811U, 0x1U);
+ 400              		.loc 1 182 5
+ 401              	.LBB54:
+ 402              		.loc 1 182 5
+ 403              		.loc 1 182 5
+ 404              		.loc 1 182 5
+ 405              	 #APP
+ 406              	# 182 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 183              	}
+ 407              		csrrc a5, 0x811U, 1
+ 408              	# 0 "" 2
+ 409              	.LVL20:
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     clear_csr(0x811U, 0x1U);
+ 410              		.loc 1 182 5
+ 411              	 #NO_APP
+ 412              	.LBE54:
+ 413              		.loc 1 183 1 is_stmt 0
+ 414 0022 8280     		ret
+ 415              	.L13:
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 416              		.loc 1 176 9 is_stmt 1 discriminator 1
+ 417              	.LBB55:
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 418              		.loc 1 176 9 discriminator 1
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 419              		.loc 1 176 9 discriminator 1
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 420              		.loc 1 176 9 discriminator 1
+ 421              	 #APP
+ 422              	# 176 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 423              		csrrc a5, mstatus, 8
+ 424              	# 0 "" 2
+ 425              	.LVL21:
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(0x810U, 0x1U);
+ 426              		.loc 1 176 9 discriminator 1
+ 427              	 #NO_APP
+ 428              	.LBE55:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 14
+
+
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 429              		.loc 1 177 9 discriminator 1
+ 430              	.LBB56:
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 431              		.loc 1 177 9 discriminator 1
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 432              		.loc 1 177 9 discriminator 1
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 433              		.loc 1 177 9 discriminator 1
+ 434              	 #APP
+ 435              	# 177 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 436              		csrrs a5, 0x810U, 1
+ 437              	# 0 "" 2
+ 438              	.LVL22:
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         __WFI();
+ 439              		.loc 1 177 9 discriminator 1
+ 440              	 #NO_APP
+ 441              	.LBE56:
+ 178:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         clear_csr(0x810U, 0x1U);
+ 442              		.loc 1 178 9 discriminator 1
+ 443              	.LBB57:
+ 444              	.LBB58:
+  90:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h **** }
+ 445              		.loc 2 90 5 discriminator 1
+ 446              	 #APP
+ 447              	# 90 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers/n200_func.h" 1
+ 448              		wfi
+ 449              	# 0 "" 2
+ 450              	 #NO_APP
+ 451              	.LBE58:
+ 452              	.LBE57:
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 453              		.loc 1 179 9 discriminator 1
+ 454              	.LBB59:
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 455              		.loc 1 179 9 discriminator 1
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 456              		.loc 1 179 9 discriminator 1
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 457              		.loc 1 179 9 discriminator 1
+ 458              	 #APP
+ 459              	# 179 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 460              		csrrc a5, 0x810U, 1
+ 461              	# 0 "" 2
+ 462              	.LVL23:
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         set_csr(mstatus, MSTATUS_MIE);
+ 463              		.loc 1 179 9 discriminator 1
+ 464              	 #NO_APP
+ 465              	.LBE59:
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 466              		.loc 1 180 9 discriminator 1
+ 467              	.LBB60:
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 468              		.loc 1 180 9 discriminator 1
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 469              		.loc 1 180 9 discriminator 1
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 15
+
+
+ 470              		.loc 1 180 9 discriminator 1
+ 471              	 #APP
+ 472              	# 180 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 473              		csrrs a5, mstatus, 8
+ 474              	# 0 "" 2
+ 475              	.LVL24:
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 476              		.loc 1 180 9 discriminator 1
+ 477              	 #NO_APP
+ 478              	.LBE60:
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 479              		.loc 1 182 5 discriminator 1
+ 480              	.LBB61:
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 481              		.loc 1 182 5 discriminator 1
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 482              		.loc 1 182 5 discriminator 1
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 483              		.loc 1 182 5 discriminator 1
+ 484              	 #APP
+ 485              	# 182 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_pmu.c" 
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 486              		csrrc a5, 0x811U, 1
+ 487              	# 0 "" 2
+ 488              		.loc 1 182 5 discriminator 1
+ 489              	 #NO_APP
+ 490              	.LBE61:
+ 491              		.loc 1 183 1 is_stmt 0 discriminator 1
+ 492 003c 8280     		ret
+ 493              		.cfi_endproc
+ 494              	.LFE7:
+ 496              		.section	.text.pmu_wakeup_pin_enable,"ax",@progbits
+ 497              		.align	1
+ 498              		.globl	pmu_wakeup_pin_enable
+ 500              	pmu_wakeup_pin_enable:
+ 501              	.LFB8:
+ 184:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+ 185:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+ 186:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      enable wakeup pin
+ 187:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  none
+ 188:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+ 189:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+ 190:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+ 191:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_wakeup_pin_enable(void)
+ 192:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+ 502              		.loc 1 192 1 is_stmt 1
+ 503              		.cfi_startproc
+ 193:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CS |= PMU_CS_WUPEN;
+ 504              		.loc 1 193 5
+ 505              		.loc 1 193 12 is_stmt 0
+ 506 0000 37770040 		li	a4,1073770496
+ 507 0004 5C43     		lw	a5,4(a4)
+ 508 0006 93E70710 		ori	a5,a5,256
+ 509 000a 5CC3     		sw	a5,4(a4)
+ 194:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 510              		.loc 1 194 1
+ 511 000c 8280     		ret
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 16
+
+
+ 512              		.cfi_endproc
+ 513              	.LFE8:
+ 515              		.section	.text.pmu_wakeup_pin_disable,"ax",@progbits
+ 516              		.align	1
+ 517              		.globl	pmu_wakeup_pin_disable
+ 519              	pmu_wakeup_pin_disable:
+ 520              	.LFB9:
+ 195:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+ 196:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+ 197:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      disable wakeup pin
+ 198:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  none
+ 199:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+ 200:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+ 201:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+ 202:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_wakeup_pin_disable(void)
+ 203:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+ 521              		.loc 1 203 1 is_stmt 1
+ 522              		.cfi_startproc
+ 204:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CS &= ~PMU_CS_WUPEN;
+ 523              		.loc 1 204 5
+ 524              		.loc 1 204 12 is_stmt 0
+ 525 0000 37770040 		li	a4,1073770496
+ 526 0004 5C43     		lw	a5,4(a4)
+ 527 0006 93F7F7EF 		andi	a5,a5,-257
+ 528 000a 5CC3     		sw	a5,4(a4)
+ 205:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 529              		.loc 1 205 1
+ 530 000c 8280     		ret
+ 531              		.cfi_endproc
+ 532              	.LFE9:
+ 534              		.section	.text.pmu_backup_write_enable,"ax",@progbits
+ 535              		.align	1
+ 536              		.globl	pmu_backup_write_enable
+ 538              	pmu_backup_write_enable:
+ 539              	.LFB10:
+ 206:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+ 207:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+ 208:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      enable write access to the registers in backup domain
+ 209:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  none
+ 210:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+ 211:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+ 212:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+ 213:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_backup_write_enable(void)
+ 214:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+ 540              		.loc 1 214 1 is_stmt 1
+ 541              		.cfi_startproc
+ 215:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL |= PMU_CTL_BKPWEN;
+ 542              		.loc 1 215 5
+ 543              		.loc 1 215 13 is_stmt 0
+ 544 0000 37770040 		li	a4,1073770496
+ 545 0004 1C43     		lw	a5,0(a4)
+ 546 0006 93E70710 		ori	a5,a5,256
+ 547 000a 1CC3     		sw	a5,0(a4)
+ 216:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 548              		.loc 1 216 1
+ 549 000c 8280     		ret
+ 550              		.cfi_endproc
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 17
+
+
+ 551              	.LFE10:
+ 553              		.section	.text.pmu_backup_write_disable,"ax",@progbits
+ 554              		.align	1
+ 555              		.globl	pmu_backup_write_disable
+ 557              	pmu_backup_write_disable:
+ 558              	.LFB11:
+ 217:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+ 218:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+ 219:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      disable write access to the registers in backup domain
+ 220:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  none
+ 221:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+ 222:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+ 223:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_backup_write_disable(void)
+ 225:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+ 559              		.loc 1 225 1 is_stmt 1
+ 560              		.cfi_startproc
+ 226:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     PMU_CTL &= ~PMU_CTL_BKPWEN;
+ 561              		.loc 1 226 5
+ 562              		.loc 1 226 13 is_stmt 0
+ 563 0000 37770040 		li	a4,1073770496
+ 564 0004 1C43     		lw	a5,0(a4)
+ 565 0006 93F7F7EF 		andi	a5,a5,-257
+ 566 000a 1CC3     		sw	a5,0(a4)
+ 227:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 567              		.loc 1 227 1
+ 568 000c 8280     		ret
+ 569              		.cfi_endproc
+ 570              	.LFE11:
+ 572              		.section	.text.pmu_flag_get,"ax",@progbits
+ 573              		.align	1
+ 574              		.globl	pmu_flag_get
+ 576              	pmu_flag_get:
+ 577              	.LFB12:
+ 228:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+ 229:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+ 230:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      get flag state
+ 231:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  flag:
+ 232:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****                 only one parameter can be selected which is shown as below:
+ 233:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_FLAG_WAKEUP: wakeup flag
+ 234:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_FLAG_STANDBY: standby flag
+ 235:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_FLAG_LVD: lvd flag
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+ 237:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     FlagStatus SET or RESET
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+ 239:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** FlagStatus pmu_flag_get(uint32_t flag)
+ 240:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+ 578              		.loc 1 240 1 is_stmt 1
+ 579              		.cfi_startproc
+ 580              	.LVL25:
+ 241:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     if(PMU_CS & flag){
+ 581              		.loc 1 241 5
+ 582              		.loc 1 241 8 is_stmt 0
+ 583 0000 B7770040 		li	a5,1073770496
+ 584 0004 DC43     		lw	a5,4(a5)
+ 585              		.loc 1 241 15
+ 586 0006 7D8D     		and	a0,a5,a0
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 18
+
+
+ 587              	.LVL26:
+ 242:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         return  SET;
+ 243:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }else{
+ 244:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         return  RESET;
+ 245:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 246:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 588              		.loc 1 246 1
+ 589 0008 3335A000 		snez	a0,a0
+ 590 000c 8280     		ret
+ 591              		.cfi_endproc
+ 592              	.LFE12:
+ 594              		.section	.text.pmu_flag_clear,"ax",@progbits
+ 595              		.align	1
+ 596              		.globl	pmu_flag_clear
+ 598              	pmu_flag_clear:
+ 599              	.LFB13:
+ 247:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** 
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** /*!
+ 249:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \brief      clear flag bit
+ 250:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[in]  flag_reset:
+ 251:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****                 only one parameter can be selected which is shown as below:
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_FLAG_RESET_WAKEUP: reset wakeup flag
+ 253:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****       \arg        PMU_FLAG_RESET_STANDBY: reset standby flag
+ 254:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \param[out] none
+ 255:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     \retval     none
+ 256:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** */
+ 257:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** void pmu_flag_clear(uint32_t flag_reset)
+ 258:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** {
+ 600              		.loc 1 258 1 is_stmt 1
+ 601              		.cfi_startproc
+ 602              	.LVL27:
+ 259:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     switch(flag_reset){
+ 603              		.loc 1 259 5
+ 604 0000 01CD     		beq	a0,zero,.L21
+ 605 0002 8547     		li	a5,1
+ 606 0004 6319F500 		bne	a0,a5,.L24
+ 260:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     case PMU_FLAG_RESET_WAKEUP:
+ 261:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         /* reset wakeup flag */
+ 262:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         PMU_CTL |= PMU_CTL_WURST;
+ 263:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         break;
+ 264:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     case PMU_FLAG_RESET_STANDBY:
+ 265:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         /* reset standby flag */
+ 266:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         PMU_CTL |= PMU_CTL_STBRST;
+ 607              		.loc 1 266 9
+ 608              		.loc 1 266 17 is_stmt 0
+ 609 0008 37770040 		li	a4,1073770496
+ 610 000c 1C43     		lw	a5,0(a4)
+ 611 000e 93E78700 		ori	a5,a5,8
+ 612 0012 1CC3     		sw	a5,0(a4)
+ 267:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         break;
+ 613              		.loc 1 267 9 is_stmt 1
+ 268:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     default :
+ 269:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         break;
+ 270:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     }
+ 271:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c **** }
+ 614              		.loc 1 271 1 is_stmt 0
+ 615 0014 8280     		ret
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 19
+
+
+ 616              	.L24:
+ 617 0016 8280     		ret
+ 618              	.L21:
+ 262:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         break;
+ 619              		.loc 1 262 9 is_stmt 1
+ 262:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****         break;
+ 620              		.loc 1 262 17 is_stmt 0
+ 621 0018 37770040 		li	a4,1073770496
+ 622 001c 1C43     		lw	a5,0(a4)
+ 623 001e 93E74700 		ori	a5,a5,4
+ 624 0022 1CC3     		sw	a5,0(a4)
+ 263:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c ****     case PMU_FLAG_RESET_STANDBY:
+ 625              		.loc 1 263 9 is_stmt 1
+ 626 0024 8280     		ret
+ 627              		.cfi_endproc
+ 628              	.LFE13:
+ 630              		.text
+ 631              	.Letext0:
+ 632              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 633              		.file 4 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 634              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 635              		.file 6 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu
+ 636              		.file 7 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32vf103_pmu.c
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:13     .text.pmu_deinit:0000000000000000 pmu_deinit
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:17     .text.pmu_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:18     .text.pmu_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:19     .text.pmu_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:20     .text.pmu_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:22     .text.pmu_deinit:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:24     .text.pmu_deinit:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:26     .text.pmu_deinit:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:27     .text.pmu_deinit:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:29     .text.pmu_deinit:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:32     .text.pmu_deinit:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:33     .text.pmu_deinit:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:34     .text.pmu_deinit:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:36     .text.pmu_deinit:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:38     .text.pmu_deinit:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:40     .text.pmu_deinit:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:42     .text.pmu_deinit:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:44     .text.pmu_deinit:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:51     .text.pmu_lvd_select:0000000000000000 pmu_lvd_select
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:54     .text.pmu_lvd_select:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:56     .text.pmu_lvd_select:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:57     .text.pmu_lvd_select:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:58     .text.pmu_lvd_select:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:63     .text.pmu_lvd_select:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:64     .text.pmu_lvd_select:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:68     .text.pmu_lvd_select:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:69     .text.pmu_lvd_select:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:74     .text.pmu_lvd_select:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:75     .text.pmu_lvd_select:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:79     .text.pmu_lvd_select:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:80     .text.pmu_lvd_select:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:87     .text.pmu_lvd_disable:0000000000000000 pmu_lvd_disable
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:90     .text.pmu_lvd_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:91     .text.pmu_lvd_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:92     .text.pmu_lvd_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:93     .text.pmu_lvd_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:98     .text.pmu_lvd_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:99     .text.pmu_lvd_disable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:106    .text.pmu_to_sleepmode:0000000000000000 pmu_to_sleepmode
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:109    .text.pmu_to_sleepmode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:111    .text.pmu_to_sleepmode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:113    .text.pmu_to_sleepmode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:114    .text.pmu_to_sleepmode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:115    .text.pmu_to_sleepmode:0000000000000000 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:103    .text.pmu_to_sleepmode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:124    .text.pmu_to_sleepmode:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:125    .text.pmu_to_sleepmode:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:126    .text.pmu_to_sleepmode:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:131    .text.pmu_to_sleepmode:0000000000000006 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h:90     .text.pmu_to_sleepmode:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:143    .text.pmu_to_sleepmode:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:144    .text.pmu_to_sleepmode:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:145    .text.pmu_to_sleepmode:000000000000000c .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:109    .text.pmu_to_sleepmode:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:154    .text.pmu_to_sleepmode:0000000000000010 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 21
+
+
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:156    .text.pmu_to_sleepmode:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:157    .text.pmu_to_sleepmode:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:158    .text.pmu_to_sleepmode:0000000000000010 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:110    .text.pmu_to_sleepmode:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:167    .text.pmu_to_sleepmode:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:170    .text.pmu_to_sleepmode:0000000000000014 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h:90     .text.pmu_to_sleepmode:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:180    .text.pmu_to_sleepmode:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:181    .text.pmu_to_sleepmode:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:182    .text.pmu_to_sleepmode:0000000000000018 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:112    .text.pmu_to_sleepmode:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:191    .text.pmu_to_sleepmode:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:193    .text.pmu_to_sleepmode:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:194    .text.pmu_to_sleepmode:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:195    .text.pmu_to_sleepmode:000000000000001c .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:113    .text.pmu_to_sleepmode:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:204    .text.pmu_to_sleepmode:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:205    .text.pmu_to_sleepmode:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:206    .text.pmu_to_sleepmode:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:213    .text.pmu_to_deepsleepmode:0000000000000000 pmu_to_deepsleepmode
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:216    .text.pmu_to_deepsleepmode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:218    .text.pmu_to_deepsleepmode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:219    .text.pmu_to_deepsleepmode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:220    .text.pmu_to_deepsleepmode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:225    .text.pmu_to_deepsleepmode:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:226    .text.pmu_to_deepsleepmode:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:232    .text.pmu_to_deepsleepmode:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:233    .text.pmu_to_deepsleepmode:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:234    .text.pmu_to_deepsleepmode:0000000000000010 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:137    .text.pmu_to_deepsleepmode:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:243    .text.pmu_to_deepsleepmode:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:244    .text.pmu_to_deepsleepmode:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:245    .text.pmu_to_deepsleepmode:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:249    .text.pmu_to_deepsleepmode:0000000000000016 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h:90     .text.pmu_to_deepsleepmode:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:259    .text.pmu_to_deepsleepmode:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:260    .text.pmu_to_deepsleepmode:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:261    .text.pmu_to_deepsleepmode:000000000000001a .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:149    .text.pmu_to_deepsleepmode:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:270    .text.pmu_to_deepsleepmode:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:271    .text.pmu_to_deepsleepmode:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:275    .text.pmu_to_deepsleepmode:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:276    .text.pmu_to_deepsleepmode:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:277    .text.pmu_to_deepsleepmode:0000000000000020 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:142    .text.pmu_to_deepsleepmode:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:286    .text.pmu_to_deepsleepmode:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:288    .text.pmu_to_deepsleepmode:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:289    .text.pmu_to_deepsleepmode:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:290    .text.pmu_to_deepsleepmode:0000000000000024 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:143    .text.pmu_to_deepsleepmode:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:299    .text.pmu_to_deepsleepmode:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:302    .text.pmu_to_deepsleepmode:0000000000000028 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h:90     .text.pmu_to_deepsleepmode:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:312    .text.pmu_to_deepsleepmode:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:313    .text.pmu_to_deepsleepmode:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:314    .text.pmu_to_deepsleepmode:000000000000002c .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:145    .text.pmu_to_deepsleepmode:000000000000002c .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 22
+
+
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:323    .text.pmu_to_deepsleepmode:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:325    .text.pmu_to_deepsleepmode:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:326    .text.pmu_to_deepsleepmode:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:327    .text.pmu_to_deepsleepmode:0000000000000030 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:146    .text.pmu_to_deepsleepmode:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:336    .text.pmu_to_deepsleepmode:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:338    .text.pmu_to_deepsleepmode:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:339    .text.pmu_to_deepsleepmode:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:340    .text.pmu_to_deepsleepmode:0000000000000034 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:149    .text.pmu_to_deepsleepmode:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:348    .text.pmu_to_deepsleepmode:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:349    .text.pmu_to_deepsleepmode:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:350    .text.pmu_to_deepsleepmode:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:357    .text.pmu_to_standbymode:0000000000000000 pmu_to_standbymode
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:360    .text.pmu_to_standbymode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:362    .text.pmu_to_standbymode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:364    .text.pmu_to_standbymode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:365    .text.pmu_to_standbymode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:366    .text.pmu_to_standbymode:0000000000000000 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:164    .text.pmu_to_standbymode:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:375    .text.pmu_to_standbymode:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:376    .text.pmu_to_standbymode:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:377    .text.pmu_to_standbymode:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:382    .text.pmu_to_standbymode:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:383    .text.pmu_to_standbymode:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:387    .text.pmu_to_standbymode:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:388    .text.pmu_to_standbymode:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:392    .text.pmu_to_standbymode:000000000000001a .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h:90     .text.pmu_to_standbymode:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:402    .text.pmu_to_standbymode:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:403    .text.pmu_to_standbymode:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:404    .text.pmu_to_standbymode:000000000000001e .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:182    .text.pmu_to_standbymode:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:413    .text.pmu_to_standbymode:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:414    .text.pmu_to_standbymode:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:418    .text.pmu_to_standbymode:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:419    .text.pmu_to_standbymode:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:420    .text.pmu_to_standbymode:0000000000000024 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:176    .text.pmu_to_standbymode:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:429    .text.pmu_to_standbymode:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:431    .text.pmu_to_standbymode:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:432    .text.pmu_to_standbymode:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:433    .text.pmu_to_standbymode:0000000000000028 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:177    .text.pmu_to_standbymode:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:442    .text.pmu_to_standbymode:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:445    .text.pmu_to_standbymode:000000000000002c .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers\n200_func.h:90     .text.pmu_to_standbymode:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:455    .text.pmu_to_standbymode:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:456    .text.pmu_to_standbymode:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:457    .text.pmu_to_standbymode:0000000000000030 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:179    .text.pmu_to_standbymode:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:466    .text.pmu_to_standbymode:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:468    .text.pmu_to_standbymode:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:469    .text.pmu_to_standbymode:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:470    .text.pmu_to_standbymode:0000000000000034 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:180    .text.pmu_to_standbymode:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:479    .text.pmu_to_standbymode:0000000000000038 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 23
+
+
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:481    .text.pmu_to_standbymode:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:482    .text.pmu_to_standbymode:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:483    .text.pmu_to_standbymode:0000000000000038 .L0 
+C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_pmu.c:182    .text.pmu_to_standbymode:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:491    .text.pmu_to_standbymode:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:492    .text.pmu_to_standbymode:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:493    .text.pmu_to_standbymode:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:500    .text.pmu_wakeup_pin_enable:0000000000000000 pmu_wakeup_pin_enable
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:503    .text.pmu_wakeup_pin_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:504    .text.pmu_wakeup_pin_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:505    .text.pmu_wakeup_pin_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:506    .text.pmu_wakeup_pin_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:511    .text.pmu_wakeup_pin_enable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:512    .text.pmu_wakeup_pin_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:519    .text.pmu_wakeup_pin_disable:0000000000000000 pmu_wakeup_pin_disable
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:522    .text.pmu_wakeup_pin_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:523    .text.pmu_wakeup_pin_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:524    .text.pmu_wakeup_pin_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:525    .text.pmu_wakeup_pin_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:530    .text.pmu_wakeup_pin_disable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:531    .text.pmu_wakeup_pin_disable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:538    .text.pmu_backup_write_enable:0000000000000000 pmu_backup_write_enable
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:541    .text.pmu_backup_write_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:542    .text.pmu_backup_write_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:543    .text.pmu_backup_write_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:544    .text.pmu_backup_write_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:549    .text.pmu_backup_write_enable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:550    .text.pmu_backup_write_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:557    .text.pmu_backup_write_disable:0000000000000000 pmu_backup_write_disable
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:560    .text.pmu_backup_write_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:561    .text.pmu_backup_write_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:562    .text.pmu_backup_write_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:563    .text.pmu_backup_write_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:568    .text.pmu_backup_write_disable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:569    .text.pmu_backup_write_disable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:576    .text.pmu_flag_get:0000000000000000 pmu_flag_get
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:579    .text.pmu_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:581    .text.pmu_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:582    .text.pmu_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:583    .text.pmu_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:586    .text.pmu_flag_get:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:589    .text.pmu_flag_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:591    .text.pmu_flag_get:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:598    .text.pmu_flag_clear:0000000000000000 pmu_flag_clear
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:601    .text.pmu_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:603    .text.pmu_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:604    .text.pmu_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:608    .text.pmu_flag_clear:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:609    .text.pmu_flag_clear:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:614    .text.pmu_flag_clear:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:615    .text.pmu_flag_clear:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:620    .text.pmu_flag_clear:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:621    .text.pmu_flag_clear:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:626    .text.pmu_flag_clear:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:627    .text.pmu_flag_clear:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:47     .text.pmu_deinit:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:83     .text.pmu_lvd_select:0000000000000022 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 24
+
+
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:102    .text.pmu_lvd_disable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:209    .text.pmu_to_sleepmode:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:353    .text.pmu_to_deepsleepmode:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:496    .text.pmu_to_standbymode:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:515    .text.pmu_wakeup_pin_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:534    .text.pmu_wakeup_pin_disable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:553    .text.pmu_backup_write_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:572    .text.pmu_backup_write_disable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:594    .text.pmu_flag_get:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:630    .text.pmu_flag_clear:0000000000000026 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:138    .text.pmu_to_sleepmode:000000000000000c .L7
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:272    .text.pmu_to_deepsleepmode:0000000000000020 .L10
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:415    .text.pmu_to_standbymode:0000000000000024 .L13
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:618    .text.pmu_flag_clear:0000000000000018 .L21
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:616    .text.pmu_flag_clear:0000000000000016 .L24
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1350   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2023   .debug_str:00000000000001d2 .LASF68
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2061   .debug_str:000000000000038e .LASF69
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2047   .debug_str:00000000000002e4 .LASF70
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1913   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1953   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2035   .debug_str:0000000000000290 .LASF0
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2025   .debug_str:000000000000024c .LASF1
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2007   .debug_str:000000000000016a .LASF6
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2017   .debug_str:00000000000001a7 .LASF2
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1983   .debug_str:00000000000000c4 .LASF3
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2041   .debug_str:00000000000002b6 .LASF4
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2001   .debug_str:0000000000000143 .LASF5
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1979   .debug_str:00000000000000ab .LASF7
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2003   .debug_str:000000000000014c .LASF8
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1999   .debug_str:0000000000000135 .LASF9
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2029   .debug_str:0000000000000263 .LASF10
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1989   .debug_str:00000000000000f0 .LASF11
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2033   .debug_str:0000000000000287 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2051   .debug_str:0000000000000342 .LASF71
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2073   .debug_str:000000000000042b .LASF13
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2093   .debug_str:00000000000004b2 .LASF14
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1961   .debug_str:0000000000000036 .LASF15
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2045   .debug_str:00000000000002d6 .LASF16
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1993   .debug_str:000000000000010e .LASF17
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1981   .debug_str:00000000000000b6 .LASF18
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2011   .debug_str:000000000000017f .LASF19
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2049   .debug_str:0000000000000334 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2091   .debug_str:00000000000004a4 .LASF21
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2101   .debug_str:00000000000004e6 .LASF22
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1975   .debug_str:0000000000000086 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2005   .debug_str:000000000000015e .LASF24
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2057   .debug_str:0000000000000379 .LASF25
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2099   .debug_str:00000000000004d8 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2063   .debug_str:00000000000003e9 .LASF27
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1963   .debug_str:0000000000000043 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2097   .debug_str:00000000000004cc .LASF29
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2067   .debug_str:0000000000000403 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1967   .debug_str:000000000000005d .LASF31
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1997   .debug_str:0000000000000129 .LASF32
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1973   .debug_str:000000000000007a .LASF33
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 25
+
+
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2069   .debug_str:000000000000040f .LASF34
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2027   .debug_str:0000000000000258 .LASF35
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2019   .debug_str:00000000000001b5 .LASF36
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2031   .debug_str:000000000000027a .LASF37
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2065   .debug_str:00000000000003f6 .LASF38
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1965   .debug_str:0000000000000050 .LASF39
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1995   .debug_str:000000000000011c .LASF40
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2037   .debug_str:000000000000029d .LASF41
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2039   .debug_str:00000000000002aa .LASF42
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2075   .debug_str:0000000000000431 .LASF43
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1957   .debug_str:0000000000000019 .LASF44
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2079   .debug_str:0000000000000455 .LASF45
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2013   .debug_str:000000000000018d .LASF46
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2015   .debug_str:000000000000019b .LASF47
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2095   .debug_str:00000000000004bd .LASF54
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:599    .text.pmu_flag_clear:0000000000000000 .LFB13
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:628    .text.pmu_flag_clear:0000000000000026 .LFE13
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2009   .debug_str:0000000000000174 .LASF48
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1985   .debug_str:00000000000000ce .LASF72
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:577    .text.pmu_flag_get:0000000000000000 .LFB12
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:592    .text.pmu_flag_get:000000000000000e .LFE12
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2085   .debug_str:0000000000000478 .LASF49
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1818   .debug_loc:0000000000000000 .LLST3
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1955   .debug_str:0000000000000000 .LASF50
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:558    .text.pmu_backup_write_disable:0000000000000000 .LFB11
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:570    .text.pmu_backup_write_disable:000000000000000e .LFE11
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2077   .debug_str:000000000000043d .LASF51
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:539    .text.pmu_backup_write_enable:0000000000000000 .LFB10
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:551    .text.pmu_backup_write_enable:000000000000000e .LFE10
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2053   .debug_str:0000000000000352 .LASF52
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:520    .text.pmu_wakeup_pin_disable:0000000000000000 .LFB9
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:532    .text.pmu_wakeup_pin_disable:000000000000000e .LFE9
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1991   .debug_str:00000000000000f8 .LASF53
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:501    .text.pmu_wakeup_pin_enable:0000000000000000 .LFB8
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:513    .text.pmu_wakeup_pin_enable:000000000000000e .LFE8
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2021   .debug_str:00000000000001bf .LASF55
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:358    .text.pmu_to_standbymode:0000000000000000 .LFB7
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:494    .text.pmu_to_standbymode:000000000000003e .LFE7
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2087   .debug_str:000000000000047d .LASF56
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:363    .text.pmu_to_standbymode:0000000000000000 .LBB51
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:374    .text.pmu_to_standbymode:0000000000000004 .LBE51
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1971   .debug_str:0000000000000074 .LASF57
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:417    .text.pmu_to_standbymode:0000000000000024 .LBB55
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:428    .text.pmu_to_standbymode:0000000000000028 .LBE55
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:430    .text.pmu_to_standbymode:0000000000000028 .LBB56
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:441    .text.pmu_to_standbymode:000000000000002c .LBE56
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:454    .text.pmu_to_standbymode:0000000000000030 .LBB59
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:465    .text.pmu_to_standbymode:0000000000000034 .LBE59
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:467    .text.pmu_to_standbymode:0000000000000034 .LBB60
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:478    .text.pmu_to_standbymode:0000000000000038 .LBE60
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:390    .text.pmu_to_standbymode:000000000000001a .LBB52
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:399    .text.pmu_to_standbymode:000000000000001e .LBE52
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:443    .text.pmu_to_standbymode:000000000000002c .LBB57
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:452    .text.pmu_to_standbymode:0000000000000030 .LBE57
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1987   .debug_str:00000000000000db .LASF58
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:214    .text.pmu_to_deepsleepmode:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:351    .text.pmu_to_deepsleepmode:000000000000003a .LFE6
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 26
+
+
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1832   .debug_loc:0000000000000021 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2081   .debug_str:0000000000000461 .LASF59
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:231    .text.pmu_to_deepsleepmode:0000000000000010 .LBB40
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:242    .text.pmu_to_deepsleepmode:0000000000000014 .LBE40
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:274    .text.pmu_to_deepsleepmode:0000000000000020 .LBB44
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:285    .text.pmu_to_deepsleepmode:0000000000000024 .LBE44
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:287    .text.pmu_to_deepsleepmode:0000000000000024 .LBB45
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:298    .text.pmu_to_deepsleepmode:0000000000000028 .LBE45
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:311    .text.pmu_to_deepsleepmode:000000000000002c .LBB48
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:322    .text.pmu_to_deepsleepmode:0000000000000030 .LBE48
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:324    .text.pmu_to_deepsleepmode:0000000000000030 .LBB49
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:335    .text.pmu_to_deepsleepmode:0000000000000034 .LBE49
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:247    .text.pmu_to_deepsleepmode:0000000000000016 .LBB41
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:256    .text.pmu_to_deepsleepmode:000000000000001a .LBE41
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:300    .text.pmu_to_deepsleepmode:0000000000000028 .LBB46
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:309    .text.pmu_to_deepsleepmode:000000000000002c .LBE46
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2071   .debug_str:000000000000041a .LASF60
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:107    .text.pmu_to_sleepmode:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:207    .text.pmu_to_sleepmode:0000000000000022 .LFE5
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2043   .debug_str:00000000000002c9 .LASF61
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:112    .text.pmu_to_sleepmode:0000000000000000 .LBB31
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:123    .text.pmu_to_sleepmode:0000000000000004 .LBE31
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:142    .text.pmu_to_sleepmode:000000000000000c .LBB34
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:153    .text.pmu_to_sleepmode:0000000000000010 .LBE34
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:155    .text.pmu_to_sleepmode:0000000000000010 .LBB35
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:166    .text.pmu_to_sleepmode:0000000000000014 .LBE35
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:179    .text.pmu_to_sleepmode:0000000000000018 .LBB38
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:190    .text.pmu_to_sleepmode:000000000000001c .LBE38
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:192    .text.pmu_to_sleepmode:000000000000001c .LBB39
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:203    .text.pmu_to_sleepmode:0000000000000020 .LBE39
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:128    .text.pmu_to_sleepmode:0000000000000006 .LBB32
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:140    .text.pmu_to_sleepmode:000000000000000c .LBE32
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:168    .text.pmu_to_sleepmode:0000000000000014 .LBB36
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:177    .text.pmu_to_sleepmode:0000000000000018 .LBE36
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2055   .debug_str:0000000000000369 .LASF62
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:88     .text.pmu_lvd_disable:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:100    .text.pmu_lvd_disable:000000000000000c .LFE4
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1959   .debug_str:0000000000000027 .LASF63
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:52     .text.pmu_lvd_select:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:81     .text.pmu_lvd_select:0000000000000022 .LFE3
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2059   .debug_str:0000000000000387 .LASF64
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1846   .debug_loc:0000000000000042 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1969   .debug_str:0000000000000069 .LASF65
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:14     .text.pmu_deinit:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:45     .text.pmu_deinit:0000000000000020 .LFE2
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1860   .debug_loc:0000000000000063 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:30     .text.pmu_deinit:0000000000000010 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:43     .text.pmu_deinit:0000000000000020 .LVL1
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2083   .debug_str:0000000000000472 .LASF73
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:2089   .debug_str:000000000000048c .LASF66
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:1977   .debug_str:0000000000000092 .LASF67
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:580    .text.pmu_flag_get:0000000000000000 .LVL25
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:587    .text.pmu_flag_get:0000000000000008 .LVL26
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:217    .text.pmu_to_deepsleepmode:0000000000000000 .LVL10
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:228    .text.pmu_to_deepsleepmode:000000000000000e .LVL11
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:55     .text.pmu_lvd_select:0000000000000000 .LVL2
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:71     .text.pmu_lvd_select:0000000000000016 .LVL3
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s 			page 27
+
+
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:21     .text.pmu_deinit:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:39     .text.pmu_deinit:0000000000000018 .LCFI1
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:638    .debug_info:0000000000000000 .Ldebug_info0
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:258    .text.pmu_to_deepsleepmode:000000000000001a .LBB43
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:269    .text.pmu_to_deepsleepmode:000000000000001e .LBE43
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:337    .text.pmu_to_deepsleepmode:0000000000000034 .LBB50
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:347    .text.pmu_to_deepsleepmode:0000000000000038 .LBE50
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:401    .text.pmu_to_standbymode:000000000000001e .LBB54
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:412    .text.pmu_to_standbymode:0000000000000022 .LBE54
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:480    .text.pmu_to_standbymode:0000000000000038 .LBB61
+C:\Users\anton\AppData\Local\Temp\ccR1SJLx.s:490    .text.pmu_to_standbymode:000000000000003c .LBE61
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

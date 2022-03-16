@@ -1,0 +1,647 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 1
+
+
+   1              		.file	"timer6.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.timer6InitSampleRate,"ax",@progbits
+  10              		.align	1
+  11              		.globl	timer6InitSampleRate
+  13              	timer6InitSampleRate:
+  14              	.LFB2:
+  15              		.file 1 "timer6.c"
+   1:timer6.c      **** #include "gd32vf103.h"
+   2:timer6.c      **** #include "timer6.h"
+   3:timer6.c      **** 
+   4:timer6.c      **** #define CLOCK	108000000		    //system clock
+   5:timer6.c      **** #define PSC		10800				//prescalar = 10800
+   6:timer6.c      **** 
+   7:timer6.c      **** 
+   8:timer6.c      **** void timer6InitSampleRate(int sampleRate) {
+  16              		.loc 1 8 43
+  17              		.cfi_startproc
+  18              	.LVL0:
+   9:timer6.c      **** 	rcu_periph_clock_enable(RCU_TIMER6);									//enable RCU timer6
+  19              		.loc 1 9 2
+   8:timer6.c      **** 	rcu_periph_clock_enable(RCU_TIMER6);									//enable RCU timer6
+  20              		.loc 1 8 43 is_stmt 0
+  21 0000 0111     		addi	sp,sp,-32
+  22              	.LCFI0:
+  23              		.cfi_def_cfa_offset 32
+  24 0002 4AC8     		sw	s2,16(sp)
+  25              		.cfi_offset 18, -16
+  26 0004 2A89     		mv	s2,a0
+  27              		.loc 1 9 2
+  28 0006 13055070 		li	a0,1797
+  29              	.LVL1:
+   8:timer6.c      **** 	rcu_periph_clock_enable(RCU_TIMER6);									//enable RCU timer6
+  30              		.loc 1 8 43
+  31 000a 06CE     		sw	ra,28(sp)
+  32 000c 22CC     		sw	s0,24(sp)
+  33 000e 26CA     		sw	s1,20(sp)
+  34              		.cfi_offset 1, -4
+  35              		.cfi_offset 8, -8
+  36              		.cfi_offset 9, -12
+  10:timer6.c      **** 	
+  11:timer6.c      **** 	timer_parameter_struct timer_initpara;									//timer struct
+  12:timer6.c      **** 	timer_init(TIMER6, &timer_initpara);
+  37              		.loc 1 12 2
+  38 0010 37140040 		li	s0,1073745920
+   9:timer6.c      **** 	
+  39              		.loc 1 9 2
+  40 0014 97000000 		call	rcu_periph_clock_enable
+  40      E7800000 
+  41              	.LVL2:
+  11:timer6.c      **** 	timer_init(TIMER6, &timer_initpara);
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 2
+
+
+  42              		.loc 1 11 2 is_stmt 1
+  43              		.loc 1 12 2
+  44 001c 8A85     		mv	a1,sp
+  45 001e 13050440 		addi	a0,s0,1024
+  46 0022 97000000 		call	timer_init
+  46      E7800000 
+  47              	.LVL3:
+  13:timer6.c      **** 	timer_interrupt_enable(TIMER6, TIMER_INT_UP);
+  48              		.loc 1 13 2
+  49 002a 8545     		li	a1,1
+  50 002c 13050440 		addi	a0,s0,1024
+  51 0030 97000000 		call	timer_interrupt_enable
+  51      E7800000 
+  52              	.LVL4:
+  14:timer6.c      **** 	timer_enable(TIMER6);
+  53              		.loc 1 14 2
+  54 0038 13050440 		addi	a0,s0,1024
+  55 003c 97000000 		call	timer_enable
+  55      E7800000 
+  56              	.LVL5:
+  15:timer6.c      **** 	timer_prescaler_config(TIMER6, PSC-1, TIMER_PSC_RELOAD_NOW);			//timer, prescaler, load now
+  57              		.loc 1 15 2
+  58 0044 8D64     		li	s1,12288
+  59 0046 9385F4A2 		addi	a1,s1,-1489
+  16:timer6.c      **** 	timer_autoreload_value_config(TIMER6, CLOCK/(PSC*sampleRate)-1);		//timer, counter auto-reload val
+  60              		.loc 1 16 50 is_stmt 0
+  61 004a 938404A3 		addi	s1,s1,-1488
+  62 004e B3049902 		mul	s1,s2,s1
+  15:timer6.c      **** 	timer_prescaler_config(TIMER6, PSC-1, TIMER_PSC_RELOAD_NOW);			//timer, prescaler, load now
+  63              		.loc 1 15 2
+  64 0052 13050440 		addi	a0,s0,1024
+  65 0056 0546     		li	a2,1
+  66 0058 97000000 		call	timer_prescaler_config
+  66      E7800000 
+  67              	.LVL6:
+  68              		.loc 1 16 2 is_stmt 1
+  69              		.loc 1 16 45 is_stmt 0
+  70 0060 B7F56F06 		li	a1,107999232
+  71 0064 93850530 		addi	a1,a1,768
+  72              		.loc 1 16 2
+  73 0068 13050440 		addi	a0,s0,1024
+  74              		.loc 1 16 45
+  75 006c B3C59502 		div	a1,a1,s1
+  76              		.loc 1 16 2
+  77 0070 FD15     		addi	a1,a1,-1
+  78 0072 C205     		slli	a1,a1,16
+  79 0074 C181     		srli	a1,a1,16
+  80 0076 97000000 		call	timer_autoreload_value_config
+  80      E7800000 
+  81              	.LVL7:
+  17:timer6.c      **** 
+  18:timer6.c      **** 
+  19:timer6.c      **** 	/*
+  20:timer6.c      ****     timer_oc_parameter_struct timer_ocinitpara;
+  21:timer6.c      ****     timer_parameter_struct timer_initpara;
+  22:timer6.c      **** 
+  23:timer6.c      ****     rcu_periph_clock_enable(RCU_TIMER6);
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 3
+
+
+  24:timer6.c      **** 
+  25:timer6.c      ****     timer_deinit(TIMER6);
+  26:timer6.c      ****     // initialize TIMER init parameter struct 
+  27:timer6.c      ****     timer_struct_para_init(&timer_initpara);
+  28:timer6.c      ****     //TIMER1 configuration
+  29:timer6.c      ****     timer_initpara.prescaler         = PSC-1;
+  30:timer6.c      ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
+  31:timer6.c      ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
+  32:timer6.c      ****     timer_initpara.period            = CLOCK/(PSC*sampleRate)-1;
+  33:timer6.c      ****     timer_initpara.clockdivision     = TIMER_CKDIV_DIV1;
+  34:timer6.c      ****     timer_init(TIMER6, &timer_initpara);
+  35:timer6.c      **** 
+  36:timer6.c      ****     timer_interrupt_enable(TIMER6, TIMER_INT_UP);
+  37:timer6.c      ****     timer_enable(TIMER6);
+  38:timer6.c      **** 	*/
+  39:timer6.c      **** }
+  82              		.loc 1 39 1
+  83 007e F240     		lw	ra,28(sp)
+  84              		.cfi_restore 1
+  85 0080 6244     		lw	s0,24(sp)
+  86              		.cfi_restore 8
+  87 0082 D244     		lw	s1,20(sp)
+  88              		.cfi_restore 9
+  89 0084 4249     		lw	s2,16(sp)
+  90              		.cfi_restore 18
+  91              	.LVL8:
+  92 0086 0561     		addi	sp,sp,32
+  93              	.LCFI1:
+  94              		.cfi_def_cfa_offset 0
+  95 0088 8280     		jr	ra
+  96              		.cfi_endproc
+  97              	.LFE2:
+  99              		.section	.text.timer6Init_100us,"ax",@progbits
+ 100              		.align	1
+ 101              		.globl	timer6Init_100us
+ 103              	timer6Init_100us:
+ 104              	.LFB3:
+  40:timer6.c      **** 
+  41:timer6.c      **** 
+  42:timer6.c      **** void timer6Init_100us(int usDelay) {
+ 105              		.loc 1 42 36 is_stmt 1
+ 106              		.cfi_startproc
+ 107              	.LVL9:
+  43:timer6.c      **** 	rcu_periph_clock_enable(RCU_TIMER6);									//enable RCU timer6
+ 108              		.loc 1 43 2
+  42:timer6.c      **** 	rcu_periph_clock_enable(RCU_TIMER6);									//enable RCU timer6
+ 109              		.loc 1 42 36 is_stmt 0
+ 110 0000 0111     		addi	sp,sp,-32
+ 111              	.LCFI2:
+ 112              		.cfi_def_cfa_offset 32
+ 113 0002 26CA     		sw	s1,20(sp)
+ 114              		.cfi_offset 9, -12
+ 115 0004 AA84     		mv	s1,a0
+ 116              		.loc 1 43 2
+ 117 0006 13055070 		li	a0,1797
+ 118              	.LVL10:
+  42:timer6.c      **** 	rcu_periph_clock_enable(RCU_TIMER6);									//enable RCU timer6
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 4
+
+
+ 119              		.loc 1 42 36
+ 120 000a 06CE     		sw	ra,28(sp)
+ 121 000c 22CC     		sw	s0,24(sp)
+ 122              		.cfi_offset 1, -4
+ 123              		.cfi_offset 8, -8
+  44:timer6.c      **** 	
+  45:timer6.c      **** 	timer_parameter_struct timer_initpara;									//timer struct
+  46:timer6.c      **** 	timer_init(TIMER6, &timer_initpara);
+ 124              		.loc 1 46 2
+ 125 000e 37140040 		li	s0,1073745920
+  43:timer6.c      **** 	
+ 126              		.loc 1 43 2
+ 127 0012 97000000 		call	rcu_periph_clock_enable
+ 127      E7800000 
+ 128              	.LVL11:
+  45:timer6.c      **** 	timer_init(TIMER6, &timer_initpara);
+ 129              		.loc 1 45 2 is_stmt 1
+ 130              		.loc 1 46 2
+ 131 001a 8A85     		mv	a1,sp
+ 132 001c 13050440 		addi	a0,s0,1024
+ 133 0020 97000000 		call	timer_init
+ 133      E7800000 
+ 134              	.LVL12:
+  47:timer6.c      **** 	timer_interrupt_enable(TIMER6, TIMER_INT_UP);
+ 135              		.loc 1 47 2
+ 136 0028 8545     		li	a1,1
+ 137 002a 13050440 		addi	a0,s0,1024
+ 138 002e 97000000 		call	timer_interrupt_enable
+ 138      E7800000 
+ 139              	.LVL13:
+  48:timer6.c      **** 	timer_enable(TIMER6);
+ 140              		.loc 1 48 2
+ 141 0036 13050440 		addi	a0,s0,1024
+ 142 003a 97000000 		call	timer_enable
+ 142      E7800000 
+ 143              	.LVL14:
+  49:timer6.c      **** 	timer_prescaler_config(TIMER6, PSC-1, TIMER_PSC_RELOAD_NOW);			//timer, prescaler, load now
+ 144              		.loc 1 49 2
+ 145 0042 8D65     		li	a1,12288
+ 146 0044 13050440 		addi	a0,s0,1024
+ 147 0048 9385F5A2 		addi	a1,a1,-1489
+ 148 004c 0546     		li	a2,1
+ 149 004e 97000000 		call	timer_prescaler_config
+ 149      E7800000 
+ 150              	.LVL15:
+  50:timer6.c      **** 	timer_autoreload_value_config(TIMER6, usDelay-1);		                    //timer, counter auto-reloa
+ 151              		.loc 1 50 2
+ 152 0056 9385F4FF 		addi	a1,s1,-1
+ 153 005a C205     		slli	a1,a1,16
+ 154 005c 13050440 		addi	a0,s0,1024
+ 155 0060 C181     		srli	a1,a1,16
+ 156 0062 97000000 		call	timer_autoreload_value_config
+ 156      E7800000 
+ 157              	.LVL16:
+  51:timer6.c      **** 
+  52:timer6.c      **** 
+  53:timer6.c      **** 	/*
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 5
+
+
+  54:timer6.c      ****     timer_oc_parameter_struct timer_ocinitpara;
+  55:timer6.c      ****     timer_parameter_struct timer_initpara;
+  56:timer6.c      **** 
+  57:timer6.c      ****     rcu_periph_clock_enable(RCU_TIMER6);
+  58:timer6.c      **** 
+  59:timer6.c      ****     timer_deinit(TIMER6);
+  60:timer6.c      ****     // initialize TIMER init parameter struct 
+  61:timer6.c      ****     timer_struct_para_init(&timer_initpara);
+  62:timer6.c      ****     //TIMER1 configuration
+  63:timer6.c      ****     timer_initpara.prescaler         = PSC-1;
+  64:timer6.c      ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
+  65:timer6.c      ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
+  66:timer6.c      ****     timer_initpara.period            = CLOCK/(PSC*sampleRate)-1;
+  67:timer6.c      ****     timer_initpara.clockdivision     = TIMER_CKDIV_DIV1;
+  68:timer6.c      ****     timer_init(TIMER6, &timer_initpara);
+  69:timer6.c      **** 
+  70:timer6.c      ****     timer_interrupt_enable(TIMER6, TIMER_INT_UP);
+  71:timer6.c      ****     timer_enable(TIMER6);
+  72:timer6.c      **** 	*/
+  73:timer6.c      **** }
+ 158              		.loc 1 73 1 is_stmt 0
+ 159 006a F240     		lw	ra,28(sp)
+ 160              		.cfi_restore 1
+ 161 006c 6244     		lw	s0,24(sp)
+ 162              		.cfi_restore 8
+ 163 006e D244     		lw	s1,20(sp)
+ 164              		.cfi_restore 9
+ 165              	.LVL17:
+ 166 0070 0561     		addi	sp,sp,32
+ 167              	.LCFI3:
+ 168              		.cfi_def_cfa_offset 0
+ 169 0072 8280     		jr	ra
+ 170              		.cfi_endproc
+ 171              	.LFE3:
+ 173              		.section	.text.timer6SetDelay_100us,"ax",@progbits
+ 174              		.align	1
+ 175              		.globl	timer6SetDelay_100us
+ 177              	timer6SetDelay_100us:
+ 178              	.LFB4:
+  74:timer6.c      **** 
+  75:timer6.c      **** 
+  76:timer6.c      **** void timer6SetDelay_100us(int usDelay) {
+ 179              		.loc 1 76 40 is_stmt 1
+ 180              		.cfi_startproc
+ 181              	.LVL18:
+  77:timer6.c      ****     timer_autoreload_value_config(TIMER6, usDelay-1);       //timer, counter auto-reload value (0-6
+ 182              		.loc 1 77 5
+ 183 0000 9305F5FF 		addi	a1,a0,-1
+ 184 0004 C205     		slli	a1,a1,16
+ 185 0006 37150040 		li	a0,1073745920
+ 186              	.LVL19:
+ 187 000a C181     		srli	a1,a1,16
+ 188 000c 13050540 		addi	a0,a0,1024
+ 189 0010 17030000 		tail	timer_autoreload_value_config
+ 189      67000300 
+ 190              	.LVL20:
+ 191              		.cfi_endproc
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 6
+
+
+ 192              	.LFE4:
+ 194              		.section	.text.timer6GetInterupt,"ax",@progbits
+ 195              		.align	1
+ 196              		.globl	timer6GetInterupt
+ 198              	timer6GetInterupt:
+ 199              	.LFB5:
+  78:timer6.c      **** }
+  79:timer6.c      **** 
+  80:timer6.c      **** int timer6GetInterupt(void) {
+ 200              		.loc 1 80 29
+ 201              		.cfi_startproc
+  81:timer6.c      **** 	if( timer_interrupt_flag_get(TIMER6, TIMER_INT_FLAG_UP)==SET ) {
+ 202              		.loc 1 81 2
+  80:timer6.c      **** 	if( timer_interrupt_flag_get(TIMER6, TIMER_INT_FLAG_UP)==SET ) {
+ 203              		.loc 1 80 29 is_stmt 0
+ 204 0000 4111     		addi	sp,sp,-16
+ 205              	.LCFI4:
+ 206              		.cfi_def_cfa_offset 16
+ 207 0002 22C4     		sw	s0,8(sp)
+ 208              		.cfi_offset 8, -8
+ 209              		.loc 1 81 6
+ 210 0004 37140040 		li	s0,1073745920
+ 211 0008 8545     		li	a1,1
+ 212 000a 13050440 		addi	a0,s0,1024
+  80:timer6.c      **** 	if( timer_interrupt_flag_get(TIMER6, TIMER_INT_FLAG_UP)==SET ) {
+ 213              		.loc 1 80 29
+ 214 000e 06C6     		sw	ra,12(sp)
+ 215              		.cfi_offset 1, -4
+ 216              		.loc 1 81 6
+ 217 0010 97000000 		call	timer_interrupt_flag_get
+ 217      E7800000 
+ 218              	.LVL21:
+ 219              		.loc 1 81 4
+ 220 0018 0547     		li	a4,1
+ 221 001a 8147     		li	a5,0
+ 222 001c 6307E500 		beq	a0,a4,.L12
+  82:timer6.c      **** 		timer_interrupt_flag_clear(TIMER6, TIMER_INT_FLAG_UP);
+  83:timer6.c      **** 		
+  84:timer6.c      **** 		return 1;
+  85:timer6.c      **** 	} else return 0;
+  86:timer6.c      **** 	//gpio_bit_set(GPIOB, GPIO_PIN_0);
+  87:timer6.c      **** }...
+ 223              		.loc 1 87 1
+ 224 0020 B240     		lw	ra,12(sp)
+ 225              		.cfi_remember_state
+ 226              		.cfi_restore 1
+ 227 0022 2244     		lw	s0,8(sp)
+ 228              		.cfi_restore 8
+ 229 0024 3E85     		mv	a0,a5
+ 230 0026 4101     		addi	sp,sp,16
+ 231              	.LCFI5:
+ 232              		.cfi_def_cfa_offset 0
+ 233 0028 8280     		jr	ra
+ 234              	.L12:
+ 235              	.LCFI6:
+ 236              		.cfi_restore_state
+  82:timer6.c      **** 		timer_interrupt_flag_clear(TIMER6, TIMER_INT_FLAG_UP);
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 7
+
+
+ 237              		.loc 1 82 3 is_stmt 1
+ 238 002a 13050440 		addi	a0,s0,1024
+ 239 002e 8545     		li	a1,1
+ 240 0030 97000000 		call	timer_interrupt_flag_clear
+ 240      E7800000 
+ 241              	.LVL22:
+  84:timer6.c      **** 		return 1;
+ 242              		.loc 1 84 3
+ 243              		.loc 1 87 1 is_stmt 0
+ 244 0038 B240     		lw	ra,12(sp)
+ 245              		.cfi_restore 1
+ 246 003a 2244     		lw	s0,8(sp)
+ 247              		.cfi_restore 8
+  84:timer6.c      **** 		return 1;
+ 248              		.loc 1 84 10
+ 249 003c 8547     		li	a5,1
+ 250              		.loc 1 87 1
+ 251 003e 3E85     		mv	a0,a5
+ 252 0040 4101     		addi	sp,sp,16
+ 253              	.LCFI7:
+ 254              		.cfi_def_cfa_offset 0
+ 255 0042 8280     		jr	ra
+ 256              		.cfi_endproc
+ 257              	.LFE5:
+ 259              		.text
+ 260              	.Letext0:
+ 261              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 262              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 263              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 264              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu
+ 265              		.file 6 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_tim
+ 266              		.file 7 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 timer6.c
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:13     .text.timer6InitSampleRate:0000000000000000 timer6InitSampleRate
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:17     .text.timer6InitSampleRate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:19     .text.timer6InitSampleRate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:20     .text.timer6InitSampleRate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:21     .text.timer6InitSampleRate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:23     .text.timer6InitSampleRate:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:25     .text.timer6InitSampleRate:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:28     .text.timer6InitSampleRate:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:31     .text.timer6InitSampleRate:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:34     .text.timer6InitSampleRate:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:35     .text.timer6InitSampleRate:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:36     .text.timer6InitSampleRate:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:38     .text.timer6InitSampleRate:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:40     .text.timer6InitSampleRate:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:43     .text.timer6InitSampleRate:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:44     .text.timer6InitSampleRate:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:49     .text.timer6InitSampleRate:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:54     .text.timer6InitSampleRate:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:58     .text.timer6InitSampleRate:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:61     .text.timer6InitSampleRate:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:64     .text.timer6InitSampleRate:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:69     .text.timer6InitSampleRate:0000000000000060 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:70     .text.timer6InitSampleRate:0000000000000060 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:73     .text.timer6InitSampleRate:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:75     .text.timer6InitSampleRate:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:77     .text.timer6InitSampleRate:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:83     .text.timer6InitSampleRate:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:84     .text.timer6InitSampleRate:0000000000000080 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:86     .text.timer6InitSampleRate:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:88     .text.timer6InitSampleRate:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:90     .text.timer6InitSampleRate:0000000000000086 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:94     .text.timer6InitSampleRate:0000000000000088 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:96     .text.timer6InitSampleRate:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:103    .text.timer6Init_100us:0000000000000000 timer6Init_100us
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:106    .text.timer6Init_100us:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:108    .text.timer6Init_100us:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:109    .text.timer6Init_100us:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:110    .text.timer6Init_100us:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:112    .text.timer6Init_100us:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:114    .text.timer6Init_100us:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:117    .text.timer6Init_100us:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:120    .text.timer6Init_100us:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:122    .text.timer6Init_100us:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:123    .text.timer6Init_100us:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:125    .text.timer6Init_100us:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:127    .text.timer6Init_100us:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:130    .text.timer6Init_100us:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:131    .text.timer6Init_100us:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:136    .text.timer6Init_100us:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:141    .text.timer6Init_100us:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:145    .text.timer6Init_100us:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:152    .text.timer6Init_100us:0000000000000056 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:159    .text.timer6Init_100us:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:160    .text.timer6Init_100us:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:162    .text.timer6Init_100us:000000000000006e .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 9
+
+
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:164    .text.timer6Init_100us:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:168    .text.timer6Init_100us:0000000000000072 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:170    .text.timer6Init_100us:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:177    .text.timer6SetDelay_100us:0000000000000000 timer6SetDelay_100us
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:180    .text.timer6SetDelay_100us:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:182    .text.timer6SetDelay_100us:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:183    .text.timer6SetDelay_100us:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:191    .text.timer6SetDelay_100us:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:198    .text.timer6GetInterupt:0000000000000000 timer6GetInterupt
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:201    .text.timer6GetInterupt:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:202    .text.timer6GetInterupt:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:203    .text.timer6GetInterupt:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:204    .text.timer6GetInterupt:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:206    .text.timer6GetInterupt:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:208    .text.timer6GetInterupt:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:210    .text.timer6GetInterupt:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:214    .text.timer6GetInterupt:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:215    .text.timer6GetInterupt:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:217    .text.timer6GetInterupt:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:220    .text.timer6GetInterupt:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:224    .text.timer6GetInterupt:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:225    .text.timer6GetInterupt:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:226    .text.timer6GetInterupt:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:228    .text.timer6GetInterupt:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:232    .text.timer6GetInterupt:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:236    .text.timer6GetInterupt:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:238    .text.timer6GetInterupt:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:243    .text.timer6GetInterupt:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:244    .text.timer6GetInterupt:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:245    .text.timer6GetInterupt:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:247    .text.timer6GetInterupt:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:249    .text.timer6GetInterupt:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:251    .text.timer6GetInterupt:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:254    .text.timer6GetInterupt:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:256    .text.timer6GetInterupt:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:99     .text.timer6InitSampleRate:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:173    .text.timer6Init_100us:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:194    .text.timer6SetDelay_100us:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:259    .text.timer6GetInterupt:0000000000000044 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:234    .text.timer6GetInterupt:000000000000002a .L12
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:986    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1577   .debug_str:000000000000023c .LASF75
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1595   .debug_str:0000000000000308 .LASF76
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1603   .debug_str:000000000000033a .LASF77
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1473   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1485   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1583   .debug_str:00000000000002c9 .LASF0
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1573   .debug_str:0000000000000217 .LASF1
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1643   .debug_str:000000000000047c .LASF4
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1563   .debug_str:00000000000001d6 .LASF2
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1543   .debug_str:0000000000000169 .LASF3
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1503   .debug_str:0000000000000056 .LASF5
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1593   .debug_str:00000000000002f5 .LASF6
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1531   .debug_str:0000000000000132 .LASF7
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1499   .debug_str:0000000000000043 .LASF8
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1619   .debug_str:00000000000003e5 .LASF9
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 10
+
+
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1497   .debug_str:0000000000000035 .LASF10
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1525   .debug_str:00000000000000fb .LASF11
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1513   .debug_str:00000000000000b3 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1585   .debug_str:00000000000002d6 .LASF13
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1579   .debug_str:00000000000002b6 .LASF14
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1609   .debug_str:00000000000003b2 .LASF78
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1587   .debug_str:00000000000002df .LASF15
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1515   .debug_str:00000000000000bb .LASF16
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1611   .debug_str:00000000000003c2 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1639   .debug_str:0000000000000463 .LASF18
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1637   .debug_str:000000000000045a .LASF19
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1629   .debug_str:000000000000042a .LASF20
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1547   .debug_str:000000000000017e .LASF21
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1549   .debug_str:0000000000000189 .LASF22
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1551   .debug_str:0000000000000194 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1553   .debug_str:000000000000019f .LASF24
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1555   .debug_str:00000000000001aa .LASF25
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1557   .debug_str:00000000000001b5 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1523   .debug_str:00000000000000f1 .LASF27
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1535   .debug_str:0000000000000144 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1537   .debug_str:000000000000014d .LASF29
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1625   .debug_str:0000000000000414 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1627   .debug_str:000000000000041f .LASF31
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1631   .debug_str:0000000000000434 .LASF32
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1633   .debug_str:000000000000043e .LASF33
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1597   .debug_str:0000000000000311 .LASF34
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1599   .debug_str:000000000000031a .LASF35
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1519   .debug_str:00000000000000df .LASF36
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1521   .debug_str:00000000000000e8 .LASF37
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1571   .debug_str:000000000000020e .LASF38
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1591   .debug_str:00000000000002ed .LASF39
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1615   .debug_str:00000000000003d6 .LASF40
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1501   .debug_str:000000000000004e .LASF41
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1617   .debug_str:00000000000003de .LASF42
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1489   .debug_str:000000000000000d .LASF43
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1491   .debug_str:0000000000000017 .LASF44
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1493   .debug_str:0000000000000021 .LASF45
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1495   .debug_str:000000000000002b .LASF46
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1559   .debug_str:00000000000001c0 .LASF47
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1567   .debug_str:00000000000001fc .LASF48
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1569   .debug_str:0000000000000205 .LASF49
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1545   .debug_str:0000000000000173 .LASF50
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1533   .debug_str:000000000000013b .LASF51
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1623   .debug_str:0000000000000409 .LASF52
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1581   .debug_str:00000000000002bf .LASF53
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1539   .debug_str:0000000000000156 .LASF54
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1607   .debug_str:00000000000003a1 .LASF55
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1541   .debug_str:0000000000000162 .LASF56
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1507   .debug_str:0000000000000078 .LASF57
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1635   .debug_str:0000000000000448 .LASF58
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1505   .debug_str:0000000000000061 .LASF59
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1561   .debug_str:00000000000001ca .LASF60
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1621   .debug_str:00000000000003f7 .LASF79
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:199    .text.timer6GetInterupt:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:257    .text.timer6GetInterupt:0000000000000044 .LFE5
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1340   .debug_loc:0000000000000000 .LLST5
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:218    .text.timer6GetInterupt:0000000000000018 .LVL21
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 11
+
+
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:241    .text.timer6GetInterupt:0000000000000038 .LVL22
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1645   .debug_str:0000000000000486 .LASF61
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:178    .text.timer6SetDelay_100us:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:192    .text.timer6SetDelay_100us:0000000000000018 .LFE4
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1589   .debug_str:00000000000002e5 .LASF63
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1368   .debug_loc:0000000000000044 .LLST4
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:190    .text.timer6SetDelay_100us:0000000000000018 .LVL20
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1641   .debug_str:000000000000046b .LASF62
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:104    .text.timer6Init_100us:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:171    .text.timer6Init_100us:0000000000000074 .LFE3
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1382   .debug_loc:0000000000000065 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1400   .debug_loc:0000000000000091 .LLST3
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1511   .debug_str:00000000000000a4 .LASF66
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:128    .text.timer6Init_100us:000000000000001a .LVL11
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:134    .text.timer6Init_100us:0000000000000028 .LVL12
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:139    .text.timer6Init_100us:0000000000000036 .LVL13
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:143    .text.timer6Init_100us:0000000000000042 .LVL14
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:150    .text.timer6Init_100us:0000000000000056 .LVL15
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:157    .text.timer6Init_100us:000000000000006a .LVL16
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1527   .debug_str:0000000000000112 .LASF64
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:14     .text.timer6InitSampleRate:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:97     .text.timer6InitSampleRate:000000000000008a .LFE2
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1418   .debug_loc:00000000000000bd .LLST0
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1613   .debug_str:00000000000003cb .LASF65
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1436   .debug_loc:00000000000000e9 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:41     .text.timer6InitSampleRate:000000000000001c .LVL2
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:47     .text.timer6InitSampleRate:000000000000002a .LVL3
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:52     .text.timer6InitSampleRate:0000000000000038 .LVL4
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:56     .text.timer6InitSampleRate:0000000000000044 .LVL5
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:67     .text.timer6InitSampleRate:0000000000000060 .LVL6
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:81     .text.timer6InitSampleRate:000000000000007e .LVL7
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1575   .debug_str:0000000000000223 .LASF67
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1517   .debug_str:00000000000000c4 .LASF68
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1509   .debug_str:0000000000000086 .LASF69
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1565   .debug_str:00000000000001e4 .LASF70
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1529   .debug_str:0000000000000127 .LASF71
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1605   .debug_str:000000000000038a .LASF72
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1487   .debug_str:0000000000000000 .LASF73
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:1601   .debug_str:0000000000000323 .LASF74
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:205    .text.timer6GetInterupt:0000000000000002 .LCFI4
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:231    .text.timer6GetInterupt:0000000000000028 .LCFI5
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:235    .text.timer6GetInterupt:000000000000002a .LCFI6
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:253    .text.timer6GetInterupt:0000000000000042 .LCFI7
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:181    .text.timer6SetDelay_100us:0000000000000000 .LVL18
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:186    .text.timer6SetDelay_100us:000000000000000a .LVL19
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:111    .text.timer6Init_100us:0000000000000002 .LCFI2
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:167    .text.timer6Init_100us:0000000000000072 .LCFI3
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:107    .text.timer6Init_100us:0000000000000000 .LVL9
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:118    .text.timer6Init_100us:000000000000000a .LVL10
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:165    .text.timer6Init_100us:0000000000000070 .LVL17
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:22     .text.timer6InitSampleRate:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:93     .text.timer6InitSampleRate:0000000000000088 .LCFI1
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:18     .text.timer6InitSampleRate:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:29     .text.timer6InitSampleRate:000000000000000a .LVL1
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:91     .text.timer6InitSampleRate:0000000000000086 .LVL8
+C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s:268    .debug_info:0000000000000000 .Ldebug_info0
+
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccgzTp9D.s 			page 12
+
+
+UNDEFINED SYMBOLS
+rcu_periph_clock_enable
+timer_init
+timer_interrupt_enable
+timer_enable
+timer_prescaler_config
+timer_autoreload_value_config
+timer_interrupt_flag_get
+timer_interrupt_flag_clear

@@ -1,0 +1,2041 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 1
+
+
+   1              		.file	"gd32vf103_dac.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.dac_deinit,"ax",@progbits
+  10              		.align	1
+  11              		.globl	dac_deinit
+  13              	dac_deinit:
+  14              	.LFB2:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_dac.
+   1:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+   2:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \file    gd32vf103_dac.c
+   3:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief   DAC driver
+   4:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+   5:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \version 2019-06-05, V1.0.0, firmware for GD32VF103
+   6:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \version 2020-08-04, V1.1.0, firmware for GD32VF103
+   7:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+   8:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+   9:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*
+  10:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+  12:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  13:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** are permitted provided that the following conditions are met:
+  14:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+  15:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  16:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****        list of conditions and the following disclaimer.
+  17:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  18:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****        this list of conditions and the following disclaimer in the documentation 
+  19:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****        and/or other materials provided with the distribution.
+  20:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  21:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****        may be used to endorse or promote products derived from this software without 
+  22:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****        specific prior written permission.
+  23:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+  24:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  25:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  26:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  27:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  28:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  30:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  31:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  32:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  33:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** OF SUCH DAMAGE.
+  34:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+  35:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+  36:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** #include "gd32vf103_dac.h"
+  37:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+  38:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /* DAC register bit offset */
+  39:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** #define DAC1_REG_OFFSET           ((uint32_t)16U)
+  40:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** #define DH_12BIT_OFFSET           ((uint32_t)16U)
+  41:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** #define DH_8BIT_OFFSET            ((uint32_t)8U)
+  42:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+  43:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 2
+
+
+  44:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      deinitialize DAC
+  45:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  none
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+  47:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+  48:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_deinit(void)
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+  16              		.loc 1 50 1
+  17              		.cfi_startproc
+  51:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     rcu_periph_reset_enable(RCU_DACRST);
+  18              		.loc 1 51 5
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     rcu_periph_reset_enable(RCU_DACRST);
+  19              		.loc 1 50 1 is_stmt 0
+  20 0000 4111     		addi	sp,sp,-16
+  21              	.LCFI0:
+  22              		.cfi_def_cfa_offset 16
+  23              		.loc 1 51 5
+  24 0002 1305D041 		li	a0,1053
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     rcu_periph_reset_enable(RCU_DACRST);
+  25              		.loc 1 50 1
+  26 0006 06C6     		sw	ra,12(sp)
+  27              		.cfi_offset 1, -4
+  28              		.loc 1 51 5
+  29 0008 97000000 		call	rcu_periph_reset_enable
+  29      E7800000 
+  30              	.LVL0:
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     rcu_periph_reset_disable(RCU_DACRST);
+  31              		.loc 1 52 5 is_stmt 1
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+  32              		.loc 1 53 1 is_stmt 0
+  33 0010 B240     		lw	ra,12(sp)
+  34              		.cfi_restore 1
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     rcu_periph_reset_disable(RCU_DACRST);
+  35              		.loc 1 52 5
+  36 0012 1305D041 		li	a0,1053
+  37              		.loc 1 53 1
+  38 0016 4101     		addi	sp,sp,16
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 0
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     rcu_periph_reset_disable(RCU_DACRST);
+  41              		.loc 1 52 5
+  42 0018 17030000 		tail	rcu_periph_reset_disable
+  42      67000300 
+  43              	.LVL1:
+  44              		.cfi_endproc
+  45              	.LFE2:
+  47              		.section	.text.dac_enable,"ax",@progbits
+  48              		.align	1
+  49              		.globl	dac_enable
+  51              	dac_enable:
+  52              	.LFB3:
+  54:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+  55:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+  56:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      enable DAC
+  57:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+  58:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+  59:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 3
+
+
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+  61:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_enable(uint32_t dac_periph)
+  62:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+  53              		.loc 1 62 1 is_stmt 1
+  54              		.cfi_startproc
+  55              	.LVL2:
+  63:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+  56              		.loc 1 63 5
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= DAC_CTL_DEN0;
+  57              		.loc 1 64 17 is_stmt 0
+  58 0000 37770040 		li	a4,1073770496
+  59 0004 83270740 		lw	a5,1024(a4)
+  63:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+  60              		.loc 1 63 7
+  61 0008 11E5     		bne	a0,zero,.L5
+  62              		.loc 1 64 9 is_stmt 1
+  63              		.loc 1 64 17 is_stmt 0
+  64 000a 93E71700 		ori	a5,a5,1
+  65 000e 2320F740 		sw	a5,1024(a4)
+  66 0012 8280     		ret
+  67              	.L5:
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+  66:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= DAC_CTL_DEN1;
+  68              		.loc 1 66 9 is_stmt 1
+  69              		.loc 1 66 17 is_stmt 0
+  70 0014 C166     		li	a3,65536
+  71 0016 D58F     		or	a5,a5,a3
+  72 0018 2320F740 		sw	a5,1024(a4)
+  67:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+  68:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** } 
+  73              		.loc 1 68 1
+  74 001c 8280     		ret
+  75              		.cfi_endproc
+  76              	.LFE3:
+  78              		.section	.text.dac_disable,"ax",@progbits
+  79              		.align	1
+  80              		.globl	dac_disable
+  82              	dac_disable:
+  83              	.LFB4:
+  69:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+  71:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      disable DAC
+  72:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+  73:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+  74:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+  76:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_disable(uint32_t dac_periph)
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+  84              		.loc 1 77 1 is_stmt 1
+  85              		.cfi_startproc
+  86              	.LVL3:
+  78:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+  87              		.loc 1 78 5
+  88              		.loc 1 78 7 is_stmt 0
+  89 0000 09E9     		bne	a0,zero,.L8
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DEN0;
+  90              		.loc 1 79 9 is_stmt 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 4
+
+
+  91              		.loc 1 79 17 is_stmt 0
+  92 0002 37770040 		li	a4,1073770496
+  93 0006 83270740 		lw	a5,1024(a4)
+  94 000a F99B     		andi	a5,a5,-2
+  95 000c 2320F740 		sw	a5,1024(a4)
+  96 0010 8280     		ret
+  97              	.L8:
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DEN1;
+  98              		.loc 1 81 9 is_stmt 1
+  99              		.loc 1 81 17 is_stmt 0
+ 100 0012 B7760040 		li	a3,1073770496
+ 101 0016 83A70640 		lw	a5,1024(a3)
+ 102 001a 4177     		li	a4,-65536
+ 103 001c 7D17     		addi	a4,a4,-1
+ 104 001e F98F     		and	a5,a5,a4
+ 105 0020 23A0F640 		sw	a5,1024(a3)
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 106              		.loc 1 83 1
+ 107 0024 8280     		ret
+ 108              		.cfi_endproc
+ 109              	.LFE4:
+ 111              		.section	.text.dac_dma_enable,"ax",@progbits
+ 112              		.align	1
+ 113              		.globl	dac_dma_enable
+ 115              	dac_dma_enable:
+ 116              	.LFB5:
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+  86:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      enable DAC DMA function
+  87:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+  88:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+  90:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+  91:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_dma_enable(uint32_t dac_periph)
+  92:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 117              		.loc 1 92 1 is_stmt 1
+ 118              		.cfi_startproc
+ 119              	.LVL4:
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 120              		.loc 1 93 5
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= DAC_CTL_DDMAEN0;
+ 121              		.loc 1 94 17 is_stmt 0
+ 122 0000 37770040 		li	a4,1073770496
+ 123 0004 83270740 		lw	a5,1024(a4)
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 124              		.loc 1 93 7
+ 125 0008 11E5     		bne	a0,zero,.L11
+ 126              		.loc 1 94 9 is_stmt 1
+ 127              		.loc 1 94 17 is_stmt 0
+ 128 000a 8566     		li	a3,4096
+ 129 000c D58F     		or	a5,a5,a3
+ 130 000e 2320F740 		sw	a5,1024(a4)
+ 131 0012 8280     		ret
+ 132              	.L11:
+  95:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 5
+
+
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= DAC_CTL_DDMAEN1;
+ 133              		.loc 1 96 9 is_stmt 1
+ 134              		.loc 1 96 17 is_stmt 0
+ 135 0014 B7060010 		li	a3,268435456
+ 136 0018 D58F     		or	a5,a5,a3
+ 137 001a 2320F740 		sw	a5,1024(a4)
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 138              		.loc 1 98 1
+ 139 001e 8280     		ret
+ 140              		.cfi_endproc
+ 141              	.LFE5:
+ 143              		.section	.text.dac_dma_disable,"ax",@progbits
+ 144              		.align	1
+ 145              		.globl	dac_dma_disable
+ 147              	dac_dma_disable:
+ 148              	.LFB6:
+  99:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 100:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      disable DAC DMA function
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 104:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 105:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 106:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_dma_disable(uint32_t dac_periph)
+ 107:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 149              		.loc 1 107 1 is_stmt 1
+ 150              		.cfi_startproc
+ 151              	.LVL5:
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 152              		.loc 1 108 5
+ 109:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DDMAEN0;
+ 153              		.loc 1 109 17 is_stmt 0
+ 154 0000 B7760040 		li	a3,1073770496
+ 155 0004 83A70640 		lw	a5,1024(a3)
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 156              		.loc 1 108 7
+ 157 0008 19E5     		bne	a0,zero,.L14
+ 158              		.loc 1 109 9 is_stmt 1
+ 159              		.loc 1 109 17 is_stmt 0
+ 160 000a 7D77     		li	a4,-4096
+ 161 000c 7D17     		addi	a4,a4,-1
+ 162 000e F98F     		and	a5,a5,a4
+ 163 0010 23A0F640 		sw	a5,1024(a3)
+ 164 0014 8280     		ret
+ 165              	.L14:
+ 110:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 111:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DDMAEN1;
+ 166              		.loc 1 111 9 is_stmt 1
+ 167              		.loc 1 111 17 is_stmt 0
+ 168 0016 370700F0 		li	a4,-268435456
+ 169 001a 7D17     		addi	a4,a4,-1
+ 170 001c F98F     		and	a5,a5,a4
+ 171 001e 23A0F640 		sw	a5,1024(a3)
+ 112:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 113:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 172              		.loc 1 113 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 6
+
+
+ 173 0022 8280     		ret
+ 174              		.cfi_endproc
+ 175              	.LFE6:
+ 177              		.section	.text.dac_output_buffer_enable,"ax",@progbits
+ 178              		.align	1
+ 179              		.globl	dac_output_buffer_enable
+ 181              	dac_output_buffer_enable:
+ 182              	.LFB7:
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 115:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 116:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      enable DAC output buffer
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 118:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 119:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 121:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_output_buffer_enable(uint32_t dac_periph)
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 183              		.loc 1 122 1 is_stmt 1
+ 184              		.cfi_startproc
+ 185              	.LVL6:
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 186              		.loc 1 123 5
+ 187              		.loc 1 123 7 is_stmt 0
+ 188 0000 09E9     		bne	a0,zero,.L17
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DBOFF0;
+ 189              		.loc 1 124 9 is_stmt 1
+ 190              		.loc 1 124 17 is_stmt 0
+ 191 0002 37770040 		li	a4,1073770496
+ 192 0006 83270740 		lw	a5,1024(a4)
+ 193 000a F59B     		andi	a5,a5,-3
+ 194 000c 2320F740 		sw	a5,1024(a4)
+ 195 0010 8280     		ret
+ 196              	.L17:
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DBOFF1;
+ 197              		.loc 1 126 9 is_stmt 1
+ 198              		.loc 1 126 17 is_stmt 0
+ 199 0012 B7760040 		li	a3,1073770496
+ 200 0016 83A70640 		lw	a5,1024(a3)
+ 201 001a 0177     		li	a4,-131072
+ 202 001c 7D17     		addi	a4,a4,-1
+ 203 001e F98F     		and	a5,a5,a4
+ 204 0020 23A0F640 		sw	a5,1024(a3)
+ 127:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 205              		.loc 1 128 1
+ 206 0024 8280     		ret
+ 207              		.cfi_endproc
+ 208              	.LFE7:
+ 210              		.section	.text.dac_output_buffer_disable,"ax",@progbits
+ 211              		.align	1
+ 212              		.globl	dac_output_buffer_disable
+ 214              	dac_output_buffer_disable:
+ 215              	.LFB8:
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 131:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      disable DAC output buffer
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 7
+
+
+ 132:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 133:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 134:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 135:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 136:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_output_buffer_disable(uint32_t dac_periph)
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 216              		.loc 1 137 1 is_stmt 1
+ 217              		.cfi_startproc
+ 218              	.LVL7:
+ 138:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 219              		.loc 1 138 5
+ 139:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= DAC_CTL_DBOFF0;
+ 220              		.loc 1 139 17 is_stmt 0
+ 221 0000 37770040 		li	a4,1073770496
+ 222 0004 83270740 		lw	a5,1024(a4)
+ 138:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 223              		.loc 1 138 7
+ 224 0008 11E5     		bne	a0,zero,.L20
+ 225              		.loc 1 139 9 is_stmt 1
+ 226              		.loc 1 139 17 is_stmt 0
+ 227 000a 93E72700 		ori	a5,a5,2
+ 228 000e 2320F740 		sw	a5,1024(a4)
+ 229 0012 8280     		ret
+ 230              	.L20:
+ 140:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 141:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= DAC_CTL_DBOFF1;
+ 231              		.loc 1 141 9 is_stmt 1
+ 232              		.loc 1 141 17 is_stmt 0
+ 233 0014 B7060200 		li	a3,131072
+ 234 0018 D58F     		or	a5,a5,a3
+ 235 001a 2320F740 		sw	a5,1024(a4)
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 236              		.loc 1 143 1
+ 237 001e 8280     		ret
+ 238              		.cfi_endproc
+ 239              	.LFE8:
+ 241              		.section	.text.dac_output_value_get,"ax",@progbits
+ 242              		.align	1
+ 243              		.globl	dac_output_value_get
+ 245              	dac_output_value_get:
+ 246              	.LFB9:
+ 144:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      get DAC output value
+ 147:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     DAC output data
+ 150:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 151:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** uint16_t dac_output_value_get(uint32_t dac_periph)
+ 152:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 247              		.loc 1 152 1 is_stmt 1
+ 248              		.cfi_startproc
+ 249              	.LVL8:
+ 153:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     uint16_t data = 0U;
+ 250              		.loc 1 153 5
+ 154:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 8
+
+
+ 251              		.loc 1 154 5
+ 155:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* store the DAC0 output value */
+ 156:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         data = (uint16_t)DAC0_DO;
+ 252              		.loc 1 156 26 is_stmt 0
+ 253 0000 B7770040 		li	a5,1073770496
+ 154:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 254              		.loc 1 154 7
+ 255 0004 11E5     		bne	a0,zero,.L23
+ 256              		.loc 1 156 9 is_stmt 1
+ 257              		.loc 1 156 26 is_stmt 0
+ 258 0006 03A5C742 		lw	a0,1068(a5)
+ 259              	.LVL9:
+ 260              		.loc 1 156 14
+ 261 000a 4205     		slli	a0,a0,16
+ 262 000c 4181     		srli	a0,a0,16
+ 263              	.LVL10:
+ 264 000e 8280     		ret
+ 265              	.LVL11:
+ 266              	.L23:
+ 157:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 158:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* store the DAC1 output value */
+ 159:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         data = (uint16_t)DAC1_DO;
+ 267              		.loc 1 159 9 is_stmt 1
+ 268              		.loc 1 159 26 is_stmt 0
+ 269 0010 03A50743 		lw	a0,1072(a5)
+ 270              	.LVL12:
+ 271              		.loc 1 159 14
+ 272 0014 4205     		slli	a0,a0,16
+ 273 0016 4181     		srli	a0,a0,16
+ 274              	.LVL13:
+ 160:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 161:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     return data;
+ 275              		.loc 1 161 5 is_stmt 1
+ 162:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 276              		.loc 1 162 1 is_stmt 0
+ 277 0018 8280     		ret
+ 278              		.cfi_endproc
+ 279              	.LFE9:
+ 281              		.section	.text.dac_data_set,"ax",@progbits
+ 282              		.align	1
+ 283              		.globl	dac_data_set
+ 285              	dac_data_set:
+ 286              	.LFB10:
+ 163:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 164:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 165:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      set the DAC specified data holding register value
+ 166:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 167:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_align: data alignment
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****                 only one parameter can be selected which is shown as below:
+ 169:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_ALIGN_8B_R: data right 8 bit alignment
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_ALIGN_12B_R: data right 12 bit alignment
+ 171:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_ALIGN_12B_L: data left 12 bit alignment
+ 172:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  data: data to be loaded
+ 173:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 174:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 175:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_data_set(uint32_t dac_periph, uint32_t dac_align, uint16_t data)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 9
+
+
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 287              		.loc 1 177 1 is_stmt 1
+ 288              		.cfi_startproc
+ 289              	.LVL14:
+ 178:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 290              		.loc 1 178 5
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         switch(dac_align){
+ 291              		.loc 1 179 9 is_stmt 0
+ 292 0000 8547     		li	a5,1
+ 178:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 293              		.loc 1 178 7
+ 294 0002 01ED     		bne	a0,zero,.L26
+ 295              		.loc 1 179 9 is_stmt 1
+ 296 0004 6388F502 		beq	a1,a5,.L27
+ 297 0008 9DC9     		beq	a1,zero,.L28
+ 298 000a 8947     		li	a5,2
+ 299 000c 6392F502 		bne	a1,a5,.L34
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* data right 12 bit alignment */
+ 181:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         case DAC_ALIGN_12B_R:
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             DAC0_R12DH = data;
+ 183:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 184:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* data left 12 bit alignment */
+ 185:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         case DAC_ALIGN_12B_L:
+ 186:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             DAC0_L12DH = data;
+ 187:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 188:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* data right 8 bit alignment */
+ 189:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         case DAC_ALIGN_8B_R:
+ 190:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             DAC0_R8DH = data;
+ 300              		.loc 1 190 13
+ 301              		.loc 1 190 23 is_stmt 0
+ 302 0010 B7770040 		li	a5,1073770496
+ 303 0014 23A8C740 		sw	a2,1040(a5)
+ 191:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 304              		.loc 1 191 13 is_stmt 1
+ 305 0018 8280     		ret
+ 306              	.L26:
+ 192:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         default:
+ 193:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 194:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         }
+ 195:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 196:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         switch(dac_align){
+ 307              		.loc 1 196 9
+ 308 001a 638CF502 		beq	a1,a5,.L31
+ 309 001e 8DC5     		beq	a1,zero,.L32
+ 310 0020 8947     		li	a5,2
+ 311 0022 6398F500 		bne	a1,a5,.L35
+ 197:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* data right 12 bit alignment */
+ 198:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         case DAC_ALIGN_12B_R:
+ 199:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             DAC1_R12DH = data;
+ 200:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 201:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* data left 12 bit alignment */
+ 202:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         case DAC_ALIGN_12B_L:
+ 203:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             DAC1_L12DH = data;
+ 204:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 205:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* data right 8 bit alignment */
+ 206:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         case DAC_ALIGN_8B_R:
+ 207:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             DAC1_R8DH = data;
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 10
+
+
+ 312              		.loc 1 207 13
+ 313              		.loc 1 207 23 is_stmt 0
+ 314 0026 B7770040 		li	a5,1073770496
+ 315 002a 23AEC740 		sw	a2,1052(a5)
+ 208:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 316              		.loc 1 208 13 is_stmt 1
+ 209:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         default:
+ 210:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 211:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         }
+ 212:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 213:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 317              		.loc 1 213 1 is_stmt 0
+ 318 002e 8280     		ret
+ 319              	.L34:
+ 320 0030 8280     		ret
+ 321              	.L35:
+ 322 0032 8280     		ret
+ 323              	.L27:
+ 186:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 324              		.loc 1 186 13 is_stmt 1
+ 186:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 325              		.loc 1 186 24 is_stmt 0
+ 326 0034 B7770040 		li	a5,1073770496
+ 327 0038 23A6C740 		sw	a2,1036(a5)
+ 187:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* data right 8 bit alignment */
+ 328              		.loc 1 187 13 is_stmt 1
+ 329 003c 8280     		ret
+ 330              	.L28:
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 331              		.loc 1 182 13
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 332              		.loc 1 182 24 is_stmt 0
+ 333 003e B7770040 		li	a5,1073770496
+ 334 0042 23A4C740 		sw	a2,1032(a5)
+ 183:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* data left 12 bit alignment */
+ 335              		.loc 1 183 13 is_stmt 1
+ 336 0046 8280     		ret
+ 337              	.L32:
+ 199:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 338              		.loc 1 199 13
+ 199:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 339              		.loc 1 199 24 is_stmt 0
+ 340 0048 B7770040 		li	a5,1073770496
+ 341 004c 23AAC740 		sw	a2,1044(a5)
+ 200:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* data left 12 bit alignment */
+ 342              		.loc 1 200 13 is_stmt 1
+ 343 0050 8280     		ret
+ 344              	.L31:
+ 203:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 345              		.loc 1 203 13
+ 203:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****             break;
+ 346              		.loc 1 203 24 is_stmt 0
+ 347 0052 B7770040 		li	a5,1073770496
+ 348 0056 23ACC740 		sw	a2,1048(a5)
+ 204:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* data right 8 bit alignment */
+ 349              		.loc 1 204 13 is_stmt 1
+ 350 005a 8280     		ret
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 11
+
+
+ 351              		.cfi_endproc
+ 352              	.LFE10:
+ 354              		.section	.text.dac_trigger_enable,"ax",@progbits
+ 355              		.align	1
+ 356              		.globl	dac_trigger_enable
+ 358              	dac_trigger_enable:
+ 359              	.LFB11:
+ 214:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 215:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 216:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      enable DAC trigger
+ 217:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 218:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 219:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 220:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 221:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_trigger_enable(uint32_t dac_periph)
+ 222:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 360              		.loc 1 222 1
+ 361              		.cfi_startproc
+ 362              	.LVL15:
+ 223:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 363              		.loc 1 223 5
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= DAC_CTL_DTEN0;
+ 364              		.loc 1 224 17 is_stmt 0
+ 365 0000 37770040 		li	a4,1073770496
+ 366 0004 83270740 		lw	a5,1024(a4)
+ 223:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 367              		.loc 1 223 7
+ 368 0008 11E5     		bne	a0,zero,.L37
+ 369              		.loc 1 224 9 is_stmt 1
+ 370              		.loc 1 224 17 is_stmt 0
+ 371 000a 93E74700 		ori	a5,a5,4
+ 372 000e 2320F740 		sw	a5,1024(a4)
+ 373 0012 8280     		ret
+ 374              	.L37:
+ 225:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 226:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= DAC_CTL_DTEN1;
+ 375              		.loc 1 226 9 is_stmt 1
+ 376              		.loc 1 226 17 is_stmt 0
+ 377 0014 B7060400 		li	a3,262144
+ 378 0018 D58F     		or	a5,a5,a3
+ 379 001a 2320F740 		sw	a5,1024(a4)
+ 227:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 228:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 380              		.loc 1 228 1
+ 381 001e 8280     		ret
+ 382              		.cfi_endproc
+ 383              	.LFE11:
+ 385              		.section	.text.dac_trigger_disable,"ax",@progbits
+ 386              		.align	1
+ 387              		.globl	dac_trigger_disable
+ 389              	dac_trigger_disable:
+ 390              	.LFB12:
+ 229:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 230:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 231:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      disable DAC trigger
+ 232:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 233:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 12
+
+
+ 234:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 235:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_trigger_disable(uint32_t dac_periph)
+ 237:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 391              		.loc 1 237 1 is_stmt 1
+ 392              		.cfi_startproc
+ 393              	.LVL16:
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 394              		.loc 1 238 5
+ 395              		.loc 1 238 7 is_stmt 0
+ 396 0000 09E9     		bne	a0,zero,.L40
+ 239:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DTEN0;
+ 397              		.loc 1 239 9 is_stmt 1
+ 398              		.loc 1 239 17 is_stmt 0
+ 399 0002 37770040 		li	a4,1073770496
+ 400 0006 83270740 		lw	a5,1024(a4)
+ 401 000a ED9B     		andi	a5,a5,-5
+ 402 000c 2320F740 		sw	a5,1024(a4)
+ 403 0010 8280     		ret
+ 404              	.L40:
+ 240:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 241:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DTEN1;
+ 405              		.loc 1 241 9 is_stmt 1
+ 406              		.loc 1 241 17 is_stmt 0
+ 407 0012 B7760040 		li	a3,1073770496
+ 408 0016 83A70640 		lw	a5,1024(a3)
+ 409 001a 3707FCFF 		li	a4,-262144
+ 410 001e 7D17     		addi	a4,a4,-1
+ 411 0020 F98F     		and	a5,a5,a4
+ 412 0022 23A0F640 		sw	a5,1024(a3)
+ 242:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 243:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 413              		.loc 1 243 1
+ 414 0026 8280     		ret
+ 415              		.cfi_endproc
+ 416              	.LFE12:
+ 418              		.section	.text.dac_trigger_source_config,"ax",@progbits
+ 419              		.align	1
+ 420              		.globl	dac_trigger_source_config
+ 422              	dac_trigger_source_config:
+ 423              	.LFB13:
+ 244:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 245:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 246:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      set DAC trigger source
+ 247:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  triggersource: external triggers of DAC
+ 249:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****                 only one parameter can be selected which is shown as below:
+ 250:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIGGER_T1_TRGO: TIMER1 TRGO
+ 251:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIGGER_T2_TRGO: TIMER2 TRGO
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIGGER_T3_TRGO: TIMER3 TRGO
+ 253:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIGGER_T4_TRGO: TIMER4 TRGO
+ 254:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIGGER_T5_TRGO: TIMER5 TRGO
+ 255:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIGGER_T6_TRGO: TIMER6 TRGO
+ 256:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIGGER_EXTI_9: EXTI interrupt line9 event
+ 257:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIGGER_SOFTWARE: software trigger
+ 258:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 259:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 13
+
+
+ 260:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 261:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_trigger_source_config(uint32_t dac_periph,uint32_t triggersource)
+ 262:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 424              		.loc 1 262 1 is_stmt 1
+ 425              		.cfi_startproc
+ 426              	.LVL17:
+ 263:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 427              		.loc 1 263 5
+ 264:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* configure DAC0 trigger source */
+ 265:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DTSEL0;
+ 428              		.loc 1 265 17 is_stmt 0
+ 429 0000 B7770040 		li	a5,1073770496
+ 430 0004 03A70740 		lw	a4,1024(a5)
+ 263:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 431              		.loc 1 263 7
+ 432 0008 19E9     		bne	a0,zero,.L43
+ 433              		.loc 1 265 9 is_stmt 1
+ 434              		.loc 1 265 17 is_stmt 0
+ 435 000a 137777FC 		andi	a4,a4,-57
+ 436 000e 23A0E740 		sw	a4,1024(a5)
+ 266:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= triggersource;
+ 437              		.loc 1 266 9 is_stmt 1
+ 438              		.loc 1 266 17 is_stmt 0
+ 439 0012 03A70740 		lw	a4,1024(a5)
+ 440 0016 D98D     		or	a1,a4,a1
+ 441              	.LVL18:
+ 442 0018 23A0B740 		sw	a1,1024(a5)
+ 443 001c 8280     		ret
+ 444              	.LVL19:
+ 445              	.L43:
+ 267:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 268:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* configure DAC1 trigger source */
+ 269:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DTSEL1;
+ 446              		.loc 1 269 9 is_stmt 1
+ 447              		.loc 1 269 17 is_stmt 0
+ 448 001e B706C8FF 		li	a3,-3670016
+ 449 0022 FD16     		addi	a3,a3,-1
+ 450 0024 758F     		and	a4,a4,a3
+ 451 0026 23A0E740 		sw	a4,1024(a5)
+ 270:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= (triggersource << DAC1_REG_OFFSET);
+ 452              		.loc 1 270 9 is_stmt 1
+ 453              		.loc 1 270 17 is_stmt 0
+ 454 002a 03A70740 		lw	a4,1024(a5)
+ 455              		.loc 1 270 35
+ 456 002e C205     		slli	a1,a1,16
+ 457              	.LVL20:
+ 458              		.loc 1 270 17
+ 459 0030 D98D     		or	a1,a1,a4
+ 460 0032 23A0B740 		sw	a1,1024(a5)
+ 271:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 272:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 461              		.loc 1 272 1
+ 462 0036 8280     		ret
+ 463              		.cfi_endproc
+ 464              	.LFE13:
+ 466              		.section	.text.dac_software_trigger_enable,"ax",@progbits
+ 467              		.align	1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 14
+
+
+ 468              		.globl	dac_software_trigger_enable
+ 470              	dac_software_trigger_enable:
+ 471              	.LFB14:
+ 273:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 274:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 275:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      enable DAC software trigger
+ 276:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 277:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 278:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 279:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_software_trigger_enable(uint32_t dac_periph)
+ 280:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 472              		.loc 1 280 1 is_stmt 1
+ 473              		.cfi_startproc
+ 474              	.LVL21:
+ 281:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 475              		.loc 1 281 5
+ 282:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_SWT |= DAC_SWT_SWTR0;
+ 476              		.loc 1 282 17 is_stmt 0
+ 477 0000 37770040 		li	a4,1073770496
+ 478 0004 83274740 		lw	a5,1028(a4)
+ 281:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 479              		.loc 1 281 7
+ 480 0008 11E5     		bne	a0,zero,.L46
+ 481              		.loc 1 282 9 is_stmt 1
+ 482              		.loc 1 282 17 is_stmt 0
+ 483 000a 93E71700 		ori	a5,a5,1
+ 484 000e 2322F740 		sw	a5,1028(a4)
+ 485 0012 8280     		ret
+ 486              	.L46:
+ 283:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 284:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_SWT |= DAC_SWT_SWTR1;
+ 487              		.loc 1 284 9 is_stmt 1
+ 488              		.loc 1 284 17 is_stmt 0
+ 489 0014 93E72700 		ori	a5,a5,2
+ 490 0018 2322F740 		sw	a5,1028(a4)
+ 285:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 286:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 491              		.loc 1 286 1
+ 492 001c 8280     		ret
+ 493              		.cfi_endproc
+ 494              	.LFE14:
+ 496              		.section	.text.dac_software_trigger_disable,"ax",@progbits
+ 497              		.align	1
+ 498              		.globl	dac_software_trigger_disable
+ 500              	dac_software_trigger_disable:
+ 501              	.LFB15:
+ 287:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 288:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 289:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      disable DAC software trigger
+ 290:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 291:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 292:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 293:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 294:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_software_trigger_disable(uint32_t dac_periph)
+ 295:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 502              		.loc 1 295 1 is_stmt 1
+ 503              		.cfi_startproc
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 15
+
+
+ 504              	.LVL22:
+ 296:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 505              		.loc 1 296 5
+ 297:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_SWT &= ~DAC_SWT_SWTR0;
+ 506              		.loc 1 297 17 is_stmt 0
+ 507 0000 37770040 		li	a4,1073770496
+ 508 0004 83274740 		lw	a5,1028(a4)
+ 296:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 509              		.loc 1 296 7
+ 510 0008 09E5     		bne	a0,zero,.L49
+ 511              		.loc 1 297 9 is_stmt 1
+ 512              		.loc 1 297 17 is_stmt 0
+ 513 000a F99B     		andi	a5,a5,-2
+ 514 000c 2322F740 		sw	a5,1028(a4)
+ 515 0010 8280     		ret
+ 516              	.L49:
+ 298:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 299:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_SWT &= ~DAC_SWT_SWTR1;
+ 517              		.loc 1 299 9 is_stmt 1
+ 518              		.loc 1 299 17 is_stmt 0
+ 519 0012 F59B     		andi	a5,a5,-3
+ 520 0014 2322F740 		sw	a5,1028(a4)
+ 300:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 301:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 521              		.loc 1 301 1
+ 522 0018 8280     		ret
+ 523              		.cfi_endproc
+ 524              	.LFE15:
+ 526              		.section	.text.dac_wave_mode_config,"ax",@progbits
+ 527              		.align	1
+ 528              		.globl	dac_wave_mode_config
+ 530              	dac_wave_mode_config:
+ 531              	.LFB16:
+ 302:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 303:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 304:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      configure DAC wave mode
+ 305:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 306:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  wave_mode: noise wave mode
+ 307:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****                 only one parameter can be selected which is shown as below:
+ 308:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_DISABLE: wave disable
+ 309:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_MODE_LFSR: LFSR noise mode
+ 310:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_MODE_TRIANGLE: triangle noise mode
+ 311:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 312:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 313:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 314:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_wave_mode_config(uint32_t dac_periph, uint32_t wave_mode)
+ 315:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 532              		.loc 1 315 1 is_stmt 1
+ 533              		.cfi_startproc
+ 534              	.LVL23:
+ 316:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 535              		.loc 1 316 5
+ 317:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* configure DAC0 wave mode */
+ 318:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DWM0;
+ 536              		.loc 1 318 17 is_stmt 0
+ 537 0000 B7770040 		li	a5,1073770496
+ 538 0004 03A70740 		lw	a4,1024(a5)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 16
+
+
+ 316:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 539              		.loc 1 316 7
+ 540 0008 19E9     		bne	a0,zero,.L52
+ 541              		.loc 1 318 9 is_stmt 1
+ 542              		.loc 1 318 17 is_stmt 0
+ 543 000a 1377F7F3 		andi	a4,a4,-193
+ 544 000e 23A0E740 		sw	a4,1024(a5)
+ 319:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= wave_mode;
+ 545              		.loc 1 319 9 is_stmt 1
+ 546              		.loc 1 319 17 is_stmt 0
+ 547 0012 03A70740 		lw	a4,1024(a5)
+ 548 0016 D98D     		or	a1,a4,a1
+ 549              	.LVL24:
+ 550 0018 23A0B740 		sw	a1,1024(a5)
+ 551 001c 8280     		ret
+ 552              	.LVL25:
+ 553              	.L52:
+ 320:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 321:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* configure DAC1 wave mode */
+ 322:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DWM1;
+ 554              		.loc 1 322 9 is_stmt 1
+ 555              		.loc 1 322 17 is_stmt 0
+ 556 001e B70640FF 		li	a3,-12582912
+ 557 0022 FD16     		addi	a3,a3,-1
+ 558 0024 758F     		and	a4,a4,a3
+ 559 0026 23A0E740 		sw	a4,1024(a5)
+ 323:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= (wave_mode << DAC1_REG_OFFSET);
+ 560              		.loc 1 323 9 is_stmt 1
+ 561              		.loc 1 323 17 is_stmt 0
+ 562 002a 03A70740 		lw	a4,1024(a5)
+ 563              		.loc 1 323 31
+ 564 002e C205     		slli	a1,a1,16
+ 565              	.LVL26:
+ 566              		.loc 1 323 17
+ 567 0030 D98D     		or	a1,a1,a4
+ 568 0032 23A0B740 		sw	a1,1024(a5)
+ 324:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 325:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 569              		.loc 1 325 1
+ 570 0036 8280     		ret
+ 571              		.cfi_endproc
+ 572              	.LFE16:
+ 574              		.section	.text.dac_wave_bit_width_config,"ax",@progbits
+ 575              		.align	1
+ 576              		.globl	dac_wave_bit_width_config
+ 578              	dac_wave_bit_width_config:
+ 579              	.LFB17:
+ 326:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 327:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 328:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      configure DAC wave bit width
+ 329:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 330:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  bit_width: noise wave bit width
+ 331:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****                 only one parameter can be selected which is shown as below:
+ 332:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_1: bit width of the wave signal is 1
+ 333:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_2: bit width of the wave signal is 2
+ 334:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_3: bit width of the wave signal is 3
+ 335:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_4: bit width of the wave signal is 4
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 17
+
+
+ 336:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_5: bit width of the wave signal is 5
+ 337:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_6: bit width of the wave signal is 6
+ 338:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_7: bit width of the wave signal is 7
+ 339:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_8: bit width of the wave signal is 8
+ 340:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_9: bit width of the wave signal is 9
+ 341:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_10: bit width of the wave signal is 10
+ 342:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_11: bit width of the wave signal is 11
+ 343:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_WAVE_BIT_WIDTH_12: bit width of the wave signal is 12
+ 344:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 345:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 346:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 347:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_wave_bit_width_config(uint32_t dac_periph, uint32_t bit_width)
+ 348:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 580              		.loc 1 348 1 is_stmt 1
+ 581              		.cfi_startproc
+ 582              	.LVL27:
+ 349:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 583              		.loc 1 349 5
+ 350:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* configure DAC0 wave bit width */
+ 351:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DWBW0;
+ 584              		.loc 1 351 17 is_stmt 0
+ 585 0000 B7770040 		li	a5,1073770496
+ 586 0004 03A70740 		lw	a4,1024(a5)
+ 349:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 587              		.loc 1 349 7
+ 588 0008 09ED     		bne	a0,zero,.L55
+ 589              		.loc 1 351 9 is_stmt 1
+ 590              		.loc 1 351 17 is_stmt 0
+ 591 000a FD76     		li	a3,-4096
+ 592 000c 9386F60F 		addi	a3,a3,255
+ 593 0010 758F     		and	a4,a4,a3
+ 594 0012 23A0E740 		sw	a4,1024(a5)
+ 352:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= bit_width;
+ 595              		.loc 1 352 9 is_stmt 1
+ 596              		.loc 1 352 17 is_stmt 0
+ 597 0016 03A70740 		lw	a4,1024(a5)
+ 598 001a D98D     		or	a1,a4,a1
+ 599              	.LVL28:
+ 600 001c 23A0B740 		sw	a1,1024(a5)
+ 601 0020 8280     		ret
+ 602              	.LVL29:
+ 603              	.L55:
+ 353:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 354:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* configure DAC1 wave bit width */
+ 355:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DWBW1;
+ 604              		.loc 1 355 9 is_stmt 1
+ 605              		.loc 1 355 17 is_stmt 0
+ 606 0022 B70600F1 		li	a3,-251658240
+ 607 0026 FD16     		addi	a3,a3,-1
+ 608 0028 758F     		and	a4,a4,a3
+ 609 002a 23A0E740 		sw	a4,1024(a5)
+ 356:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= (bit_width << DAC1_REG_OFFSET);
+ 610              		.loc 1 356 9 is_stmt 1
+ 611              		.loc 1 356 17 is_stmt 0
+ 612 002e 03A70740 		lw	a4,1024(a5)
+ 613              		.loc 1 356 31
+ 614 0032 C205     		slli	a1,a1,16
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 18
+
+
+ 615              	.LVL30:
+ 616              		.loc 1 356 17
+ 617 0034 D98D     		or	a1,a1,a4
+ 618 0036 23A0B740 		sw	a1,1024(a5)
+ 357:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 358:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 619              		.loc 1 358 1
+ 620 003a 8280     		ret
+ 621              		.cfi_endproc
+ 622              	.LFE17:
+ 624              		.section	.text.dac_lfsr_noise_config,"ax",@progbits
+ 625              		.align	1
+ 626              		.globl	dac_lfsr_noise_config
+ 628              	dac_lfsr_noise_config:
+ 629              	.LFB28:
+ 630              		.cfi_startproc
+ 631 0000 17030000 		tail	dac_wave_bit_width_config
+ 631      67000300 
+ 632              		.cfi_endproc
+ 633              	.LFE28:
+ 635              		.section	.text.dac_triangle_noise_config,"ax",@progbits
+ 636              		.align	1
+ 637              		.globl	dac_triangle_noise_config
+ 639              	dac_triangle_noise_config:
+ 640              	.LFB30:
+ 641              		.cfi_startproc
+ 642 0000 17030000 		tail	dac_wave_bit_width_config
+ 642      67000300 
+ 643              		.cfi_endproc
+ 644              	.LFE30:
+ 646              		.section	.text.dac_concurrent_enable,"ax",@progbits
+ 647              		.align	1
+ 648              		.globl	dac_concurrent_enable
+ 650              	dac_concurrent_enable:
+ 651              	.LFB20:
+ 359:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 360:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 361:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      configure DAC LFSR noise mode
+ 362:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 363:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  unmask_bits: unmask LFSR bits in DAC LFSR noise mode
+ 364:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****                 only one parameter can be selected which is shown as below:
+ 365:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BIT0: unmask the LFSR bit0
+ 366:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS1_0: unmask the LFSR bits[1:0]
+ 367:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS2_0: unmask the LFSR bits[2:0]
+ 368:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS3_0: unmask the LFSR bits[3:0]
+ 369:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS4_0: unmask the LFSR bits[4:0]
+ 370:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS5_0: unmask the LFSR bits[5:0]
+ 371:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS6_0: unmask the LFSR bits[6:0]
+ 372:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS7_0: unmask the LFSR bits[7:0]
+ 373:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS8_0: unmask the LFSR bits[8:0]
+ 374:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS9_0: unmask the LFSR bits[9:0]
+ 375:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS10_0: unmask the LFSR bits[10:0]
+ 376:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_LFSR_BITS11_0: unmask the LFSR bits[11:0]
+ 377:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 378:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 379:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 380:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_lfsr_noise_config(uint32_t dac_periph, uint32_t unmask_bits)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 19
+
+
+ 381:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 382:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 383:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* configure DAC0 LFSR noise mode */
+ 384:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DWBW0;
+ 385:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= unmask_bits;
+ 386:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 387:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* configure DAC1 LFSR noise mode */
+ 388:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DWBW1;
+ 389:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= (unmask_bits << DAC1_REG_OFFSET);
+ 390:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 391:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 392:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 393:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 394:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      configure DAC triangle noise mode
+ 395:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_periph: DACx(x = 0,1)
+ 396:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  amplitude: triangle amplitude in DAC triangle noise mode
+ 397:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****                 only one parameter can be selected which is shown as below:
+ 398:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_1: triangle amplitude is 1
+ 399:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_3: triangle amplitude is 3
+ 400:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_7: triangle amplitude is 7
+ 401:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_15: triangle amplitude is 15
+ 402:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_31: triangle amplitude is 31
+ 403:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_63: triangle amplitude is 63
+ 404:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_127: triangle amplitude is 127
+ 405:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_255: triangle amplitude is 255
+ 406:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_511: triangle amplitude is 511
+ 407:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_1023: triangle amplitude is 1023
+ 408:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_2047: triangle amplitude is 2047
+ 409:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_TRIANGLE_AMPLITUDE_4095: triangle amplitude is 4095
+ 410:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 411:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 412:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 413:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_triangle_noise_config(uint32_t dac_periph, uint32_t amplitude)
+ 414:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 415:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     if(DAC0 == dac_periph){
+ 416:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* configure DAC0 triangle noise mode */
+ 417:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DWBW0;
+ 418:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= amplitude;
+ 419:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }else{
+ 420:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         /* configure DAC1 triangle noise mode */
+ 421:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL &= ~DAC_CTL_DWBW1;
+ 422:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DAC_CTL |= (amplitude << DAC1_REG_OFFSET);
+ 423:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 424:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 425:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 426:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 427:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      enable DAC concurrent mode
+ 428:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  none
+ 429:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 430:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 431:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 432:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_concurrent_enable(void)
+ 433:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 652              		.loc 1 433 1 is_stmt 1
+ 653              		.cfi_startproc
+ 434:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     uint32_t ctl = 0U;
+ 654              		.loc 1 434 5
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 20
+
+
+ 655              	.LVL31:
+ 435:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     ctl = DAC_CTL_DEN0 | DAC_CTL_DEN1;
+ 656              		.loc 1 435 5
+ 436:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     DAC_CTL |= (ctl);
+ 657              		.loc 1 436 5
+ 658              		.loc 1 436 13 is_stmt 0
+ 659 0000 B7760040 		li	a3,1073770496
+ 660 0004 83A70640 		lw	a5,1024(a3)
+ 661 0008 4167     		li	a4,65536
+ 662 000a 0507     		addi	a4,a4,1
+ 663 000c D98F     		or	a5,a5,a4
+ 664 000e 23A0F640 		sw	a5,1024(a3)
+ 437:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 665              		.loc 1 437 1
+ 666 0012 8280     		ret
+ 667              		.cfi_endproc
+ 668              	.LFE20:
+ 670              		.section	.text.dac_concurrent_disable,"ax",@progbits
+ 671              		.align	1
+ 672              		.globl	dac_concurrent_disable
+ 674              	dac_concurrent_disable:
+ 675              	.LFB21:
+ 438:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 439:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 440:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      disable DAC concurrent mode
+ 441:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  none
+ 442:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 443:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 444:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 445:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_concurrent_disable(void)
+ 446:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 676              		.loc 1 446 1 is_stmt 1
+ 677              		.cfi_startproc
+ 447:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     uint32_t ctl = 0U;
+ 678              		.loc 1 447 5
+ 679              	.LVL32:
+ 448:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     ctl = DAC_CTL_DEN0 | DAC_CTL_DEN1;
+ 680              		.loc 1 448 5
+ 449:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     DAC_CTL &= (~ctl);
+ 681              		.loc 1 449 5
+ 682              		.loc 1 449 13 is_stmt 0
+ 683 0000 B7760040 		li	a3,1073770496
+ 684 0004 83A70640 		lw	a5,1024(a3)
+ 685 0008 4177     		li	a4,-65536
+ 686 000a 7917     		addi	a4,a4,-2
+ 687 000c F98F     		and	a5,a5,a4
+ 688 000e 23A0F640 		sw	a5,1024(a3)
+ 450:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 689              		.loc 1 450 1
+ 690 0012 8280     		ret
+ 691              		.cfi_endproc
+ 692              	.LFE21:
+ 694              		.section	.text.dac_concurrent_software_trigger_enable,"ax",@progbits
+ 695              		.align	1
+ 696              		.globl	dac_concurrent_software_trigger_enable
+ 698              	dac_concurrent_software_trigger_enable:
+ 699              	.LFB22:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 21
+
+
+ 451:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 452:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 453:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      enable DAC concurrent software trigger function
+ 454:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  none
+ 455:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 456:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 457:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 458:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_concurrent_software_trigger_enable(void)
+ 459:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 700              		.loc 1 459 1 is_stmt 1
+ 701              		.cfi_startproc
+ 460:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     uint32_t swt = 0U;
+ 702              		.loc 1 460 5
+ 703              	.LVL33:
+ 461:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     swt = DAC_SWT_SWTR0 | DAC_SWT_SWTR1;
+ 704              		.loc 1 461 5
+ 462:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     DAC_SWT |= (swt); 
+ 705              		.loc 1 462 5
+ 706              		.loc 1 462 13 is_stmt 0
+ 707 0000 37770040 		li	a4,1073770496
+ 708 0004 83274740 		lw	a5,1028(a4)
+ 709 0008 93E73700 		ori	a5,a5,3
+ 710 000c 2322F740 		sw	a5,1028(a4)
+ 463:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 711              		.loc 1 463 1
+ 712 0010 8280     		ret
+ 713              		.cfi_endproc
+ 714              	.LFE22:
+ 716              		.section	.text.dac_concurrent_software_trigger_disable,"ax",@progbits
+ 717              		.align	1
+ 718              		.globl	dac_concurrent_software_trigger_disable
+ 720              	dac_concurrent_software_trigger_disable:
+ 721              	.LFB23:
+ 464:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 465:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 466:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      disable DAC concurrent software trigger function
+ 467:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  none
+ 468:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 469:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 470:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 471:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_concurrent_software_trigger_disable(void)
+ 472:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 722              		.loc 1 472 1 is_stmt 1
+ 723              		.cfi_startproc
+ 473:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     uint32_t swt = 0U;
+ 724              		.loc 1 473 5
+ 725              	.LVL34:
+ 474:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     swt = DAC_SWT_SWTR0 | DAC_SWT_SWTR1;
+ 726              		.loc 1 474 5
+ 475:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     DAC_SWT &= (~swt);
+ 727              		.loc 1 475 5
+ 728              		.loc 1 475 13 is_stmt 0
+ 729 0000 37770040 		li	a4,1073770496
+ 730 0004 83274740 		lw	a5,1028(a4)
+ 731 0008 F19B     		andi	a5,a5,-4
+ 732 000a 2322F740 		sw	a5,1028(a4)
+ 476:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 22
+
+
+ 733              		.loc 1 476 1
+ 734 000e 8280     		ret
+ 735              		.cfi_endproc
+ 736              	.LFE23:
+ 738              		.section	.text.dac_concurrent_output_buffer_enable,"ax",@progbits
+ 739              		.align	1
+ 740              		.globl	dac_concurrent_output_buffer_enable
+ 742              	dac_concurrent_output_buffer_enable:
+ 743              	.LFB24:
+ 477:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 478:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 479:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      enable DAC concurrent buffer function
+ 480:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  none
+ 481:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 482:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 483:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 484:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_concurrent_output_buffer_enable(void)
+ 485:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 744              		.loc 1 485 1 is_stmt 1
+ 745              		.cfi_startproc
+ 486:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     uint32_t ctl = 0U;
+ 746              		.loc 1 486 5
+ 747              	.LVL35:
+ 487:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     ctl = DAC_CTL_DBOFF0 | DAC_CTL_DBOFF1;
+ 748              		.loc 1 487 5
+ 488:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     DAC_CTL &= (~ctl);
+ 749              		.loc 1 488 5
+ 750              		.loc 1 488 13 is_stmt 0
+ 751 0000 B7760040 		li	a3,1073770496
+ 752 0004 83A70640 		lw	a5,1024(a3)
+ 753 0008 0177     		li	a4,-131072
+ 754 000a 7517     		addi	a4,a4,-3
+ 755 000c F98F     		and	a5,a5,a4
+ 756 000e 23A0F640 		sw	a5,1024(a3)
+ 489:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 757              		.loc 1 489 1
+ 758 0012 8280     		ret
+ 759              		.cfi_endproc
+ 760              	.LFE24:
+ 762              		.section	.text.dac_concurrent_output_buffer_disable,"ax",@progbits
+ 763              		.align	1
+ 764              		.globl	dac_concurrent_output_buffer_disable
+ 766              	dac_concurrent_output_buffer_disable:
+ 767              	.LFB25:
+ 490:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 491:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 492:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      disable DAC concurrent buffer function
+ 493:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  none
+ 494:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 495:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 496:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 497:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_concurrent_output_buffer_disable(void)
+ 498:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 768              		.loc 1 498 1 is_stmt 1
+ 769              		.cfi_startproc
+ 499:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     uint32_t ctl = 0U;
+ 770              		.loc 1 499 5
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 23
+
+
+ 771              	.LVL36:
+ 500:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     ctl = DAC_CTL_DBOFF0 | DAC_CTL_DBOFF1;
+ 772              		.loc 1 500 5
+ 501:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     DAC_CTL |= (ctl);
+ 773              		.loc 1 501 5
+ 774              		.loc 1 501 13 is_stmt 0
+ 775 0000 B7760040 		li	a3,1073770496
+ 776 0004 83A70640 		lw	a5,1024(a3)
+ 777 0008 37070200 		li	a4,131072
+ 778 000c 0907     		addi	a4,a4,2
+ 779 000e D98F     		or	a5,a5,a4
+ 780 0010 23A0F640 		sw	a5,1024(a3)
+ 502:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 781              		.loc 1 502 1
+ 782 0014 8280     		ret
+ 783              		.cfi_endproc
+ 784              	.LFE25:
+ 786              		.section	.text.dac_concurrent_data_set,"ax",@progbits
+ 787              		.align	1
+ 788              		.globl	dac_concurrent_data_set
+ 790              	dac_concurrent_data_set:
+ 791              	.LFB26:
+ 503:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** 
+ 504:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** /*!
+ 505:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \brief      set DAC concurrent mode data holding register value
+ 506:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  dac_align: data alignment
+ 507:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****                 only one parameter can be selected which is shown as below:
+ 508:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_ALIGN_8B_R: data right 8b alignment
+ 509:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_ALIGN_12B_R: data right 12b alignment
+ 510:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****       \arg        DAC_ALIGN_12B_L: data left 12b alignment
+ 511:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  data0: data to be loaded
+ 512:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[in]  data1: data to be loaded
+ 513:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \param[out] none
+ 514:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     \retval     none
+ 515:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** */
+ 516:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** void dac_concurrent_data_set(uint32_t dac_align, uint16_t data0, uint16_t data1)
+ 517:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** {
+ 792              		.loc 1 517 1 is_stmt 1
+ 793              		.cfi_startproc
+ 794              	.LVL37:
+ 518:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     uint32_t data = 0U;
+ 795              		.loc 1 518 5
+ 519:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     switch(dac_align){
+ 796              		.loc 1 519 5
+ 797 0000 8547     		li	a5,1
+ 798 0002 630EF500 		beq	a0,a5,.L66
+ 799 0006 1DC1     		beq	a0,zero,.L67
+ 800 0008 8947     		li	a5,2
+ 801 000a 6319F500 		bne	a0,a5,.L70
+ 520:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     /* data right 12b alignment */
+ 521:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     case DAC_ALIGN_12B_R:
+ 522:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         data = ((uint32_t)data1 << DH_12BIT_OFFSET) | data0;
+ 523:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DACC_R12DH = data;
+ 524:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         break;
+ 525:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     /* data left 12b alignment */
+ 526:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     case DAC_ALIGN_12B_L:
+ 527:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         data = ((uint32_t)data1 << DH_12BIT_OFFSET) | data0;
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 24
+
+
+ 528:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DACC_L12DH = data;
+ 529:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         break;
+ 530:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     /* data right 8b alignment */
+ 531:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     case DAC_ALIGN_8B_R:
+ 532:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         data = ((uint32_t)data1 << DH_8BIT_OFFSET) | data0;
+ 802              		.loc 1 532 9
+ 803              		.loc 1 532 33 is_stmt 0
+ 804 000e 2206     		slli	a2,a2,8
+ 805              	.LVL38:
+ 806              		.loc 1 532 14
+ 807 0010 4D8E     		or	a2,a2,a1
+ 808              	.LVL39:
+ 533:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DACC_R8DH = data;
+ 809              		.loc 1 533 9 is_stmt 1
+ 810              		.loc 1 533 19 is_stmt 0
+ 811 0012 B7770040 		li	a5,1073770496
+ 812 0016 23A4C742 		sw	a2,1064(a5)
+ 534:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         break;
+ 813              		.loc 1 534 9 is_stmt 1
+ 535:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     default:
+ 536:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         break;
+ 537:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     }
+ 538:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c **** }
+ 814              		.loc 1 538 1 is_stmt 0
+ 815 001a 8280     		ret
+ 816              	.LVL40:
+ 817              	.L70:
+ 818 001c 8280     		ret
+ 819              	.L66:
+ 527:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DACC_L12DH = data;
+ 820              		.loc 1 527 9 is_stmt 1
+ 527:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DACC_L12DH = data;
+ 821              		.loc 1 527 33 is_stmt 0
+ 822 001e 4206     		slli	a2,a2,16
+ 823              	.LVL41:
+ 527:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DACC_L12DH = data;
+ 824              		.loc 1 527 14
+ 825 0020 4D8E     		or	a2,a2,a1
+ 826              	.LVL42:
+ 528:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         break;
+ 827              		.loc 1 528 9 is_stmt 1
+ 528:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         break;
+ 828              		.loc 1 528 20 is_stmt 0
+ 829 0022 B7770040 		li	a5,1073770496
+ 830 0026 23A2C742 		sw	a2,1060(a5)
+ 529:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     /* data right 8b alignment */
+ 831              		.loc 1 529 9 is_stmt 1
+ 832 002a 8280     		ret
+ 833              	.LVL43:
+ 834              	.L67:
+ 522:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DACC_R12DH = data;
+ 835              		.loc 1 522 9
+ 522:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DACC_R12DH = data;
+ 836              		.loc 1 522 33 is_stmt 0
+ 837 002c 4206     		slli	a2,a2,16
+ 838              	.LVL44:
+ 522:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         DACC_R12DH = data;
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 25
+
+
+ 839              		.loc 1 522 14
+ 840 002e 4D8E     		or	a2,a2,a1
+ 841              	.LVL45:
+ 523:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         break;
+ 842              		.loc 1 523 9 is_stmt 1
+ 523:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****         break;
+ 843              		.loc 1 523 20 is_stmt 0
+ 844 0030 B7770040 		li	a5,1073770496
+ 845 0034 23A0C742 		sw	a2,1056(a5)
+ 524:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dac.c ****     /* data left 12b alignment */
+ 846              		.loc 1 524 9 is_stmt 1
+ 847 0038 8280     		ret
+ 848              		.cfi_endproc
+ 849              	.LFE26:
+ 851              		.text
+ 852              	.Letext0:
+ 853              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 854              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 855              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu
+ 856              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 26
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32vf103_dac.c
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:13     .text.dac_deinit:0000000000000000 dac_deinit
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:17     .text.dac_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:18     .text.dac_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:19     .text.dac_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:20     .text.dac_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:22     .text.dac_deinit:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:24     .text.dac_deinit:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:26     .text.dac_deinit:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:27     .text.dac_deinit:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:29     .text.dac_deinit:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:32     .text.dac_deinit:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:33     .text.dac_deinit:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:34     .text.dac_deinit:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:36     .text.dac_deinit:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:38     .text.dac_deinit:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:40     .text.dac_deinit:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:42     .text.dac_deinit:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:44     .text.dac_deinit:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:51     .text.dac_enable:0000000000000000 dac_enable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:54     .text.dac_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:56     .text.dac_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:57     .text.dac_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:58     .text.dac_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:61     .text.dac_enable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:63     .text.dac_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:64     .text.dac_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:69     .text.dac_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:70     .text.dac_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:74     .text.dac_enable:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:75     .text.dac_enable:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:82     .text.dac_disable:0000000000000000 dac_disable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:85     .text.dac_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:87     .text.dac_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:88     .text.dac_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:89     .text.dac_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:91     .text.dac_disable:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:92     .text.dac_disable:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:99     .text.dac_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:100    .text.dac_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:107    .text.dac_disable:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:108    .text.dac_disable:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:115    .text.dac_dma_enable:0000000000000000 dac_dma_enable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:118    .text.dac_dma_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:120    .text.dac_dma_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:121    .text.dac_dma_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:122    .text.dac_dma_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:125    .text.dac_dma_enable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:127    .text.dac_dma_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:128    .text.dac_dma_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:134    .text.dac_dma_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:135    .text.dac_dma_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:139    .text.dac_dma_enable:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:140    .text.dac_dma_enable:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:147    .text.dac_dma_disable:0000000000000000 dac_dma_disable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:150    .text.dac_dma_disable:0000000000000000 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 27
+
+
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:152    .text.dac_dma_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:153    .text.dac_dma_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:154    .text.dac_dma_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:157    .text.dac_dma_disable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:159    .text.dac_dma_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:160    .text.dac_dma_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:167    .text.dac_dma_disable:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:168    .text.dac_dma_disable:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:173    .text.dac_dma_disable:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:174    .text.dac_dma_disable:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:181    .text.dac_output_buffer_enable:0000000000000000 dac_output_buffer_enable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:184    .text.dac_output_buffer_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:186    .text.dac_output_buffer_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:187    .text.dac_output_buffer_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:188    .text.dac_output_buffer_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:190    .text.dac_output_buffer_enable:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:191    .text.dac_output_buffer_enable:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:198    .text.dac_output_buffer_enable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:199    .text.dac_output_buffer_enable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:206    .text.dac_output_buffer_enable:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:207    .text.dac_output_buffer_enable:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:214    .text.dac_output_buffer_disable:0000000000000000 dac_output_buffer_disable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:217    .text.dac_output_buffer_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:219    .text.dac_output_buffer_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:220    .text.dac_output_buffer_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:221    .text.dac_output_buffer_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:224    .text.dac_output_buffer_disable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:226    .text.dac_output_buffer_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:227    .text.dac_output_buffer_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:232    .text.dac_output_buffer_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:233    .text.dac_output_buffer_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:237    .text.dac_output_buffer_disable:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:238    .text.dac_output_buffer_disable:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:245    .text.dac_output_value_get:0000000000000000 dac_output_value_get
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:248    .text.dac_output_value_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:250    .text.dac_output_value_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:251    .text.dac_output_value_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:252    .text.dac_output_value_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:253    .text.dac_output_value_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:255    .text.dac_output_value_get:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:257    .text.dac_output_value_get:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:258    .text.dac_output_value_get:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:261    .text.dac_output_value_get:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:268    .text.dac_output_value_get:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:269    .text.dac_output_value_get:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:272    .text.dac_output_value_get:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:276    .text.dac_output_value_get:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:277    .text.dac_output_value_get:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:278    .text.dac_output_value_get:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:285    .text.dac_data_set:0000000000000000 dac_data_set
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:288    .text.dac_data_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:290    .text.dac_data_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:291    .text.dac_data_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:292    .text.dac_data_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:294    .text.dac_data_set:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:296    .text.dac_data_set:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:301    .text.dac_data_set:0000000000000010 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 28
+
+
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:302    .text.dac_data_set:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:305    .text.dac_data_set:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:308    .text.dac_data_set:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:313    .text.dac_data_set:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:314    .text.dac_data_set:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:317    .text.dac_data_set:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:318    .text.dac_data_set:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:325    .text.dac_data_set:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:326    .text.dac_data_set:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:329    .text.dac_data_set:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:332    .text.dac_data_set:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:333    .text.dac_data_set:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:336    .text.dac_data_set:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:339    .text.dac_data_set:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:340    .text.dac_data_set:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:343    .text.dac_data_set:0000000000000050 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:346    .text.dac_data_set:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:347    .text.dac_data_set:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:350    .text.dac_data_set:000000000000005a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:351    .text.dac_data_set:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:358    .text.dac_trigger_enable:0000000000000000 dac_trigger_enable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:361    .text.dac_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:363    .text.dac_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:364    .text.dac_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:365    .text.dac_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:368    .text.dac_trigger_enable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:370    .text.dac_trigger_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:371    .text.dac_trigger_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:376    .text.dac_trigger_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:377    .text.dac_trigger_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:381    .text.dac_trigger_enable:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:382    .text.dac_trigger_enable:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:389    .text.dac_trigger_disable:0000000000000000 dac_trigger_disable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:392    .text.dac_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:394    .text.dac_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:395    .text.dac_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:396    .text.dac_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:398    .text.dac_trigger_disable:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:399    .text.dac_trigger_disable:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:406    .text.dac_trigger_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:407    .text.dac_trigger_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:414    .text.dac_trigger_disable:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:415    .text.dac_trigger_disable:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:422    .text.dac_trigger_source_config:0000000000000000 dac_trigger_source_config
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:425    .text.dac_trigger_source_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:427    .text.dac_trigger_source_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:428    .text.dac_trigger_source_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:429    .text.dac_trigger_source_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:432    .text.dac_trigger_source_config:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:434    .text.dac_trigger_source_config:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:435    .text.dac_trigger_source_config:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:438    .text.dac_trigger_source_config:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:439    .text.dac_trigger_source_config:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:447    .text.dac_trigger_source_config:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:448    .text.dac_trigger_source_config:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:453    .text.dac_trigger_source_config:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:454    .text.dac_trigger_source_config:000000000000002a .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 29
+
+
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:456    .text.dac_trigger_source_config:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:459    .text.dac_trigger_source_config:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:462    .text.dac_trigger_source_config:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:463    .text.dac_trigger_source_config:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:470    .text.dac_software_trigger_enable:0000000000000000 dac_software_trigger_enable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:473    .text.dac_software_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:475    .text.dac_software_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:476    .text.dac_software_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:477    .text.dac_software_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:480    .text.dac_software_trigger_enable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:482    .text.dac_software_trigger_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:483    .text.dac_software_trigger_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:488    .text.dac_software_trigger_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:489    .text.dac_software_trigger_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:492    .text.dac_software_trigger_enable:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:493    .text.dac_software_trigger_enable:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:500    .text.dac_software_trigger_disable:0000000000000000 dac_software_trigger_disable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:503    .text.dac_software_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:505    .text.dac_software_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:506    .text.dac_software_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:507    .text.dac_software_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:510    .text.dac_software_trigger_disable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:512    .text.dac_software_trigger_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:513    .text.dac_software_trigger_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:518    .text.dac_software_trigger_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:519    .text.dac_software_trigger_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:522    .text.dac_software_trigger_disable:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:523    .text.dac_software_trigger_disable:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:530    .text.dac_wave_mode_config:0000000000000000 dac_wave_mode_config
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:533    .text.dac_wave_mode_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:535    .text.dac_wave_mode_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:536    .text.dac_wave_mode_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:537    .text.dac_wave_mode_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:540    .text.dac_wave_mode_config:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:542    .text.dac_wave_mode_config:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:543    .text.dac_wave_mode_config:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:546    .text.dac_wave_mode_config:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:547    .text.dac_wave_mode_config:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:555    .text.dac_wave_mode_config:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:556    .text.dac_wave_mode_config:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:561    .text.dac_wave_mode_config:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:562    .text.dac_wave_mode_config:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:564    .text.dac_wave_mode_config:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:567    .text.dac_wave_mode_config:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:570    .text.dac_wave_mode_config:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:571    .text.dac_wave_mode_config:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:578    .text.dac_wave_bit_width_config:0000000000000000 dac_wave_bit_width_config
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:581    .text.dac_wave_bit_width_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:583    .text.dac_wave_bit_width_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:584    .text.dac_wave_bit_width_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:585    .text.dac_wave_bit_width_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:588    .text.dac_wave_bit_width_config:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:590    .text.dac_wave_bit_width_config:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:591    .text.dac_wave_bit_width_config:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:596    .text.dac_wave_bit_width_config:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:597    .text.dac_wave_bit_width_config:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:605    .text.dac_wave_bit_width_config:0000000000000022 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 30
+
+
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:606    .text.dac_wave_bit_width_config:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:611    .text.dac_wave_bit_width_config:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:612    .text.dac_wave_bit_width_config:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:614    .text.dac_wave_bit_width_config:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:617    .text.dac_wave_bit_width_config:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:620    .text.dac_wave_bit_width_config:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:621    .text.dac_wave_bit_width_config:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:628    .text.dac_lfsr_noise_config:0000000000000000 dac_lfsr_noise_config
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:630    .text.dac_lfsr_noise_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:632    .text.dac_lfsr_noise_config:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:639    .text.dac_triangle_noise_config:0000000000000000 dac_triangle_noise_config
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:641    .text.dac_triangle_noise_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:643    .text.dac_triangle_noise_config:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:650    .text.dac_concurrent_enable:0000000000000000 dac_concurrent_enable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:653    .text.dac_concurrent_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:654    .text.dac_concurrent_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:656    .text.dac_concurrent_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:657    .text.dac_concurrent_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:658    .text.dac_concurrent_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:659    .text.dac_concurrent_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:666    .text.dac_concurrent_enable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:667    .text.dac_concurrent_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:674    .text.dac_concurrent_disable:0000000000000000 dac_concurrent_disable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:677    .text.dac_concurrent_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:678    .text.dac_concurrent_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:680    .text.dac_concurrent_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:681    .text.dac_concurrent_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:682    .text.dac_concurrent_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:683    .text.dac_concurrent_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:690    .text.dac_concurrent_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:691    .text.dac_concurrent_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:698    .text.dac_concurrent_software_trigger_enable:0000000000000000 dac_concurrent_software_trigger_enable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:701    .text.dac_concurrent_software_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:702    .text.dac_concurrent_software_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:704    .text.dac_concurrent_software_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:705    .text.dac_concurrent_software_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:706    .text.dac_concurrent_software_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:707    .text.dac_concurrent_software_trigger_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:712    .text.dac_concurrent_software_trigger_enable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:713    .text.dac_concurrent_software_trigger_enable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:720    .text.dac_concurrent_software_trigger_disable:0000000000000000 dac_concurrent_software_trigger_disable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:723    .text.dac_concurrent_software_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:724    .text.dac_concurrent_software_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:726    .text.dac_concurrent_software_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:727    .text.dac_concurrent_software_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:728    .text.dac_concurrent_software_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:729    .text.dac_concurrent_software_trigger_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:734    .text.dac_concurrent_software_trigger_disable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:735    .text.dac_concurrent_software_trigger_disable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:742    .text.dac_concurrent_output_buffer_enable:0000000000000000 dac_concurrent_output_buffer_enable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:745    .text.dac_concurrent_output_buffer_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:746    .text.dac_concurrent_output_buffer_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:748    .text.dac_concurrent_output_buffer_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:749    .text.dac_concurrent_output_buffer_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:750    .text.dac_concurrent_output_buffer_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:751    .text.dac_concurrent_output_buffer_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:758    .text.dac_concurrent_output_buffer_enable:0000000000000012 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 31
+
+
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:759    .text.dac_concurrent_output_buffer_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:766    .text.dac_concurrent_output_buffer_disable:0000000000000000 dac_concurrent_output_buffer_disable
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:769    .text.dac_concurrent_output_buffer_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:770    .text.dac_concurrent_output_buffer_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:772    .text.dac_concurrent_output_buffer_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:773    .text.dac_concurrent_output_buffer_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:774    .text.dac_concurrent_output_buffer_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:775    .text.dac_concurrent_output_buffer_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:782    .text.dac_concurrent_output_buffer_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:783    .text.dac_concurrent_output_buffer_disable:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:790    .text.dac_concurrent_data_set:0000000000000000 dac_concurrent_data_set
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:793    .text.dac_concurrent_data_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:795    .text.dac_concurrent_data_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:796    .text.dac_concurrent_data_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:797    .text.dac_concurrent_data_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:803    .text.dac_concurrent_data_set:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:804    .text.dac_concurrent_data_set:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:807    .text.dac_concurrent_data_set:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:810    .text.dac_concurrent_data_set:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:811    .text.dac_concurrent_data_set:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:814    .text.dac_concurrent_data_set:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:815    .text.dac_concurrent_data_set:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:821    .text.dac_concurrent_data_set:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:822    .text.dac_concurrent_data_set:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:825    .text.dac_concurrent_data_set:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:828    .text.dac_concurrent_data_set:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:829    .text.dac_concurrent_data_set:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:832    .text.dac_concurrent_data_set:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:836    .text.dac_concurrent_data_set:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:837    .text.dac_concurrent_data_set:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:840    .text.dac_concurrent_data_set:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:843    .text.dac_concurrent_data_set:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:844    .text.dac_concurrent_data_set:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:847    .text.dac_concurrent_data_set:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:848    .text.dac_concurrent_data_set:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:47     .text.dac_deinit:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:78     .text.dac_enable:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:111    .text.dac_disable:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:143    .text.dac_dma_enable:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:177    .text.dac_dma_disable:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:210    .text.dac_output_buffer_enable:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:241    .text.dac_output_buffer_disable:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:281    .text.dac_output_value_get:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:354    .text.dac_data_set:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:385    .text.dac_trigger_enable:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:418    .text.dac_trigger_disable:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:466    .text.dac_trigger_source_config:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:496    .text.dac_software_trigger_enable:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:526    .text.dac_software_trigger_disable:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:574    .text.dac_wave_mode_config:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:624    .text.dac_wave_bit_width_config:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:670    .text.dac_concurrent_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:694    .text.dac_concurrent_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:716    .text.dac_concurrent_software_trigger_enable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:738    .text.dac_concurrent_software_trigger_disable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:762    .text.dac_concurrent_output_buffer_enable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:786    .text.dac_concurrent_output_buffer_disable:0000000000000016 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 32
+
+
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:851    .text.dac_concurrent_data_set:000000000000003a .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:67     .text.dac_enable:0000000000000014 .L5
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:97     .text.dac_disable:0000000000000012 .L8
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:132    .text.dac_dma_enable:0000000000000014 .L11
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:165    .text.dac_dma_disable:0000000000000016 .L14
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:196    .text.dac_output_buffer_enable:0000000000000012 .L17
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:230    .text.dac_output_buffer_disable:0000000000000014 .L20
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:266    .text.dac_output_value_get:0000000000000010 .L23
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:306    .text.dac_data_set:000000000000001a .L26
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:323    .text.dac_data_set:0000000000000034 .L27
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:330    .text.dac_data_set:000000000000003e .L28
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:319    .text.dac_data_set:0000000000000030 .L34
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:344    .text.dac_data_set:0000000000000052 .L31
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:337    .text.dac_data_set:0000000000000048 .L32
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:321    .text.dac_data_set:0000000000000032 .L35
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:374    .text.dac_trigger_enable:0000000000000014 .L37
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:404    .text.dac_trigger_disable:0000000000000012 .L40
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:445    .text.dac_trigger_source_config:000000000000001e .L43
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:486    .text.dac_software_trigger_enable:0000000000000014 .L46
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:516    .text.dac_software_trigger_disable:0000000000000012 .L49
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:553    .text.dac_wave_mode_config:000000000000001e .L52
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:603    .text.dac_wave_bit_width_config:0000000000000022 .L55
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:819    .text.dac_concurrent_data_set:000000000000001e .L66
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:834    .text.dac_concurrent_data_set:000000000000002c .L67
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:817    .text.dac_concurrent_data_set:000000000000001c .L70
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:1714   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2539   .debug_str:0000000000000223 .LASF82
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2543   .debug_str:00000000000002ba .LASF83
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2573   .debug_str:00000000000003f6 .LASF84
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2415   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2465   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2555   .debug_str:0000000000000359 .LASF0
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2505   .debug_str:0000000000000141 .LASF1
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2527   .debug_str:00000000000001cf .LASF2
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2481   .debug_str:000000000000005a .LASF3
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2497   .debug_str:00000000000000ed .LASF6
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2563   .debug_str:0000000000000388 .LASF4
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2515   .debug_str:000000000000017f .LASF5
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2477   .debug_str:0000000000000041 .LASF7
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2587   .debug_str:00000000000004a3 .LASF8
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2513   .debug_str:0000000000000171 .LASF9
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2547   .debug_str:0000000000000320 .LASF10
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2557   .debug_str:0000000000000366 .LASF11
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2551   .debug_str:0000000000000344 .LASF12
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2579   .debug_str:000000000000046a .LASF85
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2469   .debug_str:000000000000000e .LASF13
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2571   .debug_str:00000000000003e8 .LASF14
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2615   .debug_str:000000000000057d .LASF15
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2495   .debug_str:00000000000000df .LASF16
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2523   .debug_str:00000000000001a8 .LASF17
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2577   .debug_str:000000000000045c .LASF18
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2625   .debug_str:00000000000005bb .LASF19
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2639   .debug_str:0000000000000654 .LASF20
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2489   .debug_str:00000000000000af .LASF21
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2517   .debug_str:0000000000000188 .LASF22
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2583   .debug_str:000000000000047f .LASF23
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 33
+
+
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2637   .debug_str:0000000000000646 .LASF24
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2595   .debug_str:00000000000004f1 .LASF25
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2471   .debug_str:000000000000001b .LASF26
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2601   .debug_str:0000000000000515 .LASF27
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2597   .debug_str:00000000000004fe .LASF28
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2475   .debug_str:0000000000000035 .LASF29
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2511   .debug_str:0000000000000165 .LASF30
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2485   .debug_str:000000000000007e .LASF31
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2599   .debug_str:000000000000050a .LASF32
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2545   .debug_str:0000000000000315 .LASF33
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2535   .debug_str:000000000000020a .LASF34
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2549   .debug_str:0000000000000337 .LASF35
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2591   .debug_str:00000000000004cf .LASF36
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2473   .debug_str:0000000000000028 .LASF37
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2509   .debug_str:0000000000000158 .LASF38
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2559   .debug_str:000000000000036f .LASF39
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2561   .debug_str:000000000000037c .LASF40
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2605   .debug_str:000000000000053b .LASF41
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2467   .debug_str:0000000000000000 .LASF42
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2611   .debug_str:000000000000055c .LASF43
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2529   .debug_str:00000000000001dd .LASF44
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2531   .debug_str:00000000000001eb .LASF45
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2501   .debug_str:000000000000011f .LASF49
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:791    .text.dac_concurrent_data_set:0000000000000000 .LFB26
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:849    .text.dac_concurrent_data_set:000000000000003a .LFE26
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2519   .debug_str:0000000000000194 .LASF46
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2617   .debug_str:000000000000058b .LASF47
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2619   .debug_str:0000000000000591 .LASF48
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2153   .debug_loc:0000000000000000 .LLST6
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2581   .debug_str:000000000000047a .LASF51
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2189   .debug_loc:0000000000000053 .LLST7
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2487   .debug_str:000000000000008a .LASF50
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:767    .text.dac_concurrent_output_buffer_disable:0000000000000000 .LFB25
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:784    .text.dac_concurrent_output_buffer_disable:0000000000000016 .LFE25
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2627   .debug_str:00000000000005c9 .LASF52
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:743    .text.dac_concurrent_output_buffer_enable:0000000000000000 .LFB24
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:760    .text.dac_concurrent_output_buffer_enable:0000000000000014 .LFE24
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2631   .debug_str:00000000000005fd .LASF53
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:721    .text.dac_concurrent_software_trigger_disable:0000000000000000 .LFB23
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:736    .text.dac_concurrent_software_trigger_disable:0000000000000010 .LFE23
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2499   .debug_str:00000000000000f8 .LASF54
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:699    .text.dac_concurrent_software_trigger_enable:0000000000000000 .LFB22
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:714    .text.dac_concurrent_software_trigger_enable:0000000000000012 .LFE22
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2569   .debug_str:00000000000003d1 .LASF55
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:675    .text.dac_concurrent_disable:0000000000000000 .LFB21
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:692    .text.dac_concurrent_disable:0000000000000014 .LFE21
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2575   .debug_str:0000000000000446 .LASF56
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:651    .text.dac_concurrent_enable:0000000000000000 .LFB20
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:668    .text.dac_concurrent_enable:0000000000000014 .LFE20
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2603   .debug_str:0000000000000521 .LASF59
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2507   .debug_str:000000000000014d .LASF57
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2521   .debug_str:000000000000019e .LASF58
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2585   .debug_str:000000000000048d .LASF60
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2621   .debug_str:0000000000000597 .LASF61
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2567   .debug_str:00000000000003b7 .LASF62
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:579    .text.dac_wave_bit_width_config:0000000000000000 .LFB17
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:622    .text.dac_wave_bit_width_config:000000000000003c .LFE17
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 34
+
+
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2503   .debug_str:0000000000000137 .LASF63
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2219   .debug_loc:00000000000000a0 .LLST5
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2593   .debug_str:00000000000004dc .LASF64
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:531    .text.dac_wave_mode_config:0000000000000000 .LFB16
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:572    .text.dac_wave_mode_config:0000000000000038 .LFE16
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2609   .debug_str:0000000000000552 .LASF65
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2244   .debug_loc:00000000000000da .LLST4
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2541   .debug_str:000000000000029d .LASF66
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:501    .text.dac_software_trigger_disable:0000000000000000 .LFB15
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:524    .text.dac_software_trigger_disable:000000000000001a .LFE15
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2565   .debug_str:000000000000039b .LASF67
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:471    .text.dac_software_trigger_enable:0000000000000000 .LFB14
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:494    .text.dac_software_trigger_enable:000000000000001e .LFE14
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2589   .debug_str:00000000000004b5 .LASF68
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:423    .text.dac_trigger_source_config:0000000000000000 .LFB13
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:464    .text.dac_trigger_source_config:0000000000000038 .LFE13
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2479   .debug_str:000000000000004c .LASF69
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2269   .debug_loc:0000000000000114 .LLST3
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2635   .debug_str:0000000000000632 .LASF70
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:390    .text.dac_trigger_disable:0000000000000000 .LFB12
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:416    .text.dac_trigger_disable:0000000000000028 .LFE12
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2533   .debug_str:00000000000001f7 .LASF71
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:359    .text.dac_trigger_enable:0000000000000000 .LFB11
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:383    .text.dac_trigger_enable:0000000000000020 .LFE11
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2633   .debug_str:0000000000000625 .LASF72
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:286    .text.dac_data_set:0000000000000000 .LFB10
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:352    .text.dac_data_set:000000000000005c .LFE10
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2613   .debug_str:0000000000000568 .LASF86
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:246    .text.dac_output_value_get:0000000000000000 .LFB9
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:279    .text.dac_output_value_get:000000000000001a .LFE9
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2294   .debug_loc:000000000000014e .LLST1
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2319   .debug_loc:0000000000000188 .LLST2
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2483   .debug_str:0000000000000064 .LASF73
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:215    .text.dac_output_buffer_disable:0000000000000000 .LFB8
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:239    .text.dac_output_buffer_disable:0000000000000020 .LFE8
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2525   .debug_str:00000000000001b6 .LASF74
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:182    .text.dac_output_buffer_enable:0000000000000000 .LFB7
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:208    .text.dac_output_buffer_enable:0000000000000026 .LFE7
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2629   .debug_str:00000000000005ed .LASF75
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:148    .text.dac_dma_disable:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:175    .text.dac_dma_disable:0000000000000024 .LFE6
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2537   .debug_str:0000000000000214 .LASF76
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:116    .text.dac_dma_enable:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:141    .text.dac_dma_enable:0000000000000020 .LFE5
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2553   .debug_str:000000000000034d .LASF77
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:83     .text.dac_disable:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:109    .text.dac_disable:0000000000000026 .LFE4
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2607   .debug_str:0000000000000547 .LASF78
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:52     .text.dac_enable:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:76     .text.dac_enable:000000000000001e .LFE3
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2493   .debug_str:00000000000000d4 .LASF79
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:14     .text.dac_deinit:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:45     .text.dac_deinit:0000000000000020 .LFE2
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2340   .debug_loc:00000000000001be .LLST0
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:30     .text.dac_deinit:0000000000000010 .LVL0
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:43     .text.dac_deinit:0000000000000020 .LVL1
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2623   .debug_str:00000000000005a3 .LASF80
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cccUzcrr.s 			page 35
+
+
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:2491   .debug_str:00000000000000bb .LASF81
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:794    .text.dac_concurrent_data_set:0000000000000000 .LVL37
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:805    .text.dac_concurrent_data_set:0000000000000010 .LVL38
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:816    .text.dac_concurrent_data_set:000000000000001c .LVL40
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:823    .text.dac_concurrent_data_set:0000000000000020 .LVL41
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:833    .text.dac_concurrent_data_set:000000000000002c .LVL43
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:838    .text.dac_concurrent_data_set:000000000000002e .LVL44
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:808    .text.dac_concurrent_data_set:0000000000000012 .LVL39
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:826    .text.dac_concurrent_data_set:0000000000000022 .LVL42
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:841    .text.dac_concurrent_data_set:0000000000000030 .LVL45
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:582    .text.dac_wave_bit_width_config:0000000000000000 .LVL27
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:599    .text.dac_wave_bit_width_config:000000000000001c .LVL28
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:602    .text.dac_wave_bit_width_config:0000000000000022 .LVL29
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:615    .text.dac_wave_bit_width_config:0000000000000034 .LVL30
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:534    .text.dac_wave_mode_config:0000000000000000 .LVL23
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:549    .text.dac_wave_mode_config:0000000000000018 .LVL24
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:552    .text.dac_wave_mode_config:000000000000001e .LVL25
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:565    .text.dac_wave_mode_config:0000000000000030 .LVL26
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:426    .text.dac_trigger_source_config:0000000000000000 .LVL17
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:441    .text.dac_trigger_source_config:0000000000000018 .LVL18
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:444    .text.dac_trigger_source_config:000000000000001e .LVL19
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:457    .text.dac_trigger_source_config:0000000000000030 .LVL20
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:249    .text.dac_output_value_get:0000000000000000 .LVL8
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:259    .text.dac_output_value_get:000000000000000a .LVL9
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:265    .text.dac_output_value_get:0000000000000010 .LVL11
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:270    .text.dac_output_value_get:0000000000000014 .LVL12
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:263    .text.dac_output_value_get:000000000000000e .LVL10
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:274    .text.dac_output_value_get:0000000000000018 .LVL13
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:21     .text.dac_deinit:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:39     .text.dac_deinit:0000000000000018 .LCFI1
+C:\Users\anton\AppData\Local\Temp\cccUzcrr.s:858    .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

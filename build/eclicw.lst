@@ -1,0 +1,721 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 1
+
+
+   1              		.file	"eclicw.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.eclicw_enable,"ax",@progbits
+  10              		.align	1
+  11              		.globl	eclicw_enable
+  13              	eclicw_enable:
+  14              	.LFB2:
+  15              		.file 1 "eclicw.c"
+   1:eclicw.c      **** #include "eclicw.h"
+   2:eclicw.c      **** #include "gd32vf103.h"
+   3:eclicw.c      **** 
+   4:eclicw.c      **** static void (*pmtisr)(void)=NULL;
+   5:eclicw.c      **** static void (*pu0tbeisr)(void)=NULL;
+   6:eclicw.c      **** 
+   7:eclicw.c      **** void eclicw_enable(int irqn, int level, int priority, void (*pISR)(void)){
+  16              		.loc 1 7 74
+  17              		.cfi_startproc
+  18              	.LVL0:
+   8:eclicw.c      ****    static uint32_t max_irqn=0;
+  19              		.loc 1 8 4
+   9:eclicw.c      ****    if (!max_irqn) {                             // Init Int vector table if not done!
+  20              		.loc 1 9 4
+  21              		.loc 1 9 8 is_stmt 0
+  22 0000 B7070000 		lui	a5,%hi(.LANCHOR0)
+  23 0004 93870700 		addi	a5,a5,%lo(.LANCHOR0)
+  24              		.loc 1 9 7
+  25 0008 9843     		lw	a4,0(a5)
+   7:eclicw.c      ****    static uint32_t max_irqn=0;
+  26              		.loc 1 7 74
+  27 000a 0111     		addi	sp,sp,-32
+  28              	.LCFI0:
+  29              		.cfi_def_cfa_offset 32
+  30 000c 22CC     		sw	s0,24(sp)
+  31 000e 26CA     		sw	s1,20(sp)
+  32 0010 4AC8     		sw	s2,16(sp)
+  33 0012 4EC6     		sw	s3,12(sp)
+  34 0014 06CE     		sw	ra,28(sp)
+  35              		.cfi_offset 8, -8
+  36              		.cfi_offset 9, -12
+  37              		.cfi_offset 18, -16
+  38              		.cfi_offset 19, -20
+  39              		.cfi_offset 1, -4
+   7:eclicw.c      ****    static uint32_t max_irqn=0;
+  40              		.loc 1 7 74
+  41 0016 2A84     		mv	s0,a0
+  42 0018 2E89     		mv	s2,a1
+  43 001a B284     		mv	s1,a2
+  44 001c B689     		mv	s3,a3
+  45              		.loc 1 9 7
+  46 001e 25C3     		beq	a4,zero,.L8
+  47              	.LVL1:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 2
+
+
+  48              	.L2:
+  10:eclicw.c      ****         max_irqn = *( volatile uint32_t * )( ECLIC_ADDR_BASE + ECLIC_INFO_OFFSET );
+  11:eclicw.c      ****         max_irqn &= ( 0x00001FFF );
+  12:eclicw.c      ****         eclic_init( max_irqn );
+  13:eclicw.c      ****         eclic_mode_enable();
+  14:eclicw.c      ****     }
+  15:eclicw.c      ****     
+  16:eclicw.c      ****    eclic_set_vmode( irqn );                     // Manage the int through the vector table.
+  49              		.loc 1 16 4 is_stmt 1
+  50 0020 2285     		mv	a0,s0
+  51 0022 97000000 		call	eclic_set_vmode
+  51      E7800000 
+  52              	.LVL2:
+  17:eclicw.c      ****    eclic_enable_interrupt( irqn );              // Enable the selected interrupt...
+  53              		.loc 1 17 4
+  54 002a 2285     		mv	a0,s0
+  55 002c 97000000 		call	eclic_enable_interrupt
+  55      E7800000 
+  56              	.LVL3:
+  18:eclicw.c      ****    eclic_set_irq_lvl_abs( irqn, level );        // ...with selected level and...
+  57              		.loc 1 18 4
+  58 0034 9375F90F 		andi	a1,s2,0xff
+  59 0038 2285     		mv	a0,s0
+  60 003a 97000000 		call	eclic_set_irq_lvl_abs
+  60      E7800000 
+  61              	.LVL4:
+  19:eclicw.c      ****    eclic_set_irq_priority( irqn, priority );    // ...selected priorit!
+  62              		.loc 1 19 4
+  63 0042 93F5F40F 		andi	a1,s1,0xff
+  64 0046 2285     		mv	a0,s0
+  65 0048 97000000 		call	eclic_set_irq_priority
+  65      E7800000 
+  66              	.LVL5:
+  20:eclicw.c      **** 
+  21:eclicw.c      ****    switch (irqn) {
+  67              		.loc 1 21 4
+  68 0050 9D47     		li	a5,7
+  69 0052 6301F402 		beq	s0,a5,.L3
+  70 0056 93078003 		li	a5,56
+  71 005a 6316F400 		bne	s0,a5,.L1
+  72              	.L4:
+  22:eclicw.c      ****        case CLIC_INT_TMR : pmtisr=pISR;         // Save call-back to int's ISR.
+  23:eclicw.c      ****        case USART0_IRQn  : pu0tbeisr=pISR;
+  73              		.loc 1 23 28
+  74              		.loc 1 23 37 is_stmt 0
+  75 005e B7070000 		lui	a5,%hi(.LANCHOR2)
+  76 0062 23A03701 		sw	s3,%lo(.LANCHOR2)(a5)
+  77              	.L1:
+  24:eclicw.c      ****    }
+  25:eclicw.c      **** }
+  78              		.loc 1 25 1
+  79 0066 F240     		lw	ra,28(sp)
+  80              		.cfi_remember_state
+  81              		.cfi_restore 1
+  82 0068 6244     		lw	s0,24(sp)
+  83              		.cfi_restore 8
+  84              	.LVL6:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 3
+
+
+  85 006a D244     		lw	s1,20(sp)
+  86              		.cfi_restore 9
+  87              	.LVL7:
+  88 006c 4249     		lw	s2,16(sp)
+  89              		.cfi_restore 18
+  90              	.LVL8:
+  91 006e B249     		lw	s3,12(sp)
+  92              		.cfi_restore 19
+  93              	.LVL9:
+  94 0070 0561     		addi	sp,sp,32
+  95              	.LCFI1:
+  96              		.cfi_def_cfa_offset 0
+  97 0072 8280     		jr	ra
+  98              	.LVL10:
+  99              	.L3:
+ 100              	.LCFI2:
+ 101              		.cfi_restore_state
+  22:eclicw.c      ****        case CLIC_INT_TMR : pmtisr=pISR;         // Save call-back to int's ISR.
+ 102              		.loc 1 22 28 is_stmt 1
+  22:eclicw.c      ****        case CLIC_INT_TMR : pmtisr=pISR;         // Save call-back to int's ISR.
+ 103              		.loc 1 22 34 is_stmt 0
+ 104 0074 B7070000 		lui	a5,%hi(.LANCHOR1)
+ 105 0078 23A03701 		sw	s3,%lo(.LANCHOR1)(a5)
+ 106 007c CDB7     		j	.L4
+ 107              	.LVL11:
+ 108              	.L8:
+  10:eclicw.c      ****         max_irqn &= ( 0x00001FFF );
+ 109              		.loc 1 10 9 is_stmt 1
+  10:eclicw.c      ****         max_irqn &= ( 0x00001FFF );
+ 110              		.loc 1 10 20 is_stmt 0
+ 111 007e 370700D2 		li	a4,-771751936
+ 112 0082 5843     		lw	a4,4(a4)
+  11:eclicw.c      ****         eclic_init( max_irqn );
+ 113              		.loc 1 11 9 is_stmt 1
+  11:eclicw.c      ****         eclic_init( max_irqn );
+ 114              		.loc 1 11 18 is_stmt 0
+ 115 0084 4E07     		slli	a4,a4,19
+ 116 0086 4D83     		srli	a4,a4,19
+  12:eclicw.c      ****         eclic_mode_enable();
+ 117              		.loc 1 12 9
+ 118 0088 3A85     		mv	a0,a4
+  11:eclicw.c      ****         eclic_init( max_irqn );
+ 119              		.loc 1 11 18
+ 120 008a 98C3     		sw	a4,0(a5)
+  12:eclicw.c      ****         eclic_mode_enable();
+ 121              		.loc 1 12 9 is_stmt 1
+ 122 008c 97000000 		call	eclic_init
+ 122      E7800000 
+ 123              	.LVL12:
+  13:eclicw.c      ****     }
+ 124              		.loc 1 13 9
+ 125 0094 97000000 		call	eclic_mode_enable
+ 125      E7800000 
+ 126              	.LVL13:
+ 127 009c 51B7     		j	.L2
+ 128              		.cfi_endproc
+ 129              	.LFE2:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 4
+
+
+ 131              		.section	.text.eclic_mtip_handler,"ax",@progbits
+ 132              		.align	1
+ 133              		.globl	eclic_mtip_handler
+ 135              	eclic_mtip_handler:
+ 136              	.LFB3:
+  26:eclicw.c      **** 
+  27:eclicw.c      **** __attribute__( ( interrupt ) )
+  28:eclicw.c      **** void eclic_mtip_handler( void ) {               // c-wrapper saves environment...
+ 137              		.loc 1 28 33
+ 138              		.cfi_startproc
+  29:eclicw.c      ****   (*pmtisr)();                                  // ...Call int's ISR...
+ 139              		.loc 1 29 3
+  28:eclicw.c      ****   (*pmtisr)();                                  // ...Call int's ISR...
+ 140              		.loc 1 28 33 is_stmt 0
+ 141 0000 3971     		addi	sp,sp,-64
+ 142              	.LCFI3:
+ 143              		.cfi_def_cfa_offset 64
+ 144 0002 3ECC     		sw	a5,24(sp)
+ 145              		.cfi_offset 15, -40
+ 146              		.loc 1 29 4
+ 147 0004 B7070000 		lui	a5,%hi(.LANCHOR1)
+ 148 0008 83A70700 		lw	a5,%lo(.LANCHOR1)(a5)
+  28:eclicw.c      ****   (*pmtisr)();                                  // ...Call int's ISR...
+ 149              		.loc 1 28 33
+ 150 000c 06DE     		sw	ra,60(sp)
+ 151 000e 16DC     		sw	t0,56(sp)
+ 152 0010 1ADA     		sw	t1,52(sp)
+ 153 0012 1ED8     		sw	t2,48(sp)
+ 154 0014 2AD6     		sw	a0,44(sp)
+ 155 0016 2ED4     		sw	a1,40(sp)
+ 156 0018 32D2     		sw	a2,36(sp)
+ 157 001a 36D0     		sw	a3,32(sp)
+ 158 001c 3ACE     		sw	a4,28(sp)
+ 159 001e 42CA     		sw	a6,20(sp)
+ 160 0020 46C8     		sw	a7,16(sp)
+ 161 0022 72C6     		sw	t3,12(sp)
+ 162 0024 76C4     		sw	t4,8(sp)
+ 163 0026 7AC2     		sw	t5,4(sp)
+ 164 0028 7EC0     		sw	t6,0(sp)
+ 165              		.cfi_offset 1, -4
+ 166              		.cfi_offset 5, -8
+ 167              		.cfi_offset 6, -12
+ 168              		.cfi_offset 7, -16
+ 169              		.cfi_offset 10, -20
+ 170              		.cfi_offset 11, -24
+ 171              		.cfi_offset 12, -28
+ 172              		.cfi_offset 13, -32
+ 173              		.cfi_offset 14, -36
+ 174              		.cfi_offset 16, -44
+ 175              		.cfi_offset 17, -48
+ 176              		.cfi_offset 28, -52
+ 177              		.cfi_offset 29, -56
+ 178              		.cfi_offset 30, -60
+ 179              		.cfi_offset 31, -64
+ 180              		.loc 1 29 4
+ 181 002a 8297     		jalr	a5
+ 182              	.LVL14:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 5
+
+
+  30:eclicw.c      **** }                                               // and restores environment (also (G)IE)!
+ 183              		.loc 1 30 1
+ 184 002c F250     		lw	ra,60(sp)
+ 185              		.cfi_restore 1
+ 186 002e E252     		lw	t0,56(sp)
+ 187              		.cfi_restore 5
+ 188 0030 5253     		lw	t1,52(sp)
+ 189              		.cfi_restore 6
+ 190 0032 C253     		lw	t2,48(sp)
+ 191              		.cfi_restore 7
+ 192 0034 3255     		lw	a0,44(sp)
+ 193              		.cfi_restore 10
+ 194 0036 A255     		lw	a1,40(sp)
+ 195              		.cfi_restore 11
+ 196 0038 1256     		lw	a2,36(sp)
+ 197              		.cfi_restore 12
+ 198 003a 8256     		lw	a3,32(sp)
+ 199              		.cfi_restore 13
+ 200 003c 7247     		lw	a4,28(sp)
+ 201              		.cfi_restore 14
+ 202 003e E247     		lw	a5,24(sp)
+ 203              		.cfi_restore 15
+ 204 0040 5248     		lw	a6,20(sp)
+ 205              		.cfi_restore 16
+ 206 0042 C248     		lw	a7,16(sp)
+ 207              		.cfi_restore 17
+ 208 0044 324E     		lw	t3,12(sp)
+ 209              		.cfi_restore 28
+ 210 0046 A24E     		lw	t4,8(sp)
+ 211              		.cfi_restore 29
+ 212 0048 124F     		lw	t5,4(sp)
+ 213              		.cfi_restore 30
+ 214 004a 824F     		lw	t6,0(sp)
+ 215              		.cfi_restore 31
+ 216 004c 2161     		addi	sp,sp,64
+ 217              	.LCFI4:
+ 218              		.cfi_def_cfa_offset 0
+ 219 004e 73002030 		mret
+ 220              		.cfi_endproc
+ 221              	.LFE3:
+ 223              		.section	.text.USART0_IRQHandler,"ax",@progbits
+ 224              		.align	1
+ 225              		.globl	USART0_IRQHandler
+ 227              	USART0_IRQHandler:
+ 228              	.LFB4:
+  31:eclicw.c      **** 
+  32:eclicw.c      **** __attribute__( ( interrupt ) )                  // !!! ALL USART0 INT GOES HERE !!!
+  33:eclicw.c      **** void USART0_IRQHandler( void ) {                // c-wrapper saves environment...
+ 229              		.loc 1 33 32 is_stmt 1
+ 230              		.cfi_startproc
+  34:eclicw.c      ****   (*pu0tbeisr)();                               // ...Call int's ISR...
+ 231              		.loc 1 34 3
+  33:eclicw.c      ****   (*pu0tbeisr)();                               // ...Call int's ISR...
+ 232              		.loc 1 33 32 is_stmt 0
+ 233 0000 3971     		addi	sp,sp,-64
+ 234              	.LCFI5:
+ 235              		.cfi_def_cfa_offset 64
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 6
+
+
+ 236 0002 3ECC     		sw	a5,24(sp)
+ 237              		.cfi_offset 15, -40
+ 238              		.loc 1 34 4
+ 239 0004 B7070000 		lui	a5,%hi(.LANCHOR2)
+ 240 0008 83A70700 		lw	a5,%lo(.LANCHOR2)(a5)
+  33:eclicw.c      ****   (*pu0tbeisr)();                               // ...Call int's ISR...
+ 241              		.loc 1 33 32
+ 242 000c 06DE     		sw	ra,60(sp)
+ 243 000e 16DC     		sw	t0,56(sp)
+ 244 0010 1ADA     		sw	t1,52(sp)
+ 245 0012 1ED8     		sw	t2,48(sp)
+ 246 0014 2AD6     		sw	a0,44(sp)
+ 247 0016 2ED4     		sw	a1,40(sp)
+ 248 0018 32D2     		sw	a2,36(sp)
+ 249 001a 36D0     		sw	a3,32(sp)
+ 250 001c 3ACE     		sw	a4,28(sp)
+ 251 001e 42CA     		sw	a6,20(sp)
+ 252 0020 46C8     		sw	a7,16(sp)
+ 253 0022 72C6     		sw	t3,12(sp)
+ 254 0024 76C4     		sw	t4,8(sp)
+ 255 0026 7AC2     		sw	t5,4(sp)
+ 256 0028 7EC0     		sw	t6,0(sp)
+ 257              		.cfi_offset 1, -4
+ 258              		.cfi_offset 5, -8
+ 259              		.cfi_offset 6, -12
+ 260              		.cfi_offset 7, -16
+ 261              		.cfi_offset 10, -20
+ 262              		.cfi_offset 11, -24
+ 263              		.cfi_offset 12, -28
+ 264              		.cfi_offset 13, -32
+ 265              		.cfi_offset 14, -36
+ 266              		.cfi_offset 16, -44
+ 267              		.cfi_offset 17, -48
+ 268              		.cfi_offset 28, -52
+ 269              		.cfi_offset 29, -56
+ 270              		.cfi_offset 30, -60
+ 271              		.cfi_offset 31, -64
+ 272              		.loc 1 34 4
+ 273 002a 8297     		jalr	a5
+ 274              	.LVL15:
+  35:eclicw.c      **** }                                               // and restores environment (also (G)IE)!
+ 275              		.loc 1 35 1
+ 276 002c F250     		lw	ra,60(sp)
+ 277              		.cfi_restore 1
+ 278 002e E252     		lw	t0,56(sp)
+ 279              		.cfi_restore 5
+ 280 0030 5253     		lw	t1,52(sp)
+ 281              		.cfi_restore 6
+ 282 0032 C253     		lw	t2,48(sp)
+ 283              		.cfi_restore 7
+ 284 0034 3255     		lw	a0,44(sp)
+ 285              		.cfi_restore 10
+ 286 0036 A255     		lw	a1,40(sp)
+ 287              		.cfi_restore 11
+ 288 0038 1256     		lw	a2,36(sp)
+ 289              		.cfi_restore 12
+ 290 003a 8256     		lw	a3,32(sp)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 7
+
+
+ 291              		.cfi_restore 13
+ 292 003c 7247     		lw	a4,28(sp)
+ 293              		.cfi_restore 14
+ 294 003e E247     		lw	a5,24(sp)
+ 295              		.cfi_restore 15
+ 296 0040 5248     		lw	a6,20(sp)
+ 297              		.cfi_restore 16
+ 298 0042 C248     		lw	a7,16(sp)
+ 299              		.cfi_restore 17
+ 300 0044 324E     		lw	t3,12(sp)
+ 301              		.cfi_restore 28
+ 302 0046 A24E     		lw	t4,8(sp)
+ 303              		.cfi_restore 29
+ 304 0048 124F     		lw	t5,4(sp)
+ 305              		.cfi_restore 30
+ 306 004a 824F     		lw	t6,0(sp)
+ 307              		.cfi_restore 31
+ 308 004c 2161     		addi	sp,sp,64
+ 309              	.LCFI6:
+ 310              		.cfi_def_cfa_offset 0
+ 311 004e 73002030 		mret
+ 312              		.cfi_endproc
+ 313              	.LFE4:
+ 315              		.section	.sbss.max_irqn.3501,"aw",@nobits
+ 316              		.align	2
+ 317              		.set	.LANCHOR0,. + 0
+ 320              	max_irqn.3501:
+ 321 0000 00000000 		.zero	4
+ 322              		.section	.sbss.pmtisr,"aw",@nobits
+ 323              		.align	2
+ 324              		.set	.LANCHOR1,. + 0
+ 327              	pmtisr:
+ 328 0000 00000000 		.zero	4
+ 329              		.section	.sbss.pu0tbeisr,"aw",@nobits
+ 330              		.align	2
+ 331              		.set	.LANCHOR2,. + 0
+ 334              	pu0tbeisr:
+ 335 0000 00000000 		.zero	4
+ 336              		.text
+ 337              	.Letext0:
+ 338              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 339              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 340              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers/n200_func.h"
+ 341              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 342              		.file 6 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 eclicw.c
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:13     .text.eclicw_enable:0000000000000000 eclicw_enable
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:17     .text.eclicw_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:19     .text.eclicw_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:20     .text.eclicw_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:21     .text.eclicw_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:22     .text.eclicw_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:25     .text.eclicw_enable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:27     .text.eclicw_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:29     .text.eclicw_enable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:35     .text.eclicw_enable:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:36     .text.eclicw_enable:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:37     .text.eclicw_enable:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:38     .text.eclicw_enable:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:39     .text.eclicw_enable:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:41     .text.eclicw_enable:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:46     .text.eclicw_enable:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:50     .text.eclicw_enable:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:54     .text.eclicw_enable:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:58     .text.eclicw_enable:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:63     .text.eclicw_enable:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:68     .text.eclicw_enable:0000000000000050 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:74     .text.eclicw_enable:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:75     .text.eclicw_enable:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:79     .text.eclicw_enable:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:80     .text.eclicw_enable:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:81     .text.eclicw_enable:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:83     .text.eclicw_enable:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:86     .text.eclicw_enable:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:89     .text.eclicw_enable:000000000000006e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:92     .text.eclicw_enable:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:96     .text.eclicw_enable:0000000000000072 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:101    .text.eclicw_enable:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:103    .text.eclicw_enable:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:104    .text.eclicw_enable:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:110    .text.eclicw_enable:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:111    .text.eclicw_enable:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:114    .text.eclicw_enable:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:115    .text.eclicw_enable:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:118    .text.eclicw_enable:0000000000000088 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:120    .text.eclicw_enable:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:122    .text.eclicw_enable:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:125    .text.eclicw_enable:0000000000000094 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:128    .text.eclicw_enable:000000000000009e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:135    .text.eclic_mtip_handler:0000000000000000 eclic_mtip_handler
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:138    .text.eclic_mtip_handler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:139    .text.eclic_mtip_handler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:140    .text.eclic_mtip_handler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:141    .text.eclic_mtip_handler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:143    .text.eclic_mtip_handler:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:145    .text.eclic_mtip_handler:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:147    .text.eclic_mtip_handler:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:150    .text.eclic_mtip_handler:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:165    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:166    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:167    .text.eclic_mtip_handler:000000000000002a .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 9
+
+
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:168    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:169    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:170    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:171    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:172    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:173    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:174    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:175    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:176    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:177    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:178    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:179    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:181    .text.eclic_mtip_handler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:184    .text.eclic_mtip_handler:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:185    .text.eclic_mtip_handler:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:187    .text.eclic_mtip_handler:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:189    .text.eclic_mtip_handler:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:191    .text.eclic_mtip_handler:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:193    .text.eclic_mtip_handler:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:195    .text.eclic_mtip_handler:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:197    .text.eclic_mtip_handler:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:199    .text.eclic_mtip_handler:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:201    .text.eclic_mtip_handler:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:203    .text.eclic_mtip_handler:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:205    .text.eclic_mtip_handler:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:207    .text.eclic_mtip_handler:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:209    .text.eclic_mtip_handler:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:211    .text.eclic_mtip_handler:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:213    .text.eclic_mtip_handler:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:215    .text.eclic_mtip_handler:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:218    .text.eclic_mtip_handler:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:220    .text.eclic_mtip_handler:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:227    .text.USART0_IRQHandler:0000000000000000 USART0_IRQHandler
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:230    .text.USART0_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:231    .text.USART0_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:232    .text.USART0_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:233    .text.USART0_IRQHandler:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:235    .text.USART0_IRQHandler:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:237    .text.USART0_IRQHandler:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:239    .text.USART0_IRQHandler:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:242    .text.USART0_IRQHandler:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:257    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:258    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:259    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:260    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:261    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:262    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:263    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:264    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:265    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:266    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:267    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:268    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:269    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:270    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:271    .text.USART0_IRQHandler:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:273    .text.USART0_IRQHandler:000000000000002a .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 10
+
+
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:276    .text.USART0_IRQHandler:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:277    .text.USART0_IRQHandler:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:279    .text.USART0_IRQHandler:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:281    .text.USART0_IRQHandler:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:283    .text.USART0_IRQHandler:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:285    .text.USART0_IRQHandler:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:287    .text.USART0_IRQHandler:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:289    .text.USART0_IRQHandler:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:291    .text.USART0_IRQHandler:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:293    .text.USART0_IRQHandler:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:295    .text.USART0_IRQHandler:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:297    .text.USART0_IRQHandler:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:299    .text.USART0_IRQHandler:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:301    .text.USART0_IRQHandler:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:303    .text.USART0_IRQHandler:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:305    .text.USART0_IRQHandler:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:307    .text.USART0_IRQHandler:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:310    .text.USART0_IRQHandler:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:312    .text.USART0_IRQHandler:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:317    .sbss.max_irqn.3501:0000000000000000 .LANCHOR0
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:320    .sbss.max_irqn.3501:0000000000000000 max_irqn.3501
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:324    .sbss.pmtisr:0000000000000000 .LANCHOR1
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:327    .sbss.pmtisr:0000000000000000 pmtisr
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:331    .sbss.pu0tbeisr:0000000000000000 .LANCHOR2
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:334    .sbss.pu0tbeisr:0000000000000000 pu0tbeisr
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:131    .text.eclicw_enable:000000000000009e .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:223    .text.eclic_mtip_handler:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:315    .text.USART0_IRQHandler:0000000000000052 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:108    .text.eclicw_enable:000000000000007e .L8
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:99     .text.eclicw_enable:0000000000000074 .L3
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:77     .text.eclicw_enable:0000000000000066 .L1
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:72     .text.eclicw_enable:000000000000005e .L4
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:48     .text.eclicw_enable:0000000000000020 .L2
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:849    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1406   .debug_str:00000000000002cf .LASF95
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1452   .debug_str:00000000000004c4 .LASF96
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1438   .debug_str:000000000000041a .LASF97
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1290   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1300   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1330   .debug_str:00000000000000b7 .LASF98
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1500   .debug_str:00000000000005ef .LASF0
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1444   .debug_str:0000000000000481 .LASF1
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1386   .debug_str:000000000000022e .LASF2
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1474   .debug_str:000000000000055d .LASF3
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1460   .debug_str:00000000000004f7 .LASF4
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1434   .debug_str:0000000000000402 .LASF5
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1352   .debug_str:0000000000000158 .LASF6
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1316   .debug_str:000000000000005f .LASF7
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1362   .debug_str:0000000000000196 .LASF8
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1366   .debug_str:00000000000001ab .LASF9
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1376   .debug_str:00000000000001ec .LASF10
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1416   .debug_str:000000000000037d .LASF11
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1312   .debug_str:000000000000004b .LASF12
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1410   .debug_str:0000000000000352 .LASF13
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1484   .debug_str:0000000000000597 .LASF14
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1308   .debug_str:0000000000000035 .LASF15
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 11
+
+
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1492   .debug_str:00000000000005bc .LASF16
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1306   .debug_str:0000000000000022 .LASF17
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1398   .debug_str:000000000000028d .LASF18
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1374   .debug_str:00000000000001d9 .LASF19
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1302   .debug_str:0000000000000000 .LASF20
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1396   .debug_str:000000000000027a .LASF21
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1502   .debug_str:0000000000000601 .LASF22
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1318   .debug_str:000000000000006b .LASF23
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1354   .debug_str:0000000000000161 .LASF24
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1420   .debug_str:000000000000039a .LASF25
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1356   .debug_str:000000000000016e .LASF26
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1370   .debug_str:00000000000001bd .LASF27
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1442   .debug_str:0000000000000474 .LASF28
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1336   .debug_str:00000000000000dd .LASF29
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1304   .debug_str:0000000000000013 .LASF30
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1448   .debug_str:000000000000049e .LASF31
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1324   .debug_str:000000000000008f .LASF32
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1472   .debug_str:0000000000000551 .LASF33
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1350   .debug_str:000000000000014c .LASF34
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1462   .debug_str:0000000000000506 .LASF35
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1378   .debug_str:00000000000001f9 .LASF36
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1382   .debug_str:0000000000000211 .LASF37
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1372   .debug_str:00000000000001cc .LASF38
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1496   .debug_str:00000000000005d8 .LASF39
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1440   .debug_str:000000000000046a .LASF40
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1332   .debug_str:00000000000000bc .LASF41
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1360   .debug_str:000000000000018a .LASF42
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1482   .debug_str:000000000000058b .LASF43
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1400   .debug_str:00000000000002a0 .LASF44
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1390   .debug_str:0000000000000251 .LASF45
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1432   .debug_str:00000000000003f3 .LASF46
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1384   .debug_str:000000000000021e .LASF47
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1498   .debug_str:00000000000005e5 .LASF48
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1364   .debug_str:000000000000019f .LASF49
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1488   .debug_str:00000000000005a7 .LASF50
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1490   .debug_str:00000000000005b1 .LASF51
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1380   .debug_str:0000000000000206 .LASF52
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1346   .debug_str:000000000000012d .LASF53
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1456   .debug_str:00000000000004d8 .LASF54
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1466   .debug_str:0000000000000524 .LASF55
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1348   .debug_str:0000000000000139 .LASF56
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1458   .debug_str:00000000000004e4 .LASF57
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1476   .debug_str:000000000000056b .LASF58
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1344   .debug_str:000000000000011a .LASF59
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1436   .debug_str:000000000000040d .LASF60
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1338   .debug_str:00000000000000ed .LASF61
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1430   .debug_str:00000000000003e5 .LASF62
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1468   .debug_str:0000000000000537 .LASF63
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1454   .debug_str:00000000000004cd .LASF64
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1426   .debug_str:00000000000003c0 .LASF65
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1412   .debug_str:000000000000035d .LASF66
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1402   .debug_str:00000000000002ac .LASF67
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1326   .debug_str:00000000000000a3 .LASF72
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1394   .debug_str:000000000000026c .LASF68
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1320   .debug_str:0000000000000077 .LASF69
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1424   .debug_str:00000000000003ad .LASF70
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1368   .debug_str:00000000000001b4 .LASF71
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 12
+
+
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1470   .debug_str:0000000000000546 .LASF73
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1418   .debug_str:0000000000000388 .LASF74
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1358   .debug_str:000000000000017c .LASF75
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1404   .debug_str:00000000000002b8 .LASF76
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1340   .debug_str:00000000000000fb .LASF77
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1408   .debug_str:0000000000000349 .LASF78
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1446   .debug_str:000000000000048e .LASF99
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1392   .debug_str:0000000000000260 .LASF79
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1480   .debug_str:0000000000000584 .LASF80
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1328   .debug_str:00000000000000ad .LASF81
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1464   .debug_str:0000000000000512 .LASF82
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:228    .text.USART0_IRQHandler:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:313    .text.USART0_IRQHandler:0000000000000052 .LFE4
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1110   .debug_loc:0000000000000000 .LLST6
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1414   .debug_str:000000000000036a .LASF83
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:136    .text.eclic_mtip_handler:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:221    .text.eclic_mtip_handler:0000000000000052 .LFE3
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1128   .debug_loc:000000000000002d .LLST5
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1322   .debug_str:0000000000000081 .LASF100
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:14     .text.eclicw_enable:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:129    .text.eclicw_enable:000000000000009e .LFE2
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1146   .debug_loc:000000000000005a .LLST0
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1486   .debug_str:00000000000005a2 .LASF84
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1169   .debug_loc:0000000000000092 .LLST1
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1478   .debug_str:000000000000057e .LASF85
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1191   .debug_loc:00000000000000c9 .LLST2
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1314   .debug_str:0000000000000056 .LASF86
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1221   .debug_loc:0000000000000116 .LLST3
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1422   .debug_str:00000000000003a8 .LASF87
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1243   .debug_loc:000000000000014d .LLST4
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1494   .debug_str:00000000000005cf .LASF88
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:52     .text.eclicw_enable:000000000000002a .LVL2
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:56     .text.eclicw_enable:0000000000000034 .LVL3
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:61     .text.eclicw_enable:0000000000000042 .LVL4
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:66     .text.eclicw_enable:0000000000000050 .LVL5
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:123    .text.eclicw_enable:0000000000000094 .LVL12
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:126    .text.eclicw_enable:000000000000009c .LVL13
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1428   .debug_str:00000000000003d5 .LASF89
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1342   .debug_str:0000000000000103 .LASF90
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1388   .debug_str:000000000000023b .LASF91
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1334   .debug_str:00000000000000c6 .LASF92
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1310   .debug_str:0000000000000040 .LASF93
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:1450   .debug_str:00000000000004b2 .LASF94
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:234    .text.USART0_IRQHandler:0000000000000002 .LCFI5
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:309    .text.USART0_IRQHandler:000000000000004e .LCFI6
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:142    .text.eclic_mtip_handler:0000000000000002 .LCFI3
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:217    .text.eclic_mtip_handler:000000000000004e .LCFI4
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:28     .text.eclicw_enable:000000000000000c .LCFI0
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:95     .text.eclicw_enable:0000000000000072 .LCFI1
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:100    .text.eclicw_enable:0000000000000074 .LCFI2
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:18     .text.eclicw_enable:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:47     .text.eclicw_enable:0000000000000020 .LVL1
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:84     .text.eclicw_enable:000000000000006a .LVL6
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:98     .text.eclicw_enable:0000000000000074 .LVL10
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:90     .text.eclicw_enable:000000000000006e .LVL8
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:107    .text.eclicw_enable:000000000000007e .LVL11
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:87     .text.eclicw_enable:000000000000006c .LVL7
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc6EepUK.s 			page 13
+
+
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:93     .text.eclicw_enable:0000000000000070 .LVL9
+C:\Users\anton\AppData\Local\Temp\cc6EepUK.s:344    .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+eclic_set_vmode
+eclic_enable_interrupt
+eclic_set_irq_lvl_abs
+eclic_set_irq_priority
+eclic_init
+eclic_mode_enable

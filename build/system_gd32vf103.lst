@@ -1,0 +1,1882 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 1
+
+
+   1              		.file	"system_gd32vf103.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.SystemInit,"ax",@progbits
+  10              		.align	1
+  11              		.globl	SystemInit
+  13              	SystemInit:
+  14              	.LFB3:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.c"
+   1:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+   2:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \file    system_gd32vf103.c
+   3:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief   RISC-V Device Peripheral Access Layer Source File for
+   4:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****              GD32VF103 Device Series
+   5:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+   6:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \version 2019-06-05, V1.0.0, firmware for GD32VF103
+   7:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \version 2020-08-04, V1.1.0, firmware for GD32VF103
+   8:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+   9:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  10:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*
+  11:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  12:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  13:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     Redistribution and use in source and binary forms, with or without modification,
+  14:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** are permitted provided that the following conditions are met:
+  15:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  16:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  17:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****        list of conditions and the following disclaimer.
+  18:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  19:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****        this list of conditions and the following disclaimer in the documentation
+  20:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****        and/or other materials provided with the distribution.
+  21:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  22:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****        may be used to endorse or promote products derived from this software without
+  23:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****        specific prior written permission.
+  24:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  25:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  26:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  27:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  28:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  29:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  30:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  31:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  32:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  33:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  34:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** OF SUCH DAMAGE.
+  35:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+  36:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  37:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /* This file refers the RISC-V standard, some adjustments are made according to GigaDevice chips */
+  38:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  39:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #include "gd32vf103.h"
+  40:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  41:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /* system frequency define */
+  42:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #define __IRC8M           (IRC8M_VALUE)            /* internal 8 MHz RC oscillator frequency */
+  43:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #define __HXTAL           (HXTAL_VALUE)            /* high speed crystal oscillator frequency */
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 2
+
+
+  44:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #define __SYS_OSC_CLK     (__IRC8M)                /* main oscillator frequency */
+  45:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /* select a system clock by uncommenting the following line */
+  47:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /* use IRC8M */
+  48:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** //#define __SYSTEM_CLOCK_48M_PLL_IRC8M            (uint32_t)(48000000)
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** //#define __SYSTEM_CLOCK_72M_PLL_IRC8M            (uint32_t)(72000000)
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** //#define __SYSTEM_CLOCK_108M_PLL_IRC8M           (uint32_t)(108000000)
+  51:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /********************************************************************/
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** //#define __SYSTEM_CLOCK_HXTAL                    (HXTAL_VALUE)
+  54:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** //#define __SYSTEM_CLOCK_24M_PLL_HXTAL            (uint32_t)(24000000)
+  55:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /********************************************************************/
+  56:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  57:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** //#define __SYSTEM_CLOCK_36M_PLL_HXTAL            (uint32_t)(36000000)
+  58:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** //#define __SYSTEM_CLOCK_48M_PLL_HXTAL            (uint32_t)(48000000)
+  59:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** //#define __SYSTEM_CLOCK_56M_PLL_HXTAL            (uint32_t)(56000000)
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** //#define __SYSTEM_CLOCK_72M_PLL_HXTAL            (uint32_t)(72000000)
+  61:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** //#define __SYSTEM_CLOCK_96M_PLL_HXTAL            (uint32_t)(96000000)
+  62:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #define __SYSTEM_CLOCK_108M_PLL_HXTAL           (uint32_t)(108000000)
+  63:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #define SEL_IRC8M       0x00U
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #define SEL_HXTAL       0x01U
+  66:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #define SEL_PLL         0x02U
+  67:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  68:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /* set the system clock frequency and declare the system clock configuration function */
+  69:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #ifdef __SYSTEM_CLOCK_48M_PLL_IRC8M
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_48M_PLL_IRC8M;
+  71:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_48m_irc8m(void);
+  72:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_IRC8M)
+  73:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_72M_PLL_IRC8M;
+  74:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_72m_irc8m(void);
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_108M_PLL_IRC8M)
+  76:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_108M_PLL_IRC8M;
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_108m_irc8m(void);
+  78:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_HXTAL)
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_HXTAL;
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_hxtal(void);
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_24M_PLL_HXTAL)
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_24M_PLL_HXTAL;
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_24m_hxtal(void);
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_36M_PLL_HXTAL)
+  86:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_36M_PLL_HXTAL;
+  87:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_36m_hxtal(void);
+  88:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_48M_PLL_HXTAL)
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_48M_PLL_HXTAL;
+  90:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_48m_hxtal(void);
+  91:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_56M_PLL_HXTAL)
+  92:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_56M_PLL_HXTAL;
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_56m_hxtal(void);
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_HXTAL)
+  95:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_72M_PLL_HXTAL;
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_72m_hxtal(void);
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_96M_PLL_HXTAL)
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_96M_PLL_HXTAL;
+  99:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_96m_hxtal(void);
+ 100:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_108M_PLL_HXTAL)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 3
+
+
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_108M_PLL_HXTAL;
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_108m_hxtal(void);
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #else
+ 104:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** uint32_t SystemCoreClock = IRC8M_VALUE;
+ 105:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #endif /* __SYSTEM_CLOCK_48M_PLL_IRC8M */
+ 106:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 107:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /* configure the system clock */
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_config(void);
+ 109:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 110:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+ 111:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      configure the system clock
+ 112:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 113:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 115:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 116:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_config(void)
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+ 118:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #ifdef __SYSTEM_CLOCK_HXTAL
+ 119:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_hxtal();
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_24M_PLL_HXTAL)
+ 121:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_24m_hxtal();
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_36M_PLL_HXTAL)
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_36m_hxtal();
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_48M_PLL_HXTAL)
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_48m_hxtal();
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_56M_PLL_HXTAL)
+ 127:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_56m_hxtal();
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_HXTAL)
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_72m_hxtal();
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_96M_PLL_HXTAL)
+ 131:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_96m_hxtal();
+ 132:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_108M_PLL_HXTAL)
+ 133:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_108m_hxtal();
+ 134:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 135:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_48M_PLL_IRC8M)
+ 136:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_48m_irc8m();
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_IRC8M)
+ 138:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_72m_irc8m();
+ 139:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_108M_PLL_IRC8M)
+ 140:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_108m_irc8m();
+ 141:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #endif /* __SYSTEM_CLOCK_HXTAL */
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 144:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      setup the microcontroller system, initialize the system
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 147:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 150:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** void SystemInit(void)
+ 151:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+  16              		.loc 1 151 1
+  17              		.cfi_startproc
+ 152:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* reset the RCC clock configuration to the default reset state */
+ 153:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable IRC8M */
+ 154:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_IRC8MEN;
+  18              		.loc 1 154 5
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 4
+
+
+  19              		.loc 1 154 13 is_stmt 0
+  20 0000 B7170240 		li	a5,1073876992
+  21 0004 9843     		lw	a4,0(a5)
+ 155:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     
+ 156:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* reset SCS, AHBPSC, APB1PSC, APB2PSC, ADCPSC, CKOUT0SEL bits */
+ 157:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~(RCU_CFG0_SCS | RCU_CFG0_AHBPSC | RCU_CFG0_APB1PSC | RCU_CFG0_APB2PSC |
+  22              		.loc 1 157 14
+  23 0006 B706FFE0 		li	a3,-520159232
+  24 000a B106     		addi	a3,a3,12
+ 154:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     
+  25              		.loc 1 154 13
+  26 000c 13671700 		ori	a4,a4,1
+  27 0010 98C3     		sw	a4,0(a5)
+  28              		.loc 1 157 5 is_stmt 1
+  29              		.loc 1 157 14 is_stmt 0
+  30 0012 D843     		lw	a4,4(a5)
+ 158:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                   RCU_CFG0_ADCPSC | RCU_CFG0_ADCPSC_2 | RCU_CFG0_CKOUT0SEL);
+ 159:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 160:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* reset HXTALEN, CKMEN, PLLEN bits */
+ 161:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL &= ~(RCU_CTL_HXTALEN | RCU_CTL_CKMEN | RCU_CTL_PLLEN);
+ 162:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 163:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* Reset HXTALBPS bit */
+ 164:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL &= ~(RCU_CTL_HXTALBPS);
+ 165:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 166:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* reset PLLSEL, PREDV0_LSB, PLLMF, USBFSPSC bits */
+ 167:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PREDV0_LSB | RCU_CFG0_PLLMF |
+ 169:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                   RCU_CFG0_USBFSPSC | RCU_CFG0_PLLMF_4);
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG1 = 0x00000000U;
+ 171:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 172:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* Reset HXTALEN, CKMEN, PLLEN, PLL1EN and PLL2EN bits */
+ 173:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL &= ~(RCU_CTL_PLLEN | RCU_CTL_PLL1EN | RCU_CTL_PLL2EN | RCU_CTL_CKMEN | RCU_CTL_HXTALEN)
+  31              		.loc 1 173 13
+  32 0014 3706F7EA 		li	a2,-352911360
+  33 0018 7D16     		addi	a2,a2,-1
+ 157:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                   RCU_CFG0_ADCPSC | RCU_CFG0_ADCPSC_2 | RCU_CFG0_CKOUT0SEL);
+  34              		.loc 1 157 14
+  35 001a 758F     		and	a4,a4,a3
+  36 001c D8C3     		sw	a4,4(a5)
+ 161:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  37              		.loc 1 161 5 is_stmt 1
+ 161:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  38              		.loc 1 161 13 is_stmt 0
+  39 001e 9843     		lw	a4,0(a5)
+  40 0020 B706F7FE 		li	a3,-17367040
+  41 0024 FD16     		addi	a3,a3,-1
+  42 0026 758F     		and	a4,a4,a3
+  43 0028 98C3     		sw	a4,0(a5)
+ 164:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  44              		.loc 1 164 5 is_stmt 1
+ 164:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  45              		.loc 1 164 13 is_stmt 0
+  46 002a 9843     		lw	a4,0(a5)
+  47 002c B706FCFF 		li	a3,-262144
+  48 0030 FD16     		addi	a3,a3,-1
+  49 0032 758F     		and	a4,a4,a3
+  50 0034 98C3     		sw	a4,0(a5)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 5
+
+
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                   RCU_CFG0_USBFSPSC | RCU_CFG0_PLLMF_4);
+  51              		.loc 1 168 5 is_stmt 1
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                   RCU_CFG0_USBFSPSC | RCU_CFG0_PLLMF_4);
+  52              		.loc 1 168 14 is_stmt 0
+  53 0036 D843     		lw	a4,4(a5)
+  54 0038 B70601DF 		li	a3,-553582592
+  55 003c FD16     		addi	a3,a3,-1
+  56 003e 758F     		and	a4,a4,a3
+  57 0040 D8C3     		sw	a4,4(a5)
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  58              		.loc 1 170 5 is_stmt 1
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  59              		.loc 1 170 14 is_stmt 0
+  60 0042 23A60702 		sw	zero,44(a5)
+  61              		.loc 1 173 5 is_stmt 1
+  62              		.loc 1 173 13 is_stmt 0
+  63 0046 9443     		lw	a3,0(a5)
+ 174:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* disable all interrupts */
+ 175:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_INT = 0x00FF0000U;
+  64              		.loc 1 175 13
+  65 0048 3707FF00 		li	a4,16711680
+  66              	.LBB8:
+  67              	.LBB9:
+  68              	.LBB10:
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* Configure the System clock source, PLL Multiplier, AHB/APBx prescalers and Flash settings */
+ 178:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     system_clock_config();
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 181:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      update the SystemCoreClock with current core clock retrieved from cpu registers
+ 183:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 184:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 185:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 186:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 187:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** void SystemCoreClockUpdate(void)
+ 188:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+ 189:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t scss;
+ 190:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t pllsel, predv0sel, pllmf, ck_src;
+ 191:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t predv0, predv1, pll1mf;
+ 192:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 193:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     scss = GET_BITS(RCU_CFG0, 2, 3);
+ 194:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 195:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     switch (scss)
+ 196:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     {
+ 197:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* IRC8M is selected as CK_SYS */
+ 198:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         case SEL_IRC8M:
+ 199:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             SystemCoreClock = IRC8M_VALUE;
+ 200:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             break;
+ 201:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             
+ 202:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* HXTAL is selected as CK_SYS */
+ 203:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         case SEL_HXTAL:
+ 204:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             SystemCoreClock = HXTAL_VALUE;
+ 205:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             break;
+ 206:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             
+ 207:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* PLL is selected as CK_SYS */
+ 208:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         case SEL_PLL:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 6
+
+
+ 209:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             /* PLL clock source selection, HXTAL or IRC8M/2 */
+ 210:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             pllsel = (RCU_CFG0 & RCU_CFG0_PLLSEL);
+ 211:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 212:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 213:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             if(RCU_PLLSRC_IRC8M_DIV2 == pllsel){
+ 214:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 /* PLL clock source is IRC8M/2 */
+ 215:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 ck_src = IRC8M_VALUE / 2U;
+ 216:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }else{
+ 217:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 /* PLL clock source is HXTAL */
+ 218:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 ck_src = HXTAL_VALUE;
+ 219:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 220:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 predv0sel = (RCU_CFG1 & RCU_CFG1_PREDV0SEL);
+ 221:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 222:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 /* source clock use PLL1 */
+ 223:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 if(RCU_PREDV0SRC_CKPLL1 == predv0sel){
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     predv1 = ((RCU_CFG1 & RCU_CFG1_PREDV1) >> 4) + 1U;
+ 225:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     pll1mf = ((RCU_CFG1 & RCU_CFG1_PLL1MF) >> 8) + 2U;
+ 226:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     if(17U == pll1mf){
+ 227:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                         pll1mf = 20U;
+ 228:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     }
+ 229:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     ck_src = (ck_src / predv1) * pll1mf;
+ 230:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 }
+ 231:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 predv0 = (RCU_CFG1 & RCU_CFG1_PREDV0) + 1U;
+ 232:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 ck_src /= predv0;
+ 233:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 234:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 235:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             /* PLL multiplication factor */
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             pllmf = GET_BITS(RCU_CFG0, 18, 21);
+ 237:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             if((RCU_CFG0 & RCU_CFG0_PLLMF_4)){
+ 239:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf |= 0x10U;
+ 240:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 241:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 242:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             if(pllmf >= 15U){
+ 243:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf += 1U;
+ 244:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }else{
+ 245:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf += 2U;
+ 246:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 247:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             SystemCoreClock = ck_src * pllmf;
+ 249:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 250:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             if(15U == pllmf){
+ 251:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 /* PLL source clock multiply by 6.5 */
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 SystemCoreClock = ck_src * 6U + ck_src / 2U;
+ 253:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 254:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 255:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             break;
+ 256:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 257:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* IRC8M is selected as CK_SYS */
+ 258:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         default:
+ 259:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             SystemCoreClock = IRC8M_VALUE;
+ 260:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             break;
+ 261:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 262:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+ 263:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 264:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #ifdef __SYSTEM_CLOCK_HXTAL
+ 265:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 7
+
+
+ 266:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      configure the system clock to HXTAL
+ 267:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 268:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 269:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 270:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 271:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_hxtal(void)
+ 272:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+ 273:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t timeout = 0U;
+ 274:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t stab_flag = 0U;
+ 275:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     
+ 276:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable HXTAL */
+ 277:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 278:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     
+ 279:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 280:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     do{
+ 281:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         timeout++;
+ 282:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 283:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 284:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     
+ 285:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* if fail */
+ 286:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 287:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while(1){
+ 288:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 289:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 290:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     
+ 291:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* AHB = SYSCLK */
+ 292:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 293:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB2 = AHB/1 */
+ 294:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 295:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 296:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+ 297:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     
+ 298:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* select HXTAL as system clock */
+ 299:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 300:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_HXTAL;
+ 301:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     
+ 302:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until HXTAL is selected as system clock */
+ 303:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0 == (RCU_CFG0 & RCU_SCSS_HXTAL)){
+ 304:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 305:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+ 306:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 307:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_24M_PLL_HXTAL)
+ 308:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+ 309:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      configure the system clock to 24M by PLL which selects HXTAL(MD/HD/XD:8M; CL:25M) a
+ 310:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 311:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 312:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 313:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 314:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_24m_hxtal(void)
+ 315:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+ 316:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t timeout = 0U;
+ 317:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t stab_flag = 0U;
+ 318:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 319:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable HXTAL */
+ 320:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 321:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 322:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 8
+
+
+ 323:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     do{
+ 324:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         timeout++;
+ 325:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 326:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 327:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 328:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* if fail */
+ 329:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 330:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while(1){
+ 331:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 332:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 333:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 334:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* HXTAL is stable */
+ 335:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* AHB = SYSCLK */
+ 336:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 337:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB2 = AHB/1 */
+ 338:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 339:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 340:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+ 341:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 342:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* CK_PLL = (CK_PREDIV0) * 6 = 24 MHz */
+ 343:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~(RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_4);
+ 344:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL6);
+ 345:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 346:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(HXTAL_VALUE==25000000){
+ 347:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* CK_PREDIV0 = (CK_HXTAL)/5 *8 /10 = 4 MHz */
+ 348:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV1 | RCU_CFG1_PREDV0);
+ 349:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 |= (RCU_PREDV0SRC_CKPLL1 | RCU_PLL1_MUL8 | RCU_PREDV1_DIV5 | RCU_PREDV0_DIV10);
+ 350:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 351:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* enable PLL1 */
+ 352:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CTL |= RCU_CTL_PLL1EN;
+ 353:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* wait till PLL1 is ready */
+ 354:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while((RCU_CTL & RCU_CTL_PLL1STB) == 0){
+ 355:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 356:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 357:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }else if(HXTAL_VALUE==8000000){
+ 358:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PREDV1 | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV0);
+ 359:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 |= (RCU_PREDV0SRC_HXTAL | RCU_PREDV0_DIV2 );
+ 360:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 361:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 362:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable PLL */
+ 363:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 364:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 365:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is stable */
+ 366:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 367:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 368:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 369:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* select PLL as system clock */
+ 370:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 371:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 372:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 373:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is selected as system clock */
+ 374:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLL)){
+ 375:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 376:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+ 377:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 378:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_36M_PLL_HXTAL)
+ 379:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 9
+
+
+ 380:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      configure the system clock to 36M by PLL which selects HXTAL(MD/HD/XD:8M; CL:25M) a
+ 381:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 382:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 383:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 384:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 385:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_36m_hxtal(void)
+ 386:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+ 387:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t timeout = 0U;
+ 388:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t stab_flag = 0U;
+ 389:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 390:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable HXTAL */
+ 391:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 392:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 393:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 394:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     do{
+ 395:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         timeout++;
+ 396:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 397:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 398:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 399:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* if fail */
+ 400:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 401:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while(1){
+ 402:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 403:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 404:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 405:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* HXTAL is stable */
+ 406:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* AHB = SYSCLK */
+ 407:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 408:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB2 = AHB/1 */
+ 409:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 410:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 411:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+ 412:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 413:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* CK_PLL = (CK_PREDIV0) * 9 = 36 MHz */
+ 414:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~(RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_4);
+ 415:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL9);
+ 416:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 417:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(HXTAL_VALUE==25000000){
+ 418:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* CK_PREDIV0 = (CK_HXTAL)/5 *8 /10 = 4 MHz */
+ 419:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV1 | RCU_CFG1_PREDV0);
+ 420:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 |= (RCU_PREDV0SRC_CKPLL1 | RCU_PLL1_MUL8 | RCU_PREDV1_DIV5 | RCU_PREDV0_DIV10);
+ 421:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 422:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* enable PLL1 */
+ 423:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CTL |= RCU_CTL_PLL1EN;
+ 424:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* wait till PLL1 is ready */
+ 425:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while((RCU_CTL & RCU_CTL_PLL1STB) == 0){
+ 426:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 427:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 428:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }else if(HXTAL_VALUE==8000000){
+ 429:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PREDV1 | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV0);
+ 430:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 |= (RCU_PREDV0SRC_HXTAL | RCU_PREDV0_DIV2 );
+ 431:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 432:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 433:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable PLL */
+ 434:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 435:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 436:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is stable */
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 10
+
+
+ 437:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 438:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 439:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 440:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* select PLL as system clock */
+ 441:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 442:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 443:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 444:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is selected as system clock */
+ 445:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLL)){
+ 446:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 447:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+ 448:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 449:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_48M_PLL_HXTAL)
+ 450:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+ 451:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      configure the system clock to 48M by PLL which selects HXTAL(MD/HD/XD:8M; CL:25M) a
+ 452:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 453:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 454:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 455:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 456:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_48m_hxtal(void)
+ 457:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+ 458:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t timeout = 0U;
+ 459:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t stab_flag = 0U;
+ 460:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 461:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable HXTAL */
+ 462:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 463:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 464:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 465:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     do{
+ 466:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         timeout++;
+ 467:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 468:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 469:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 470:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* if fail */
+ 471:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 472:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while(1){
+ 473:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 474:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 475:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 476:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* HXTAL is stable */
+ 477:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* AHB = SYSCLK */
+ 478:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 479:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB2 = AHB/1 */
+ 480:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 481:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 482:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+ 483:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 484:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* CK_PLL = (CK_PREDIV0) * 12 = 48 MHz */
+ 485:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~(RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_4);
+ 486:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL12);
+ 487:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 488:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(HXTAL_VALUE==25000000){
+ 489:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 490:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* CK_PREDIV0 = (CK_HXTAL)/5 *8 /10 = 4 MHz */
+ 491:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV1 | RCU_CFG1_PREDV0);
+ 492:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 |= (RCU_PREDV0SRC_CKPLL1 | RCU_PLL1_MUL8 | RCU_PREDV1_DIV5 | RCU_PREDV0_DIV10);
+ 493:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 11
+
+
+ 494:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* enable PLL1 */
+ 495:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CTL |= RCU_CTL_PLL1EN;
+ 496:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* wait till PLL1 is ready */
+ 497:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while((RCU_CTL & RCU_CTL_PLL1STB) == 0){
+ 498:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 499:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 500:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }else if(HXTAL_VALUE==8000000){
+ 501:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PREDV1 | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV0);
+ 502:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 |= (RCU_PREDV0SRC_HXTAL | RCU_PREDV0_DIV2 );
+ 503:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 504:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 505:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 506:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 507:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable PLL */
+ 508:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 509:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 510:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is stable */
+ 511:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 512:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 513:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 514:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* select PLL as system clock */
+ 515:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 516:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 517:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 518:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is selected as system clock */
+ 519:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLL)){
+ 520:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 521:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+ 522:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 523:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_56M_PLL_HXTAL)
+ 524:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+ 525:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      configure the system clock to 56M by PLL which selects HXTAL(MD/HD/XD:8M; CL:25M) a
+ 526:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 527:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 528:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 529:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 530:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_56m_hxtal(void)
+ 531:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+ 532:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t timeout = 0U;
+ 533:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t stab_flag = 0U;
+ 534:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 535:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable HXTAL */
+ 536:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 537:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 538:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 539:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     do{
+ 540:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         timeout++;
+ 541:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 542:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 543:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 544:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* if fail */
+ 545:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 546:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while(1){
+ 547:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 548:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 549:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 550:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* HXTAL is stable */
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 12
+
+
+ 551:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* AHB = SYSCLK */
+ 552:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 553:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB2 = AHB/1 */
+ 554:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 555:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 556:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+ 557:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 558:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* CK_PLL = (CK_PREDIV0) * 14 = 56 MHz */
+ 559:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~(RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_4);
+ 560:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL14);
+ 561:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 562:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(HXTAL_VALUE==25000000){
+ 563:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 564:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* CK_PREDIV0 = (CK_HXTAL)/5 *8 /10 = 4 MHz */
+ 565:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV1 | RCU_CFG1_PREDV0);
+ 566:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 |= (RCU_PREDV0SRC_CKPLL1 | RCU_PLL1_MUL8 | RCU_PREDV1_DIV5 | RCU_PREDV0_DIV10);
+ 567:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 568:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* enable PLL1 */
+ 569:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CTL |= RCU_CTL_PLL1EN;
+ 570:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* wait till PLL1 is ready */
+ 571:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while((RCU_CTL & RCU_CTL_PLL1STB) == 0){
+ 572:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 573:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 574:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }else if(HXTAL_VALUE==8000000){
+ 575:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PREDV1 | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV0);
+ 576:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 |= (RCU_PREDV0SRC_HXTAL | RCU_PREDV0_DIV2 );
+ 577:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 578:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 579:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable PLL */
+ 580:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 581:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 582:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is stable */
+ 583:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 584:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 585:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 586:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* select PLL as system clock */
+ 587:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 588:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 589:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 590:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is selected as system clock */
+ 591:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLL)){
+ 592:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 593:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+ 594:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 595:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_HXTAL)
+ 596:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+ 597:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      configure the system clock to 72M by PLL which selects HXTAL(MD/HD/XD:8M; CL:25M) a
+ 598:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 599:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 600:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 601:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 602:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_72m_hxtal(void)
+ 603:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+ 604:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t timeout = 0U;
+ 605:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t stab_flag = 0U;
+ 606:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 607:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable HXTAL */
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 13
+
+
+ 608:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 609:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 610:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 611:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     do{
+ 612:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         timeout++;
+ 613:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 614:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 615:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 616:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* if fail */
+ 617:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 618:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while(1){
+ 619:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 620:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 621:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 622:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* HXTAL is stable */
+ 623:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* AHB = SYSCLK */
+ 624:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 625:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB2 = AHB/1 */
+ 626:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 627:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 628:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+ 629:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 630:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* CK_PLL = (CK_PREDIV0) * 18 = 72 MHz */ 
+ 631:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~(RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_4);
+ 632:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL18);
+ 633:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 634:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 635:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(HXTAL_VALUE==25000000){
+ 636:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 637:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* CK_PREDIV0 = (CK_HXTAL)/5 *8 /10 = 4 MHz */
+ 638:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV1 | RCU_CFG1_PREDV0);
+ 639:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 |= (RCU_PREDV0SRC_CKPLL1 | RCU_PLL1_MUL8 | RCU_PREDV1_DIV5 | RCU_PREDV0_DIV10);
+ 640:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 641:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* enable PLL1 */
+ 642:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CTL |= RCU_CTL_PLL1EN;
+ 643:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* wait till PLL1 is ready */
+ 644:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while((RCU_CTL & RCU_CTL_PLL1STB) == 0){
+ 645:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 646:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 647:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }else if(HXTAL_VALUE==8000000){
+ 648:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PREDV1 | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV0);
+ 649:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 |= (RCU_PREDV0SRC_HXTAL | RCU_PREDV0_DIV2 );
+ 650:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 651:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 652:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable PLL */
+ 653:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 654:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 655:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is stable */
+ 656:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 657:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 658:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 659:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* select PLL as system clock */
+ 660:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 661:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 662:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 663:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is selected as system clock */
+ 664:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLL)){
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 14
+
+
+ 665:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 666:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+ 667:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 668:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_96M_PLL_HXTAL)
+ 669:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+ 670:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      configure the system clock to 96M by PLL which selects HXTAL(MD/HD/XD:8M; CL:25M) a
+ 671:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 672:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 673:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 674:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 675:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_96m_hxtal(void)
+ 676:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+ 677:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t timeout = 0U;
+ 678:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t stab_flag = 0U;
+ 679:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 680:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable HXTAL */
+ 681:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 682:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 683:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 684:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     do{
+ 685:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         timeout++;
+ 686:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 687:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 688:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 689:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* if fail */
+ 690:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 691:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while(1){
+ 692:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 693:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 694:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 695:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* HXTAL is stable */
+ 696:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* AHB = SYSCLK */
+ 697:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 698:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB2 = AHB/1 */
+ 699:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 700:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 701:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+ 702:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 703:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(HXTAL_VALUE==25000000){
+ 704:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 705:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* CK_PLL = (CK_PREDIV0) * 24 = 96 MHz */
+ 706:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG0 &= ~(RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_4);
+ 707:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL24);
+ 708:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 709:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* CK_PREDIV0 = (CK_HXTAL)/5 *8 /10 = 4 MHz */
+ 710:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV1 | RCU_CFG1_PREDV0);
+ 711:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG1 |= (RCU_PREDV0SRC_CKPLL1 | RCU_PLL1_MUL8 | RCU_PREDV1_DIV5 | RCU_PREDV0_DIV10);
+ 712:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* enable PLL1 */
+ 713:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CTL |= RCU_CTL_PLL1EN;
+ 714:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* wait till PLL1 is ready */
+ 715:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while((RCU_CTL & RCU_CTL_PLL1STB) == 0){
+ 716:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 717:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 718:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }else if(HXTAL_VALUE==8000000){
+ 719:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         /* CK_PLL = (CK_PREDIV0) * 24 = 96 MHz */
+ 720:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG0 &= ~(RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_4);
+ 721:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL24);
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 15
+
+
+ 722:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 723:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PREDV1 | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV0);
+ 724:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 |= (RCU_PREDV0SRC_HXTAL | RCU_PREDV0_DIV2 );
+ 725:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 726:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 727:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable PLL */
+ 728:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 729:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 730:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is stable */
+ 731:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 732:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 733:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 734:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* select PLL as system clock */
+ 735:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 736:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 737:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 738:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is selected as system clock */
+ 739:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLL)){
+ 740:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 741:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+ 742:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 743:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** #elif defined (__SYSTEM_CLOCK_108M_PLL_HXTAL)
+ 744:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** /*!
+ 745:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \brief      configure the system clock to 108M by PLL which selects HXTAL(MD/HD/XD:8M; CL:25M) 
+ 746:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[in]  none
+ 747:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \param[out] none
+ 748:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     \retval     none
+ 749:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** */
+ 750:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 751:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** static void system_clock_108m_hxtal(void)
+ 752:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** {
+ 753:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t timeout   = 0U;
+ 754:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t stab_flag = 0U;
+ 755:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 756:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable HXTAL */
+ 757:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+  69              		.loc 1 757 13
+  70 004c C165     		li	a1,65536
+  71              	.LBE10:
+  72              	.LBE9:
+  73              	.LBE8:
+ 173:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* disable all interrupts */
+  74              		.loc 1 173 13
+  75 004e F18E     		and	a3,a3,a2
+  76 0050 94C3     		sw	a3,0(a5)
+ 175:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  77              		.loc 1 175 5 is_stmt 1
+ 175:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  78              		.loc 1 175 13 is_stmt 0
+  79 0052 98C7     		sw	a4,8(a5)
+ 178:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** }
+  80              		.loc 1 178 5 is_stmt 1
+ 133:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  81              		.loc 1 133 5
+  82              	.LBB15:
+  83              	.LBB13:
+  84              	.LBB11:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 16
+
+
+ 753:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t stab_flag = 0U;
+  85              		.loc 1 753 5
+  86              	.LVL0:
+ 754:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  87              		.loc 1 754 5
+  88              		.loc 1 757 5
+  89              		.loc 1 757 13 is_stmt 0
+  90 0054 9843     		lw	a4,0(a5)
+  91 0056 9386F5FF 		addi	a3,a1,-1
+ 758:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 759:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 760:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     do{
+ 761:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         timeout++;
+ 762:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+  92              		.loc 1 762 22
+  93 005a 37160240 		li	a2,1073876992
+ 757:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+  94              		.loc 1 757 13
+  95 005e 4D8F     		or	a4,a4,a1
+  96 0060 98C3     		sw	a4,0(a5)
+  97 0062 11A0     		j	.L3
+  98              	.LVL1:
+  99              	.L20:
+ 763:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 100              		.loc 1 763 30
+ 101 0064 99C6     		beq	a3,zero,.L2
+ 102              	.LVL2:
+ 103              	.L3:
+ 760:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         timeout++;
+ 104              		.loc 1 760 5 is_stmt 1
+ 761:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 105              		.loc 1 761 9
+ 762:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 106              		.loc 1 762 9
+ 762:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 107              		.loc 1 762 22 is_stmt 0
+ 108 0066 1C42     		lw	a5,0(a2)
+ 109              	.LVL3:
+ 110 0068 FD16     		addi	a3,a3,-1
+ 111              	.LVL4:
+ 112              		.loc 1 763 5
+ 113 006a 1397E700 		slli	a4,a5,14
+ 114 006e E35B07FE 		bge	a4,zero,.L20
+ 115              	.L2:
+ 764:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 765:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* if fail */
+ 766:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 116              		.loc 1 766 5 is_stmt 1
+ 117              		.loc 1 766 15 is_stmt 0
+ 118 0072 B7170240 		li	a5,1073876992
+ 119              	.LVL5:
+ 120 0076 9843     		lw	a4,0(a5)
+ 121              		.loc 1 766 7
+ 122 0078 9316E700 		slli	a3,a4,14
+ 123              	.LVL6:
+ 124 007c 63D0060A 		bge	a3,zero,.L5
+ 767:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         while(1){
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 17
+
+
+ 768:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 769:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 770:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 771:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* HXTAL is stable */
+ 772:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* AHB = SYSCLK */
+ 773:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 125              		.loc 1 773 5 is_stmt 1
+ 126              		.loc 1 773 14 is_stmt 0
+ 127 0080 D843     		lw	a4,4(a5)
+ 774:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB2 = AHB/1 */
+ 775:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 776:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 777:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+ 778:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 779:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* CK_PLL = (CK_PREDIV0) * 27 = 108 MHz */ 
+ 780:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~(RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_4);
+ 128              		.loc 1 780 14
+ 129 0082 3706C4DF 		li	a2,-540803072
+ 130 0086 7D16     		addi	a2,a2,-1
+ 773:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB2 = AHB/1 */
+ 131              		.loc 1 773 14
+ 132 0088 D8C3     		sw	a4,4(a5)
+ 775:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 133              		.loc 1 775 5 is_stmt 1
+ 775:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 134              		.loc 1 775 14 is_stmt 0
+ 135 008a D843     		lw	a4,4(a5)
+ 781:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL27);
+ 782:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 783:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     if(HXTAL_VALUE==25000000){
+ 784:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* CK_PREDIV0 = (CK_HXTAL)/5 *8 /10 = 4 MHz */
+ 785:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PREDV1 | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV0);
+ 786:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 |= (RCU_PREDV0SRC_CKPLL1 | RCU_PREDV1_DIV5 | RCU_PLL1_MUL8 | RCU_PREDV0_DIV10);
+ 787:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 788:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* enable PLL1 */
+ 789:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CTL |= RCU_CTL_PLL1EN;
+ 790:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* wait till PLL1 is ready */
+ 791:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		while(0U == (RCU_CTL & RCU_CTL_PLL1STB)){
+ 792:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		}
+ 793:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 794:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* enable PLL1 */
+ 795:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CTL |= RCU_CTL_PLL2EN;
+ 796:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* wait till PLL1 is ready */
+ 797:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		while(0U == (RCU_CTL & RCU_CTL_PLL2STB)){
+ 798:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		}
+ 799:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }else if(HXTAL_VALUE==8000000){
+ 800:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PREDV1 | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV0);
+ 801:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 |= (RCU_PREDV0SRC_HXTAL | RCU_PREDV0_DIV2 | RCU_PREDV1_DIV2 | RCU_PLL1_MUL20 | RCU_PLL2_
+ 802:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 803:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* enable PLL1 */
+ 804:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CTL |= RCU_CTL_PLL1EN;
+ 805:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* wait till PLL1 is ready */
+ 806:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		while(0U == (RCU_CTL & RCU_CTL_PLL1STB)){
+ 136              		.loc 1 806 16
+ 137 008c B7160240 		li	a3,1073876992
+ 775:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* APB1 = AHB/2 */
+ 138              		.loc 1 775 14
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 18
+
+
+ 139 0090 D8C3     		sw	a4,4(a5)
+ 777:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 140              		.loc 1 777 5 is_stmt 1
+ 777:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 141              		.loc 1 777 14 is_stmt 0
+ 142 0092 D843     		lw	a4,4(a5)
+ 143 0094 13670740 		ori	a4,a4,1024
+ 144 0098 D8C3     		sw	a4,4(a5)
+ 780:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL27);
+ 145              		.loc 1 780 5 is_stmt 1
+ 780:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL27);
+ 146              		.loc 1 780 14 is_stmt 0
+ 147 009a D843     		lw	a4,4(a5)
+ 148 009c 718F     		and	a4,a4,a2
+ 149 009e D8C3     		sw	a4,4(a5)
+ 781:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL27);
+ 150              		.loc 1 781 5 is_stmt 1
+ 781:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL27);
+ 151              		.loc 1 781 14 is_stmt 0
+ 152 00a0 D843     		lw	a4,4(a5)
+ 153 00a2 37062920 		li	a2,539557888
+ 154 00a6 518F     		or	a4,a4,a2
+ 155 00a8 D8C3     		sw	a4,4(a5)
+ 783:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* CK_PREDIV0 = (CK_HXTAL)/5 *8 /10 = 4 MHz */
+ 156              		.loc 1 783 5 is_stmt 1
+ 799:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 &= ~(RCU_CFG1_PREDV0SEL | RCU_CFG1_PREDV1 | RCU_CFG1_PLL1MF | RCU_CFG1_PREDV0);
+ 157              		.loc 1 799 11
+ 800:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 |= (RCU_PREDV0SRC_HXTAL | RCU_PREDV0_DIV2 | RCU_PREDV1_DIV2 | RCU_PLL1_MUL20 | RCU_PLL2_
+ 158              		.loc 1 800 3
+ 800:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CFG1 |= (RCU_PREDV0SRC_HXTAL | RCU_PREDV0_DIV2 | RCU_PREDV1_DIV2 | RCU_PLL1_MUL20 | RCU_PLL2_
+ 159              		.loc 1 800 12 is_stmt 0
+ 160 00aa D857     		lw	a4,44(a5)
+ 161 00ac 3D76     		li	a2,-69632
+ 162 00ae 718F     		and	a4,a4,a2
+ 163 00b0 D8D7     		sw	a4,44(a5)
+ 801:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 164              		.loc 1 801 3 is_stmt 1
+ 801:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 165              		.loc 1 801 12 is_stmt 0
+ 166 00b2 D857     		lw	a4,44(a5)
+ 167 00b4 4166     		li	a2,65536
+ 168 00b6 130616F1 		addi	a2,a2,-239
+ 169 00ba 518F     		or	a4,a4,a2
+ 170 00bc D8D7     		sw	a4,44(a5)
+ 804:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* wait till PLL1 is ready */
+ 171              		.loc 1 804 3 is_stmt 1
+ 804:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* wait till PLL1 is ready */
+ 172              		.loc 1 804 11 is_stmt 0
+ 173 00be 9843     		lw	a4,0(a5)
+ 174 00c0 37060004 		li	a2,67108864
+ 175 00c4 518F     		or	a4,a4,a2
+ 176 00c6 98C3     		sw	a4,0(a5)
+ 177              		.loc 1 806 3 is_stmt 1
+ 178              	.L6:
+ 807:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		}
+ 179              		.loc 1 807 3
+ 806:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		}
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 19
+
+
+ 180              		.loc 1 806 16 is_stmt 0
+ 181 00c8 9C42     		lw	a5,0(a3)
+ 806:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		}
+ 182              		.loc 1 806 8
+ 183 00ca 13974700 		slli	a4,a5,4
+ 184 00ce E35D07FE 		bge	a4,zero,.L6
+ 808:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 809:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* enable PLL2 */
+ 810:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		RCU_CTL |= RCU_CTL_PLL2EN;
+ 185              		.loc 1 810 3 is_stmt 1
+ 186              		.loc 1 810 11 is_stmt 0
+ 187 00d2 9C42     		lw	a5,0(a3)
+ 188 00d4 37060010 		li	a2,268435456
+ 811:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* wait till PLL1 is ready */
+ 812:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		while(0U == (RCU_CTL & RCU_CTL_PLL2STB)){
+ 189              		.loc 1 812 16
+ 190 00d8 37170240 		li	a4,1073876992
+ 810:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		/* wait till PLL1 is ready */
+ 191              		.loc 1 810 11
+ 192 00dc D18F     		or	a5,a5,a2
+ 193 00de 9CC2     		sw	a5,0(a3)
+ 194              		.loc 1 812 3 is_stmt 1
+ 195              	.L7:
+ 813:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		}
+ 196              		.loc 1 813 3
+ 812:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		}
+ 197              		.loc 1 812 16 is_stmt 0
+ 198 00e0 1C43     		lw	a5,0(a4)
+ 812:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 		}
+ 199              		.loc 1 812 8
+ 200 00e2 93962700 		slli	a3,a5,2
+ 201 00e6 E3DD06FE 		bge	a3,zero,.L7
+ 814:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 815:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 816:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* enable PLL */
+ 817:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 202              		.loc 1 817 5 is_stmt 1
+ 203              		.loc 1 817 13 is_stmt 0
+ 204 00ea 1443     		lw	a3,0(a4)
+ 205 00ec 37060001 		li	a2,16777216
+ 818:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 819:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is stable */
+ 820:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 206              		.loc 1 820 18
+ 207 00f0 B7170240 		li	a5,1073876992
+ 817:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 208              		.loc 1 817 13
+ 209 00f4 D18E     		or	a3,a3,a2
+ 210 00f6 14C3     		sw	a3,0(a4)
+ 211              		.loc 1 820 5 is_stmt 1
+ 212              	.L8:
+ 821:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 213              		.loc 1 821 5
+ 820:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 214              		.loc 1 820 18 is_stmt 0
+ 215 00f8 9843     		lw	a4,0(a5)
+ 820:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 20
+
+
+ 216              		.loc 1 820 10
+ 217 00fa 93166700 		slli	a3,a4,6
+ 218 00fe E3DD06FE 		bge	a3,zero,.L8
+ 822:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 823:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* select PLL as system clock */
+ 824:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 219              		.loc 1 824 5 is_stmt 1
+ 220              		.loc 1 824 14 is_stmt 0
+ 221 0102 D843     		lw	a4,4(a5)
+ 825:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 826:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 827:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     /* wait until PLL is selected as system clock */
+ 828:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLL)){
+ 222              		.loc 1 828 18
+ 223 0104 B7160240 		li	a3,1073876992
+ 824:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 224              		.loc 1 824 14
+ 225 0108 719B     		andi	a4,a4,-4
+ 226 010a D8C3     		sw	a4,4(a5)
+ 825:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 227              		.loc 1 825 5 is_stmt 1
+ 825:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 228              		.loc 1 825 14 is_stmt 0
+ 229 010c D843     		lw	a4,4(a5)
+ 230 010e 13672700 		ori	a4,a4,2
+ 231 0112 D8C3     		sw	a4,4(a5)
+ 232              		.loc 1 828 5 is_stmt 1
+ 233              	.L9:
+ 829:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 234              		.loc 1 829 5
+ 828:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 235              		.loc 1 828 18 is_stmt 0
+ 236 0114 DC42     		lw	a5,4(a3)
+ 828:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 237              		.loc 1 828 27
+ 238 0116 A18B     		andi	a5,a5,8
+ 828:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 239              		.loc 1 828 10
+ 240 0118 F5DF     		beq	a5,zero,.L9
+ 241              	.LBE11:
+ 242              	.LBE13:
+ 243              	.LBE15:
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 244              		.loc 1 179 1
+ 245 011a 8280     		ret
+ 246              	.L5:
+ 247              	.LBB16:
+ 248              	.LBB14:
+ 249              	.LBB12:
+ 767:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 250              		.loc 1 767 9 is_stmt 1
+ 768:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 251              		.loc 1 768 9
+ 767:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****         }
+ 252              		.loc 1 767 9
+ 768:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     }
+ 253              		.loc 1 768 9
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 21
+
+
+ 254 011c 01A0     		j	.L5
+ 255              	.LBE12:
+ 256              	.LBE14:
+ 257              	.LBE16:
+ 258              		.cfi_endproc
+ 259              	.LFE3:
+ 261              		.section	.text.SystemCoreClockUpdate,"ax",@progbits
+ 262              		.align	1
+ 263              		.globl	SystemCoreClockUpdate
+ 265              	SystemCoreClockUpdate:
+ 266              	.LFB4:
+ 188:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t scss;
+ 267              		.loc 1 188 1
+ 268              		.cfi_startproc
+ 189:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t pllsel, predv0sel, pllmf, ck_src;
+ 269              		.loc 1 189 5
+ 190:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     uint32_t predv0, predv1, pll1mf;
+ 270              		.loc 1 190 5
+ 191:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 271              		.loc 1 191 5
+ 193:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 272              		.loc 1 193 5
+ 193:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 273              		.loc 1 193 12 is_stmt 0
+ 274 0000 37170240 		li	a4,1073876992
+ 275 0004 5C43     		lw	a5,4(a4)
+ 195:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     {
+ 276              		.loc 1 195 5
+ 277 0006 8546     		li	a3,1
+ 193:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 278              		.loc 1 193 12
+ 279 0008 8983     		srli	a5,a5,2
+ 193:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 280              		.loc 1 193 10
+ 281 000a 8D8B     		andi	a5,a5,3
+ 282              	.LVL7:
+ 195:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****     {
+ 283              		.loc 1 195 5 is_stmt 1
+ 284 000c 6386D700 		beq	a5,a3,.L22
+ 285 0010 81C7     		beq	a5,zero,.L22
+ 286 0012 8946     		li	a3,2
+ 287 0014 638BD700 		beq	a5,a3,.L23
+ 288              	.L22:
+ 199:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             break;
+ 289              		.loc 1 199 13
+ 199:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             break;
+ 290              		.loc 1 199 29 is_stmt 0
+ 291 0018 B7177A00 		li	a5,7999488
+ 292              	.LVL8:
+ 293 001c 37070000 		lui	a4,%hi(.LANCHOR0)
+ 294 0020 93870720 		addi	a5,a5,512
+ 295 0024 2320F700 		sw	a5,%lo(.LANCHOR0)(a4)
+ 200:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             
+ 296              		.loc 1 200 13 is_stmt 1
+ 297 0028 8280     		ret
+ 298              	.LVL9:
+ 299              	.L23:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 22
+
+
+ 210:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 300              		.loc 1 210 13
+ 210:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 301              		.loc 1 210 23 is_stmt 0
+ 302 002a 5C43     		lw	a5,4(a4)
+ 303              	.LVL10:
+ 213:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 /* PLL clock source is IRC8M/2 */
+ 304              		.loc 1 213 13 is_stmt 1
+ 213:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 /* PLL clock source is IRC8M/2 */
+ 305              		.loc 1 213 15 is_stmt 0
+ 306 002c 9396F700 		slli	a3,a5,15
+ 307 0030 63CA0602 		blt	a3,zero,.L37
+ 215:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }else{
+ 308              		.loc 1 215 24
+ 309 0034 B7173D00 		li	a5,4001792
+ 310              	.LVL11:
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 311              		.loc 1 236 21
+ 312 0038 B7160240 		li	a3,1073876992
+ 215:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }else{
+ 313              		.loc 1 215 24
+ 314 003c 13870790 		addi	a4,a5,-1792
+ 315              	.LVL12:
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 316              		.loc 1 236 13 is_stmt 1
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 317              		.loc 1 236 21 is_stmt 0
+ 318 0040 DC42     		lw	a5,4(a3)
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf |= 0x10U;
+ 319              		.loc 1 238 17
+ 320 0042 D442     		lw	a3,4(a3)
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 321              		.loc 1 236 21
+ 322 0044 C983     		srli	a5,a5,18
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf |= 0x10U;
+ 323              		.loc 1 238 15
+ 324 0046 13962600 		slli	a2,a3,2
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 325              		.loc 1 236 19
+ 326 004a BD8B     		andi	a5,a5,15
+ 327              	.LVL13:
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf |= 0x10U;
+ 328              		.loc 1 238 13 is_stmt 1
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf |= 0x10U;
+ 329              		.loc 1 238 15 is_stmt 0
+ 330 004c 63560606 		bge	a2,zero,.L28
+ 331              	.L39:
+ 239:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 332              		.loc 1 239 17 is_stmt 1
+ 239:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 333              		.loc 1 239 23 is_stmt 0
+ 334 0050 93E70701 		ori	a5,a5,16
+ 335              	.LVL14:
+ 242:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf += 1U;
+ 336              		.loc 1 242 13 is_stmt 1
+ 337              	.L29:
+ 243:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }else{
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 23
+
+
+ 338              		.loc 1 243 17
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 339              		.loc 1 248 13
+ 243:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }else{
+ 340              		.loc 1 243 23 is_stmt 0
+ 341 0054 8507     		addi	a5,a5,1
+ 342              	.LVL15:
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 343              		.loc 1 248 38
+ 344 0056 B387E702 		mul	a5,a5,a4
+ 345              	.LVL16:
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 346              		.loc 1 248 29
+ 347 005a 37070000 		lui	a4,%hi(.LANCHOR0)
+ 348              	.LVL17:
+ 349 005e 2320F700 		sw	a5,%lo(.LANCHOR0)(a4)
+ 250:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 /* PLL source clock multiply by 6.5 */
+ 350              		.loc 1 250 13 is_stmt 1
+ 351 0062 8280     		ret
+ 352              	.LVL18:
+ 353              	.L37:
+ 218:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 354              		.loc 1 218 17
+ 220:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 355              		.loc 1 220 17
+ 220:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 356              		.loc 1 220 30 is_stmt 0
+ 357 0064 5C57     		lw	a5,44(a4)
+ 358              	.LVL19:
+ 223:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     predv1 = ((RCU_CFG1 & RCU_CFG1_PREDV1) >> 4) + 1U;
+ 359              		.loc 1 223 17 is_stmt 1
+ 223:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     predv1 = ((RCU_CFG1 & RCU_CFG1_PREDV1) >> 4) + 1U;
+ 360              		.loc 1 223 19 is_stmt 0
+ 361 0066 9396F700 		slli	a3,a5,15
+ 362 006a 63DA0606 		bge	a3,zero,.L33
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     pll1mf = ((RCU_CFG1 & RCU_CFG1_PLL1MF) >> 8) + 2U;
+ 363              		.loc 1 224 21 is_stmt 1
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     pll1mf = ((RCU_CFG1 & RCU_CFG1_PLL1MF) >> 8) + 2U;
+ 364              		.loc 1 224 32 is_stmt 0
+ 365 006e 5C57     		lw	a5,44(a4)
+ 366              	.LVL20:
+ 225:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     if(17U == pll1mf){
+ 367              		.loc 1 225 32
+ 368 0070 5857     		lw	a4,44(a4)
+ 226:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                         pll1mf = 20U;
+ 369              		.loc 1 226 23
+ 370 0072 4546     		li	a2,17
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     pll1mf = ((RCU_CFG1 & RCU_CFG1_PLL1MF) >> 8) + 2U;
+ 371              		.loc 1 224 60
+ 372 0074 9183     		srli	a5,a5,4
+ 225:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     if(17U == pll1mf){
+ 373              		.loc 1 225 60
+ 374 0076 2183     		srli	a4,a4,8
+ 375 0078 3D8B     		andi	a4,a4,15
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     pll1mf = ((RCU_CFG1 & RCU_CFG1_PLL1MF) >> 8) + 2U;
+ 376              		.loc 1 224 60
+ 377 007a BD8B     		andi	a5,a5,15
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 24
+
+
+ 225:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     if(17U == pll1mf){
+ 378              		.loc 1 225 28
+ 379 007c 0907     		addi	a4,a4,2
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     pll1mf = ((RCU_CFG1 & RCU_CFG1_PLL1MF) >> 8) + 2U;
+ 380              		.loc 1 224 28
+ 381 007e 93861700 		addi	a3,a5,1
+ 382              	.LVL21:
+ 225:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     if(17U == pll1mf){
+ 383              		.loc 1 225 21 is_stmt 1
+ 226:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                         pll1mf = 20U;
+ 384              		.loc 1 226 21
+ 226:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                         pll1mf = 20U;
+ 385              		.loc 1 226 23 is_stmt 0
+ 386 0082 6303C706 		beq	a4,a2,.L38
+ 387              	.LVL22:
+ 388              	.L27:
+ 229:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 }
+ 389              		.loc 1 229 21 is_stmt 1
+ 229:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 }
+ 390              		.loc 1 229 38 is_stmt 0
+ 391 0086 B7177A00 		li	a5,7999488
+ 392 008a 93870720 		addi	a5,a5,512
+ 393 008e B3D7D702 		divu	a5,a5,a3
+ 229:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 }
+ 394              		.loc 1 229 28
+ 395 0092 B387E702 		mul	a5,a5,a4
+ 396              	.LVL23:
+ 397              	.L26:
+ 231:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 ck_src /= predv0;
+ 398              		.loc 1 231 17 is_stmt 1
+ 231:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 ck_src /= predv0;
+ 399              		.loc 1 231 27 is_stmt 0
+ 400 0096 37170240 		li	a4,1073876992
+ 401 009a 5857     		lw	a4,44(a4)
+ 402              	.LVL24:
+ 232:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 403              		.loc 1 232 17 is_stmt 1
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 404              		.loc 1 236 21 is_stmt 0
+ 405 009c B7160240 		li	a3,1073876992
+ 231:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 ck_src /= predv0;
+ 406              		.loc 1 231 36
+ 407 00a0 3D8B     		andi	a4,a4,15
+ 408              	.LVL25:
+ 231:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 ck_src /= predv0;
+ 409              		.loc 1 231 24
+ 410 00a2 0507     		addi	a4,a4,1
+ 411              	.LVL26:
+ 232:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 412              		.loc 1 232 24
+ 413 00a4 33D7E702 		divu	a4,a5,a4
+ 414              	.LVL27:
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 415              		.loc 1 236 13 is_stmt 1
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 416              		.loc 1 236 21 is_stmt 0
+ 417 00a8 DC42     		lw	a5,4(a3)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 25
+
+
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf |= 0x10U;
+ 418              		.loc 1 238 17
+ 419 00aa D442     		lw	a3,4(a3)
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 420              		.loc 1 236 21
+ 421 00ac C983     		srli	a5,a5,18
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf |= 0x10U;
+ 422              		.loc 1 238 15
+ 423 00ae 13962600 		slli	a2,a3,2
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 424              		.loc 1 236 19
+ 425 00b2 BD8B     		andi	a5,a5,15
+ 426              	.LVL28:
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf |= 0x10U;
+ 427              		.loc 1 238 13 is_stmt 1
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf |= 0x10U;
+ 428              		.loc 1 238 15 is_stmt 0
+ 429 00b4 E34E06F8 		blt	a2,zero,.L39
+ 430              	.L28:
+ 242:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf += 1U;
+ 431              		.loc 1 242 13 is_stmt 1
+ 242:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 pllmf += 1U;
+ 432              		.loc 1 242 15 is_stmt 0
+ 433 00b8 BD46     		li	a3,15
+ 434 00ba E38DD7F8 		beq	a5,a3,.L29
+ 245:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 435              		.loc 1 245 17 is_stmt 1
+ 245:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 436              		.loc 1 245 23 is_stmt 0
+ 437 00be 8907     		addi	a5,a5,2
+ 438              	.LVL29:
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 439              		.loc 1 248 13 is_stmt 1
+ 250:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 /* PLL source clock multiply by 6.5 */
+ 440              		.loc 1 250 13
+ 250:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                 /* PLL source clock multiply by 6.5 */
+ 441              		.loc 1 250 15 is_stmt 0
+ 442 00c0 6396D702 		bne	a5,a3,.L40
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 443              		.loc 1 252 17 is_stmt 1
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 444              		.loc 1 252 42 is_stmt 0
+ 445 00c4 93171700 		slli	a5,a4,1
+ 446              	.LVL30:
+ 447 00c8 BA97     		add	a5,a5,a4
+ 448 00ca 93961700 		slli	a3,a5,1
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 449              		.loc 1 252 56
+ 450 00ce 93571700 		srli	a5,a4,1
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 451              		.loc 1 252 47
+ 452 00d2 B697     		add	a5,a3,a5
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****             }
+ 453              		.loc 1 252 33
+ 454 00d4 37070000 		lui	a4,%hi(.LANCHOR0)
+ 455              	.LVL31:
+ 456 00d8 2320F700 		sw	a5,%lo(.LANCHOR0)(a4)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 26
+
+
+ 262:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 457              		.loc 1 262 1
+ 458 00dc 8280     		ret
+ 459              	.LVL32:
+ 460              	.L33:
+ 218:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 461              		.loc 1 218 24
+ 462 00de B7177A00 		li	a5,7999488
+ 463              	.LVL33:
+ 464 00e2 93870720 		addi	a5,a5,512
+ 465 00e6 45BF     		j	.L26
+ 466              	.LVL34:
+ 467              	.L38:
+ 227:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c ****                     }
+ 468              		.loc 1 227 32
+ 469 00e8 5147     		li	a4,20
+ 470              	.LVL35:
+ 471 00ea 71BF     		j	.L27
+ 472              	.LVL36:
+ 473              	.L40:
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 474              		.loc 1 248 38
+ 475 00ec B307F702 		mul	a5,a4,a5
+ 476              	.LVL37:
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral\system_gd32vf103.c **** 
+ 477              		.loc 1 248 29
+ 478 00f0 37070000 		lui	a4,%hi(.LANCHOR0)
+ 479              	.LVL38:
+ 480 00f4 2320F700 		sw	a5,%lo(.LANCHOR0)(a4)
+ 481 00f8 8280     		ret
+ 482              		.cfi_endproc
+ 483              	.LFE4:
+ 485              		.globl	SystemCoreClock
+ 486              		.section	.sdata.SystemCoreClock,"aw"
+ 487              		.align	2
+ 488              		.set	.LANCHOR0,. + 0
+ 491              	SystemCoreClock:
+ 492 0000 00F36F06 		.word	108000000
+ 493              		.text
+ 494              	.Letext0:
+ 495              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 496              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 497              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 27
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 system_gd32vf103.c
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:13     .text.SystemInit:0000000000000000 SystemInit
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:17     .text.SystemInit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:18     .text.SystemInit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:19     .text.SystemInit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:20     .text.SystemInit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:23     .text.SystemInit:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:26     .text.SystemInit:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:29     .text.SystemInit:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:30     .text.SystemInit:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:32     .text.SystemInit:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:35     .text.SystemInit:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:38     .text.SystemInit:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:39     .text.SystemInit:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:45     .text.SystemInit:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:46     .text.SystemInit:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:52     .text.SystemInit:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:53     .text.SystemInit:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:59     .text.SystemInit:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:60     .text.SystemInit:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:62     .text.SystemInit:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:63     .text.SystemInit:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:65     .text.SystemInit:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:70     .text.SystemInit:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:75     .text.SystemInit:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:78     .text.SystemInit:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:79     .text.SystemInit:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:81     .text.SystemInit:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:85     .text.SystemInit:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:87     .text.SystemInit:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:88     .text.SystemInit:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:89     .text.SystemInit:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:90     .text.SystemInit:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:93     .text.SystemInit:000000000000005a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:95     .text.SystemInit:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:101    .text.SystemInit:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:105    .text.SystemInit:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:106    .text.SystemInit:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:107    .text.SystemInit:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:108    .text.SystemInit:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:113    .text.SystemInit:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:117    .text.SystemInit:0000000000000072 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:118    .text.SystemInit:0000000000000072 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:122    .text.SystemInit:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:126    .text.SystemInit:0000000000000080 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:127    .text.SystemInit:0000000000000080 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:129    .text.SystemInit:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:132    .text.SystemInit:0000000000000088 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:134    .text.SystemInit:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:135    .text.SystemInit:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:137    .text.SystemInit:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:139    .text.SystemInit:0000000000000090 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:141    .text.SystemInit:0000000000000092 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:142    .text.SystemInit:0000000000000092 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:146    .text.SystemInit:000000000000009a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:147    .text.SystemInit:000000000000009a .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 28
+
+
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:151    .text.SystemInit:00000000000000a0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:152    .text.SystemInit:00000000000000a0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:157    .text.SystemInit:00000000000000aa .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:158    .text.SystemInit:00000000000000aa .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:159    .text.SystemInit:00000000000000aa .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:160    .text.SystemInit:00000000000000aa .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:165    .text.SystemInit:00000000000000b2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:166    .text.SystemInit:00000000000000b2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:172    .text.SystemInit:00000000000000be .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:173    .text.SystemInit:00000000000000be .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:179    .text.SystemInit:00000000000000c8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:180    .text.SystemInit:00000000000000c8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:181    .text.SystemInit:00000000000000c8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:183    .text.SystemInit:00000000000000ca .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:186    .text.SystemInit:00000000000000d2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:187    .text.SystemInit:00000000000000d2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:190    .text.SystemInit:00000000000000d8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:192    .text.SystemInit:00000000000000dc .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:196    .text.SystemInit:00000000000000e0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:197    .text.SystemInit:00000000000000e0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:198    .text.SystemInit:00000000000000e0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:200    .text.SystemInit:00000000000000e2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:203    .text.SystemInit:00000000000000ea .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:204    .text.SystemInit:00000000000000ea .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:207    .text.SystemInit:00000000000000f0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:209    .text.SystemInit:00000000000000f4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:213    .text.SystemInit:00000000000000f8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:214    .text.SystemInit:00000000000000f8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:215    .text.SystemInit:00000000000000f8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:217    .text.SystemInit:00000000000000fa .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:220    .text.SystemInit:0000000000000102 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:221    .text.SystemInit:0000000000000102 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:223    .text.SystemInit:0000000000000104 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:225    .text.SystemInit:0000000000000108 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:228    .text.SystemInit:000000000000010c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:229    .text.SystemInit:000000000000010c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:234    .text.SystemInit:0000000000000114 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:235    .text.SystemInit:0000000000000114 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:236    .text.SystemInit:0000000000000114 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:238    .text.SystemInit:0000000000000116 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:240    .text.SystemInit:0000000000000118 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:245    .text.SystemInit:000000000000011a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:251    .text.SystemInit:000000000000011c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:252    .text.SystemInit:000000000000011c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:253    .text.SystemInit:000000000000011c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:254    .text.SystemInit:000000000000011c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:258    .text.SystemInit:000000000000011e .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:265    .text.SystemCoreClockUpdate:0000000000000000 SystemCoreClockUpdate
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:268    .text.SystemCoreClockUpdate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:269    .text.SystemCoreClockUpdate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:270    .text.SystemCoreClockUpdate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:271    .text.SystemCoreClockUpdate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:272    .text.SystemCoreClockUpdate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:273    .text.SystemCoreClockUpdate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:274    .text.SystemCoreClockUpdate:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:277    .text.SystemCoreClockUpdate:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:279    .text.SystemCoreClockUpdate:0000000000000008 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 29
+
+
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:281    .text.SystemCoreClockUpdate:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:284    .text.SystemCoreClockUpdate:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:290    .text.SystemCoreClockUpdate:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:291    .text.SystemCoreClockUpdate:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:297    .text.SystemCoreClockUpdate:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:301    .text.SystemCoreClockUpdate:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:302    .text.SystemCoreClockUpdate:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:305    .text.SystemCoreClockUpdate:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:306    .text.SystemCoreClockUpdate:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:309    .text.SystemCoreClockUpdate:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:312    .text.SystemCoreClockUpdate:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:314    .text.SystemCoreClockUpdate:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:317    .text.SystemCoreClockUpdate:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:318    .text.SystemCoreClockUpdate:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:320    .text.SystemCoreClockUpdate:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:322    .text.SystemCoreClockUpdate:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:324    .text.SystemCoreClockUpdate:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:326    .text.SystemCoreClockUpdate:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:329    .text.SystemCoreClockUpdate:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:330    .text.SystemCoreClockUpdate:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:333    .text.SystemCoreClockUpdate:0000000000000050 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:334    .text.SystemCoreClockUpdate:0000000000000050 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:338    .text.SystemCoreClockUpdate:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:339    .text.SystemCoreClockUpdate:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:340    .text.SystemCoreClockUpdate:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:341    .text.SystemCoreClockUpdate:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:344    .text.SystemCoreClockUpdate:0000000000000056 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:347    .text.SystemCoreClockUpdate:000000000000005a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:351    .text.SystemCoreClockUpdate:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:355    .text.SystemCoreClockUpdate:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:356    .text.SystemCoreClockUpdate:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:357    .text.SystemCoreClockUpdate:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:360    .text.SystemCoreClockUpdate:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:361    .text.SystemCoreClockUpdate:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:364    .text.SystemCoreClockUpdate:000000000000006e .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:365    .text.SystemCoreClockUpdate:000000000000006e .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:368    .text.SystemCoreClockUpdate:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:370    .text.SystemCoreClockUpdate:0000000000000072 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:372    .text.SystemCoreClockUpdate:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:374    .text.SystemCoreClockUpdate:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:377    .text.SystemCoreClockUpdate:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:379    .text.SystemCoreClockUpdate:000000000000007c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:381    .text.SystemCoreClockUpdate:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:384    .text.SystemCoreClockUpdate:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:385    .text.SystemCoreClockUpdate:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:386    .text.SystemCoreClockUpdate:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:390    .text.SystemCoreClockUpdate:0000000000000086 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:391    .text.SystemCoreClockUpdate:0000000000000086 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:395    .text.SystemCoreClockUpdate:0000000000000092 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:399    .text.SystemCoreClockUpdate:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:400    .text.SystemCoreClockUpdate:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:404    .text.SystemCoreClockUpdate:000000000000009c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:405    .text.SystemCoreClockUpdate:000000000000009c .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:407    .text.SystemCoreClockUpdate:00000000000000a0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:410    .text.SystemCoreClockUpdate:00000000000000a2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:413    .text.SystemCoreClockUpdate:00000000000000a4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:416    .text.SystemCoreClockUpdate:00000000000000a8 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 30
+
+
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:417    .text.SystemCoreClockUpdate:00000000000000a8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:419    .text.SystemCoreClockUpdate:00000000000000aa .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:421    .text.SystemCoreClockUpdate:00000000000000ac .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:423    .text.SystemCoreClockUpdate:00000000000000ae .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:425    .text.SystemCoreClockUpdate:00000000000000b2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:428    .text.SystemCoreClockUpdate:00000000000000b4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:429    .text.SystemCoreClockUpdate:00000000000000b4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:432    .text.SystemCoreClockUpdate:00000000000000b8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:433    .text.SystemCoreClockUpdate:00000000000000b8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:436    .text.SystemCoreClockUpdate:00000000000000be .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:437    .text.SystemCoreClockUpdate:00000000000000be .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:440    .text.SystemCoreClockUpdate:00000000000000c0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:441    .text.SystemCoreClockUpdate:00000000000000c0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:442    .text.SystemCoreClockUpdate:00000000000000c0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:444    .text.SystemCoreClockUpdate:00000000000000c4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:445    .text.SystemCoreClockUpdate:00000000000000c4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:450    .text.SystemCoreClockUpdate:00000000000000ce .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:452    .text.SystemCoreClockUpdate:00000000000000d2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:454    .text.SystemCoreClockUpdate:00000000000000d4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:458    .text.SystemCoreClockUpdate:00000000000000dc .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:462    .text.SystemCoreClockUpdate:00000000000000de .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:469    .text.SystemCoreClockUpdate:00000000000000e8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:475    .text.SystemCoreClockUpdate:00000000000000ec .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:478    .text.SystemCoreClockUpdate:00000000000000f0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:482    .text.SystemCoreClockUpdate:00000000000000fa .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:491    .sdata.SystemCoreClock:0000000000000000 SystemCoreClock
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:488    .sdata.SystemCoreClock:0000000000000000 .LANCHOR0
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:261    .text.SystemInit:000000000000011e .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:486    .text.SystemCoreClockUpdate:00000000000000fa .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:103    .text.SystemInit:0000000000000066 .L3
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:115    .text.SystemInit:0000000000000072 .L2
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:99     .text.SystemInit:0000000000000064 .L20
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:246    .text.SystemInit:000000000000011c .L5
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:178    .text.SystemInit:00000000000000c8 .L6
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:195    .text.SystemInit:00000000000000e0 .L7
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:212    .text.SystemInit:00000000000000f8 .L8
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:233    .text.SystemInit:0000000000000114 .L9
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:288    .text.SystemCoreClockUpdate:0000000000000018 .L22
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:299    .text.SystemCoreClockUpdate:000000000000002a .L23
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:353    .text.SystemCoreClockUpdate:0000000000000064 .L37
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:430    .text.SystemCoreClockUpdate:00000000000000b8 .L28
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:460    .text.SystemCoreClockUpdate:00000000000000de .L33
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:467    .text.SystemCoreClockUpdate:00000000000000e8 .L38
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:331    .text.SystemCoreClockUpdate:0000000000000050 .L39
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:337    .text.SystemCoreClockUpdate:0000000000000054 .L29
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:473    .text.SystemCoreClockUpdate:00000000000000ec .L40
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:397    .text.SystemCoreClockUpdate:0000000000000096 .L26
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:388    .text.SystemCoreClockUpdate:0000000000000086 .L27
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:750    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1223   .debug_str:0000000000000000 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1251   .debug_str:0000000000000115 .LASF29
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1263   .debug_str:00000000000001a8 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1205   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1221   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1253   .debug_str:000000000000016c .LASF0
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1289   .debug_str:0000000000000286 .LASF1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 31
+
+
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1225   .debug_str:000000000000007a .LASF4
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1239   .debug_str:00000000000000c5 .LASF2
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1273   .debug_str:0000000000000234 .LASF3
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1247   .debug_str:0000000000000103 .LASF5
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1243   .debug_str:00000000000000e5 .LASF6
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1283   .debug_str:000000000000026b .LASF7
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1245   .debug_str:00000000000000f8 .LASF8
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1241   .debug_str:00000000000000d3 .LASF9
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1265   .debug_str:00000000000001f8 .LASF10
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1255   .debug_str:0000000000000179 .LASF11
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1257   .debug_str:0000000000000190 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1277   .debug_str:0000000000000245 .LASF13
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1281   .debug_str:0000000000000262 .LASF14
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1269   .debug_str:000000000000020e .LASF31
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1287   .debug_str:000000000000027a .LASF15
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1237   .debug_str:00000000000000ad .LASF32
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1267   .debug_str:0000000000000206 .LASF16
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1235   .debug_str:00000000000000a3 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1271   .debug_str:000000000000021e .LASF26
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:266    .text.SystemCoreClockUpdate:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:483    .text.SystemCoreClockUpdate:00000000000000fa .LFE4
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1259   .debug_str:0000000000000198 .LASF18
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:974    .debug_loc:0000000000000000 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1275   .debug_str:000000000000023e .LASF19
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:985    .debug_loc:000000000000001e .LLST3
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1227   .debug_str:0000000000000084 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1008   .debug_loc:0000000000000048 .LLST4
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1285   .debug_str:0000000000000274 .LASF21
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1031   .debug_loc:0000000000000072 .LLST5
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1249   .debug_str:000000000000010e .LASF22
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1056   .debug_loc:00000000000000b3 .LLST6
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1229   .debug_str:000000000000008e .LASF23
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1087   .debug_loc:0000000000000107 .LLST7
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1231   .debug_str:0000000000000095 .LASF24
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1104   .debug_loc:000000000000012b .LLST8
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1233   .debug_str:000000000000009c .LASF25
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1115   .debug_loc:0000000000000149 .LLST9
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1261   .debug_str:000000000000019d .LASF27
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:14     .text.SystemInit:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:259    .text.SystemInit:000000000000011e .LFE3
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:66     .text.SystemInit:000000000000004c .LBB8
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:67     .text.SystemInit:000000000000004c .LBB9
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1126   .debug_loc:0000000000000167 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1162   .debug_loc:00000000000001ae .LLST1
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:1279   .debug_str:000000000000024e .LASF33
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:282    .text.SystemCoreClockUpdate:000000000000000c .LVL7
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:292    .text.SystemCoreClockUpdate:000000000000001c .LVL8
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:298    .text.SystemCoreClockUpdate:000000000000002a .LVL9
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:303    .text.SystemCoreClockUpdate:000000000000002c .LVL10
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:310    .text.SystemCoreClockUpdate:0000000000000038 .LVL11
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:352    .text.SystemCoreClockUpdate:0000000000000064 .LVL18
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:358    .text.SystemCoreClockUpdate:0000000000000066 .LVL19
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:366    .text.SystemCoreClockUpdate:0000000000000070 .LVL20
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:459    .text.SystemCoreClockUpdate:00000000000000de .LVL32
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:463    .text.SystemCoreClockUpdate:00000000000000e2 .LVL33
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:327    .text.SystemCoreClockUpdate:000000000000004c .LVL13
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:335    .text.SystemCoreClockUpdate:0000000000000054 .LVL14
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s 			page 32
+
+
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:342    .text.SystemCoreClockUpdate:0000000000000056 .LVL15
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:345    .text.SystemCoreClockUpdate:000000000000005a .LVL16
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:426    .text.SystemCoreClockUpdate:00000000000000b4 .LVL28
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:446    .text.SystemCoreClockUpdate:00000000000000c8 .LVL30
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:472    .text.SystemCoreClockUpdate:00000000000000ec .LVL36
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:476    .text.SystemCoreClockUpdate:00000000000000f0 .LVL37
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:315    .text.SystemCoreClockUpdate:0000000000000040 .LVL12
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:348    .text.SystemCoreClockUpdate:000000000000005e .LVL17
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:396    .text.SystemCoreClockUpdate:0000000000000096 .LVL23
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:414    .text.SystemCoreClockUpdate:00000000000000a8 .LVL27
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:455    .text.SystemCoreClockUpdate:00000000000000d8 .LVL31
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:479    .text.SystemCoreClockUpdate:00000000000000f4 .LVL38
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:402    .text.SystemCoreClockUpdate:000000000000009c .LVL24
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:408    .text.SystemCoreClockUpdate:00000000000000a2 .LVL25
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:411    .text.SystemCoreClockUpdate:00000000000000a4 .LVL26
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:382    .text.SystemCoreClockUpdate:0000000000000082 .LVL21
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:466    .text.SystemCoreClockUpdate:00000000000000e8 .LVL34
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:470    .text.SystemCoreClockUpdate:00000000000000ea .LVL35
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:86     .text.SystemInit:0000000000000054 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:98     .text.SystemInit:0000000000000064 .LVL1
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:102    .text.SystemInit:0000000000000066 .LVL2
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:111    .text.SystemInit:000000000000006a .LVL4
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:123    .text.SystemInit:000000000000007c .LVL6
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:109    .text.SystemInit:0000000000000068 .LVL3
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:119    .text.SystemInit:0000000000000076 .LVL5
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:499    .debug_info:0000000000000000 .Ldebug_info0
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:73     .text.SystemInit:000000000000004e .LBE8
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:82     .text.SystemInit:0000000000000054 .LBB15
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:243    .text.SystemInit:000000000000011a .LBE15
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:247    .text.SystemInit:000000000000011c .LBB16
+C:\Users\anton\AppData\Local\Temp\ccXUk9f2.s:257    .text.SystemInit:000000000000011e .LBE16
+
+NO UNDEFINED SYMBOLS

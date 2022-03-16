@@ -1,0 +1,976 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 1
+
+
+   1              		.file	"gd32vf103_exti.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.exti_deinit,"ax",@progbits
+  10              		.align	1
+  11              		.globl	exti_deinit
+  13              	exti_deinit:
+  14              	.LFB2:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_exti
+   1:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+   2:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \file    gd32vf103_exti.c
+   3:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief   EXTI driver
+   4:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+   5:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \version 2019-06-05, V1.0.0, firmware for GD32VF103
+   6:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \version 2020-08-04, V1.1.0, firmware for GD32VF103
+   7:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+   8:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+   9:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*
+  10:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+  12:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     Redistribution and use in source and binary forms, with or without modification,
+  13:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** are permitted provided that the following conditions are met:
+  14:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+  15:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  16:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****        list of conditions and the following disclaimer.
+  17:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  18:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****        this list of conditions and the following disclaimer in the documentation
+  19:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****        and/or other materials provided with the distribution.
+  20:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  21:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****        may be used to endorse or promote products derived from this software without
+  22:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****        specific prior written permission.
+  23:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+  24:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  25:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  26:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  27:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  28:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  29:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  30:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  31:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  32:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  33:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** OF SUCH DAMAGE.
+  34:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+  35:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+  36:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** #include "gd32vf103_exti.h"
+  37:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+  38:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** #define EXTI_REG_RESET_VALUE            ((uint32_t)0x00000000U)
+  39:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+  40:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+  41:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****  \brief      deinitialize the EXTI
+  42:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****  \param[in]  none
+  43:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****  \param[out] none
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 2
+
+
+  44:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****  \retval     none
+  45:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****  */
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** void exti_deinit(void)
+  47:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+  16              		.loc 1 47 1
+  17              		.cfi_startproc
+  48:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     /* reset the value of all the EXTI registers */
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_INTEN = EXTI_REG_RESET_VALUE;
+  18              		.loc 1 49 5
+  19              		.loc 1 49 16 is_stmt 0
+  20 0000 B7070140 		li	a5,1073807360
+  21 0004 23A00740 		sw	zero,1024(a5)
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_EVEN  = EXTI_REG_RESET_VALUE;
+  22              		.loc 1 50 5 is_stmt 1
+  23              		.loc 1 50 16 is_stmt 0
+  24 0008 23A20740 		sw	zero,1028(a5)
+  51:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_RTEN  = EXTI_REG_RESET_VALUE;
+  25              		.loc 1 51 5 is_stmt 1
+  26              		.loc 1 51 16 is_stmt 0
+  27 000c 23A40740 		sw	zero,1032(a5)
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_FTEN  = EXTI_REG_RESET_VALUE;
+  28              		.loc 1 52 5 is_stmt 1
+  29              		.loc 1 52 16 is_stmt 0
+  30 0010 23A60740 		sw	zero,1036(a5)
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_SWIEV = EXTI_REG_RESET_VALUE;
+  31              		.loc 1 53 5 is_stmt 1
+  32              		.loc 1 53 16 is_stmt 0
+  33 0014 23A80740 		sw	zero,1040(a5)
+  54:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+  34              		.loc 1 54 1
+  35 0018 8280     		ret
+  36              		.cfi_endproc
+  37              	.LFE2:
+  39              		.section	.text.exti_init,"ax",@progbits
+  40              		.align	1
+  41              		.globl	exti_init
+  43              	exti_init:
+  44              	.LFB3:
+  55:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+  56:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+  57:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      initialize the EXTI
+  58:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+  59:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+  61:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  mode: interrupt or event mode, refer to exti_mode_enum
+  62:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+  63:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_INTERRUPT: interrupt mode
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_EVENT: event mode
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  trig_type: trigger type, refer to exti_trig_type_enum
+  66:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+  67:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_TRIG_RISING: rising edge trigger
+  68:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_TRIG_FALLING: falling edge trigger
+  69:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_TRIG_BOTH: rising edge and falling edge trigger
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_TRIG_NONE: without rising edge or falling edge trigger
+  71:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+  72:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     none
+  73:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****  */
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 3
+
+
+  74:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** void exti_init(exti_line_enum linex, exti_mode_enum mode, exti_trig_type_enum trig_type)
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+  45              		.loc 1 75 1 is_stmt 1
+  46              		.cfi_startproc
+  47              	.LVL0:
+  76:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     /* reset the EXTI line x */
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_INTEN &= ~(uint32_t) linex;
+  48              		.loc 1 77 5
+  49              		.loc 1 77 16 is_stmt 0
+  50 0000 B7070140 		li	a5,1073807360
+  51 0004 83A60740 		lw	a3,1024(a5)
+  52              		.loc 1 77 19
+  53 0008 1347F5FF 		not	a4,a0
+  54              		.loc 1 77 16
+  55 000c F98E     		and	a3,a3,a4
+  56 000e 23A0D740 		sw	a3,1024(a5)
+  78:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_EVEN &= ~(uint32_t) linex;
+  57              		.loc 1 78 5 is_stmt 1
+  58              		.loc 1 78 15 is_stmt 0
+  59 0012 83A64740 		lw	a3,1028(a5)
+  60 0016 F98E     		and	a3,a4,a3
+  61 0018 23A2D740 		sw	a3,1028(a5)
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_RTEN &= ~(uint32_t) linex;
+  62              		.loc 1 79 5 is_stmt 1
+  63              		.loc 1 79 15 is_stmt 0
+  64 001c 83A68740 		lw	a3,1032(a5)
+  65 0020 F98E     		and	a3,a4,a3
+  66 0022 23A4D740 		sw	a3,1032(a5)
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_FTEN &= ~(uint32_t) linex;
+  67              		.loc 1 80 5 is_stmt 1
+  68              		.loc 1 80 15 is_stmt 0
+  69 0026 83A6C740 		lw	a3,1036(a5)
+  70 002a F98E     		and	a3,a4,a3
+  71 002c 23A6D740 		sw	a3,1036(a5)
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     /* set the EXTI mode and enable the interrupts or events from EXTI line x */
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     switch (mode) {
+  72              		.loc 1 83 5 is_stmt 1
+  73 0030 95CD     		beq	a1,zero,.L4
+  74 0032 8546     		li	a3,1
+  75 0034 6397D500 		bne	a1,a3,.L6
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     case EXTI_INTERRUPT:
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_INTEN |= (uint32_t) linex;
+  86:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+  87:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     case EXTI_EVENT:
+  88:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_EVEN |= (uint32_t) linex;
+  76              		.loc 1 88 9
+  77              		.loc 1 88 19 is_stmt 0
+  78 0038 83A64740 		lw	a3,1028(a5)
+  79 003c C98E     		or	a3,a3,a0
+  80 003e 23A2D740 		sw	a3,1028(a5)
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+  81              		.loc 1 89 9 is_stmt 1
+  82              	.L6:
+  90:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     default:
+  91:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+  92:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     }
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 4
+
+
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     /* set the EXTI trigger type */
+  95:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     switch (trig_type) {
+  83              		.loc 1 95 5
+  84 0042 8547     		li	a5,1
+  85 0044 630CF602 		beq	a2,a5,.L7
+  86              	.L11:
+  87 0048 39C6     		beq	a2,zero,.L8
+  88 004a 8947     		li	a5,2
+  89 004c 6303F600 		beq	a2,a5,.L9
+  90 0050 8280     		ret
+  91              	.L9:
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     case EXTI_TRIG_RISING:
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_RTEN |= (uint32_t) linex;
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_FTEN &= ~(uint32_t) linex;
+  99:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+ 100:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     case EXTI_TRIG_FALLING:
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_RTEN &= ~(uint32_t) linex;
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_FTEN |= (uint32_t) linex;
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+ 104:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     case EXTI_TRIG_BOTH:
+ 105:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_RTEN |= (uint32_t) linex;
+  92              		.loc 1 105 9
+  93              		.loc 1 105 19 is_stmt 0
+  94 0052 B7070140 		li	a5,1073807360
+  95 0056 03A78740 		lw	a4,1032(a5)
+  96 005a 498F     		or	a4,a4,a0
+  97 005c 23A4E740 		sw	a4,1032(a5)
+ 106:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_FTEN |= (uint32_t) linex;
+  98              		.loc 1 106 9 is_stmt 1
+  99              		.loc 1 106 19 is_stmt 0
+ 100 0060 03A7C740 		lw	a4,1036(a5)
+ 101 0064 598D     		or	a0,a4,a0
+ 102              	.LVL1:
+ 103 0066 23A6A740 		sw	a0,1036(a5)
+ 107:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+ 104              		.loc 1 107 9 is_stmt 1
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     case EXTI_TRIG_NONE:
+ 109:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     default:
+ 110:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+ 111:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     }
+ 112:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 105              		.loc 1 112 1 is_stmt 0
+ 106 006a 8280     		ret
+ 107              	.LVL2:
+ 108              	.L4:
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+ 109              		.loc 1 85 9 is_stmt 1
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+ 110              		.loc 1 85 20 is_stmt 0
+ 111 006c 83A60740 		lw	a3,1024(a5)
+ 112 0070 C98E     		or	a3,a3,a0
+ 113 0072 23A0D740 		sw	a3,1024(a5)
+  86:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     case EXTI_EVENT:
+ 114              		.loc 1 86 9 is_stmt 1
+  95:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     case EXTI_TRIG_RISING:
+ 115              		.loc 1 95 5
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 5
+
+
+ 116 0076 8547     		li	a5,1
+ 117 0078 E318F6FC 		bne	a2,a5,.L11
+ 118              	.L7:
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_FTEN |= (uint32_t) linex;
+ 119              		.loc 1 101 9
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_FTEN |= (uint32_t) linex;
+ 120              		.loc 1 101 19 is_stmt 0
+ 121 007c B7070140 		li	a5,1073807360
+ 122 0080 83A68740 		lw	a3,1032(a5)
+ 123 0084 758F     		and	a4,a4,a3
+ 124 0086 23A4E740 		sw	a4,1032(a5)
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+ 125              		.loc 1 102 9 is_stmt 1
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+ 126              		.loc 1 102 19 is_stmt 0
+ 127 008a 03A7C740 		lw	a4,1036(a5)
+ 128 008e 598D     		or	a0,a4,a0
+ 129              	.LVL3:
+ 130 0090 23A6A740 		sw	a0,1036(a5)
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     case EXTI_TRIG_BOTH:
+ 131              		.loc 1 103 9 is_stmt 1
+ 132 0094 8280     		ret
+ 133              	.LVL4:
+ 134              	.L8:
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_FTEN &= ~(uint32_t) linex;
+ 135              		.loc 1 97 9
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         EXTI_FTEN &= ~(uint32_t) linex;
+ 136              		.loc 1 97 19 is_stmt 0
+ 137 0096 B7070140 		li	a5,1073807360
+ 138 009a 83A68740 		lw	a3,1032(a5)
+ 139 009e 558D     		or	a0,a3,a0
+ 140              	.LVL5:
+ 141 00a0 23A4A740 		sw	a0,1032(a5)
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+ 142              		.loc 1 98 9 is_stmt 1
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         break;
+ 143              		.loc 1 98 19 is_stmt 0
+ 144 00a4 83A6C740 		lw	a3,1036(a5)
+ 145 00a8 758F     		and	a4,a4,a3
+ 146              	.LVL6:
+ 147 00aa 23A6E740 		sw	a4,1036(a5)
+  99:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     case EXTI_TRIG_FALLING:
+ 148              		.loc 1 99 9 is_stmt 1
+ 149 00ae 8280     		ret
+ 150              		.cfi_endproc
+ 151              	.LFE3:
+ 153              		.section	.text.exti_interrupt_enable,"ax",@progbits
+ 154              		.align	1
+ 155              		.globl	exti_interrupt_enable
+ 157              	exti_interrupt_enable:
+ 158              	.LFB4:
+ 113:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+ 115:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      enable the interrupts from EXTI line x
+ 116:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+ 118:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 6
+
+
+ 119:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     none
+ 121:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** void exti_interrupt_enable(exti_line_enum linex)
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+ 159              		.loc 1 123 1
+ 160              		.cfi_startproc
+ 161              	.LVL7:
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_INTEN |= (uint32_t) linex;
+ 162              		.loc 1 124 5
+ 163              		.loc 1 124 16 is_stmt 0
+ 164 0000 37070140 		li	a4,1073807360
+ 165 0004 83270740 		lw	a5,1024(a4)
+ 166 0008 5D8D     		or	a0,a5,a0
+ 167              	.LVL8:
+ 168 000a 2320A740 		sw	a0,1024(a4)
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 169              		.loc 1 125 1
+ 170 000e 8280     		ret
+ 171              		.cfi_endproc
+ 172              	.LFE4:
+ 174              		.section	.text.exti_event_enable,"ax",@progbits
+ 175              		.align	1
+ 176              		.globl	exti_event_enable
+ 178              	exti_event_enable:
+ 179              	.LFB5:
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 127:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      enable the events from EXTI line x
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+ 131:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+ 132:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+ 133:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     none
+ 134:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+ 135:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** void exti_event_enable(exti_line_enum linex)
+ 136:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+ 180              		.loc 1 136 1 is_stmt 1
+ 181              		.cfi_startproc
+ 182              	.LVL9:
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_EVEN |= (uint32_t) linex;
+ 183              		.loc 1 137 5
+ 184              		.loc 1 137 15 is_stmt 0
+ 185 0000 37070140 		li	a4,1073807360
+ 186 0004 83274740 		lw	a5,1028(a4)
+ 187 0008 5D8D     		or	a0,a5,a0
+ 188              	.LVL10:
+ 189 000a 2322A740 		sw	a0,1028(a4)
+ 138:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 190              		.loc 1 138 1
+ 191 000e 8280     		ret
+ 192              		.cfi_endproc
+ 193              	.LFE5:
+ 195              		.section	.text.exti_interrupt_disable,"ax",@progbits
+ 196              		.align	1
+ 197              		.globl	exti_interrupt_disable
+ 199              	exti_interrupt_disable:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 7
+
+
+ 200              	.LFB6:
+ 139:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 140:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+ 141:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      disable the interrupt from EXTI line x
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+ 144:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     none
+ 147:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** void exti_interrupt_disable(exti_line_enum linex)
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+ 201              		.loc 1 149 1 is_stmt 1
+ 202              		.cfi_startproc
+ 203              	.LVL11:
+ 150:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_INTEN &= ~(uint32_t) linex;
+ 204              		.loc 1 150 5
+ 205              		.loc 1 150 16 is_stmt 0
+ 206 0000 B7070140 		li	a5,1073807360
+ 207 0004 03A70740 		lw	a4,1024(a5)
+ 208              		.loc 1 150 19
+ 209 0008 1345F5FF 		not	a0,a0
+ 210              	.LVL12:
+ 211              		.loc 1 150 16
+ 212 000c 798D     		and	a0,a0,a4
+ 213              	.LVL13:
+ 214 000e 23A0A740 		sw	a0,1024(a5)
+ 151:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 215              		.loc 1 151 1
+ 216 0012 8280     		ret
+ 217              		.cfi_endproc
+ 218              	.LFE6:
+ 220              		.section	.text.exti_event_disable,"ax",@progbits
+ 221              		.align	1
+ 222              		.globl	exti_event_disable
+ 224              	exti_event_disable:
+ 225              	.LFB7:
+ 152:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 153:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+ 154:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      disable the events from EXTI line x
+ 155:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+ 156:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+ 157:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+ 158:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+ 159:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     none
+ 160:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+ 161:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** void exti_event_disable(exti_line_enum linex)
+ 162:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+ 226              		.loc 1 162 1 is_stmt 1
+ 227              		.cfi_startproc
+ 228              	.LVL14:
+ 163:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_EVEN &= ~(uint32_t) linex;
+ 229              		.loc 1 163 5
+ 230              		.loc 1 163 15 is_stmt 0
+ 231 0000 B7070140 		li	a5,1073807360
+ 232 0004 03A74740 		lw	a4,1028(a5)
+ 233              		.loc 1 163 18
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 8
+
+
+ 234 0008 1345F5FF 		not	a0,a0
+ 235              	.LVL15:
+ 236              		.loc 1 163 15
+ 237 000c 798D     		and	a0,a0,a4
+ 238              	.LVL16:
+ 239 000e 23A2A740 		sw	a0,1028(a5)
+ 164:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 240              		.loc 1 164 1
+ 241 0012 8280     		ret
+ 242              		.cfi_endproc
+ 243              	.LFE7:
+ 245              		.section	.text.exti_flag_get,"ax",@progbits
+ 246              		.align	1
+ 247              		.globl	exti_flag_get
+ 249              	exti_flag_get:
+ 250              	.LFB8:
+ 165:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 166:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+ 167:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      get EXTI lines flag
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+ 169:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+ 171:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+ 172:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     FlagStatus: status of flag (RESET or SET)
+ 173:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+ 174:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** FlagStatus exti_flag_get(exti_line_enum linex)
+ 175:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+ 251              		.loc 1 175 1 is_stmt 1
+ 252              		.cfi_startproc
+ 253              	.LVL17:
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     if (RESET != (EXTI_PD & (uint32_t) linex)) {
+ 254              		.loc 1 176 5
+ 255              		.loc 1 176 19 is_stmt 0
+ 256 0000 B7070140 		li	a5,1073807360
+ 257 0004 83A74741 		lw	a5,1044(a5)
+ 258              		.loc 1 176 27
+ 259 0008 7D8D     		and	a0,a5,a0
+ 260              	.LVL18:
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         return SET;
+ 178:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     } else {
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         return RESET;
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     }
+ 181:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 261              		.loc 1 181 1
+ 262 000a 3335A000 		snez	a0,a0
+ 263 000e 8280     		ret
+ 264              		.cfi_endproc
+ 265              	.LFE8:
+ 267              		.section	.text.exti_flag_clear,"ax",@progbits
+ 268              		.align	1
+ 269              		.globl	exti_flag_clear
+ 271              	exti_flag_clear:
+ 272              	.LFB9:
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 183:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+ 184:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      clear EXTI lines pending flag
+ 185:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 9
+
+
+ 186:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+ 187:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+ 188:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+ 189:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     none
+ 190:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+ 191:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** void exti_flag_clear(exti_line_enum linex)
+ 192:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+ 273              		.loc 1 192 1 is_stmt 1
+ 274              		.cfi_startproc
+ 275              	.LVL19:
+ 193:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_PD = (uint32_t) linex;
+ 276              		.loc 1 193 5
+ 277              		.loc 1 193 13 is_stmt 0
+ 278 0000 B7070140 		li	a5,1073807360
+ 279 0004 23AAA740 		sw	a0,1044(a5)
+ 194:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 280              		.loc 1 194 1
+ 281 0008 8280     		ret
+ 282              		.cfi_endproc
+ 283              	.LFE9:
+ 285              		.section	.text.exti_interrupt_flag_get,"ax",@progbits
+ 286              		.align	1
+ 287              		.globl	exti_interrupt_flag_get
+ 289              	exti_interrupt_flag_get:
+ 290              	.LFB10:
+ 195:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 196:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+ 197:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      get EXTI lines flag when the interrupt flag is set
+ 198:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+ 199:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+ 200:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+ 201:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+ 202:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     FlagStatus: status of flag (RESET or SET)
+ 203:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+ 204:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** FlagStatus exti_interrupt_flag_get(exti_line_enum linex)
+ 205:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+ 291              		.loc 1 205 1 is_stmt 1
+ 292              		.cfi_startproc
+ 293              	.LVL20:
+ 206:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     uint32_t flag_left, flag_right;
+ 294              		.loc 1 206 5
+ 207:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 208:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     flag_left = EXTI_PD & (uint32_t) linex;
+ 295              		.loc 1 208 5
+ 296              		.loc 1 208 17 is_stmt 0
+ 297 0000 37070140 		li	a4,1073807360
+ 298 0004 83274741 		lw	a5,1044(a4)
+ 209:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     flag_right = EXTI_INTEN & (uint32_t) linex;
+ 299              		.loc 1 209 18
+ 300 0008 03270740 		lw	a4,1024(a4)
+ 205:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     uint32_t flag_left, flag_right;
+ 301              		.loc 1 205 1
+ 302 000c AA86     		mv	a3,a0
+ 208:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     flag_right = EXTI_INTEN & (uint32_t) linex;
+ 303              		.loc 1 208 15
+ 304 000e 7D8D     		and	a0,a5,a0
+ 305              	.LVL21:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 10
+
+
+ 306              		.loc 1 209 5 is_stmt 1
+ 210:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 211:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     if ((RESET != flag_left) && (RESET != flag_right)) {
+ 307              		.loc 1 211 5
+ 308              		.loc 1 211 8 is_stmt 0
+ 309 0010 09C5     		beq	a0,zero,.L18
+ 209:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 310              		.loc 1 209 16 discriminator 1
+ 311 0012 3375D700 		and	a0,a4,a3
+ 312              	.LVL22:
+ 313              		.loc 1 211 30 discriminator 1
+ 314 0016 3335A000 		snez	a0,a0
+ 315              	.LVL23:
+ 316              	.L18:
+ 212:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         return SET;
+ 213:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     } else {
+ 214:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****         return RESET;
+ 215:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     }
+ 216:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 317              		.loc 1 216 1
+ 318 001a 8280     		ret
+ 319              		.cfi_endproc
+ 320              	.LFE10:
+ 322              		.section	.text.exti_interrupt_flag_clear,"ax",@progbits
+ 323              		.align	1
+ 324              		.globl	exti_interrupt_flag_clear
+ 326              	exti_interrupt_flag_clear:
+ 327              	.LFB15:
+ 328              		.cfi_startproc
+ 329 0000 B7070140 		li	a5,1073807360
+ 330 0004 23AAA740 		sw	a0,1044(a5)
+ 331 0008 8280     		ret
+ 332              		.cfi_endproc
+ 333              	.LFE15:
+ 335              		.section	.text.exti_software_interrupt_enable,"ax",@progbits
+ 336              		.align	1
+ 337              		.globl	exti_software_interrupt_enable
+ 339              	exti_software_interrupt_enable:
+ 340              	.LFB12:
+ 217:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 218:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+ 219:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      clear EXTI lines pending flag
+ 220:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+ 221:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+ 222:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+ 223:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     none
+ 225:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+ 226:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** void exti_interrupt_flag_clear(exti_line_enum linex)
+ 227:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+ 228:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_PD = (uint32_t) linex;
+ 229:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 230:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 231:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+ 232:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      enable EXTI software interrupt event
+ 233:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+ 234:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 11
+
+
+ 235:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+ 237:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     none
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+ 239:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** void exti_software_interrupt_enable(exti_line_enum linex)
+ 240:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+ 341              		.loc 1 240 1 is_stmt 1
+ 342              		.cfi_startproc
+ 343              	.LVL24:
+ 241:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_SWIEV |= (uint32_t) linex;
+ 344              		.loc 1 241 5
+ 345              		.loc 1 241 16 is_stmt 0
+ 346 0000 37070140 		li	a4,1073807360
+ 347 0004 83270741 		lw	a5,1040(a4)
+ 348 0008 5D8D     		or	a0,a5,a0
+ 349              	.LVL25:
+ 350 000a 2328A740 		sw	a0,1040(a4)
+ 242:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 351              		.loc 1 242 1
+ 352 000e 8280     		ret
+ 353              		.cfi_endproc
+ 354              	.LFE12:
+ 356              		.section	.text.exti_software_interrupt_disable,"ax",@progbits
+ 357              		.align	1
+ 358              		.globl	exti_software_interrupt_disable
+ 360              	exti_software_interrupt_disable:
+ 361              	.LFB13:
+ 243:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** 
+ 244:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** /*!
+ 245:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \brief      disable EXTI software interrupt event
+ 246:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[in]  linex: EXTI line number, refer to exti_line_enum
+ 247:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****                 only one parameter can be selected which is shown as below:
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****       \arg        EXTI_x (x=0..18): EXTI line x
+ 249:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \param[out] none
+ 250:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     \retval     none
+ 251:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** */
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** void exti_software_interrupt_disable(exti_line_enum linex)
+ 253:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** {
+ 362              		.loc 1 253 1 is_stmt 1
+ 363              		.cfi_startproc
+ 364              	.LVL26:
+ 254:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c ****     EXTI_SWIEV &= ~(uint32_t) linex;
+ 365              		.loc 1 254 5
+ 366              		.loc 1 254 16 is_stmt 0
+ 367 0000 B7070140 		li	a5,1073807360
+ 368 0004 03A70741 		lw	a4,1040(a5)
+ 369              		.loc 1 254 19
+ 370 0008 1345F5FF 		not	a0,a0
+ 371              	.LVL27:
+ 372              		.loc 1 254 16
+ 373 000c 798D     		and	a0,a0,a4
+ 374              	.LVL28:
+ 375 000e 23A8A740 		sw	a0,1040(a5)
+ 255:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_exti.c **** }
+ 376              		.loc 1 255 1
+ 377 0012 8280     		ret
+ 378              		.cfi_endproc
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 12
+
+
+ 379              	.LFE13:
+ 381              		.text
+ 382              	.Letext0:
+ 383              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 384              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 385              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 386              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_ext
+ 387              		.file 6 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32vf103_exti.c
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:13     .text.exti_deinit:0000000000000000 exti_deinit
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:17     .text.exti_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:18     .text.exti_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:19     .text.exti_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:20     .text.exti_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:23     .text.exti_deinit:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:24     .text.exti_deinit:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:26     .text.exti_deinit:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:27     .text.exti_deinit:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:29     .text.exti_deinit:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:30     .text.exti_deinit:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:32     .text.exti_deinit:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:33     .text.exti_deinit:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:35     .text.exti_deinit:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:36     .text.exti_deinit:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:43     .text.exti_init:0000000000000000 exti_init
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:46     .text.exti_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:48     .text.exti_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:49     .text.exti_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:50     .text.exti_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:53     .text.exti_init:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:55     .text.exti_init:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:58     .text.exti_init:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:59     .text.exti_init:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:63     .text.exti_init:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:64     .text.exti_init:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:68     .text.exti_init:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:69     .text.exti_init:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:73     .text.exti_init:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:77     .text.exti_init:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:78     .text.exti_init:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:83     .text.exti_init:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:84     .text.exti_init:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:93     .text.exti_init:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:94     .text.exti_init:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:99     .text.exti_init:0000000000000060 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:100    .text.exti_init:0000000000000060 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:105    .text.exti_init:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:106    .text.exti_init:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:110    .text.exti_init:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:111    .text.exti_init:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:115    .text.exti_init:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:116    .text.exti_init:0000000000000076 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:120    .text.exti_init:000000000000007c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:121    .text.exti_init:000000000000007c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:126    .text.exti_init:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:127    .text.exti_init:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:132    .text.exti_init:0000000000000094 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:136    .text.exti_init:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:137    .text.exti_init:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:143    .text.exti_init:00000000000000a4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:144    .text.exti_init:00000000000000a4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:149    .text.exti_init:00000000000000ae .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:150    .text.exti_init:00000000000000b0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:157    .text.exti_interrupt_enable:0000000000000000 exti_interrupt_enable
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 14
+
+
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:160    .text.exti_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:162    .text.exti_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:163    .text.exti_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:164    .text.exti_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:170    .text.exti_interrupt_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:171    .text.exti_interrupt_enable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:178    .text.exti_event_enable:0000000000000000 exti_event_enable
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:181    .text.exti_event_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:183    .text.exti_event_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:184    .text.exti_event_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:185    .text.exti_event_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:191    .text.exti_event_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:192    .text.exti_event_enable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:199    .text.exti_interrupt_disable:0000000000000000 exti_interrupt_disable
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:202    .text.exti_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:204    .text.exti_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:205    .text.exti_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:206    .text.exti_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:209    .text.exti_interrupt_disable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:212    .text.exti_interrupt_disable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:216    .text.exti_interrupt_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:217    .text.exti_interrupt_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:224    .text.exti_event_disable:0000000000000000 exti_event_disable
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:227    .text.exti_event_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:229    .text.exti_event_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:230    .text.exti_event_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:231    .text.exti_event_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:234    .text.exti_event_disable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:237    .text.exti_event_disable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:241    .text.exti_event_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:242    .text.exti_event_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:249    .text.exti_flag_get:0000000000000000 exti_flag_get
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:252    .text.exti_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:254    .text.exti_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:255    .text.exti_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:256    .text.exti_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:259    .text.exti_flag_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:262    .text.exti_flag_get:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:264    .text.exti_flag_get:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:271    .text.exti_flag_clear:0000000000000000 exti_flag_clear
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:274    .text.exti_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:276    .text.exti_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:277    .text.exti_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:278    .text.exti_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:281    .text.exti_flag_clear:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:282    .text.exti_flag_clear:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:289    .text.exti_interrupt_flag_get:0000000000000000 exti_interrupt_flag_get
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:292    .text.exti_interrupt_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:294    .text.exti_interrupt_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:295    .text.exti_interrupt_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:296    .text.exti_interrupt_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:297    .text.exti_interrupt_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:300    .text.exti_interrupt_flag_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:302    .text.exti_interrupt_flag_get:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:304    .text.exti_interrupt_flag_get:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:307    .text.exti_interrupt_flag_get:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:308    .text.exti_interrupt_flag_get:0000000000000010 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 15
+
+
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:309    .text.exti_interrupt_flag_get:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:311    .text.exti_interrupt_flag_get:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:314    .text.exti_interrupt_flag_get:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:318    .text.exti_interrupt_flag_get:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:319    .text.exti_interrupt_flag_get:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:326    .text.exti_interrupt_flag_clear:0000000000000000 exti_interrupt_flag_clear
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:328    .text.exti_interrupt_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:332    .text.exti_interrupt_flag_clear:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:339    .text.exti_software_interrupt_enable:0000000000000000 exti_software_interrupt_enable
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:342    .text.exti_software_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:344    .text.exti_software_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:345    .text.exti_software_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:346    .text.exti_software_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:352    .text.exti_software_interrupt_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:353    .text.exti_software_interrupt_enable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:360    .text.exti_software_interrupt_disable:0000000000000000 exti_software_interrupt_disable
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:363    .text.exti_software_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:365    .text.exti_software_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:366    .text.exti_software_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:367    .text.exti_software_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:370    .text.exti_software_interrupt_disable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:373    .text.exti_software_interrupt_disable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:377    .text.exti_software_interrupt_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:378    .text.exti_software_interrupt_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:39     .text.exti_deinit:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:153    .text.exti_init:00000000000000b0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:174    .text.exti_interrupt_enable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:195    .text.exti_event_enable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:220    .text.exti_interrupt_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:245    .text.exti_event_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:267    .text.exti_flag_get:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:285    .text.exti_flag_clear:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:322    .text.exti_interrupt_flag_get:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:356    .text.exti_software_interrupt_enable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:381    .text.exti_software_interrupt_disable:0000000000000014 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:108    .text.exti_init:000000000000006c .L4
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:82     .text.exti_init:0000000000000042 .L6
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:118    .text.exti_init:000000000000007c .L7
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:134    .text.exti_init:0000000000000096 .L8
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:91     .text.exti_init:0000000000000052 .L9
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:86     .text.exti_init:0000000000000048 .L11
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:316    .text.exti_interrupt_flag_get:000000000000001a .L18
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:897    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1567   .debug_str:00000000000001a8 .LASF56
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1533   .debug_str:000000000000005f .LASF57
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1615   .debug_str:00000000000002f1 .LASF58
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1491   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1517   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1587   .debug_str:000000000000026a .LASF0
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1537   .debug_str:00000000000000c4 .LASF1
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1563   .debug_str:0000000000000190 .LASF2
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1525   .debug_str:0000000000000023 .LASF3
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1619   .debug_str:0000000000000351 .LASF4
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1551   .debug_str:000000000000013f .LASF5
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1521   .debug_str:0000000000000013 .LASF9
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1625   .debug_str:0000000000000396 .LASF6
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 16
+
+
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1545   .debug_str:0000000000000109 .LASF7
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1547   .debug_str:0000000000000117 .LASF8
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1535   .debug_str:00000000000000bb .LASF10
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1617   .debug_str:0000000000000341 .LASF59
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1635   .debug_str:00000000000003eb .LASF11
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1643   .debug_str:000000000000041c .LASF12
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1559   .debug_str:0000000000000178 .LASF13
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1589   .debug_str:0000000000000277 .LASF14
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1591   .debug_str:000000000000027e .LASF15
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1593   .debug_str:0000000000000285 .LASF16
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1595   .debug_str:000000000000028c .LASF17
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1597   .debug_str:0000000000000293 .LASF18
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1599   .debug_str:000000000000029a .LASF19
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1601   .debug_str:00000000000002a1 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1603   .debug_str:00000000000002a8 .LASF21
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1605   .debug_str:00000000000002af .LASF22
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1607   .debug_str:00000000000002b6 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1569   .debug_str:0000000000000222 .LASF24
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1571   .debug_str:000000000000022a .LASF25
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1573   .debug_str:0000000000000232 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1575   .debug_str:000000000000023a .LASF27
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1577   .debug_str:0000000000000242 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1579   .debug_str:000000000000024a .LASF29
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1581   .debug_str:0000000000000252 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1583   .debug_str:000000000000025a .LASF31
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1585   .debug_str:0000000000000262 .LASF32
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1627   .debug_str:00000000000003a8 .LASF33
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1553   .debug_str:0000000000000148 .LASF34
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1629   .debug_str:00000000000003b7 .LASF35
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1557   .debug_str:0000000000000169 .LASF36
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1549   .debug_str:000000000000012e .LASF37
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1621   .debug_str:0000000000000364 .LASF38
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1541   .debug_str:00000000000000e4 .LASF39
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1633   .debug_str:00000000000003dc .LASF40
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1539   .debug_str:00000000000000d0 .LASF41
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1623   .debug_str:0000000000000376 .LASF42
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:361    .text.exti_software_interrupt_disable:0000000000000000 .LFB13
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:379    .text.exti_software_interrupt_disable:0000000000000014 .LFE13
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1637   .debug_str:00000000000003f1 .LASF44
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1244   .debug_loc:0000000000000000 .LLST10
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1613   .debug_str:00000000000002d2 .LASF43
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:340    .text.exti_software_interrupt_enable:0000000000000000 .LFB12
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:354    .text.exti_software_interrupt_enable:0000000000000010 .LFE12
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1265   .debug_loc:000000000000002f .LLST9
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1631   .debug_str:00000000000003c2 .LASF60
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1531   .debug_str:0000000000000047 .LASF47
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:290    .text.exti_interrupt_flag_get:0000000000000000 .LFB10
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:320    .text.exti_interrupt_flag_get:000000000000001c .LFE10
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1279   .debug_loc:0000000000000050 .LLST6
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1609   .debug_str:00000000000002bd .LASF45
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1290   .debug_loc:000000000000006e .LLST7
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1611   .debug_str:00000000000002c7 .LASF46
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1306   .debug_loc:0000000000000091 .LLST8
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1527   .debug_str:000000000000002d .LASF61
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1639   .debug_str:00000000000003f7 .LASF48
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:250    .text.exti_flag_get:0000000000000000 .LFB8
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:265    .text.exti_flag_get:0000000000000010 .LFE8
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 17
+
+
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1331   .debug_loc:00000000000000c4 .LLST5
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1519   .debug_str:0000000000000000 .LASF49
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:225    .text.exti_event_disable:0000000000000000 .LFB7
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:243    .text.exti_event_disable:0000000000000014 .LFE7
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1345   .debug_loc:00000000000000e5 .LLST4
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1641   .debug_str:0000000000000405 .LASF50
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:200    .text.exti_interrupt_disable:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:218    .text.exti_interrupt_disable:0000000000000014 .LFE6
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1366   .debug_loc:0000000000000114 .LLST3
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1555   .debug_str:0000000000000157 .LASF51
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:179    .text.exti_event_enable:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:193    .text.exti_event_enable:0000000000000010 .LFE5
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1387   .debug_loc:0000000000000143 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1543   .debug_str:00000000000000f3 .LASF52
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:158    .text.exti_interrupt_enable:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:172    .text.exti_interrupt_enable:0000000000000010 .LFE4
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1401   .debug_loc:0000000000000164 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1565   .debug_str:000000000000019e .LASF53
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:44     .text.exti_init:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:151    .text.exti_init:00000000000000b0 .LFE3
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1415   .debug_loc:0000000000000185 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1523   .debug_str:000000000000001e .LASF54
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1529   .debug_str:000000000000003d .LASF55
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:1561   .debug_str:0000000000000184 .LASF62
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:14     .text.exti_deinit:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:37     .text.exti_deinit:000000000000001a .LFE2
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:272    .text.exti_flag_clear:0000000000000000 .LFB9
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:283    .text.exti_flag_clear:000000000000000a .LFE9
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:364    .text.exti_software_interrupt_disable:0000000000000000 .LVL26
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:371    .text.exti_software_interrupt_disable:000000000000000c .LVL27
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:374    .text.exti_software_interrupt_disable:000000000000000e .LVL28
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:343    .text.exti_software_interrupt_enable:0000000000000000 .LVL24
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:349    .text.exti_software_interrupt_enable:000000000000000a .LVL25
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:293    .text.exti_interrupt_flag_get:0000000000000000 .LVL20
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:305    .text.exti_interrupt_flag_get:0000000000000010 .LVL21
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:312    .text.exti_interrupt_flag_get:0000000000000016 .LVL22
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:315    .text.exti_interrupt_flag_get:000000000000001a .LVL23
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:253    .text.exti_flag_get:0000000000000000 .LVL17
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:260    .text.exti_flag_get:000000000000000a .LVL18
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:228    .text.exti_event_disable:0000000000000000 .LVL14
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:235    .text.exti_event_disable:000000000000000c .LVL15
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:238    .text.exti_event_disable:000000000000000e .LVL16
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:203    .text.exti_interrupt_disable:0000000000000000 .LVL11
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:210    .text.exti_interrupt_disable:000000000000000c .LVL12
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:213    .text.exti_interrupt_disable:000000000000000e .LVL13
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:182    .text.exti_event_enable:0000000000000000 .LVL9
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:188    .text.exti_event_enable:000000000000000a .LVL10
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:161    .text.exti_interrupt_enable:0000000000000000 .LVL7
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:167    .text.exti_interrupt_enable:000000000000000a .LVL8
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:47     .text.exti_init:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:102    .text.exti_init:0000000000000066 .LVL1
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:107    .text.exti_init:000000000000006c .LVL2
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:129    .text.exti_init:0000000000000090 .LVL3
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:133    .text.exti_init:0000000000000096 .LVL4
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:140    .text.exti_init:00000000000000a0 .LVL5
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:146    .text.exti_init:00000000000000aa .LVL6
+C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s:389    .debug_info:0000000000000000 .Ldebug_info0
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccKnBAQu.s 			page 18
+
+
+
+NO UNDEFINED SYMBOLS

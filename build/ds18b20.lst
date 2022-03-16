@@ -1,0 +1,888 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 1
+
+
+   1              		.file	"ds18b20.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.ds18B20fsm,"ax",@progbits
+  10              		.align	1
+  11              		.globl	ds18B20fsm
+  13              	ds18B20fsm:
+  14              	.LFB3:
+  15              		.file 1 "ds18b20.c"
+   1:ds18b20.c     **** #include "gd32vf103.h"
+   2:ds18b20.c     **** #include "ds18b20.h"
+   3:ds18b20.c     **** #include "eclicw.h"
+   4:ds18b20.c     **** #define Z (1<<31)
+   5:ds18b20.c     **** #define U 27
+   6:ds18b20.c     **** #define W1L 2*U
+   7:ds18b20.c     **** #define W1H Z+93*U
+   8:ds18b20.c     **** #define W0L 65*U
+   9:ds18b20.c     **** #define W0H Z+30*U
+  10:ds18b20.c     **** #define RL 2*U
+  11:ds18b20.c     **** #define RD Z+10*U
+  12:ds18b20.c     **** #define RS Z
+  13:ds18b20.c     **** #define RW 83*U
+  14:ds18b20.c     **** #define RC Z+100000*U
+  15:ds18b20.c     **** 
+  16:ds18b20.c     **** unsigned int temp=0;
+  17:ds18b20.c     **** unsigned int ds18B20cmd[]=                                                          // LSB first!
+  18:ds18b20.c     ****    {500*U, Z+500*U,                                                                 // Reset
+  19:ds18b20.c     ****     W0L, W0H, W0L, W0H, W1L, W1H, W1L, W1H, W0L, W0H, W0L, W0H, W1L, W1H, W1L, W1H, // Skip ROM 0xC
+  20:ds18b20.c     ****     W0L, W0H, W0L, W0H, W1L, W1H, W0L, W0H, W0L, W0H, W0L, W0H, W1L, W1H, W0L, W0H, // Convert  0x4
+  21:ds18b20.c     ****     RC, RL, RD, RS,                                                                 // Wait 100ms, 
+  22:ds18b20.c     ****     500*U, Z+500*U,                                                                 // Reset
+  23:ds18b20.c     ****     W0L, W0H, W0L, W0H, W1L, W1H, W1L, W1H, W0L, W0H, W0L, W0H, W1L, W1H, W1L, W1H, // Skip ROM 0xC
+  24:ds18b20.c     ****     W0L, W0H, W1L, W1H, W1L, W1H, W1L, W1H, W1L, W1H, W1L, W1H, W0L, W0H, W1L, W1H, // Read SP  0xB
+  25:ds18b20.c     ****     RL,RD,RS, RL,RD,RS, RL,RD,RS, RL,RD,RS, RL,RD,RS, RL,RD,RS, RL,RD,RS, RL,RD,RS, // Read 1:st by
+  26:ds18b20.c     ****     RL,RD,RS, RL,RD,RS, RL,RD,RS, RL,RD,RS, RL,RD,RS, RL,RD,RS, RL,RD,RS, RL,RD,RS, // Read 2:nd by
+  27:ds18b20.c     ****     0};
+  28:ds18b20.c     **** void (*pCB)(unsigned int tmp)=NULL;
+  29:ds18b20.c     **** 
+  30:ds18b20.c     **** void ds18B20init(void (*pISR)(unsigned int tmp)){
+  31:ds18b20.c     ****    pCB=pISR;
+  32:ds18b20.c     ****    eclicw_enable(CLIC_INT_TMR, 1, 1, &ds18B20fsm);
+  33:ds18b20.c     ****    //Turn on GPIOB if neede!
+  34:ds18b20.c     ****    gpio_init(GPIOB, GPIO_MODE_OUT_OD, GPIO_OSPEED_50MHZ, GPIO_PIN_5);
+  35:ds18b20.c     ****    gpio_bit_write(GPIOB, GPIO_PIN_5, 1);
+  36:ds18b20.c     ****    //Start the first conversion after a 1s shake-down...
+  37:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIME ) = 0;
+  38:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIMECMP ) = 1000000*27;
+  39:ds18b20.c     **** }
+  40:ds18b20.c     **** 
+  41:ds18b20.c     **** void ds18B20fsm(void){
+  16              		.loc 1 41 22
+  17              		.cfi_startproc
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 2
+
+
+  42:ds18b20.c     ****     static unsigned int s=0,t=0, d=0;
+  18              		.loc 1 42 5
+  43:ds18b20.c     **** 
+  44:ds18b20.c     ****     if (!ds18B20cmd[s]) {
+  19              		.loc 1 44 5
+  41:ds18b20.c     ****     static unsigned int s=0,t=0, d=0;
+  20              		.loc 1 41 22 is_stmt 0
+  21 0000 0111     		addi	sp,sp,-32
+  22              	.LCFI0:
+  23              		.cfi_def_cfa_offset 32
+  24 0002 22CC     		sw	s0,24(sp)
+  25              		.cfi_offset 8, -8
+  26              		.loc 1 44 20
+  27 0004 37040000 		lui	s0,%hi(.LANCHOR0)
+  28 0008 13040400 		addi	s0,s0,%lo(.LANCHOR0)
+  29 000c 1C40     		lw	a5,0(s0)
+  41:ds18b20.c     ****     static unsigned int s=0,t=0, d=0;
+  30              		.loc 1 41 22
+  31 000e 26CA     		sw	s1,20(sp)
+  32              		.cfi_offset 9, -12
+  33              		.loc 1 44 20
+  34 0010 B7040000 		lui	s1,%hi(.LANCHOR1)
+  35 0014 93840400 		addi	s1,s1,%lo(.LANCHOR1)
+  36 0018 13972700 		slli	a4,a5,2
+  37 001c 2697     		add	a4,s1,a4
+  38 001e 1043     		lw	a2,0(a4)
+  41:ds18b20.c     ****     static unsigned int s=0,t=0, d=0;
+  39              		.loc 1 41 22
+  40 0020 06CE     		sw	ra,28(sp)
+  41 0022 4AC8     		sw	s2,16(sp)
+  42 0024 4EC6     		sw	s3,12(sp)
+  43              		.cfi_offset 1, -4
+  44              		.cfi_offset 18, -16
+  45              		.cfi_offset 19, -20
+  46              		.loc 1 44 8
+  47 0026 55E6     		bne	a2,zero,.L2
+  45:ds18b20.c     ****       (*pCB)(t);s=0;t=0;
+  48              		.loc 1 45 7 is_stmt 1
+  49              		.loc 1 45 8 is_stmt 0
+  50 0028 B7090000 		lui	s3,%hi(.LANCHOR2)
+  51 002c 93890900 		addi	s3,s3,%lo(.LANCHOR2)
+  52 0030 B7070000 		lui	a5,%hi(.LANCHOR3)
+  53 0034 83A70700 		lw	a5,%lo(.LANCHOR3)(a5)
+  54 0038 03A50900 		lw	a0,0(s3)
+  55 003c 8297     		jalr	a5
+  56              	.LVL0:
+  57              		.loc 1 45 17 is_stmt 1
+  46:ds18b20.c     ****     }      
+  47:ds18b20.c     **** 
+  48:ds18b20.c     ****     if (!(ds18B20cmd[s]<<1)) {
+  58              		.loc 1 48 21 is_stmt 0
+  59 003e 9040     		lw	a2,0(s1)
+  45:ds18b20.c     ****       (*pCB)(t);s=0;t=0;
+  60              		.loc 1 45 18
+  61 0040 23200400 		sw	zero,0(s0)
+  45:ds18b20.c     ****       (*pCB)(t);s=0;t=0;
+  62              		.loc 1 45 21 is_stmt 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 3
+
+
+  45:ds18b20.c     ****       (*pCB)(t);s=0;t=0;
+  63              		.loc 1 45 22 is_stmt 0
+  64 0044 23A00900 		sw	zero,0(s3)
+  65              		.loc 1 48 5 is_stmt 1
+  66              		.loc 1 48 24 is_stmt 0
+  67 0048 93171600 		slli	a5,a2,1
+  68              		.loc 1 48 8
+  69 004c F9EF     		bne	a5,zero,.L15
+  70              	.L3:
+  49:ds18b20.c     ****       if (s==37) {
+  50:ds18b20.c     ****         if (gpio_input_bit_get(GPIOB, GPIO_PIN_5)) {
+  51:ds18b20.c     ****           d=15*U;
+  52:ds18b20.c     ****         } else {
+  53:ds18b20.c     ****           d=100000*U; s=34;
+  54:ds18b20.c     ****         }
+  55:ds18b20.c     ****       } else {
+  56:ds18b20.c     ****          t>>=1;
+  71              		.loc 1 56 10 is_stmt 1
+  72              		.loc 1 56 11 is_stmt 0
+  73 004e 83A70900 		lw	a5,0(s3)
+  57:ds18b20.c     ****          t+=(gpio_input_bit_get(GPIOB, GPIO_PIN_5)<<15);
+  74              		.loc 1 57 14
+  75 0052 37150140 		li	a0,1073811456
+  76 0056 93050002 		li	a1,32
+  56:ds18b20.c     ****          t+=(gpio_input_bit_get(GPIOB, GPIO_PIN_5)<<15);
+  77              		.loc 1 56 11
+  78 005a 8583     		srli	a5,a5,1
+  79              		.loc 1 57 14
+  80 005c 130505C0 		addi	a0,a0,-1024
+  56:ds18b20.c     ****          t+=(gpio_input_bit_get(GPIOB, GPIO_PIN_5)<<15);
+  81              		.loc 1 56 11
+  82 0060 23A0F900 		sw	a5,0(s3)
+  83              		.loc 1 57 10 is_stmt 1
+  84              		.loc 1 57 14 is_stmt 0
+  85 0064 97000000 		call	gpio_input_bit_get
+  85      E7800000 
+  86              	.LVL1:
+  87 006c 1C40     		lw	a5,0(s0)
+  88              		.loc 1 57 11
+  89 006e 03A70900 		lw	a4,0(s3)
+  90              		.loc 1 57 51
+  91 0072 3E05     		slli	a0,a0,15
+  92 0074 93962700 		slli	a3,a5,2
+  93              		.loc 1 57 11
+  94 0078 2A97     		add	a4,a4,a0
+  95 007a B694     		add	s1,s1,a3
+  58:ds18b20.c     ****          d=RW;
+  96              		.loc 1 58 11
+  97 007c 37090000 		lui	s2,%hi(.LANCHOR4)
+  57:ds18b20.c     ****          t+=(gpio_input_bit_get(GPIOB, GPIO_PIN_5)<<15);
+  98              		.loc 1 57 11
+  99 0080 23A0E900 		sw	a4,0(s3)
+ 100              		.loc 1 58 10 is_stmt 1
+ 101 0084 9040     		lw	a2,0(s1)
+ 102              		.loc 1 58 11 is_stmt 0
+ 103 0086 0567     		li	a4,4096
+ 104 0088 13090900 		addi	s2,s2,%lo(.LANCHOR4)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 4
+
+
+ 105 008c 1307178C 		addi	a4,a4,-1855
+ 106 0090 2320E900 		sw	a4,0(s2)
+ 107 0094 8507     		addi	a5,a5,1
+ 108              	.L7:
+  59:ds18b20.c     ****       }
+  60:ds18b20.c     ****     } else {
+  61:ds18b20.c     ****       d=ds18B20cmd[s]&0xFFFFFFF;
+  62:ds18b20.c     ****     }
+  63:ds18b20.c     **** 
+  64:ds18b20.c     ****     gpio_bit_write(GPIOB, GPIO_PIN_5, ds18B20cmd[s++]>>31);
+ 109              		.loc 1 64 5 is_stmt 1
+ 110 0096 37150140 		li	a0,1073811456
+ 111 009a 7D82     		srli	a2,a2,31
+ 112 009c 93050002 		li	a1,32
+ 113 00a0 130505C0 		addi	a0,a0,-1024
+ 114              		.loc 1 64 51 is_stmt 0
+ 115 00a4 1CC0     		sw	a5,0(s0)
+ 116              		.loc 1 64 5
+ 117 00a6 97000000 		call	gpio_bit_write
+ 117      E7800000 
+ 118              	.LVL2:
+  65:ds18b20.c     ****     // Be aware of possible spirous int updating mtimecmp...
+  66:ds18b20.c     ****     // LSW = -1; MSW = update; LSW = update, in this case safe.
+  67:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIME ) = 0;
+ 119              		.loc 1 67 5 is_stmt 1
+  68:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIMECMP ) = d;
+ 120              		.loc 1 68 66 is_stmt 0
+ 121 00ae 03270900 		lw	a4,0(s2)
+  67:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIMECMP ) = d;
+ 122              		.loc 1 67 63
+ 123 00b2 B70600D1 		li	a3,-788529152
+ 124 00b6 8145     		li	a1,0
+ 125 00b8 8CC2     		sw	a1,0(a3)
+ 126 00ba 0146     		li	a2,0
+ 127 00bc D0C2     		sw	a2,4(a3)
+ 128              		.loc 1 68 5 is_stmt 1
+  69:ds18b20.c     **** }...
+ 129              		.loc 1 69 1 is_stmt 0
+ 130 00be F240     		lw	ra,28(sp)
+ 131              		.cfi_remember_state
+ 132              		.cfi_restore 1
+ 133 00c0 6244     		lw	s0,24(sp)
+ 134              		.cfi_restore 8
+  68:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIMECMP ) = d;
+ 135              		.loc 1 68 66
+ 136 00c2 98C6     		sw	a4,8(a3)
+ 137 00c4 8147     		li	a5,0
+ 138 00c6 DCC6     		sw	a5,12(a3)
+ 139              		.loc 1 69 1
+ 140 00c8 D244     		lw	s1,20(sp)
+ 141              		.cfi_restore 9
+ 142 00ca 4249     		lw	s2,16(sp)
+ 143              		.cfi_restore 18
+ 144 00cc B249     		lw	s3,12(sp)
+ 145              		.cfi_restore 19
+ 146 00ce 0561     		addi	sp,sp,32
+ 147              	.LCFI1:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 5
+
+
+ 148              		.cfi_def_cfa_offset 0
+ 149 00d0 8280     		jr	ra
+ 150              	.L2:
+ 151              	.LCFI2:
+ 152              		.cfi_restore_state
+  48:ds18b20.c     ****     if (!(ds18B20cmd[s]<<1)) {
+ 153              		.loc 1 48 5 is_stmt 1
+  48:ds18b20.c     ****     if (!(ds18B20cmd[s]<<1)) {
+ 154              		.loc 1 48 24 is_stmt 0
+ 155 00d2 13171600 		slli	a4,a2,1
+  48:ds18b20.c     ****     if (!(ds18B20cmd[s]<<1)) {
+ 156              		.loc 1 48 8
+ 157 00d6 01CF     		beq	a4,zero,.L5
+ 158 00d8 8507     		addi	a5,a5,1
+ 159              	.L4:
+  61:ds18b20.c     ****       d=ds18B20cmd[s]&0xFFFFFFF;
+ 160              		.loc 1 61 7 is_stmt 1
+  61:ds18b20.c     ****       d=ds18B20cmd[s]&0xFFFFFFF;
+ 161              		.loc 1 61 8 is_stmt 0
+ 162 00da 37090000 		lui	s2,%hi(.LANCHOR4)
+  61:ds18b20.c     ****       d=ds18B20cmd[s]&0xFFFFFFF;
+ 163              		.loc 1 61 22
+ 164 00de 13174600 		slli	a4,a2,4
+  61:ds18b20.c     ****       d=ds18B20cmd[s]&0xFFFFFFF;
+ 165              		.loc 1 61 8
+ 166 00e2 13090900 		addi	s2,s2,%lo(.LANCHOR4)
+  61:ds18b20.c     ****       d=ds18B20cmd[s]&0xFFFFFFF;
+ 167              		.loc 1 61 22
+ 168 00e6 1183     		srli	a4,a4,4
+  61:ds18b20.c     ****       d=ds18B20cmd[s]&0xFFFFFFF;
+ 169              		.loc 1 61 8
+ 170 00e8 2320E900 		sw	a4,0(s2)
+ 171 00ec 6DB7     		j	.L7
+ 172              	.L5:
+  49:ds18b20.c     ****       if (s==37) {
+ 173              		.loc 1 49 7 is_stmt 1
+  49:ds18b20.c     ****       if (s==37) {
+ 174              		.loc 1 49 10 is_stmt 0
+ 175 00ee 13075002 		li	a4,37
+ 176 00f2 639EE702 		bne	a5,a4,.L16
+  50:ds18b20.c     ****         if (gpio_input_bit_get(GPIOB, GPIO_PIN_5)) {
+ 177              		.loc 1 50 9 is_stmt 1
+  50:ds18b20.c     ****         if (gpio_input_bit_get(GPIOB, GPIO_PIN_5)) {
+ 178              		.loc 1 50 13 is_stmt 0
+ 179 00f6 37150140 		li	a0,1073811456
+ 180 00fa 93050002 		li	a1,32
+ 181 00fe 130505C0 		addi	a0,a0,-1024
+ 182 0102 97000000 		call	gpio_input_bit_get
+ 182      E7800000 
+ 183              	.LVL3:
+  50:ds18b20.c     ****         if (gpio_input_bit_get(GPIOB, GPIO_PIN_5)) {
+ 184              		.loc 1 50 12
+ 185 010a 1DC5     		beq	a0,zero,.L6
+  51:ds18b20.c     ****           d=15*U;
+ 186              		.loc 1 51 11 is_stmt 1
+ 187 010c 1C40     		lw	a5,0(s0)
+  51:ds18b20.c     ****           d=15*U;
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 6
+
+
+ 188              		.loc 1 51 12 is_stmt 0
+ 189 010e 37090000 		lui	s2,%hi(.LANCHOR4)
+ 190 0112 13090900 		addi	s2,s2,%lo(.LANCHOR4)
+ 191 0116 13972700 		slli	a4,a5,2
+ 192 011a BA94     		add	s1,s1,a4
+ 193 011c 13075019 		li	a4,405
+ 194 0120 2320E900 		sw	a4,0(s2)
+ 195 0124 8507     		addi	a5,a5,1
+ 196 0126 9040     		lw	a2,0(s1)
+ 197 0128 BDB7     		j	.L7
+ 198              	.L15:
+  48:ds18b20.c     ****     if (!(ds18B20cmd[s]<<1)) {
+ 199              		.loc 1 48 8
+ 200 012a 8547     		li	a5,1
+ 201 012c 7DB7     		j	.L4
+ 202              	.L16:
+ 203 012e B7090000 		lui	s3,%hi(.LANCHOR2)
+ 204 0132 93890900 		addi	s3,s3,%lo(.LANCHOR2)
+ 205 0136 21BF     		j	.L3
+ 206              	.L6:
+  53:ds18b20.c     ****           d=100000*U; s=34;
+ 207              		.loc 1 53 11 is_stmt 1
+  53:ds18b20.c     ****           d=100000*U; s=34;
+ 208              		.loc 1 53 12 is_stmt 0
+ 209 0138 37090000 		lui	s2,%hi(.LANCHOR4)
+ 210 013c B7372900 		li	a5,2699264
+ 211 0140 9387072E 		addi	a5,a5,736
+ 212 0144 13090900 		addi	s2,s2,%lo(.LANCHOR4)
+ 213 0148 2320F900 		sw	a5,0(s2)
+  53:ds18b20.c     ****           d=100000*U; s=34;
+ 214              		.loc 1 53 23 is_stmt 1
+ 215 014c 03A68408 		lw	a2,136(s1)
+  53:ds18b20.c     ****           d=100000*U; s=34;
+ 216              		.loc 1 53 12 is_stmt 0
+ 217 0150 93073002 		li	a5,35
+ 218 0154 89B7     		j	.L7
+ 219              		.cfi_endproc
+ 220              	.LFE3:
+ 222              		.section	.text.ds18B20init,"ax",@progbits
+ 223              		.align	1
+ 224              		.globl	ds18B20init
+ 226              	ds18B20init:
+ 227              	.LFB2:
+  30:ds18b20.c     **** void ds18B20init(void (*pISR)(unsigned int tmp)){
+ 228              		.loc 1 30 49 is_stmt 1
+ 229              		.cfi_startproc
+ 230              	.LVL4:
+  31:ds18b20.c     ****    pCB=pISR;
+ 231              		.loc 1 31 4
+  31:ds18b20.c     ****    pCB=pISR;
+ 232              		.loc 1 31 7 is_stmt 0
+ 233 0000 B7070000 		lui	a5,%hi(.LANCHOR3)
+  32:ds18b20.c     ****    eclicw_enable(CLIC_INT_TMR, 1, 1, &ds18B20fsm);
+ 234              		.loc 1 32 4
+ 235 0004 B7060000 		lui	a3,%hi(ds18B20fsm)
+  30:ds18b20.c     **** void ds18B20init(void (*pISR)(unsigned int tmp)){
+ 236              		.loc 1 30 49
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 7
+
+
+ 237 0008 4111     		addi	sp,sp,-16
+ 238              	.LCFI3:
+ 239              		.cfi_def_cfa_offset 16
+  31:ds18b20.c     ****    pCB=pISR;
+ 240              		.loc 1 31 7
+ 241 000a 23A0A700 		sw	a0,%lo(.LANCHOR3)(a5)
+  32:ds18b20.c     ****    eclicw_enable(CLIC_INT_TMR, 1, 1, &ds18B20fsm);
+ 242              		.loc 1 32 4 is_stmt 1
+ 243 000e 93860600 		addi	a3,a3,%lo(ds18B20fsm)
+ 244 0012 0546     		li	a2,1
+ 245 0014 8545     		li	a1,1
+ 246 0016 1D45     		li	a0,7
+ 247              	.LVL5:
+  30:ds18b20.c     **** void ds18B20init(void (*pISR)(unsigned int tmp)){
+ 248              		.loc 1 30 49 is_stmt 0
+ 249 0018 06C6     		sw	ra,12(sp)
+ 250 001a 22C4     		sw	s0,8(sp)
+ 251              		.cfi_offset 1, -4
+ 252              		.cfi_offset 8, -8
+  32:ds18b20.c     ****    eclicw_enable(CLIC_INT_TMR, 1, 1, &ds18B20fsm);
+ 253              		.loc 1 32 4
+ 254 001c 97000000 		call	eclicw_enable
+ 254      E7800000 
+ 255              	.LVL6:
+  34:ds18b20.c     ****    gpio_init(GPIOB, GPIO_MODE_OUT_OD, GPIO_OSPEED_50MHZ, GPIO_PIN_5);
+ 256              		.loc 1 34 4 is_stmt 1
+ 257 0024 37140140 		li	s0,1073811456
+ 258 0028 93060002 		li	a3,32
+ 259 002c 130504C0 		addi	a0,s0,-1024
+ 260 0030 0D46     		li	a2,3
+ 261 0032 D145     		li	a1,20
+ 262 0034 97000000 		call	gpio_init
+ 262      E7800000 
+ 263              	.LVL7:
+  35:ds18b20.c     ****    gpio_bit_write(GPIOB, GPIO_PIN_5, 1);
+ 264              		.loc 1 35 4
+ 265 003c 0546     		li	a2,1
+ 266 003e 130504C0 		addi	a0,s0,-1024
+ 267 0042 93050002 		li	a1,32
+ 268 0046 97000000 		call	gpio_bit_write
+ 268      E7800000 
+ 269              	.LVL8:
+  37:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIME ) = 0;
+ 270              		.loc 1 37 5
+  37:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIME ) = 0;
+ 271              		.loc 1 37 63 is_stmt 0
+ 272 004e B70700D1 		li	a5,-788529152
+ 273 0052 8146     		li	a3,0
+ 274 0054 94C3     		sw	a3,0(a5)
+ 275 0056 0147     		li	a4,0
+  38:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIMECMP ) = 1000000*27;
+ 276              		.loc 1 38 66
+ 277 0058 37069C01 		li	a2,27000832
+  37:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIME ) = 0;
+ 278              		.loc 1 37 63
+ 279 005c D8C3     		sw	a4,4(a5)
+  38:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIMECMP ) = 1000000*27;
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 8
+
+
+ 280              		.loc 1 38 5 is_stmt 1
+  39:ds18b20.c     **** }
+ 281              		.loc 1 39 1 is_stmt 0
+ 282 005e B240     		lw	ra,12(sp)
+ 283              		.cfi_restore 1
+ 284 0060 2244     		lw	s0,8(sp)
+ 285              		.cfi_restore 8
+  38:ds18b20.c     ****     *( volatile uint64_t * )( TIMER_CTRL_ADDR + TIMER_MTIMECMP ) = 1000000*27;
+ 286              		.loc 1 38 66
+ 287 0062 130606CC 		addi	a2,a2,-832
+ 288 0066 90C7     		sw	a2,8(a5)
+ 289 0068 8146     		li	a3,0
+ 290 006a D4C7     		sw	a3,12(a5)
+  39:ds18b20.c     **** }
+ 291              		.loc 1 39 1
+ 292 006c 4101     		addi	sp,sp,16
+ 293              	.LCFI4:
+ 294              		.cfi_def_cfa_offset 0
+ 295 006e 8280     		jr	ra
+ 296              		.cfi_endproc
+ 297              	.LFE2:
+ 299              		.globl	pCB
+ 300              		.globl	ds18B20cmd
+ 301              		.globl	temp
+ 302              		.section	.data.ds18B20cmd,"aw"
+ 303              		.align	2
+ 304              		.set	.LANCHOR1,. + 0
+ 307              	ds18B20cmd:
+ 308 0000 BC340000 		.word	13500
+ 309 0004 BC340080 		.word	-2147470148
+ 310 0008 DB060000 		.word	1755
+ 311 000c 2A030080 		.word	-2147482838
+ 312 0010 DB060000 		.word	1755
+ 313 0014 2A030080 		.word	-2147482838
+ 314 0018 36000000 		.word	54
+ 315 001c CF090080 		.word	-2147481137
+ 316 0020 36000000 		.word	54
+ 317 0024 CF090080 		.word	-2147481137
+ 318 0028 DB060000 		.word	1755
+ 319 002c 2A030080 		.word	-2147482838
+ 320 0030 DB060000 		.word	1755
+ 321 0034 2A030080 		.word	-2147482838
+ 322 0038 36000000 		.word	54
+ 323 003c CF090080 		.word	-2147481137
+ 324 0040 36000000 		.word	54
+ 325 0044 CF090080 		.word	-2147481137
+ 326 0048 DB060000 		.word	1755
+ 327 004c 2A030080 		.word	-2147482838
+ 328 0050 DB060000 		.word	1755
+ 329 0054 2A030080 		.word	-2147482838
+ 330 0058 36000000 		.word	54
+ 331 005c CF090080 		.word	-2147481137
+ 332 0060 DB060000 		.word	1755
+ 333 0064 2A030080 		.word	-2147482838
+ 334 0068 DB060000 		.word	1755
+ 335 006c 2A030080 		.word	-2147482838
+ 336 0070 DB060000 		.word	1755
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 9
+
+
+ 337 0074 2A030080 		.word	-2147482838
+ 338 0078 36000000 		.word	54
+ 339 007c CF090080 		.word	-2147481137
+ 340 0080 DB060000 		.word	1755
+ 341 0084 2A030080 		.word	-2147482838
+ 342 0088 E0322980 		.word	-2144783648
+ 343 008c 36000000 		.word	54
+ 344 0090 0E010080 		.word	-2147483378
+ 345 0094 00000080 		.word	-2147483648
+ 346 0098 BC340000 		.word	13500
+ 347 009c BC340080 		.word	-2147470148
+ 348 00a0 DB060000 		.word	1755
+ 349 00a4 2A030080 		.word	-2147482838
+ 350 00a8 DB060000 		.word	1755
+ 351 00ac 2A030080 		.word	-2147482838
+ 352 00b0 36000000 		.word	54
+ 353 00b4 CF090080 		.word	-2147481137
+ 354 00b8 36000000 		.word	54
+ 355 00bc CF090080 		.word	-2147481137
+ 356 00c0 DB060000 		.word	1755
+ 357 00c4 2A030080 		.word	-2147482838
+ 358 00c8 DB060000 		.word	1755
+ 359 00cc 2A030080 		.word	-2147482838
+ 360 00d0 36000000 		.word	54
+ 361 00d4 CF090080 		.word	-2147481137
+ 362 00d8 36000000 		.word	54
+ 363 00dc CF090080 		.word	-2147481137
+ 364 00e0 DB060000 		.word	1755
+ 365 00e4 2A030080 		.word	-2147482838
+ 366 00e8 36000000 		.word	54
+ 367 00ec CF090080 		.word	-2147481137
+ 368 00f0 36000000 		.word	54
+ 369 00f4 CF090080 		.word	-2147481137
+ 370 00f8 36000000 		.word	54
+ 371 00fc CF090080 		.word	-2147481137
+ 372 0100 36000000 		.word	54
+ 373 0104 CF090080 		.word	-2147481137
+ 374 0108 36000000 		.word	54
+ 375 010c CF090080 		.word	-2147481137
+ 376 0110 DB060000 		.word	1755
+ 377 0114 2A030080 		.word	-2147482838
+ 378 0118 36000000 		.word	54
+ 379 011c CF090080 		.word	-2147481137
+ 380 0120 36000000 		.word	54
+ 381 0124 0E010080 		.word	-2147483378
+ 382 0128 00000080 		.word	-2147483648
+ 383 012c 36000000 		.word	54
+ 384 0130 0E010080 		.word	-2147483378
+ 385 0134 00000080 		.word	-2147483648
+ 386 0138 36000000 		.word	54
+ 387 013c 0E010080 		.word	-2147483378
+ 388 0140 00000080 		.word	-2147483648
+ 389 0144 36000000 		.word	54
+ 390 0148 0E010080 		.word	-2147483378
+ 391 014c 00000080 		.word	-2147483648
+ 392 0150 36000000 		.word	54
+ 393 0154 0E010080 		.word	-2147483378
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 10
+
+
+ 394 0158 00000080 		.word	-2147483648
+ 395 015c 36000000 		.word	54
+ 396 0160 0E010080 		.word	-2147483378
+ 397 0164 00000080 		.word	-2147483648
+ 398 0168 36000000 		.word	54
+ 399 016c 0E010080 		.word	-2147483378
+ 400 0170 00000080 		.word	-2147483648
+ 401 0174 36000000 		.word	54
+ 402 0178 0E010080 		.word	-2147483378
+ 403 017c 00000080 		.word	-2147483648
+ 404 0180 36000000 		.word	54
+ 405 0184 0E010080 		.word	-2147483378
+ 406 0188 00000080 		.word	-2147483648
+ 407 018c 36000000 		.word	54
+ 408 0190 0E010080 		.word	-2147483378
+ 409 0194 00000080 		.word	-2147483648
+ 410 0198 36000000 		.word	54
+ 411 019c 0E010080 		.word	-2147483378
+ 412 01a0 00000080 		.word	-2147483648
+ 413 01a4 36000000 		.word	54
+ 414 01a8 0E010080 		.word	-2147483378
+ 415 01ac 00000080 		.word	-2147483648
+ 416 01b0 36000000 		.word	54
+ 417 01b4 0E010080 		.word	-2147483378
+ 418 01b8 00000080 		.word	-2147483648
+ 419 01bc 36000000 		.word	54
+ 420 01c0 0E010080 		.word	-2147483378
+ 421 01c4 00000080 		.word	-2147483648
+ 422 01c8 36000000 		.word	54
+ 423 01cc 0E010080 		.word	-2147483378
+ 424 01d0 00000080 		.word	-2147483648
+ 425 01d4 36000000 		.word	54
+ 426 01d8 0E010080 		.word	-2147483378
+ 427 01dc 00000080 		.word	-2147483648
+ 428 01e0 00000000 		.word	0
+ 429              		.section	.sbss.d.3508,"aw",@nobits
+ 430              		.align	2
+ 431              		.set	.LANCHOR4,. + 0
+ 434              	d.3508:
+ 435 0000 00000000 		.zero	4
+ 436              		.section	.sbss.pCB,"aw",@nobits
+ 437              		.align	2
+ 438              		.set	.LANCHOR3,. + 0
+ 441              	pCB:
+ 442 0000 00000000 		.zero	4
+ 443              		.section	.sbss.s.3506,"aw",@nobits
+ 444              		.align	2
+ 445              		.set	.LANCHOR0,. + 0
+ 448              	s.3506:
+ 449 0000 00000000 		.zero	4
+ 450              		.section	.sbss.t.3507,"aw",@nobits
+ 451              		.align	2
+ 452              		.set	.LANCHOR2,. + 0
+ 455              	t.3507:
+ 456 0000 00000000 		.zero	4
+ 457              		.section	.sbss.temp,"aw",@nobits
+ 458              		.align	2
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 11
+
+
+ 461              	temp:
+ 462 0000 00000000 		.zero	4
+ 463              		.text
+ 464              	.Letext0:
+ 465              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 466              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 467              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+ 468              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_gpi
+ 469              		.file 6 "eclicw.h"
+ 470              		.file 7 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 ds18b20.c
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:13     .text.ds18B20fsm:0000000000000000 ds18B20fsm
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:17     .text.ds18B20fsm:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:18     .text.ds18B20fsm:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:19     .text.ds18B20fsm:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:20     .text.ds18B20fsm:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:21     .text.ds18B20fsm:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:23     .text.ds18B20fsm:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:25     .text.ds18B20fsm:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:27     .text.ds18B20fsm:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:31     .text.ds18B20fsm:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:32     .text.ds18B20fsm:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:34     .text.ds18B20fsm:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:40     .text.ds18B20fsm:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:43     .text.ds18B20fsm:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:44     .text.ds18B20fsm:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:45     .text.ds18B20fsm:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:47     .text.ds18B20fsm:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:49     .text.ds18B20fsm:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:50     .text.ds18B20fsm:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:58     .text.ds18B20fsm:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:59     .text.ds18B20fsm:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:61     .text.ds18B20fsm:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:63     .text.ds18B20fsm:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:64     .text.ds18B20fsm:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:66     .text.ds18B20fsm:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:67     .text.ds18B20fsm:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:69     .text.ds18B20fsm:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:72     .text.ds18B20fsm:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:73     .text.ds18B20fsm:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:75     .text.ds18B20fsm:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:78     .text.ds18B20fsm:000000000000005a .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:80     .text.ds18B20fsm:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:82     .text.ds18B20fsm:0000000000000060 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:84     .text.ds18B20fsm:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:85     .text.ds18B20fsm:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:89     .text.ds18B20fsm:000000000000006e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:91     .text.ds18B20fsm:0000000000000072 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:94     .text.ds18B20fsm:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:97     .text.ds18B20fsm:000000000000007c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:99     .text.ds18B20fsm:0000000000000080 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:101    .text.ds18B20fsm:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:103    .text.ds18B20fsm:0000000000000086 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:110    .text.ds18B20fsm:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:115    .text.ds18B20fsm:00000000000000a4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:117    .text.ds18B20fsm:00000000000000a6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:120    .text.ds18B20fsm:00000000000000ae .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:121    .text.ds18B20fsm:00000000000000ae .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:123    .text.ds18B20fsm:00000000000000b2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:129    .text.ds18B20fsm:00000000000000be .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:130    .text.ds18B20fsm:00000000000000be .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:131    .text.ds18B20fsm:00000000000000c0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:132    .text.ds18B20fsm:00000000000000c0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:134    .text.ds18B20fsm:00000000000000c2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:136    .text.ds18B20fsm:00000000000000c2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:140    .text.ds18B20fsm:00000000000000c8 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 13
+
+
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:141    .text.ds18B20fsm:00000000000000ca .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:143    .text.ds18B20fsm:00000000000000cc .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:145    .text.ds18B20fsm:00000000000000ce .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:148    .text.ds18B20fsm:00000000000000d0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:152    .text.ds18B20fsm:00000000000000d2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:154    .text.ds18B20fsm:00000000000000d2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:155    .text.ds18B20fsm:00000000000000d2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:157    .text.ds18B20fsm:00000000000000d6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:161    .text.ds18B20fsm:00000000000000da .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:162    .text.ds18B20fsm:00000000000000da .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:164    .text.ds18B20fsm:00000000000000de .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:166    .text.ds18B20fsm:00000000000000e2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:168    .text.ds18B20fsm:00000000000000e6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:170    .text.ds18B20fsm:00000000000000e8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:174    .text.ds18B20fsm:00000000000000ee .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:175    .text.ds18B20fsm:00000000000000ee .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:178    .text.ds18B20fsm:00000000000000f6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:179    .text.ds18B20fsm:00000000000000f6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:185    .text.ds18B20fsm:000000000000010a .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:187    .text.ds18B20fsm:000000000000010c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:189    .text.ds18B20fsm:000000000000010e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:200    .text.ds18B20fsm:000000000000012a .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:208    .text.ds18B20fsm:0000000000000138 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:209    .text.ds18B20fsm:0000000000000138 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:215    .text.ds18B20fsm:000000000000014c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:217    .text.ds18B20fsm:0000000000000150 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:219    .text.ds18B20fsm:0000000000000156 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:226    .text.ds18B20init:0000000000000000 ds18B20init
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:229    .text.ds18B20init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:231    .text.ds18B20init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:232    .text.ds18B20init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:233    .text.ds18B20init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:235    .text.ds18B20init:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:237    .text.ds18B20init:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:239    .text.ds18B20init:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:241    .text.ds18B20init:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:243    .text.ds18B20init:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:249    .text.ds18B20init:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:251    .text.ds18B20init:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:252    .text.ds18B20init:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:254    .text.ds18B20init:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:257    .text.ds18B20init:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:265    .text.ds18B20init:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:271    .text.ds18B20init:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:272    .text.ds18B20init:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:277    .text.ds18B20init:0000000000000058 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:279    .text.ds18B20init:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:281    .text.ds18B20init:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:282    .text.ds18B20init:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:283    .text.ds18B20init:0000000000000060 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:285    .text.ds18B20init:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:287    .text.ds18B20init:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:292    .text.ds18B20init:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:294    .text.ds18B20init:000000000000006e .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:296    .text.ds18B20init:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:441    .sbss.pCB:0000000000000000 pCB
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:307    .data.ds18B20cmd:0000000000000000 ds18B20cmd
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 14
+
+
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:461    .sbss.temp:0000000000000000 temp
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:304    .data.ds18B20cmd:0000000000000000 .LANCHOR1
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:431    .sbss.d.3508:0000000000000000 .LANCHOR4
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:434    .sbss.d.3508:0000000000000000 d.3508
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:438    .sbss.pCB:0000000000000000 .LANCHOR3
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:445    .sbss.s.3506:0000000000000000 .LANCHOR0
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:448    .sbss.s.3506:0000000000000000 s.3506
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:452    .sbss.t.3507:0000000000000000 .LANCHOR2
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:455    .sbss.t.3507:0000000000000000 t.3507
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:222    .text.ds18B20fsm:0000000000000156 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:302    .text.ds18B20init:0000000000000070 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:150    .text.ds18B20fsm:00000000000000d2 .L2
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:198    .text.ds18B20fsm:000000000000012a .L15
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:172    .text.ds18B20fsm:00000000000000ee .L5
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:108    .text.ds18B20fsm:0000000000000096 .L7
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:202    .text.ds18B20fsm:000000000000012e .L16
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:206    .text.ds18B20fsm:0000000000000138 .L6
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:159    .text.ds18B20fsm:00000000000000da .L4
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:70     .text.ds18B20fsm:000000000000004e .L3
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1046   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1578   .debug_str:000000000000029c .LASF91
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1548   .debug_str:00000000000001c1 .LASF92
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1608   .debug_str:00000000000003cf .LASF93
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1468   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1476   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1502   .debug_str:00000000000000a8 .LASF94
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1666   .debug_str:0000000000000593 .LASF0
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1614   .debug_str:0000000000000436 .LASF1
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1518   .debug_str:000000000000010a .LASF2
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1504   .debug_str:00000000000000ad .LASF3
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1630   .debug_str:00000000000004aa .LASF4
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1658   .debug_str:0000000000000565 .LASF5
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1524   .debug_str:0000000000000136 .LASF6
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1604   .debug_str:00000000000003b6 .LASF7
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1536   .debug_str:000000000000017f .LASF8
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1542   .debug_str:00000000000001a0 .LASF9
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1600   .debug_str:000000000000039a .LASF10
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1586   .debug_str:0000000000000337 .LASF11
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1486   .debug_str:0000000000000044 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1582   .debug_str:000000000000031f .LASF13
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1650   .debug_str:0000000000000536 .LASF14
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1484   .debug_str:0000000000000039 .LASF15
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1500   .debug_str:0000000000000095 .LASF16
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1482   .debug_str:0000000000000026 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1572   .debug_str:0000000000000266 .LASF18
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1550   .debug_str:00000000000001cb .LASF19
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1480   .debug_str:0000000000000013 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1570   .debug_str:0000000000000253 .LASF21
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1668   .debug_str:00000000000005a5 .LASF22
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1490   .debug_str:0000000000000058 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1526   .debug_str:000000000000013f .LASF24
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1590   .debug_str:0000000000000354 .LASF25
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1530   .debug_str:0000000000000157 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1546   .debug_str:00000000000001b2 .LASF27
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1612   .debug_str:0000000000000429 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1508   .debug_str:00000000000000c5 .LASF29
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 15
+
+
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1648   .debug_str:0000000000000527 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1620   .debug_str:000000000000045e .LASF31
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1498   .debug_str:0000000000000081 .LASF32
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1640   .debug_str:00000000000004f2 .LASF33
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1522   .debug_str:000000000000012a .LASF34
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1632   .debug_str:00000000000004b9 .LASF35
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1554   .debug_str:00000000000001e8 .LASF36
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1558   .debug_str:0000000000000200 .LASF37
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1562   .debug_str:000000000000021d .LASF38
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1660   .debug_str:0000000000000570 .LASF39
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1610   .debug_str:000000000000041f .LASF40
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1506   .debug_str:00000000000000bb .LASF41
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1534   .debug_str:0000000000000173 .LASF42
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1538   .debug_str:0000000000000188 .LASF43
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1646   .debug_str:000000000000051b .LASF44
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1564   .debug_str:000000000000022a .LASF45
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1602   .debug_str:00000000000003a7 .LASF46
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1560   .debug_str:000000000000020d .LASF47
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1664   .debug_str:0000000000000589 .LASF48
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1540   .debug_str:0000000000000194 .LASF49
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1654   .debug_str:0000000000000550 .LASF50
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1656   .debug_str:000000000000055a .LASF51
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1556   .debug_str:00000000000001f5 .LASF52
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1514   .debug_str:00000000000000eb .LASF53
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1626   .debug_str:000000000000048b .LASF54
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1634   .debug_str:00000000000004c5 .LASF55
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1520   .debug_str:0000000000000117 .LASF56
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1628   .debug_str:0000000000000497 .LASF57
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1644   .debug_str:0000000000000508 .LASF58
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1516   .debug_str:00000000000000f7 .LASF59
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1606   .debug_str:00000000000003c2 .LASF60
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1510   .debug_str:00000000000000d5 .LASF61
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1622   .debug_str:0000000000000472 .LASF62
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1636   .debug_str:00000000000004d8 .LASF63
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1624   .debug_str:0000000000000480 .LASF64
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1598   .debug_str:0000000000000385 .LASF65
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1584   .debug_str:000000000000032a .LASF66
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1574   .debug_str:0000000000000279 .LASF67
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1552   .debug_str:00000000000001de .LASF72
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1568   .debug_str:0000000000000245 .LASF68
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1494   .debug_str:0000000000000069 .LASF69
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1596   .debug_str:0000000000000372 .LASF70
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1544   .debug_str:00000000000001a9 .LASF71
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1638   .debug_str:00000000000004e7 .LASF73
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1588   .debug_str:0000000000000342 .LASF74
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1532   .debug_str:0000000000000165 .LASF75
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1618   .debug_str:0000000000000453 .LASF76
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1576   .debug_str:0000000000000285 .LASF77
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1512   .debug_str:00000000000000e3 .LASF78
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1580   .debug_str:0000000000000316 .LASF79
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1488   .debug_str:000000000000004f .LASF80
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1616   .debug_str:0000000000000443 .LASF82
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1566   .debug_str:0000000000000239 .LASF81
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1492   .debug_str:0000000000000064 .LASF83
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1528   .debug_str:000000000000014c .LASF84
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1594   .debug_str:0000000000000367 .LASF85
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:14     .text.ds18B20fsm:0000000000000000 .LFB3
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s 			page 16
+
+
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:220    .text.ds18B20fsm:0000000000000156 .LFE3
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1393   .debug_loc:0000000000000000 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:86     .text.ds18B20fsm:000000000000006c .LVL1
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:118    .text.ds18B20fsm:00000000000000ae .LVL2
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:183    .text.ds18B20fsm:000000000000010a .LVL3
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1662   .debug_str:000000000000057d .LASF86
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:227    .text.ds18B20init:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:297    .text.ds18B20init:0000000000000070 .LFE2
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1416   .debug_loc:0000000000000038 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1592   .debug_str:0000000000000362 .LASF95
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1434   .debug_loc:0000000000000064 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:255    .text.ds18B20init:0000000000000024 .LVL6
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:263    .text.ds18B20init:000000000000003c .LVL7
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:269    .text.ds18B20init:000000000000004e .LVL8
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1478   .debug_str:0000000000000000 .LASF87
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1652   .debug_str:0000000000000541 .LASF88
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1496   .debug_str:0000000000000073 .LASF89
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:1642   .debug_str:00000000000004fe .LASF90
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:22     .text.ds18B20fsm:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:147    .text.ds18B20fsm:00000000000000d0 .LCFI1
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:151    .text.ds18B20fsm:00000000000000d2 .LCFI2
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:238    .text.ds18B20init:000000000000000a .LCFI3
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:293    .text.ds18B20init:000000000000006e .LCFI4
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:230    .text.ds18B20init:0000000000000000 .LVL4
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:247    .text.ds18B20init:0000000000000018 .LVL5
+C:\Users\anton\AppData\Local\Temp\ccsLwWMJ.s:472    .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+gpio_input_bit_get
+gpio_bit_write
+eclicw_enable
+gpio_init

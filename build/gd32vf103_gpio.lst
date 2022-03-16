@@ -1,0 +1,2253 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 1
+
+
+   1              		.file	"gd32vf103_gpio.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.gpio_deinit,"ax",@progbits
+  10              		.align	1
+  11              		.globl	gpio_deinit
+  13              	gpio_deinit:
+  14              	.LFB2:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_gpio
+   1:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+   2:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \file    gd32vf103_gpio.c
+   3:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief   GPIO driver
+   4:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+   5:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \version 2019-06-05, V1.0.0, firmware for GD32VF103
+   6:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \version 2020-08-04, V1.1.0, firmware for GD32VF103
+   7:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+   8:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+   9:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*
+  10:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+  12:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  13:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** are permitted provided that the following conditions are met:
+  14:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+  15:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  16:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****        list of conditions and the following disclaimer.
+  17:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  18:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****        this list of conditions and the following disclaimer in the documentation 
+  19:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****        and/or other materials provided with the distribution.
+  20:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  21:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****        may be used to endorse or promote products derived from this software without 
+  22:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****        specific prior written permission.
+  23:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+  24:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  25:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  26:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  27:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  28:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  30:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  31:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  32:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  33:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** OF SUCH DAMAGE.
+  34:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+  35:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+  36:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** #include "gd32vf103_gpio.h"
+  37:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+  38:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** #define AFIO_EXTI_SOURCE_MASK              ((uint8_t)0x03U)         /*!< AFIO exti source selection
+  39:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** #define AFIO_EXTI_SOURCE_FIELDS            ((uint8_t)0x04U)         /*!< select AFIO exti source re
+  40:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** #define LSB_16BIT_MASK                     ((uint16_t)0xFFFFU)      /*!< LSB 16-bit mask */
+  41:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** #define PCF_POSITION_MASK                  ((uint32_t)0x000F0000U)  /*!< AFIO_PCF register position
+  42:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** #define PCF_SWJCFG_MASK                    ((uint32_t)0xF0FFFFFFU)  /*!< AFIO_PCF register SWJCFG m
+  43:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** #define PCF_LOCATION1_MASK                 ((uint32_t)0x00200000U)  /*!< AFIO_PCF register location
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 2
+
+
+  44:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** #define PCF_LOCATION2_MASK                 ((uint32_t)0x00100000U)  /*!< AFIO_PCF register location
+  45:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** #define AFIO_PCF1_FIELDS                   ((uint32_t)0x80000000U)  /*!< select AFIO_PCF1 register 
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** #define GPIO_OUTPUT_PORT_OFFSET            ((uint32_t)4U)           /*!< GPIO event output port off
+  47:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+  48:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      reset GPIO port
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+  51:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+  54:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_deinit(uint32_t gpio_periph)
+  55:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+  16              		.loc 1 55 1
+  17              		.cfi_startproc
+  18              	.LVL0:
+  56:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     switch (gpio_periph) {
+  19              		.loc 1 56 5
+  55:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     switch (gpio_periph) {
+  20              		.loc 1 55 1 is_stmt 0
+  21 0000 4111     		addi	sp,sp,-16
+  22              	.LCFI0:
+  23              		.cfi_def_cfa_offset 16
+  24 0002 06C6     		sw	ra,12(sp)
+  25              		.cfi_offset 1, -4
+  26              		.loc 1 56 5
+  27 0004 B7170140 		li	a5,1073811456
+  28 0008 6302F506 		beq	a0,a5,.L2
+  29 000c 63FAA702 		bleu	a0,a5,.L11
+  30 0010 93870740 		addi	a5,a5,1024
+  31 0014 630AF506 		beq	a0,a5,.L7
+  32 0018 B7270140 		li	a5,1073815552
+  33 001c 93870780 		addi	a5,a5,-2048
+  34 0020 6312F508 		bne	a0,a5,.L1
+  57:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     case GPIOA:
+  58:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* reset GPIOA */
+  59:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOARST);
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOARST);
+  61:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  62:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     case GPIOB:
+  63:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* reset GPIOB */
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOBRST);
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOBRST);
+  66:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  67:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     case GPIOC:
+  68:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* reset GPIOC */
+  69:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOCRST);
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOCRST);
+  71:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  72:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     case GPIOD:
+  73:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* reset GPIOD */
+  74:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_enable(RCU_GPIODRST);
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIODRST);
+  76:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     case GPIOE:
+  78:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* reset GPIOE */
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOERST);
+  35              		.loc 1 79 9 is_stmt 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 3
+
+
+  36 0024 13056030 		li	a0,774
+  37              	.LVL1:
+  38 0028 97000000 		call	rcu_periph_reset_enable
+  38      E7800000 
+  39              	.LVL2:
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOERST);
+  40              		.loc 1 80 9
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     default:
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+  41              		.loc 1 85 1 is_stmt 0
+  42 0030 B240     		lw	ra,12(sp)
+  43              		.cfi_remember_state
+  44              		.cfi_restore 1
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOERST);
+  45              		.loc 1 80 9
+  46 0032 13056030 		li	a0,774
+  47              		.loc 1 85 1
+  48 0036 4101     		addi	sp,sp,16
+  49              	.LCFI1:
+  50              		.cfi_def_cfa_offset 0
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOERST);
+  51              		.loc 1 80 9
+  52 0038 17030000 		tail	rcu_periph_reset_disable
+  52      67000300 
+  53              	.LVL3:
+  54              	.L11:
+  55              	.LCFI2:
+  56              		.cfi_restore_state
+  56:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     case GPIOA:
+  57              		.loc 1 56 5
+  58 0040 13870780 		addi	a4,a5,-2048
+  59 0044 6303E506 		beq	a0,a4,.L4
+  60 0048 938707C0 		addi	a5,a5,-1024
+  61 004c 631CF504 		bne	a0,a5,.L1
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOBRST);
+  62              		.loc 1 64 9 is_stmt 1
+  63 0050 13053030 		li	a0,771
+  64              	.LVL4:
+  65 0054 97000000 		call	rcu_periph_reset_enable
+  65      E7800000 
+  66              	.LVL5:
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  67              		.loc 1 65 9
+  68              		.loc 1 85 1 is_stmt 0
+  69 005c B240     		lw	ra,12(sp)
+  70              		.cfi_remember_state
+  71              		.cfi_restore 1
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  72              		.loc 1 65 9
+  73 005e 13053030 		li	a0,771
+  74              		.loc 1 85 1
+  75 0062 4101     		addi	sp,sp,16
+  76              	.LCFI3:
+  77              		.cfi_def_cfa_offset 0
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 4
+
+
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  78              		.loc 1 65 9
+  79 0064 17030000 		tail	rcu_periph_reset_disable
+  79      67000300 
+  80              	.LVL6:
+  81              	.L2:
+  82              	.LCFI4:
+  83              		.cfi_restore_state
+  69:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOCRST);
+  84              		.loc 1 69 9 is_stmt 1
+  85 006c 13054030 		li	a0,772
+  86              	.LVL7:
+  87 0070 97000000 		call	rcu_periph_reset_enable
+  87      E7800000 
+  88              	.LVL8:
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  89              		.loc 1 70 9
+  90              		.loc 1 85 1 is_stmt 0
+  91 0078 B240     		lw	ra,12(sp)
+  92              		.cfi_remember_state
+  93              		.cfi_restore 1
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+  94              		.loc 1 70 9
+  95 007a 13054030 		li	a0,772
+  96              		.loc 1 85 1
+  97 007e 4101     		addi	sp,sp,16
+  98              	.LCFI5:
+  99              		.cfi_def_cfa_offset 0
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+ 100              		.loc 1 70 9
+ 101 0080 17030000 		tail	rcu_periph_reset_disable
+ 101      67000300 
+ 102              	.LVL9:
+ 103              	.L7:
+ 104              	.LCFI6:
+ 105              		.cfi_restore_state
+  74:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIODRST);
+ 106              		.loc 1 74 9 is_stmt 1
+ 107 0088 13055030 		li	a0,773
+ 108              	.LVL10:
+ 109 008c 97000000 		call	rcu_periph_reset_enable
+ 109      E7800000 
+ 110              	.LVL11:
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+ 111              		.loc 1 75 9
+ 112              		.loc 1 85 1 is_stmt 0
+ 113 0094 B240     		lw	ra,12(sp)
+ 114              		.cfi_remember_state
+ 115              		.cfi_restore 1
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+ 116              		.loc 1 75 9
+ 117 0096 13055030 		li	a0,773
+ 118              		.loc 1 85 1
+ 119 009a 4101     		addi	sp,sp,16
+ 120              	.LCFI7:
+ 121              		.cfi_def_cfa_offset 0
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 5
+
+
+ 122              		.loc 1 75 9
+ 123 009c 17030000 		tail	rcu_periph_reset_disable
+ 123      67000300 
+ 124              	.LVL12:
+ 125              	.L1:
+ 126              	.LCFI8:
+ 127              		.cfi_restore_state
+ 128              		.loc 1 85 1
+ 129 00a4 B240     		lw	ra,12(sp)
+ 130              		.cfi_remember_state
+ 131              		.cfi_restore 1
+ 132 00a6 4101     		addi	sp,sp,16
+ 133              	.LCFI9:
+ 134              		.cfi_def_cfa_offset 0
+ 135 00a8 8280     		jr	ra
+ 136              	.L4:
+ 137              	.LCFI10:
+ 138              		.cfi_restore_state
+  59:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOARST);
+ 139              		.loc 1 59 9 is_stmt 1
+ 140 00aa 13052030 		li	a0,770
+ 141              	.LVL13:
+ 142 00ae 97000000 		call	rcu_periph_reset_enable
+ 142      E7800000 
+ 143              	.LVL14:
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+ 144              		.loc 1 60 9
+ 145              		.loc 1 85 1 is_stmt 0
+ 146 00b6 B240     		lw	ra,12(sp)
+ 147              		.cfi_restore 1
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+ 148              		.loc 1 60 9
+ 149 00b8 13052030 		li	a0,770
+ 150              		.loc 1 85 1
+ 151 00bc 4101     		addi	sp,sp,16
+ 152              	.LCFI11:
+ 153              		.cfi_def_cfa_offset 0
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         break;
+ 154              		.loc 1 60 9
+ 155 00be 17030000 		tail	rcu_periph_reset_disable
+ 155      67000300 
+ 156              	.LVL15:
+ 157              		.cfi_endproc
+ 158              	.LFE2:
+ 160              		.section	.text.gpio_afio_deinit,"ax",@progbits
+ 161              		.align	1
+ 162              		.globl	gpio_afio_deinit
+ 164              	gpio_afio_deinit:
+ 165              	.LFB3:
+  86:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+  87:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+  88:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      reset alternate function I/O(AFIO)
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  none
+  90:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+  91:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+  92:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_afio_deinit(void)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 6
+
+
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 166              		.loc 1 94 1 is_stmt 1
+ 167              		.cfi_startproc
+  95:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     rcu_periph_reset_enable(RCU_AFRST);
+ 168              		.loc 1 95 5
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     rcu_periph_reset_enable(RCU_AFRST);
+ 169              		.loc 1 94 1 is_stmt 0
+ 170 0000 4111     		addi	sp,sp,-16
+ 171              	.LCFI12:
+ 172              		.cfi_def_cfa_offset 16
+ 173              		.loc 1 95 5
+ 174 0002 13050030 		li	a0,768
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     rcu_periph_reset_enable(RCU_AFRST);
+ 175              		.loc 1 94 1
+ 176 0006 06C6     		sw	ra,12(sp)
+ 177              		.cfi_offset 1, -4
+ 178              		.loc 1 95 5
+ 179 0008 97000000 		call	rcu_periph_reset_enable
+ 179      E7800000 
+ 180              	.LVL16:
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     rcu_periph_reset_disable(RCU_AFRST);
+ 181              		.loc 1 96 5 is_stmt 1
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 182              		.loc 1 97 1 is_stmt 0
+ 183 0010 B240     		lw	ra,12(sp)
+ 184              		.cfi_restore 1
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     rcu_periph_reset_disable(RCU_AFRST);
+ 185              		.loc 1 96 5
+ 186 0012 13050030 		li	a0,768
+ 187              		.loc 1 97 1
+ 188 0016 4101     		addi	sp,sp,16
+ 189              	.LCFI13:
+ 190              		.cfi_def_cfa_offset 0
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     rcu_periph_reset_disable(RCU_AFRST);
+ 191              		.loc 1 96 5
+ 192 0018 17030000 		tail	rcu_periph_reset_disable
+ 192      67000300 
+ 193              	.LVL17:
+ 194              		.cfi_endproc
+ 195              	.LFE3:
+ 197              		.section	.text.gpio_init,"ax",@progbits
+ 198              		.align	1
+ 199              		.globl	gpio_init
+ 201              	gpio_init:
+ 202              	.LFB4:
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+  99:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 100:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      GPIO parameter initialization
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  mode: gpio pin mode
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 104:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_MODE_AIN: analog input mode
+ 105:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_MODE_IN_FLOATING: floating input mode
+ 106:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_MODE_IPD: pull-down input mode
+ 107:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_MODE_IPU: pull-up input mode
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_MODE_OUT_OD: GPIO output with open-drain
+ 109:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_MODE_OUT_PP: GPIO output with push-pull
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 7
+
+
+ 110:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_MODE_AF_OD: AFIO output with open-drain
+ 111:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_MODE_AF_PP: AFIO output with push-pull
+ 112:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  speed: gpio output max speed value
+ 113:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_OSPEED_10MHZ: output max speed 10MHz
+ 115:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_OSPEED_2MHZ: output max speed 2MHz
+ 116:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_OSPEED_50MHZ: output max speed 50MHz
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  pin: GPIO pin
+ 118:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 119:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 121:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_init(uint32_t gpio_periph, uint32_t mode, uint32_t speed,
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         uint32_t pin)
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 203              		.loc 1 126 1 is_stmt 1
+ 204              		.cfi_startproc
+ 205              	.LVL18:
+ 127:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     uint16_t i;
+ 206              		.loc 1 127 5
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     uint32_t temp_mode = 0U;
+ 207              		.loc 1 128 5
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     uint32_t reg = 0U;
+ 208              		.loc 1 129 5
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 131:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     /* GPIO mode configuration */
+ 132:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     temp_mode = (uint32_t) (mode & ((uint32_t) 0x0FU));
+ 209              		.loc 1 132 5
+ 133:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 134:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     /* GPIO speed configuration */
+ 135:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     if (((uint32_t) 0x00U) != ((uint32_t) mode & ((uint32_t) 0x10U))) {
+ 210              		.loc 1 135 48 is_stmt 0
+ 211 0000 93F70501 		andi	a5,a1,16
+ 132:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 212              		.loc 1 132 15
+ 213 0004 93F8F500 		andi	a7,a1,15
+ 214              	.LVL19:
+ 215              		.loc 1 135 5 is_stmt 1
+ 216              		.loc 1 135 8 is_stmt 0
+ 217 0008 99C3     		beq	a5,zero,.L15
+ 136:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* output mode max speed:10MHz,2MHz,50MHz */
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_mode |= (uint32_t) speed;
+ 218              		.loc 1 137 9 is_stmt 1
+ 219              		.loc 1 137 19 is_stmt 0
+ 220 000a B3E8C800 		or	a7,a7,a2
+ 221              	.LVL20:
+ 222              	.L15:
+ 138:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 139:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 140:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     /* configure the eight low port pins with GPIO_CTL0 */
+ 141:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     for (i = 0U; i < 8U; i++) {
+ 223              		.loc 1 141 5 is_stmt 1
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     uint16_t i;
+ 224              		.loc 1 126 1 is_stmt 0
+ 225 000e 8147     		li	a5,0
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 8
+
+
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         if ((1U << i) & pin) {
+ 226              		.loc 1 142 17
+ 227 0010 854E     		li	t4,1
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg = GPIO_CTL0(gpio_periph);
+ 144:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* clear the specified pin mode bits */
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg &= ~GPIO_MODE_MASK(i);
+ 228              		.loc 1 146 21
+ 229 0012 3D4E     		li	t3,15
+ 147:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg |= GPIO_MODE_SET(i, temp_mode);
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 150:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set IPD or IPU */
+ 151:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             if (GPIO_MODE_IPD == mode) {
+ 230              		.loc 1 151 16
+ 231 0014 930F8002 		li	t6,40
+ 152:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 /* reset the corresponding OCTL bit */
+ 153:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 GPIO_BC(gpio_periph) = (uint32_t) ((1U << i) & pin);
+ 154:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             } else {
+ 155:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 /* set the corresponding OCTL bit */
+ 156:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 if (GPIO_MODE_IPU == mode) {
+ 232              		.loc 1 156 20
+ 233 0018 93028004 		li	t0,72
+ 141:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         if ((1U << i) & pin) {
+ 234              		.loc 1 141 5
+ 235 001c 2143     		li	t1,8
+ 236              	.LVL21:
+ 237              	.L19:
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg = GPIO_CTL0(gpio_periph);
+ 238              		.loc 1 142 9 is_stmt 1
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 239              		.loc 1 143 13
+ 240 001e 13962700 		slli	a2,a5,2
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg = GPIO_CTL0(gpio_periph);
+ 241              		.loc 1 142 17 is_stmt 0
+ 242 0022 3397FE00 		sll	a4,t4,a5
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+ 243              		.loc 1 146 21
+ 244 0026 3318CE00 		sll	a6,t3,a2
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg = GPIO_CTL0(gpio_periph);
+ 245              		.loc 1 142 23
+ 246 002a 758F     		and	a4,a4,a3
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+ 247              		.loc 1 146 20
+ 248 002c 1348F8FF 		not	a6,a6
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 249              		.loc 1 148 20
+ 250 0030 3396C800 		sll	a2,a7,a2
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg = GPIO_CTL0(gpio_periph);
+ 251              		.loc 1 142 12
+ 252 0034 01CF     		beq	a4,zero,.L16
+ 253              		.loc 1 156 17 is_stmt 1
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 254              		.loc 1 143 17 is_stmt 0
+ 255 0036 032F0500 		lw	t5,0(a0)
+ 256              	.LVL22:
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 9
+
+
+ 257              		.loc 1 146 13 is_stmt 1
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+ 258              		.loc 1 146 17 is_stmt 0
+ 259 003a 3378E801 		and	a6,a6,t5
+ 260              	.LVL23:
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 261              		.loc 1 148 13 is_stmt 1
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 262              		.loc 1 148 17 is_stmt 0
+ 263 003e 33660601 		or	a2,a2,a6
+ 264              	.LVL24:
+ 151:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 /* reset the corresponding OCTL bit */
+ 265              		.loc 1 151 13 is_stmt 1
+ 151:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 /* reset the corresponding OCTL bit */
+ 266              		.loc 1 151 16 is_stmt 0
+ 267 0042 638FF505 		beq	a1,t6,.L35
+ 268              		.loc 1 156 20
+ 269 0046 63895504 		beq	a1,t0,.L36
+ 270              	.L18:
+ 157:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                     GPIO_BOP(gpio_periph) = (uint32_t) ((1U << i) & pin);
+ 158:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 }
+ 159:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             }
+ 160:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set GPIO_CTL0 register */
+ 161:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             GPIO_CTL0(gpio_periph) = reg;
+ 271              		.loc 1 161 13 is_stmt 1
+ 272              		.loc 1 161 36 is_stmt 0
+ 273 004a 10C1     		sw	a2,0(a0)
+ 274              	.LVL25:
+ 275              	.L16:
+ 276 004c 8507     		addi	a5,a5,1
+ 277              	.LVL26:
+ 141:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         if ((1U << i) & pin) {
+ 278              		.loc 1 141 5 discriminator 2
+ 279 004e E39867FC 		bne	a5,t1,.L19
+ 162:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         }
+ 163:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 164:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     /* configure the eight high port pins with GPIO_CTL1 */
+ 165:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     for (i = 8U; i < 16U; i++) {
+ 166:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         if ((1U << i) & pin) {
+ 280              		.loc 1 166 17
+ 281 0052 854E     		li	t4,1
+ 167:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg = GPIO_CTL1(gpio_periph);
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 169:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* clear the specified pin mode bits */
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg &= ~GPIO_MODE_MASK(i - 8U);
+ 282              		.loc 1 170 21
+ 283 0054 3D4E     		li	t3,15
+ 171:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+ 172:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg |= GPIO_MODE_SET(i - 8U, temp_mode);
+ 173:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 174:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set IPD or IPU */
+ 175:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             if (GPIO_MODE_IPD == mode) {
+ 284              		.loc 1 175 16
+ 285 0056 930F8002 		li	t6,40
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 /* reset the corresponding OCTL bit */
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 GPIO_BC(gpio_periph) = (uint32_t) ((1U << i) & pin);
+ 178:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             } else {
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 10
+
+
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 /* set the corresponding OCTL bit */
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 if (GPIO_MODE_IPU == mode) {
+ 286              		.loc 1 180 20
+ 287 005a 93028004 		li	t0,72
+ 165:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         if ((1U << i) & pin) {
+ 288              		.loc 1 165 5
+ 289 005e 4143     		li	t1,16
+ 290              	.L23:
+ 291              	.LVL27:
+ 166:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg = GPIO_CTL1(gpio_periph);
+ 292              		.loc 1 166 9 is_stmt 1
+ 167:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 293              		.loc 1 167 13
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+ 294              		.loc 1 170 21 is_stmt 0
+ 295 0060 13972700 		slli	a4,a5,2
+ 296 0064 0117     		addi	a4,a4,-32
+ 166:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg = GPIO_CTL1(gpio_periph);
+ 297              		.loc 1 166 17
+ 298 0066 3396FE00 		sll	a2,t4,a5
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+ 299              		.loc 1 170 21
+ 300 006a 3318EE00 		sll	a6,t3,a4
+ 166:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg = GPIO_CTL1(gpio_periph);
+ 301              		.loc 1 166 23
+ 302 006e 758E     		and	a2,a2,a3
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+ 303              		.loc 1 170 20
+ 304 0070 1348F8FF 		not	a6,a6
+ 172:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 305              		.loc 1 172 20
+ 306 0074 3397E800 		sll	a4,a7,a4
+ 166:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             reg = GPIO_CTL1(gpio_periph);
+ 307              		.loc 1 166 12
+ 308 0078 01CE     		beq	a2,zero,.L20
+ 309              		.loc 1 180 17 is_stmt 1
+ 167:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 310              		.loc 1 167 17 is_stmt 0
+ 311 007a 032F4500 		lw	t5,4(a0)
+ 312              	.LVL28:
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+ 313              		.loc 1 170 13 is_stmt 1
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set the specified pin mode bits */
+ 314              		.loc 1 170 17 is_stmt 0
+ 315 007e 3378E801 		and	a6,a6,t5
+ 316              	.LVL29:
+ 172:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 317              		.loc 1 172 13 is_stmt 1
+ 172:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 318              		.loc 1 172 17 is_stmt 0
+ 319 0082 33670701 		or	a4,a4,a6
+ 320              	.LVL30:
+ 175:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 /* reset the corresponding OCTL bit */
+ 321              		.loc 1 175 13 is_stmt 1
+ 175:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 /* reset the corresponding OCTL bit */
+ 322              		.loc 1 175 16 is_stmt 0
+ 323 0086 638FF501 		beq	a1,t6,.L37
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 11
+
+
+ 324              		.loc 1 180 20
+ 325 008a 63895500 		beq	a1,t0,.L38
+ 326              	.L22:
+ 181:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                     GPIO_BOP(gpio_periph) = (uint32_t) ((1U << i) & pin);
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 }
+ 183:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             }
+ 184:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             /* set GPIO_CTL1 register */
+ 185:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             GPIO_CTL1(gpio_periph) = reg;
+ 327              		.loc 1 185 13 is_stmt 1
+ 328              		.loc 1 185 36 is_stmt 0
+ 329 008e 58C1     		sw	a4,4(a0)
+ 330              	.LVL31:
+ 331              	.L20:
+ 332 0090 8507     		addi	a5,a5,1
+ 333              	.LVL32:
+ 165:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         if ((1U << i) & pin) {
+ 334              		.loc 1 165 5 discriminator 2
+ 335 0092 E39767FC 		bne	a5,t1,.L23
+ 186:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         }
+ 187:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 188:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 336              		.loc 1 188 1
+ 337 0096 8280     		ret
+ 338              	.LVL33:
+ 339              	.L36:
+ 157:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 }
+ 340              		.loc 1 157 21 is_stmt 1
+ 157:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 }
+ 341              		.loc 1 157 43 is_stmt 0
+ 342 0098 18C9     		sw	a4,16(a0)
+ 343 009a 45BF     		j	.L18
+ 344              	.LVL34:
+ 345              	.L38:
+ 181:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 }
+ 346              		.loc 1 181 21 is_stmt 1
+ 181:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 }
+ 347              		.loc 1 181 43 is_stmt 0
+ 348 009c 10C9     		sw	a2,16(a0)
+ 349 009e C5BF     		j	.L22
+ 350              	.LVL35:
+ 351              	.L35:
+ 153:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             } else {
+ 352              		.loc 1 153 17 is_stmt 1
+ 153:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             } else {
+ 353              		.loc 1 153 38 is_stmt 0
+ 354 00a0 58C9     		sw	a4,20(a0)
+ 355 00a2 65B7     		j	.L18
+ 356              	.LVL36:
+ 357              	.L37:
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             } else {
+ 358              		.loc 1 177 17 is_stmt 1
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             } else {
+ 359              		.loc 1 177 38 is_stmt 0
+ 360 00a4 50C9     		sw	a2,20(a0)
+ 361 00a6 E5B7     		j	.L22
+ 362              		.cfi_endproc
+ 363              	.LFE4:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 12
+
+
+ 365              		.section	.text.gpio_bit_set,"ax",@progbits
+ 366              		.align	1
+ 367              		.globl	gpio_bit_set
+ 369              	gpio_bit_set:
+ 370              	.LFB5:
+ 189:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 190:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 191:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      set GPIO pin
+ 192:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+ 193:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  pin: GPIO pin
+ 194:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 195:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 196:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 197:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 198:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 199:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_bit_set(uint32_t gpio_periph, uint32_t pin)
+ 200:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 371              		.loc 1 200 1 is_stmt 1
+ 372              		.cfi_startproc
+ 373              	.LVL37:
+ 201:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     GPIO_BOP(gpio_periph) = (uint32_t) pin;
+ 374              		.loc 1 201 5
+ 375              		.loc 1 201 27 is_stmt 0
+ 376 0000 0CC9     		sw	a1,16(a0)
+ 202:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 377              		.loc 1 202 1
+ 378 0002 8280     		ret
+ 379              		.cfi_endproc
+ 380              	.LFE5:
+ 382              		.section	.text.gpio_bit_reset,"ax",@progbits
+ 383              		.align	1
+ 384              		.globl	gpio_bit_reset
+ 386              	gpio_bit_reset:
+ 387              	.LFB6:
+ 203:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 204:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 205:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      reset GPIO pin
+ 206:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+ 207:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  pin: GPIO pin
+ 208:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 209:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 210:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 211:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 212:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 213:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_bit_reset(uint32_t gpio_periph, uint32_t pin)
+ 214:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 388              		.loc 1 214 1 is_stmt 1
+ 389              		.cfi_startproc
+ 390              	.LVL38:
+ 215:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     GPIO_BC(gpio_periph) = (uint32_t) pin;
+ 391              		.loc 1 215 5
+ 392              		.loc 1 215 26 is_stmt 0
+ 393 0000 4CC9     		sw	a1,20(a0)
+ 216:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 394              		.loc 1 216 1
+ 395 0002 8280     		ret
+ 396              		.cfi_endproc
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 13
+
+
+ 397              	.LFE6:
+ 399              		.section	.text.gpio_bit_write,"ax",@progbits
+ 400              		.align	1
+ 401              		.globl	gpio_bit_write
+ 403              	gpio_bit_write:
+ 404              	.LFB7:
+ 217:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 218:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 219:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      write data to the specified GPIO pin
+ 220:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+ 221:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  pin: GPIO pin
+ 222:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 223:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  bit_value: SET or RESET
+ 225:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 226:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        RESET: clear the port pin
+ 227:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        SET: set the port pin
+ 228:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 229:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 230:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 231:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_bit_write(uint32_t gpio_periph, uint32_t pin, bit_status bit_value)
+ 232:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 405              		.loc 1 232 1 is_stmt 1
+ 406              		.cfi_startproc
+ 407              	.LVL39:
+ 233:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     if (RESET != bit_value) {
+ 408              		.loc 1 233 5
+ 409              		.loc 1 233 8 is_stmt 0
+ 410 0000 19C2     		beq	a2,zero,.L42
+ 234:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         GPIO_BOP(gpio_periph) = (uint32_t) pin;
+ 411              		.loc 1 234 9 is_stmt 1
+ 412              		.loc 1 234 31 is_stmt 0
+ 413 0002 0CC9     		sw	a1,16(a0)
+ 414 0004 8280     		ret
+ 415              	.L42:
+ 235:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else {
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         GPIO_BC(gpio_periph) = (uint32_t) pin;
+ 416              		.loc 1 236 9 is_stmt 1
+ 417              		.loc 1 236 30 is_stmt 0
+ 418 0006 4CC9     		sw	a1,20(a0)
+ 237:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 419              		.loc 1 238 1
+ 420 0008 8280     		ret
+ 421              		.cfi_endproc
+ 422              	.LFE7:
+ 424              		.section	.text.gpio_port_write,"ax",@progbits
+ 425              		.align	1
+ 426              		.globl	gpio_port_write
+ 428              	gpio_port_write:
+ 429              	.LFB8:
+ 239:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 240:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 241:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      write data to the specified GPIO port
+ 242:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+ 243:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  data: specify the value to be written to the port output data register
+ 244:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 14
+
+
+ 245:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 246:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 247:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_port_write(uint32_t gpio_periph, uint16_t data)
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 430              		.loc 1 248 1 is_stmt 1
+ 431              		.cfi_startproc
+ 432              	.LVL40:
+ 249:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     GPIO_OCTL(gpio_periph) = (uint32_t) data;
+ 433              		.loc 1 249 5
+ 434              		.loc 1 249 28 is_stmt 0
+ 435 0000 4CC5     		sw	a1,12(a0)
+ 250:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 436              		.loc 1 250 1
+ 437 0002 8280     		ret
+ 438              		.cfi_endproc
+ 439              	.LFE8:
+ 441              		.section	.text.gpio_input_bit_get,"ax",@progbits
+ 442              		.align	1
+ 443              		.globl	gpio_input_bit_get
+ 445              	gpio_input_bit_get:
+ 446              	.LFB9:
+ 251:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 253:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      get GPIO pin input status
+ 254:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+ 255:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  pin: GPIO pin
+ 256:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 only one parameter can be selected which are shown as below:
+ 257:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 258:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 259:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     input status of gpio pin: SET or RESET
+ 260:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 261:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** FlagStatus gpio_input_bit_get(uint32_t gpio_periph, uint32_t pin)
+ 262:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 447              		.loc 1 262 1 is_stmt 1
+ 448              		.cfi_startproc
+ 449              	.LVL41:
+ 263:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     if ((uint32_t) RESET != (GPIO_ISTAT(gpio_periph) & (pin))) {
+ 450              		.loc 1 263 5
+ 451              		.loc 1 263 30 is_stmt 0
+ 452 0000 0845     		lw	a0,8(a0)
+ 453              	.LVL42:
+ 454              		.loc 1 263 54
+ 455 0002 6D8D     		and	a0,a0,a1
+ 264:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         return SET;
+ 265:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else {
+ 266:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         return RESET;
+ 267:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 268:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 456              		.loc 1 268 1
+ 457 0004 3335A000 		snez	a0,a0
+ 458 0008 8280     		ret
+ 459              		.cfi_endproc
+ 460              	.LFE9:
+ 462              		.section	.text.gpio_input_port_get,"ax",@progbits
+ 463              		.align	1
+ 464              		.globl	gpio_input_port_get
+ 466              	gpio_input_port_get:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 15
+
+
+ 467              	.LFB10:
+ 269:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 270:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 271:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      get GPIO port input status
+ 272:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+ 273:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 274:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     input status of gpio all pins
+ 275:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 276:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** uint16_t gpio_input_port_get(uint32_t gpio_periph)
+ 277:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 468              		.loc 1 277 1 is_stmt 1
+ 469              		.cfi_startproc
+ 470              	.LVL43:
+ 278:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     return (uint16_t) (GPIO_ISTAT(gpio_periph));
+ 471              		.loc 1 278 5
+ 472              		.loc 1 278 24 is_stmt 0
+ 473 0000 0845     		lw	a0,8(a0)
+ 474              	.LVL44:
+ 279:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 475              		.loc 1 279 1
+ 476 0002 4205     		slli	a0,a0,16
+ 477 0004 4181     		srli	a0,a0,16
+ 478 0006 8280     		ret
+ 479              		.cfi_endproc
+ 480              	.LFE10:
+ 482              		.section	.text.gpio_output_bit_get,"ax",@progbits
+ 483              		.align	1
+ 484              		.globl	gpio_output_bit_get
+ 486              	gpio_output_bit_get:
+ 487              	.LFB11:
+ 280:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 281:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 282:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      get GPIO pin output status
+ 283:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+ 284:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  pin: GPIO pin
+ 285:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 only one parameter can be selected which are shown as below:
+ 286:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 287:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 288:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     output status of gpio pin: SET or RESET
+ 289:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 290:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** FlagStatus gpio_output_bit_get(uint32_t gpio_periph, uint32_t pin)
+ 291:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 488              		.loc 1 291 1 is_stmt 1
+ 489              		.cfi_startproc
+ 490              	.LVL45:
+ 292:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     if ((uint32_t) RESET != (GPIO_OCTL(gpio_periph) & (pin))) {
+ 491              		.loc 1 292 5
+ 492              		.loc 1 292 30 is_stmt 0
+ 493 0000 4845     		lw	a0,12(a0)
+ 494              	.LVL46:
+ 495              		.loc 1 292 53
+ 496 0002 6D8D     		and	a0,a0,a1
+ 293:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         return SET;
+ 294:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else {
+ 295:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         return RESET;
+ 296:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 297:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 16
+
+
+ 497              		.loc 1 297 1
+ 498 0004 3335A000 		snez	a0,a0
+ 499 0008 8280     		ret
+ 500              		.cfi_endproc
+ 501              	.LFE11:
+ 503              		.section	.text.gpio_output_port_get,"ax",@progbits
+ 504              		.align	1
+ 505              		.globl	gpio_output_port_get
+ 507              	gpio_output_port_get:
+ 508              	.LFB12:
+ 298:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 299:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 300:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      get GPIO port output status
+ 301:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+ 302:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 303:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     output status of gpio all pins
+ 304:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 305:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** uint16_t gpio_output_port_get(uint32_t gpio_periph)
+ 306:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 509              		.loc 1 306 1 is_stmt 1
+ 510              		.cfi_startproc
+ 511              	.LVL47:
+ 307:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     return ((uint16_t) GPIO_OCTL(gpio_periph));
+ 512              		.loc 1 307 5
+ 513              		.loc 1 307 24 is_stmt 0
+ 514 0000 4845     		lw	a0,12(a0)
+ 515              	.LVL48:
+ 308:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 516              		.loc 1 308 1
+ 517 0002 4205     		slli	a0,a0,16
+ 518 0004 4181     		srli	a0,a0,16
+ 519 0006 8280     		ret
+ 520              		.cfi_endproc
+ 521              	.LFE12:
+ 523              		.section	.text.gpio_pin_remap_config,"ax",@progbits
+ 524              		.align	1
+ 525              		.globl	gpio_pin_remap_config
+ 527              	gpio_pin_remap_config:
+ 528              	.LFB13:
+ 309:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 310:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 311:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      configure GPIO pin remap
+ 312:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_remap: select the pin to remap
+ 313:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 only one parameter can be selected which are shown as below:
+ 314:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_SPI0_REMAP: SPI0 remapping
+ 315:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_I2C0_REMAP: I2C0 remapping
+ 316:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_USART0_REMAP: USART0 remapping
+ 317:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_USART1_REMAP: USART1 remapping
+ 318:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_USART2_PARTIAL_REMAP: USART2 partial remapping
+ 319:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_USART2_FULL_REMAP: USART2 full remapping
+ 320:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_TIMER0_PARTIAL_REMAP: TIMER0 partial remapping
+ 321:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_TIMER0_FULL_REMAP: TIMER0 full remapping
+ 322:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_TIMER1_PARTIAL_REMAP0: TIMER1 partial remapping
+ 323:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_TIMER1_PARTIAL_REMAP1: TIMER1 partial remapping
+ 324:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_TIMER1_FULL_REMAP: TIMER1 full remapping
+ 325:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_TIMER2_PARTIAL_REMAP: TIMER2 partial remapping
+ 326:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_TIMER2_FULL_REMAP: TIMER2 full remapping
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 17
+
+
+ 327:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_TIMER3_REMAP: TIMER3 remapping
+ 328:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_CAN0_PARTIAL_REMAP: CAN0 partial remapping
+ 329:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_CAN0_FULL_REMAP: CAN0 full remapping
+ 330:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PD01_REMAP: PD01 remapping
+ 331:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_TIMER4CH3_IREMAP: TIMER4 channel3 internal remapping
+ 332:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_CAN1_REMAP: CAN1 remapping
+ 333:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_SWJ_NONJTRST_REMAP: JTAG-DP,but without NJTRST
+ 334:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_SWJ_DISABLE_REMAP: JTAG-DP disabled
+ 335:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_SPI2_REMAP: SPI2 remapping
+ 336:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_TIMER1ITI1_REMAP: TIMER1 internal trigger 1 remapping
+ 337:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_EXMC_NADV_REMAP: EXMC_NADV connect/disconnect
+ 338:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  newvalue: ENABLE or DISABLE
+ 339:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 340:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 341:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 342:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_pin_remap_config(uint32_t remap, ControlStatus newvalue)
+ 343:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 529              		.loc 1 343 1 is_stmt 1
+ 530              		.cfi_startproc
+ 531              	.LVL49:
+ 344:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     uint32_t remap1 = 0U, remap2 = 0U, temp_reg = 0U, temp_mask = 0U;
+ 532              		.loc 1 344 5
+ 345:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 346:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     if (AFIO_PCF1_FIELDS == (remap & AFIO_PCF1_FIELDS)) {
+ 533              		.loc 1 346 5
+ 347:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* get AFIO_PCF1 regiter value */
+ 348:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg = AFIO_PCF1;
+ 534              		.loc 1 348 18 is_stmt 0
+ 535 0000 B7070140 		li	a5,1073807360
+ 346:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* get AFIO_PCF1 regiter value */
+ 536              		.loc 1 346 8
+ 537 0004 63480506 		blt	a0,zero,.L61
+ 349:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else {
+ 350:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* get AFIO_PCF0 regiter value */
+ 351:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg = AFIO_PCF0;
+ 538              		.loc 1 351 9 is_stmt 1
+ 352:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 353:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 354:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     temp_mask = (remap & PCF_POSITION_MASK) >> 0x10U;
+ 355:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     remap1 = remap & LSB_16BIT_MASK;
+ 356:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 357:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     /* judge pin remap type */
+ 358:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     if ((PCF_LOCATION1_MASK | PCF_LOCATION2_MASK)
+ 359:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             == (remap & (PCF_LOCATION1_MASK | PCF_LOCATION2_MASK))) {
+ 539              		.loc 1 359 23 is_stmt 0
+ 540 0008 37073000 		li	a4,3145728
+ 351:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 541              		.loc 1 351 18
+ 542 000c DC43     		lw	a5,4(a5)
+ 543              	.LVL50:
+ 354:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     remap1 = remap & LSB_16BIT_MASK;
+ 544              		.loc 1 354 5 is_stmt 1
+ 355:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 545              		.loc 1 355 5
+ 355:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 546              		.loc 1 355 12 is_stmt 0
+ 547 000e 93160501 		slli	a3,a0,16
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 18
+
+
+ 548              		.loc 1 359 23
+ 549 0012 3376E500 		and	a2,a0,a4
+ 355:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 550              		.loc 1 355 12
+ 551 0016 C182     		srli	a3,a3,16
+ 552              	.LVL51:
+ 358:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             == (remap & (PCF_LOCATION1_MASK | PCF_LOCATION2_MASK))) {
+ 553              		.loc 1 358 5 is_stmt 1
+ 358:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             == (remap & (PCF_LOCATION1_MASK | PCF_LOCATION2_MASK))) {
+ 554              		.loc 1 358 8 is_stmt 0
+ 555 0018 6308E606 		beq	a2,a4,.L62
+ 556              	.LVL52:
+ 557              	.L52:
+ 360:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg &= PCF_SWJCFG_MASK;
+ 361:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_PCF0 &= PCF_SWJCFG_MASK;
+ 362:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else if (PCF_LOCATION2_MASK == (remap & PCF_LOCATION2_MASK)) {
+ 558              		.loc 1 362 12 is_stmt 1
+ 559              		.loc 1 362 15 is_stmt 0
+ 560 001c 1317B500 		slli	a4,a0,11
+ 561 0020 635C0702 		bge	a4,zero,.L54
+ 363:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         remap2 = ((uint32_t) 0x03U) << temp_mask;
+ 562              		.loc 1 363 9 is_stmt 1
+ 563              	.LVL53:
+ 364:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg &= ~remap2;
+ 564              		.loc 1 364 9
+ 354:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     remap1 = remap & LSB_16BIT_MASK;
+ 565              		.loc 1 354 45 is_stmt 0
+ 566 0024 13570501 		srli	a4,a0,16
+ 354:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     remap1 = remap & LSB_16BIT_MASK;
+ 567              		.loc 1 354 15
+ 568 0028 1376F700 		andi	a2,a4,15
+ 363:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         remap2 = ((uint32_t) 0x03U) << temp_mask;
+ 569              		.loc 1 363 16
+ 570 002c 0D47     		li	a4,3
+ 571 002e 3317C700 		sll	a4,a4,a2
+ 572              		.loc 1 364 21
+ 573 0032 1347F7FF 		not	a4,a4
+ 574              		.loc 1 364 18
+ 575 0036 7D8F     		and	a4,a4,a5
+ 576              	.LVL54:
+ 365:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg |= ~PCF_SWJCFG_MASK;
+ 577              		.loc 1 365 9 is_stmt 1
+ 578              		.loc 1 365 18 is_stmt 0
+ 579 0038 B707000F 		li	a5,251658240
+ 580 003c D98F     		or	a5,a4,a5
+ 581              	.LVL55:
+ 582              	.L53:
+ 366:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }  else {
+ 367:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg &= ~(remap1 << ((remap >> 0x15U) * 0x10U));
+ 368:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg |= ~PCF_SWJCFG_MASK;
+ 369:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 370:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 371:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     /* set pin remap value */
+ 372:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     if (DISABLE != newvalue) {
+ 583              		.loc 1 372 5 is_stmt 1
+ 584              		.loc 1 372 8 is_stmt 0
+ 585 003e 99C5     		beq	a1,zero,.L55
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 19
+
+
+ 373:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg |= (remap1 << ((remap >> 0x15U) * 0x10U));
+ 586              		.loc 1 373 9 is_stmt 1
+ 587              		.loc 1 373 40 is_stmt 0
+ 588 0040 13575501 		srli	a4,a0,21
+ 589              		.loc 1 373 50
+ 590 0044 1207     		slli	a4,a4,4
+ 591              		.loc 1 373 29
+ 592 0046 B396E600 		sll	a3,a3,a4
+ 593              	.LVL56:
+ 594              		.loc 1 373 18
+ 595 004a D58F     		or	a5,a5,a3
+ 596              	.LVL57:
+ 597              	.L55:
+ 374:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 375:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 376:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     if (AFIO_PCF1_FIELDS == (remap & AFIO_PCF1_FIELDS)) {
+ 598              		.loc 1 376 5 is_stmt 1
+ 377:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* set AFIO_PCF1 regiter value */
+ 378:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_PCF1 = temp_reg;
+ 599              		.loc 1 378 19 is_stmt 0
+ 600 004c 37070140 		li	a4,1073807360
+ 376:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* set AFIO_PCF1 regiter value */
+ 601              		.loc 1 376 8
+ 602 0050 63400502 		blt	a0,zero,.L63
+ 379:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else {
+ 380:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* set AFIO_PCF0 regiter value */
+ 381:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_PCF0 = temp_reg;
+ 603              		.loc 1 381 9 is_stmt 1
+ 604              		.loc 1 381 19 is_stmt 0
+ 605 0054 5CC3     		sw	a5,4(a4)
+ 382:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 383:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 606              		.loc 1 383 1
+ 607 0056 8280     		ret
+ 608              	.LVL58:
+ 609              	.L54:
+ 367:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg |= ~PCF_SWJCFG_MASK;
+ 610              		.loc 1 367 9 is_stmt 1
+ 367:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg |= ~PCF_SWJCFG_MASK;
+ 611              		.loc 1 367 41 is_stmt 0
+ 612 0058 13575501 		srli	a4,a0,21
+ 367:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg |= ~PCF_SWJCFG_MASK;
+ 613              		.loc 1 367 51
+ 614 005c 1207     		slli	a4,a4,4
+ 367:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg |= ~PCF_SWJCFG_MASK;
+ 615              		.loc 1 367 30
+ 616 005e 3397E600 		sll	a4,a3,a4
+ 367:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg |= ~PCF_SWJCFG_MASK;
+ 617              		.loc 1 367 21
+ 618 0062 1347F7FF 		not	a4,a4
+ 367:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg |= ~PCF_SWJCFG_MASK;
+ 619              		.loc 1 367 18
+ 620 0066 7D8F     		and	a4,a4,a5
+ 621              	.LVL59:
+ 368:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 622              		.loc 1 368 9 is_stmt 1
+ 368:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 20
+
+
+ 623              		.loc 1 368 18 is_stmt 0
+ 624 0068 B707000F 		li	a5,251658240
+ 625 006c D98F     		or	a5,a4,a5
+ 626              	.LVL60:
+ 627 006e C1BF     		j	.L53
+ 628              	.LVL61:
+ 629              	.L63:
+ 378:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else {
+ 630              		.loc 1 378 9 is_stmt 1
+ 378:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else {
+ 631              		.loc 1 378 19 is_stmt 0
+ 632 0070 5CCF     		sw	a5,28(a4)
+ 633 0072 8280     		ret
+ 634              	.LVL62:
+ 635              	.L61:
+ 348:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else {
+ 636              		.loc 1 348 9 is_stmt 1
+ 359:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg &= PCF_SWJCFG_MASK;
+ 637              		.loc 1 359 23 is_stmt 0
+ 638 0074 37073000 		li	a4,3145728
+ 348:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else {
+ 639              		.loc 1 348 18
+ 640 0078 DC4F     		lw	a5,28(a5)
+ 641              	.LVL63:
+ 354:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     remap1 = remap & LSB_16BIT_MASK;
+ 642              		.loc 1 354 5 is_stmt 1
+ 355:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 643              		.loc 1 355 5
+ 355:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 644              		.loc 1 355 12 is_stmt 0
+ 645 007a 93160501 		slli	a3,a0,16
+ 359:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         temp_reg &= PCF_SWJCFG_MASK;
+ 646              		.loc 1 359 23
+ 647 007e 3376E500 		and	a2,a0,a4
+ 355:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 648              		.loc 1 355 12
+ 649 0082 C182     		srli	a3,a3,16
+ 650              	.LVL64:
+ 358:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             == (remap & (PCF_LOCATION1_MASK | PCF_LOCATION2_MASK))) {
+ 651              		.loc 1 358 5 is_stmt 1
+ 358:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             == (remap & (PCF_LOCATION1_MASK | PCF_LOCATION2_MASK))) {
+ 652              		.loc 1 358 8 is_stmt 0
+ 653 0084 E31CE6F8 		bne	a2,a4,.L52
+ 654              	.LVL65:
+ 655              	.L62:
+ 360:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_PCF0 &= PCF_SWJCFG_MASK;
+ 656              		.loc 1 360 9 is_stmt 1
+ 361:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else if (PCF_LOCATION2_MASK == (remap & PCF_LOCATION2_MASK)) {
+ 657              		.loc 1 361 19 is_stmt 0
+ 658 0088 37080140 		li	a6,1073807360
+ 659 008c 03264800 		lw	a2,4(a6)
+ 360:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_PCF0 &= PCF_SWJCFG_MASK;
+ 660              		.loc 1 360 18
+ 661 0090 370700F1 		li	a4,-251658240
+ 662 0094 7D17     		addi	a4,a4,-1
+ 361:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else if (PCF_LOCATION2_MASK == (remap & PCF_LOCATION2_MASK)) {
+ 663              		.loc 1 361 19
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 21
+
+
+ 664 0096 798E     		and	a2,a2,a4
+ 360:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_PCF0 &= PCF_SWJCFG_MASK;
+ 665              		.loc 1 360 18
+ 666 0098 F98F     		and	a5,a5,a4
+ 667              	.LVL66:
+ 361:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else if (PCF_LOCATION2_MASK == (remap & PCF_LOCATION2_MASK)) {
+ 668              		.loc 1 361 9 is_stmt 1
+ 361:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else if (PCF_LOCATION2_MASK == (remap & PCF_LOCATION2_MASK)) {
+ 669              		.loc 1 361 19 is_stmt 0
+ 670 009a 2322C800 		sw	a2,4(a6)
+ 671 009e 45B7     		j	.L53
+ 672              		.cfi_endproc
+ 673              	.LFE13:
+ 675              		.section	.text.gpio_exti_source_select,"ax",@progbits
+ 676              		.align	1
+ 677              		.globl	gpio_exti_source_select
+ 679              	gpio_exti_source_select:
+ 680              	.LFB14:
+ 384:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 385:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 386:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      select GPIO pin exti sources
+ 387:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_outputport: gpio event output port
+ 388:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 only one parameter can be selected which are shown as below:
+ 389:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PORT_SOURCE_GPIOA: output port source A
+ 390:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PORT_SOURCE_GPIOB: output port source B
+ 391:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PORT_SOURCE_GPIOC: output port source C
+ 392:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PORT_SOURCE_GPIOD: output port source D
+ 393:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PORT_SOURCE_GPIOE: output port source E
+ 394:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_outputpin: GPIO_PIN_SOURCE_x(x=0..15)
+ 395:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 396:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 397:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 398:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_exti_source_select(uint8_t output_port, uint8_t output_pin)
+ 399:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 681              		.loc 1 399 1 is_stmt 1
+ 682              		.cfi_startproc
+ 683              	.LVL67:
+ 400:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     uint32_t source = 0U;
+ 684              		.loc 1 400 5
+ 401:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     source = ((uint32_t) 0x0FU)
+ 685              		.loc 1 401 5
+ 402:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             << (AFIO_EXTI_SOURCE_FIELDS * (output_pin & AFIO_EXTI_SOURCE_MASK));
+ 686              		.loc 1 402 55 is_stmt 0
+ 687 0000 93F73500 		andi	a5,a1,3
+ 688              		.loc 1 402 41
+ 689 0004 8A07     		slli	a5,a5,2
+ 690              	.LVL68:
+ 403:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 404:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     /* select EXTI sources */
+ 405:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     if (GPIO_PIN_SOURCE_4 > output_pin) {
+ 691              		.loc 1 405 5 is_stmt 1
+ 401:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****             << (AFIO_EXTI_SOURCE_FIELDS * (output_pin & AFIO_EXTI_SOURCE_MASK));
+ 692              		.loc 1 401 12 is_stmt 0
+ 693 0006 3D47     		li	a4,15
+ 694 0008 3317F700 		sll	a4,a4,a5
+ 695              		.loc 1 405 8
+ 696 000c 8D46     		li	a3,3
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 22
+
+
+ 697 000e 1347F7FF 		not	a4,a4
+ 698 0012 3315F500 		sll	a0,a0,a5
+ 699              	.LVL69:
+ 700 0016 63EBB600 		bgtu	a1,a3,.L65
+ 406:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* select EXTI0/EXTI1/EXTI2/EXTI3 */
+ 407:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_EXTISS0 &= ~source;
+ 701              		.loc 1 407 9 is_stmt 1
+ 702              		.loc 1 407 22 is_stmt 0
+ 703 001a B7060140 		li	a3,1073807360
+ 704 001e 9C46     		lw	a5,8(a3)
+ 705              	.LVL70:
+ 706 0020 7D8F     		and	a4,a5,a4
+ 707 0022 98C6     		sw	a4,8(a3)
+ 408:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_EXTISS0 |= (((uint32_t) output_port)
+ 708              		.loc 1 408 9 is_stmt 1
+ 709              		.loc 1 408 22 is_stmt 0
+ 710 0024 9C46     		lw	a5,8(a3)
+ 711 0026 C98F     		or	a5,a5,a0
+ 712 0028 9CC6     		sw	a5,8(a3)
+ 713 002a 8280     		ret
+ 714              	.LVL71:
+ 715              	.L65:
+ 409:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 << (AFIO_EXTI_SOURCE_FIELDS
+ 410:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                         * (output_pin & AFIO_EXTI_SOURCE_MASK)));
+ 411:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else if (GPIO_PIN_SOURCE_8 > output_pin) {
+ 716              		.loc 1 411 12 is_stmt 1
+ 717              		.loc 1 411 15 is_stmt 0
+ 718 002c 9D47     		li	a5,7
+ 719              	.LVL72:
+ 720 002e 63EBB700 		bgtu	a1,a5,.L67
+ 412:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* select EXTI4/EXTI5/EXTI6/EXTI7 */
+ 413:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_EXTISS1 &= ~source;
+ 721              		.loc 1 413 9 is_stmt 1
+ 722              		.loc 1 413 22 is_stmt 0
+ 723 0032 B7060140 		li	a3,1073807360
+ 724 0036 DC46     		lw	a5,12(a3)
+ 725 0038 7D8F     		and	a4,a5,a4
+ 726 003a D8C6     		sw	a4,12(a3)
+ 414:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_EXTISS1 |= (((uint32_t) output_port)
+ 727              		.loc 1 414 9 is_stmt 1
+ 728              		.loc 1 414 22 is_stmt 0
+ 729 003c DC46     		lw	a5,12(a3)
+ 730 003e C98F     		or	a5,a5,a0
+ 731 0040 DCC6     		sw	a5,12(a3)
+ 732 0042 8280     		ret
+ 733              	.L67:
+ 415:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 << (AFIO_EXTI_SOURCE_FIELDS
+ 416:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                         * (output_pin & AFIO_EXTI_SOURCE_MASK)));
+ 417:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else if (GPIO_PIN_SOURCE_12 > output_pin) {
+ 734              		.loc 1 417 12 is_stmt 1
+ 735              		.loc 1 417 15 is_stmt 0
+ 736 0044 AD47     		li	a5,11
+ 418:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* select EXTI8/EXTI9/EXTI10/EXTI11 */
+ 419:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_EXTISS2 &= ~source;
+ 737              		.loc 1 419 22
+ 738 0046 B7060140 		li	a3,1073807360
+ 417:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* select EXTI8/EXTI9/EXTI10/EXTI11 */
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 23
+
+
+ 739              		.loc 1 417 15
+ 740 004a 63E9B700 		bgtu	a1,a5,.L68
+ 741              		.loc 1 419 9 is_stmt 1
+ 742              		.loc 1 419 22 is_stmt 0
+ 743 004e 9C4A     		lw	a5,16(a3)
+ 744 0050 7D8F     		and	a4,a5,a4
+ 745 0052 98CA     		sw	a4,16(a3)
+ 420:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_EXTISS2 |= (((uint32_t) output_port)
+ 746              		.loc 1 420 9 is_stmt 1
+ 747              		.loc 1 420 22 is_stmt 0
+ 748 0054 9C4A     		lw	a5,16(a3)
+ 749 0056 C98F     		or	a5,a5,a0
+ 750 0058 9CCA     		sw	a5,16(a3)
+ 751 005a 8280     		ret
+ 752              	.L68:
+ 421:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 << (AFIO_EXTI_SOURCE_FIELDS
+ 422:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                         * (output_pin & AFIO_EXTI_SOURCE_MASK)));
+ 423:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     } else {
+ 424:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         /* select EXTI12/EXTI13/EXTI14/EXTI15 */
+ 425:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_EXTISS3 &= ~source;
+ 753              		.loc 1 425 9 is_stmt 1
+ 754              		.loc 1 425 22 is_stmt 0
+ 755 005c DC4A     		lw	a5,20(a3)
+ 756 005e 7D8F     		and	a4,a5,a4
+ 757 0060 D8CA     		sw	a4,20(a3)
+ 426:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****         AFIO_EXTISS3 |= (((uint32_t) output_port)
+ 758              		.loc 1 426 9 is_stmt 1
+ 759              		.loc 1 426 22 is_stmt 0
+ 760 0062 DC4A     		lw	a5,20(a3)
+ 761 0064 C98F     		or	a5,a5,a0
+ 762 0066 DCCA     		sw	a5,20(a3)
+ 427:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 << (AFIO_EXTI_SOURCE_FIELDS
+ 428:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                         * (output_pin & AFIO_EXTI_SOURCE_MASK)));
+ 429:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     }
+ 430:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 763              		.loc 1 430 1
+ 764 0068 8280     		ret
+ 765              		.cfi_endproc
+ 766              	.LFE14:
+ 768              		.section	.text.gpio_event_output_config,"ax",@progbits
+ 769              		.align	1
+ 770              		.globl	gpio_event_output_config
+ 772              	gpio_event_output_config:
+ 773              	.LFB15:
+ 431:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 432:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 433:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      configure GPIO pin event output
+ 434:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  output_port: gpio event output port
+ 435:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 only one parameter can be selected which are shown as below:
+ 436:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_EVENT_PORT_GPIOA: event output port A
+ 437:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_EVENT_PORT_GPIOB: event output port B
+ 438:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_EVENT_PORT_GPIOC: event output port C
+ 439:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_EVENT_PORT_GPIOD: event output port D
+ 440:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_EVENT_PORT_GPIOE: event output port E
+ 441:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  output_pin:
+ 442:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 only one parameter can be selected which are shown as below:
+ 443:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_EVENT_PIN_x(x=0..15)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 24
+
+
+ 444:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 445:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 446:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 447:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_event_output_config(uint8_t output_port, uint8_t output_pin)
+ 448:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 774              		.loc 1 448 1 is_stmt 1
+ 775              		.cfi_startproc
+ 776              	.LVL73:
+ 449:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     uint32_t reg = 0U;
+ 777              		.loc 1 449 5
+ 450:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     reg = AFIO_EC;
+ 778              		.loc 1 450 5
+ 779              		.loc 1 450 9 is_stmt 0
+ 780 0000 37070140 		li	a4,1073807360
+ 781 0004 1C43     		lw	a5,0(a4)
+ 782              	.LVL74:
+ 451:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 452:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     /* clear AFIO_EC_PORT and AFIO_EC_PIN bits */
+ 453:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     reg &= (uint32_t) (~(AFIO_EC_PORT | AFIO_EC_PIN));
+ 783              		.loc 1 453 5 is_stmt 1
+ 454:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 455:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     reg |= (uint32_t) ((uint32_t) output_port << GPIO_OUTPUT_PORT_OFFSET);
+ 784              		.loc 1 455 5
+ 456:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     reg |= (uint32_t) output_pin;
+ 785              		.loc 1 456 5
+ 455:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     reg |= (uint32_t) output_pin;
+ 786              		.loc 1 455 12 is_stmt 0
+ 787 0006 1205     		slli	a0,a0,4
+ 788              	.LVL75:
+ 453:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 789              		.loc 1 453 9
+ 790 0008 93F707F8 		andi	a5,a5,-128
+ 791              	.LVL76:
+ 792 000c CD8F     		or	a5,a5,a1
+ 793              		.loc 1 456 9
+ 794 000e C98F     		or	a5,a0,a5
+ 795              	.LVL77:
+ 457:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 458:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     AFIO_EC = reg;
+ 796              		.loc 1 458 5 is_stmt 1
+ 797              		.loc 1 458 13 is_stmt 0
+ 798 0010 1CC3     		sw	a5,0(a4)
+ 459:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 799              		.loc 1 459 1
+ 800 0012 8280     		ret
+ 801              		.cfi_endproc
+ 802              	.LFE15:
+ 804              		.section	.text.gpio_event_output_enable,"ax",@progbits
+ 805              		.align	1
+ 806              		.globl	gpio_event_output_enable
+ 808              	gpio_event_output_enable:
+ 809              	.LFB16:
+ 460:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 461:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 462:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      enable GPIO pin event output
+ 463:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  none
+ 464:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 25
+
+
+ 465:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 466:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 467:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_event_output_enable(void)
+ 468:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 810              		.loc 1 468 1 is_stmt 1
+ 811              		.cfi_startproc
+ 469:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     AFIO_EC |= AFIO_EC_EOE;
+ 812              		.loc 1 469 5
+ 813              		.loc 1 469 13 is_stmt 0
+ 814 0000 37070140 		li	a4,1073807360
+ 815 0004 1C43     		lw	a5,0(a4)
+ 816 0006 93E70708 		ori	a5,a5,128
+ 817 000a 1CC3     		sw	a5,0(a4)
+ 470:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 818              		.loc 1 470 1
+ 819 000c 8280     		ret
+ 820              		.cfi_endproc
+ 821              	.LFE16:
+ 823              		.section	.text.gpio_event_output_disable,"ax",@progbits
+ 824              		.align	1
+ 825              		.globl	gpio_event_output_disable
+ 827              	gpio_event_output_disable:
+ 828              	.LFB17:
+ 471:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 472:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 473:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      disable GPIO pin event output
+ 474:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  none
+ 475:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 476:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 477:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 478:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_event_output_disable(void)
+ 479:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 829              		.loc 1 479 1 is_stmt 1
+ 830              		.cfi_startproc
+ 480:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     AFIO_EC &= (uint32_t) (~AFIO_EC_EOE);
+ 831              		.loc 1 480 5
+ 832              		.loc 1 480 13 is_stmt 0
+ 833 0000 37070140 		li	a4,1073807360
+ 834 0004 1C43     		lw	a5,0(a4)
+ 835 0006 93F7F7F7 		andi	a5,a5,-129
+ 836 000a 1CC3     		sw	a5,0(a4)
+ 481:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 837              		.loc 1 481 1
+ 838 000c 8280     		ret
+ 839              		.cfi_endproc
+ 840              	.LFE17:
+ 842              		.section	.text.gpio_pin_lock,"ax",@progbits
+ 843              		.align	1
+ 844              		.globl	gpio_pin_lock
+ 846              	gpio_pin_lock:
+ 847              	.LFB18:
+ 482:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 483:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** /*!
+ 484:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \brief      lock GPIO pin
+ 485:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,D,E)
+ 486:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[in]  pin: GPIO pin
+ 487:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****                 one or more parameters can be selected which are shown as below:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 26
+
+
+ 488:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 489:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \param[out] none
+ 490:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     \retval     none
+ 491:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** */
+ 492:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** void gpio_pin_lock(uint32_t gpio_periph, uint32_t pin)
+ 493:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** {
+ 848              		.loc 1 493 1 is_stmt 1
+ 849              		.cfi_startproc
+ 850              	.LVL78:
+ 494:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     uint32_t lock = 0x00010000U;
+ 851              		.loc 1 494 5
+ 495:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     lock |= pin;
+ 852              		.loc 1 495 5
+ 853              		.loc 1 495 10 is_stmt 0
+ 854 0000 C167     		li	a5,65536
+ 855 0002 CD8F     		or	a5,a1,a5
+ 856              	.LVL79:
+ 496:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** 
+ 497:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     /* lock key writing sequence: write 1 -> write 0 -> write 1 -> read 0 -> read 1 */
+ 498:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     GPIO_LOCK(gpio_periph) = (uint32_t) lock;
+ 857              		.loc 1 498 5 is_stmt 1
+ 858              		.loc 1 498 28 is_stmt 0
+ 859 0004 1CCD     		sw	a5,24(a0)
+ 499:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     GPIO_LOCK(gpio_periph) = (uint32_t) pin;
+ 860              		.loc 1 499 5 is_stmt 1
+ 861              		.loc 1 499 28 is_stmt 0
+ 862 0006 0CCD     		sw	a1,24(a0)
+ 500:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     GPIO_LOCK(gpio_periph) = (uint32_t) lock;
+ 863              		.loc 1 500 5 is_stmt 1
+ 864              		.loc 1 500 28 is_stmt 0
+ 865 0008 1CCD     		sw	a5,24(a0)
+ 501:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     lock = GPIO_LOCK(gpio_periph);
+ 866              		.loc 1 501 5 is_stmt 1
+ 867              		.loc 1 501 10 is_stmt 0
+ 868 000a 1C4D     		lw	a5,24(a0)
+ 869              	.LVL80:
+ 502:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c ****     lock = GPIO_LOCK(gpio_periph);
+ 870              		.loc 1 502 5 is_stmt 1
+ 871              		.loc 1 502 10 is_stmt 0
+ 872 000c 1C4D     		lw	a5,24(a0)
+ 503:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_gpio.c **** }
+ 873              		.loc 1 503 1
+ 874 000e 8280     		ret
+ 875              		.cfi_endproc
+ 876              	.LFE18:
+ 878              		.text
+ 879              	.Letext0:
+ 880              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 881              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 882              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 883              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu
+ 884              		.file 6 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_gpi
+ 885              		.file 7 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 27
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32vf103_gpio.c
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:13     .text.gpio_deinit:0000000000000000 gpio_deinit
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:17     .text.gpio_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:19     .text.gpio_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:20     .text.gpio_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:21     .text.gpio_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:23     .text.gpio_deinit:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:25     .text.gpio_deinit:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:27     .text.gpio_deinit:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:36     .text.gpio_deinit:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:41     .text.gpio_deinit:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:42     .text.gpio_deinit:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:43     .text.gpio_deinit:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:44     .text.gpio_deinit:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:46     .text.gpio_deinit:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:48     .text.gpio_deinit:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:50     .text.gpio_deinit:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:52     .text.gpio_deinit:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:56     .text.gpio_deinit:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:58     .text.gpio_deinit:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:63     .text.gpio_deinit:0000000000000050 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:68     .text.gpio_deinit:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:69     .text.gpio_deinit:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:70     .text.gpio_deinit:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:71     .text.gpio_deinit:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:73     .text.gpio_deinit:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:75     .text.gpio_deinit:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:77     .text.gpio_deinit:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:79     .text.gpio_deinit:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:83     .text.gpio_deinit:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:85     .text.gpio_deinit:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:90     .text.gpio_deinit:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:91     .text.gpio_deinit:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:92     .text.gpio_deinit:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:93     .text.gpio_deinit:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:95     .text.gpio_deinit:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:97     .text.gpio_deinit:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:99     .text.gpio_deinit:0000000000000080 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:101    .text.gpio_deinit:0000000000000080 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:105    .text.gpio_deinit:0000000000000088 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:107    .text.gpio_deinit:0000000000000088 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:112    .text.gpio_deinit:0000000000000094 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:113    .text.gpio_deinit:0000000000000094 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:114    .text.gpio_deinit:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:115    .text.gpio_deinit:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:117    .text.gpio_deinit:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:119    .text.gpio_deinit:000000000000009a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:121    .text.gpio_deinit:000000000000009c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:123    .text.gpio_deinit:000000000000009c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:127    .text.gpio_deinit:00000000000000a4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:129    .text.gpio_deinit:00000000000000a4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:130    .text.gpio_deinit:00000000000000a6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:131    .text.gpio_deinit:00000000000000a6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:134    .text.gpio_deinit:00000000000000a8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:138    .text.gpio_deinit:00000000000000aa .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:140    .text.gpio_deinit:00000000000000aa .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 28
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:145    .text.gpio_deinit:00000000000000b6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:146    .text.gpio_deinit:00000000000000b6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:147    .text.gpio_deinit:00000000000000b8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:149    .text.gpio_deinit:00000000000000b8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:151    .text.gpio_deinit:00000000000000bc .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:153    .text.gpio_deinit:00000000000000be .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:155    .text.gpio_deinit:00000000000000be .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:157    .text.gpio_deinit:00000000000000c6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:164    .text.gpio_afio_deinit:0000000000000000 gpio_afio_deinit
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:167    .text.gpio_afio_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:168    .text.gpio_afio_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:169    .text.gpio_afio_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:170    .text.gpio_afio_deinit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:172    .text.gpio_afio_deinit:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:174    .text.gpio_afio_deinit:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:176    .text.gpio_afio_deinit:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:177    .text.gpio_afio_deinit:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:179    .text.gpio_afio_deinit:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:182    .text.gpio_afio_deinit:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:183    .text.gpio_afio_deinit:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:184    .text.gpio_afio_deinit:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:186    .text.gpio_afio_deinit:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:188    .text.gpio_afio_deinit:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:190    .text.gpio_afio_deinit:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:192    .text.gpio_afio_deinit:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:194    .text.gpio_afio_deinit:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:201    .text.gpio_init:0000000000000000 gpio_init
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:204    .text.gpio_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:206    .text.gpio_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:207    .text.gpio_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:208    .text.gpio_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:209    .text.gpio_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:210    .text.gpio_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:211    .text.gpio_init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:213    .text.gpio_init:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:216    .text.gpio_init:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:217    .text.gpio_init:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:219    .text.gpio_init:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:220    .text.gpio_init:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:224    .text.gpio_init:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:225    .text.gpio_init:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:227    .text.gpio_init:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:229    .text.gpio_init:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:231    .text.gpio_init:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:233    .text.gpio_init:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:235    .text.gpio_init:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:239    .text.gpio_init:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:240    .text.gpio_init:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:242    .text.gpio_init:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:244    .text.gpio_init:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:246    .text.gpio_init:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:248    .text.gpio_init:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:250    .text.gpio_init:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:252    .text.gpio_init:0000000000000034 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:254    .text.gpio_init:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:255    .text.gpio_init:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:258    .text.gpio_init:000000000000003a .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 29
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:259    .text.gpio_init:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:262    .text.gpio_init:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:263    .text.gpio_init:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:266    .text.gpio_init:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:267    .text.gpio_init:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:269    .text.gpio_init:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:272    .text.gpio_init:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:273    .text.gpio_init:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:279    .text.gpio_init:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:281    .text.gpio_init:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:283    .text.gpio_init:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:285    .text.gpio_init:0000000000000056 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:287    .text.gpio_init:000000000000005a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:289    .text.gpio_init:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:293    .text.gpio_init:0000000000000060 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:294    .text.gpio_init:0000000000000060 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:295    .text.gpio_init:0000000000000060 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:298    .text.gpio_init:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:300    .text.gpio_init:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:302    .text.gpio_init:000000000000006e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:304    .text.gpio_init:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:306    .text.gpio_init:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:308    .text.gpio_init:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:310    .text.gpio_init:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:311    .text.gpio_init:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:314    .text.gpio_init:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:315    .text.gpio_init:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:318    .text.gpio_init:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:319    .text.gpio_init:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:322    .text.gpio_init:0000000000000086 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:323    .text.gpio_init:0000000000000086 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:325    .text.gpio_init:000000000000008a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:328    .text.gpio_init:000000000000008e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:329    .text.gpio_init:000000000000008e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:335    .text.gpio_init:0000000000000092 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:337    .text.gpio_init:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:341    .text.gpio_init:0000000000000098 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:342    .text.gpio_init:0000000000000098 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:347    .text.gpio_init:000000000000009c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:348    .text.gpio_init:000000000000009c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:353    .text.gpio_init:00000000000000a0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:354    .text.gpio_init:00000000000000a0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:359    .text.gpio_init:00000000000000a4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:360    .text.gpio_init:00000000000000a4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:362    .text.gpio_init:00000000000000a8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:369    .text.gpio_bit_set:0000000000000000 gpio_bit_set
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:372    .text.gpio_bit_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:374    .text.gpio_bit_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:375    .text.gpio_bit_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:376    .text.gpio_bit_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:378    .text.gpio_bit_set:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:379    .text.gpio_bit_set:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:386    .text.gpio_bit_reset:0000000000000000 gpio_bit_reset
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:389    .text.gpio_bit_reset:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:391    .text.gpio_bit_reset:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:392    .text.gpio_bit_reset:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:393    .text.gpio_bit_reset:0000000000000000 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 30
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:395    .text.gpio_bit_reset:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:396    .text.gpio_bit_reset:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:403    .text.gpio_bit_write:0000000000000000 gpio_bit_write
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:406    .text.gpio_bit_write:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:408    .text.gpio_bit_write:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:409    .text.gpio_bit_write:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:410    .text.gpio_bit_write:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:412    .text.gpio_bit_write:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:413    .text.gpio_bit_write:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:417    .text.gpio_bit_write:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:418    .text.gpio_bit_write:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:420    .text.gpio_bit_write:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:421    .text.gpio_bit_write:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:428    .text.gpio_port_write:0000000000000000 gpio_port_write
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:431    .text.gpio_port_write:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:433    .text.gpio_port_write:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:434    .text.gpio_port_write:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:435    .text.gpio_port_write:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:437    .text.gpio_port_write:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:438    .text.gpio_port_write:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:445    .text.gpio_input_bit_get:0000000000000000 gpio_input_bit_get
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:448    .text.gpio_input_bit_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:450    .text.gpio_input_bit_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:451    .text.gpio_input_bit_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:452    .text.gpio_input_bit_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:455    .text.gpio_input_bit_get:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:457    .text.gpio_input_bit_get:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:459    .text.gpio_input_bit_get:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:466    .text.gpio_input_port_get:0000000000000000 gpio_input_port_get
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:469    .text.gpio_input_port_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:471    .text.gpio_input_port_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:472    .text.gpio_input_port_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:473    .text.gpio_input_port_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:476    .text.gpio_input_port_get:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:479    .text.gpio_input_port_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:486    .text.gpio_output_bit_get:0000000000000000 gpio_output_bit_get
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:489    .text.gpio_output_bit_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:491    .text.gpio_output_bit_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:492    .text.gpio_output_bit_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:493    .text.gpio_output_bit_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:496    .text.gpio_output_bit_get:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:498    .text.gpio_output_bit_get:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:500    .text.gpio_output_bit_get:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:507    .text.gpio_output_port_get:0000000000000000 gpio_output_port_get
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:510    .text.gpio_output_port_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:512    .text.gpio_output_port_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:513    .text.gpio_output_port_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:514    .text.gpio_output_port_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:517    .text.gpio_output_port_get:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:520    .text.gpio_output_port_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:527    .text.gpio_pin_remap_config:0000000000000000 gpio_pin_remap_config
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:530    .text.gpio_pin_remap_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:532    .text.gpio_pin_remap_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:533    .text.gpio_pin_remap_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:534    .text.gpio_pin_remap_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:535    .text.gpio_pin_remap_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:537    .text.gpio_pin_remap_config:0000000000000004 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 31
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:539    .text.gpio_pin_remap_config:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:540    .text.gpio_pin_remap_config:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:542    .text.gpio_pin_remap_config:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:545    .text.gpio_pin_remap_config:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:546    .text.gpio_pin_remap_config:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:547    .text.gpio_pin_remap_config:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:549    .text.gpio_pin_remap_config:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:551    .text.gpio_pin_remap_config:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:554    .text.gpio_pin_remap_config:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:555    .text.gpio_pin_remap_config:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:559    .text.gpio_pin_remap_config:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:560    .text.gpio_pin_remap_config:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:564    .text.gpio_pin_remap_config:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:565    .text.gpio_pin_remap_config:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:566    .text.gpio_pin_remap_config:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:568    .text.gpio_pin_remap_config:0000000000000028 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:570    .text.gpio_pin_remap_config:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:573    .text.gpio_pin_remap_config:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:575    .text.gpio_pin_remap_config:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:578    .text.gpio_pin_remap_config:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:579    .text.gpio_pin_remap_config:0000000000000038 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:584    .text.gpio_pin_remap_config:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:585    .text.gpio_pin_remap_config:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:587    .text.gpio_pin_remap_config:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:588    .text.gpio_pin_remap_config:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:590    .text.gpio_pin_remap_config:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:592    .text.gpio_pin_remap_config:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:595    .text.gpio_pin_remap_config:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:599    .text.gpio_pin_remap_config:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:600    .text.gpio_pin_remap_config:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:602    .text.gpio_pin_remap_config:0000000000000050 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:604    .text.gpio_pin_remap_config:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:605    .text.gpio_pin_remap_config:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:607    .text.gpio_pin_remap_config:0000000000000056 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:611    .text.gpio_pin_remap_config:0000000000000058 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:612    .text.gpio_pin_remap_config:0000000000000058 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:614    .text.gpio_pin_remap_config:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:616    .text.gpio_pin_remap_config:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:618    .text.gpio_pin_remap_config:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:620    .text.gpio_pin_remap_config:0000000000000066 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:623    .text.gpio_pin_remap_config:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:624    .text.gpio_pin_remap_config:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:631    .text.gpio_pin_remap_config:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:632    .text.gpio_pin_remap_config:0000000000000070 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:637    .text.gpio_pin_remap_config:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:638    .text.gpio_pin_remap_config:0000000000000074 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:640    .text.gpio_pin_remap_config:0000000000000078 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:643    .text.gpio_pin_remap_config:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:644    .text.gpio_pin_remap_config:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:645    .text.gpio_pin_remap_config:000000000000007a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:647    .text.gpio_pin_remap_config:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:649    .text.gpio_pin_remap_config:0000000000000082 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:652    .text.gpio_pin_remap_config:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:653    .text.gpio_pin_remap_config:0000000000000084 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:657    .text.gpio_pin_remap_config:0000000000000088 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:658    .text.gpio_pin_remap_config:0000000000000088 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:661    .text.gpio_pin_remap_config:0000000000000090 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 32
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:664    .text.gpio_pin_remap_config:0000000000000096 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:666    .text.gpio_pin_remap_config:0000000000000098 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:669    .text.gpio_pin_remap_config:000000000000009a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:670    .text.gpio_pin_remap_config:000000000000009a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:672    .text.gpio_pin_remap_config:00000000000000a0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:679    .text.gpio_exti_source_select:0000000000000000 gpio_exti_source_select
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:682    .text.gpio_exti_source_select:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:684    .text.gpio_exti_source_select:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:685    .text.gpio_exti_source_select:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:686    .text.gpio_exti_source_select:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:687    .text.gpio_exti_source_select:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:689    .text.gpio_exti_source_select:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:692    .text.gpio_exti_source_select:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:693    .text.gpio_exti_source_select:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:696    .text.gpio_exti_source_select:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:702    .text.gpio_exti_source_select:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:703    .text.gpio_exti_source_select:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:709    .text.gpio_exti_source_select:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:710    .text.gpio_exti_source_select:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:717    .text.gpio_exti_source_select:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:718    .text.gpio_exti_source_select:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:722    .text.gpio_exti_source_select:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:723    .text.gpio_exti_source_select:0000000000000032 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:728    .text.gpio_exti_source_select:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:729    .text.gpio_exti_source_select:000000000000003c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:735    .text.gpio_exti_source_select:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:736    .text.gpio_exti_source_select:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:738    .text.gpio_exti_source_select:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:740    .text.gpio_exti_source_select:000000000000004a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:742    .text.gpio_exti_source_select:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:743    .text.gpio_exti_source_select:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:747    .text.gpio_exti_source_select:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:748    .text.gpio_exti_source_select:0000000000000054 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:754    .text.gpio_exti_source_select:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:755    .text.gpio_exti_source_select:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:759    .text.gpio_exti_source_select:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:760    .text.gpio_exti_source_select:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:764    .text.gpio_exti_source_select:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:765    .text.gpio_exti_source_select:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:772    .text.gpio_event_output_config:0000000000000000 gpio_event_output_config
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:775    .text.gpio_event_output_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:777    .text.gpio_event_output_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:778    .text.gpio_event_output_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:779    .text.gpio_event_output_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:780    .text.gpio_event_output_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:784    .text.gpio_event_output_config:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:785    .text.gpio_event_output_config:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:786    .text.gpio_event_output_config:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:787    .text.gpio_event_output_config:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:790    .text.gpio_event_output_config:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:794    .text.gpio_event_output_config:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:797    .text.gpio_event_output_config:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:798    .text.gpio_event_output_config:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:800    .text.gpio_event_output_config:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:801    .text.gpio_event_output_config:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:808    .text.gpio_event_output_enable:0000000000000000 gpio_event_output_enable
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:811    .text.gpio_event_output_enable:0000000000000000 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 33
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:812    .text.gpio_event_output_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:813    .text.gpio_event_output_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:814    .text.gpio_event_output_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:819    .text.gpio_event_output_enable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:820    .text.gpio_event_output_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:827    .text.gpio_event_output_disable:0000000000000000 gpio_event_output_disable
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:830    .text.gpio_event_output_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:831    .text.gpio_event_output_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:832    .text.gpio_event_output_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:833    .text.gpio_event_output_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:838    .text.gpio_event_output_disable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:839    .text.gpio_event_output_disable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:846    .text.gpio_pin_lock:0000000000000000 gpio_pin_lock
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:849    .text.gpio_pin_lock:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:851    .text.gpio_pin_lock:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:852    .text.gpio_pin_lock:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:853    .text.gpio_pin_lock:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:854    .text.gpio_pin_lock:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:858    .text.gpio_pin_lock:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:859    .text.gpio_pin_lock:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:861    .text.gpio_pin_lock:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:862    .text.gpio_pin_lock:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:864    .text.gpio_pin_lock:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:865    .text.gpio_pin_lock:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:867    .text.gpio_pin_lock:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:868    .text.gpio_pin_lock:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:871    .text.gpio_pin_lock:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:872    .text.gpio_pin_lock:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:874    .text.gpio_pin_lock:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:875    .text.gpio_pin_lock:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:160    .text.gpio_deinit:00000000000000c6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:197    .text.gpio_afio_deinit:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:365    .text.gpio_init:00000000000000a8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:382    .text.gpio_bit_set:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:399    .text.gpio_bit_reset:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:424    .text.gpio_bit_write:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:441    .text.gpio_port_write:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:462    .text.gpio_input_bit_get:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:482    .text.gpio_input_port_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:503    .text.gpio_output_bit_get:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:523    .text.gpio_output_port_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:675    .text.gpio_pin_remap_config:00000000000000a0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:768    .text.gpio_exti_source_select:000000000000006a .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:804    .text.gpio_event_output_config:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:823    .text.gpio_event_output_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:842    .text.gpio_event_output_disable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:878    .text.gpio_pin_lock:0000000000000010 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:81     .text.gpio_deinit:000000000000006c .L2
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:54     .text.gpio_deinit:0000000000000040 .L11
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:103    .text.gpio_deinit:0000000000000088 .L7
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:125    .text.gpio_deinit:00000000000000a4 .L1
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:136    .text.gpio_deinit:00000000000000aa .L4
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:222    .text.gpio_init:000000000000000e .L15
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:275    .text.gpio_init:000000000000004c .L16
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:351    .text.gpio_init:00000000000000a0 .L35
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:339    .text.gpio_init:0000000000000098 .L36
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 34
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:237    .text.gpio_init:000000000000001e .L19
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:331    .text.gpio_init:0000000000000090 .L20
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:357    .text.gpio_init:00000000000000a4 .L37
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:345    .text.gpio_init:000000000000009c .L38
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:290    .text.gpio_init:0000000000000060 .L23
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:270    .text.gpio_init:000000000000004a .L18
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:326    .text.gpio_init:000000000000008e .L22
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:415    .text.gpio_bit_write:0000000000000006 .L42
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:635    .text.gpio_pin_remap_config:0000000000000074 .L61
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:655    .text.gpio_pin_remap_config:0000000000000088 .L62
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:609    .text.gpio_pin_remap_config:0000000000000058 .L54
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:597    .text.gpio_pin_remap_config:000000000000004c .L55
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:629    .text.gpio_pin_remap_config:0000000000000070 .L63
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:582    .text.gpio_pin_remap_config:000000000000003e .L53
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:557    .text.gpio_pin_remap_config:000000000000001c .L52
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:715    .text.gpio_exti_source_select:000000000000002c .L65
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:733    .text.gpio_exti_source_select:0000000000000044 .L67
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:752    .text.gpio_exti_source_select:000000000000005c .L68
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:1833   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3095   .debug_str:00000000000001fe .LASF89
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3159   .debug_str:000000000000046f .LASF90
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3143   .debug_str:00000000000003b9 .LASF91
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2975   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3013   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3111   .debug_str:00000000000002ea .LASF0
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3099   .debug_str:0000000000000290 .LASF1
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3073   .debug_str:000000000000017d .LASF4
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3089   .debug_str:00000000000001da .LASF2
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3051   .debug_str:00000000000000ff .LASF3
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3045   .debug_str:00000000000000d0 .LASF5
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3125   .debug_str:000000000000033b .LASF6
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3067   .debug_str:000000000000015c .LASF7
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3037   .debug_str:00000000000000a9 .LASF8
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3157   .debug_str:000000000000045d .LASF9
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3065   .debug_str:000000000000014e .LASF10
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3103   .debug_str:00000000000002a7 .LASF11
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3053   .debug_str:0000000000000109 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3113   .debug_str:00000000000002f7 .LASF13
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3107   .debug_str:00000000000002cb .LASF14
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3147   .debug_str:0000000000000417 .LASF92
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3055   .debug_str:0000000000000111 .LASF15
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3195   .debug_str:000000000000059e .LASF16
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3131   .debug_str:0000000000000370 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3175   .debug_str:0000000000000521 .LASF18
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3191   .debug_str:0000000000000587 .LASF19
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3019   .debug_str:0000000000000021 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3133   .debug_str:000000000000037e .LASF21
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3057   .debug_str:0000000000000119 .LASF22
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3081   .debug_str:00000000000001a2 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3077   .debug_str:000000000000018e .LASF24
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3145   .debug_str:0000000000000409 .LASF25
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3189   .debug_str:0000000000000579 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3199   .debug_str:00000000000005b3 .LASF27
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3031   .debug_str:000000000000006b .LASF28
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3071   .debug_str:0000000000000171 .LASF29
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3153   .debug_str:000000000000043b .LASF30
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3197   .debug_str:00000000000005a5 .LASF31
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 35
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3161   .debug_str:00000000000004cb .LASF32
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3021   .debug_str:000000000000002e .LASF33
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3193   .debug_str:0000000000000592 .LASF34
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3169   .debug_str:0000000000000500 .LASF35
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3025   .debug_str:0000000000000048 .LASF36
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3061   .debug_str:0000000000000134 .LASF37
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3029   .debug_str:000000000000005f .LASF38
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3171   .debug_str:000000000000050c .LASF39
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3101   .debug_str:000000000000029c .LASF40
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3091   .debug_str:00000000000001e8 .LASF41
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3105   .debug_str:00000000000002be .LASF42
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3165   .debug_str:00000000000004e9 .LASF43
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3023   .debug_str:000000000000003b .LASF44
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3059   .debug_str:0000000000000127 .LASF45
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3115   .debug_str:0000000000000300 .LASF46
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3121   .debug_str:000000000000031a .LASF47
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3177   .debug_str:0000000000000527 .LASF48
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3017   .debug_str:0000000000000013 .LASF49
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3181   .debug_str:000000000000053f .LASF50
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3085   .debug_str:00000000000001c0 .LASF51
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3087   .debug_str:00000000000001ce .LASF52
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3027   .debug_str:0000000000000054 .LASF53
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3063   .debug_str:0000000000000140 .LASF57
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:847    .text.gpio_pin_lock:0000000000000000 .LFB18
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:876    .text.gpio_pin_lock:0000000000000010 .LFE18
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3093   .debug_str:00000000000001f2 .LASF54
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3141   .debug_str:00000000000003b4 .LASF61
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2362   .debug_loc:0000000000000000 .LLST19
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3049   .debug_str:00000000000000e5 .LASF55
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:828    .text.gpio_event_output_disable:0000000000000000 .LFB17
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:840    .text.gpio_event_output_disable:000000000000000e .LFE17
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3035   .debug_str:0000000000000090 .LASF56
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:809    .text.gpio_event_output_enable:0000000000000000 .LFB16
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:821    .text.gpio_event_output_enable:000000000000000e .LFE16
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3129   .debug_str:0000000000000357 .LASF58
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:773    .text.gpio_event_output_config:0000000000000000 .LFB15
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:802    .text.gpio_event_output_config:0000000000000014 .LFE15
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3069   .debug_str:0000000000000165 .LASF59
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2376   .debug_loc:0000000000000021 .LLST17
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3135   .debug_str:000000000000038c .LASF60
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2390   .debug_loc:0000000000000042 .LLST18
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3097   .debug_str:0000000000000278 .LASF62
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:680    .text.gpio_exti_source_select:0000000000000000 .LFB14
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:766    .text.gpio_exti_source_select:000000000000006a .LFE14
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2437   .debug_loc:0000000000000092 .LLST15
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3075   .debug_str:0000000000000187 .LASF63
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2451   .debug_loc:00000000000000b3 .LLST16
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3109   .debug_str:00000000000002d4 .LASF64
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:528    .text.gpio_pin_remap_config:0000000000000000 .LFB13
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:673    .text.gpio_pin_remap_config:00000000000000a0 .LFE13
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3079   .debug_str:000000000000019c .LASF65
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3127   .debug_str:000000000000034e .LASF66
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3185   .debug_str:000000000000055a .LASF67
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2499   .debug_loc:000000000000010b .LLST11
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3119   .debug_str:0000000000000313 .LASF68
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2524   .debug_loc:000000000000014c .LLST12
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3137   .debug_str:0000000000000397 .LASF69
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 36
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2554   .debug_loc:000000000000018b .LLST13
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3173   .debug_str:0000000000000517 .LASF70
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2591   .debug_loc:00000000000001ed .LLST14
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3123   .debug_str:0000000000000326 .LASF71
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:508    .text.gpio_output_port_get:0000000000000000 .LFB12
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:521    .text.gpio_output_port_get:0000000000000008 .LFE12
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2624   .debug_loc:000000000000022f .LLST10
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3139   .debug_str:00000000000003a0 .LASF72
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:487    .text.gpio_output_bit_get:0000000000000000 .LFB11
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:501    .text.gpio_output_bit_get:000000000000000a .LFE11
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2638   .debug_loc:0000000000000250 .LLST9
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3155   .debug_str:0000000000000449 .LASF73
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:467    .text.gpio_input_port_get:0000000000000000 .LFB10
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:480    .text.gpio_input_port_get:0000000000000008 .LFE10
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2652   .debug_loc:0000000000000271 .LLST8
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3015   .debug_str:0000000000000000 .LASF74
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:446    .text.gpio_input_bit_get:0000000000000000 .LFB9
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:460    .text.gpio_input_bit_get:000000000000000a .LFE9
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2666   .debug_loc:0000000000000292 .LLST7
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3083   .debug_str:00000000000001b0 .LASF75
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:429    .text.gpio_port_write:0000000000000000 .LFB8
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:439    .text.gpio_port_write:0000000000000004 .LFE8
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3151   .debug_str:0000000000000436 .LASF76
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3183   .debug_str:000000000000054b .LASF77
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:404    .text.gpio_bit_write:0000000000000000 .LFB7
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:422    .text.gpio_bit_write:000000000000000a .LFE7
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3047   .debug_str:00000000000000db .LASF78
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3149   .debug_str:0000000000000427 .LASF79
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:387    .text.gpio_bit_reset:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:397    .text.gpio_bit_reset:0000000000000004 .LFE6
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3039   .debug_str:00000000000000b4 .LASF80
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:370    .text.gpio_bit_set:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:380    .text.gpio_bit_set:0000000000000004 .LFE5
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3167   .debug_str:00000000000004f6 .LASF81
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:202    .text.gpio_init:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:363    .text.gpio_init:00000000000000a8 .LFE4
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3041   .debug_str:00000000000000c1 .LASF82
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3117   .debug_str:000000000000030d .LASF83
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2680   .debug_loc:00000000000002b3 .LLST3
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2694   .debug_loc:00000000000002d4 .LLST4
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3043   .debug_str:00000000000000c6 .LASF84
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2726   .debug_loc:0000000000000323 .LLST5
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2738   .debug_loc:0000000000000342 .LLST6
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3163   .debug_str:00000000000004d8 .LASF85
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:165    .text.gpio_afio_deinit:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:195    .text.gpio_afio_deinit:0000000000000020 .LFE3
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2786   .debug_loc:00000000000003c4 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:180    .text.gpio_afio_deinit:0000000000000010 .LVL16
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:193    .text.gpio_afio_deinit:0000000000000020 .LVL17
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3179   .debug_str:0000000000000533 .LASF86
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:14     .text.gpio_deinit:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:158    .text.gpio_deinit:00000000000000c6 .LFE2
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2804   .debug_loc:00000000000003f0 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:2872   .debug_loc:0000000000000494 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:39     .text.gpio_deinit:0000000000000030 .LVL2
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:53     .text.gpio_deinit:0000000000000040 .LVL3
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:66     .text.gpio_deinit:000000000000005c .LVL5
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 37
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:80     .text.gpio_deinit:000000000000006c .LVL6
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:88     .text.gpio_deinit:0000000000000078 .LVL8
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:102    .text.gpio_deinit:0000000000000088 .LVL9
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:110    .text.gpio_deinit:0000000000000094 .LVL11
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:124    .text.gpio_deinit:00000000000000a4 .LVL12
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:143    .text.gpio_deinit:00000000000000b6 .LVL14
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:156    .text.gpio_deinit:00000000000000c6 .LVL15
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3187   .debug_str:0000000000000561 .LASF87
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:3033   .debug_str:0000000000000077 .LASF88
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:850    .text.gpio_pin_lock:0000000000000000 .LVL78
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:856    .text.gpio_pin_lock:0000000000000004 .LVL79
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:869    .text.gpio_pin_lock:000000000000000c .LVL80
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:776    .text.gpio_event_output_config:0000000000000000 .LVL73
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:788    .text.gpio_event_output_config:0000000000000008 .LVL75
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:782    .text.gpio_event_output_config:0000000000000006 .LVL74
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:791    .text.gpio_event_output_config:000000000000000c .LVL76
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:795    .text.gpio_event_output_config:0000000000000010 .LVL77
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:683    .text.gpio_exti_source_select:0000000000000000 .LVL67
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:699    .text.gpio_exti_source_select:0000000000000016 .LVL69
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:690    .text.gpio_exti_source_select:0000000000000006 .LVL68
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:705    .text.gpio_exti_source_select:0000000000000020 .LVL70
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:714    .text.gpio_exti_source_select:000000000000002c .LVL71
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:719    .text.gpio_exti_source_select:000000000000002e .LVL72
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:531    .text.gpio_pin_remap_config:0000000000000000 .LVL49
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:552    .text.gpio_pin_remap_config:0000000000000018 .LVL51
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:593    .text.gpio_pin_remap_config:000000000000004a .LVL56
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:608    .text.gpio_pin_remap_config:0000000000000058 .LVL58
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:628    .text.gpio_pin_remap_config:0000000000000070 .LVL61
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:634    .text.gpio_pin_remap_config:0000000000000074 .LVL62
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:650    .text.gpio_pin_remap_config:0000000000000084 .LVL64
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:563    .text.gpio_pin_remap_config:0000000000000024 .LVL53
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:581    .text.gpio_pin_remap_config:000000000000003e .LVL55
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:543    .text.gpio_pin_remap_config:000000000000000e .LVL50
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:576    .text.gpio_pin_remap_config:0000000000000038 .LVL54
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:621    .text.gpio_pin_remap_config:0000000000000068 .LVL59
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:626    .text.gpio_pin_remap_config:000000000000006e .LVL60
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:641    .text.gpio_pin_remap_config:000000000000007a .LVL63
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:556    .text.gpio_pin_remap_config:000000000000001c .LVL52
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:654    .text.gpio_pin_remap_config:0000000000000088 .LVL65
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:511    .text.gpio_output_port_get:0000000000000000 .LVL47
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:515    .text.gpio_output_port_get:0000000000000002 .LVL48
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:490    .text.gpio_output_bit_get:0000000000000000 .LVL45
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:494    .text.gpio_output_bit_get:0000000000000002 .LVL46
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:470    .text.gpio_input_port_get:0000000000000000 .LVL43
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:474    .text.gpio_input_port_get:0000000000000002 .LVL44
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:449    .text.gpio_input_bit_get:0000000000000000 .LVL41
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:453    .text.gpio_input_bit_get:0000000000000002 .LVL42
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:205    .text.gpio_init:0000000000000000 .LVL18
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:236    .text.gpio_init:000000000000001e .LVL21
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:221    .text.gpio_init:000000000000000e .LVL20
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:274    .text.gpio_init:000000000000004c .LVL25
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:277    .text.gpio_init:000000000000004e .LVL26
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:291    .text.gpio_init:0000000000000060 .LVL27
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:330    .text.gpio_init:0000000000000090 .LVL31
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:333    .text.gpio_init:0000000000000092 .LVL32
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:338    .text.gpio_init:0000000000000098 .LVL33
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:214    .text.gpio_init:0000000000000008 .LVL19
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s 			page 38
+
+
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:256    .text.gpio_init:000000000000003a .LVL22
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:260    .text.gpio_init:000000000000003e .LVL23
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:264    .text.gpio_init:0000000000000042 .LVL24
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:312    .text.gpio_init:000000000000007e .LVL28
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:316    .text.gpio_init:0000000000000082 .LVL29
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:320    .text.gpio_init:0000000000000086 .LVL30
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:344    .text.gpio_init:000000000000009c .LVL34
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:350    .text.gpio_init:00000000000000a0 .LVL35
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:356    .text.gpio_init:00000000000000a4 .LVL36
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:171    .text.gpio_afio_deinit:0000000000000002 .LCFI12
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:189    .text.gpio_afio_deinit:0000000000000018 .LCFI13
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:22     .text.gpio_deinit:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:49     .text.gpio_deinit:0000000000000038 .LCFI1
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:55     .text.gpio_deinit:0000000000000040 .LCFI2
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:76     .text.gpio_deinit:0000000000000064 .LCFI3
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:82     .text.gpio_deinit:000000000000006c .LCFI4
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:98     .text.gpio_deinit:0000000000000080 .LCFI5
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:104    .text.gpio_deinit:0000000000000088 .LCFI6
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:120    .text.gpio_deinit:000000000000009c .LCFI7
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:126    .text.gpio_deinit:00000000000000a4 .LCFI8
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:133    .text.gpio_deinit:00000000000000a8 .LCFI9
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:137    .text.gpio_deinit:00000000000000aa .LCFI10
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:152    .text.gpio_deinit:00000000000000be .LCFI11
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:18     .text.gpio_deinit:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:37     .text.gpio_deinit:0000000000000028 .LVL1
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:64     .text.gpio_deinit:0000000000000054 .LVL4
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:86     .text.gpio_deinit:0000000000000070 .LVL7
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:108    .text.gpio_deinit:000000000000008c .LVL10
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:141    .text.gpio_deinit:00000000000000ae .LVL13
+C:\Users\anton\AppData\Local\Temp\ccO6IHYV.s:887    .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

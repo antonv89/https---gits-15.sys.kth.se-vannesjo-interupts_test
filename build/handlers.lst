@@ -1,0 +1,360 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s 			page 1
+
+
+   1              		.file	"handlers.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.handle_nmi,"ax",@progbits
+  10              		.align	1
+  11              		.weak	handle_nmi
+  13              	handle_nmi:
+  14              	.LFB5:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse/handlers.c"
+   1:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** //See LICENSE for license details.
+   2:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** #include <stdint.h>
+   3:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** #include <stdio.h>
+   4:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** #include <unistd.h>
+   5:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** #include "riscv_encoding.h"
+   6:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** #include "n200_func.h"
+   7:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** 
+   8:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** __attribute__((weak)) uintptr_t handle_nmi()
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** {
+  16              		.loc 1 9 1
+  17              		.cfi_startproc
+  10:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   write(1, "nmi\n", 5);
+  18              		.loc 1 10 3
+  19 0000 B7050000 		lui	a1,%hi(.LC0)
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   write(1, "nmi\n", 5);
+  20              		.loc 1 9 1 is_stmt 0
+  21 0004 4111     		addi	sp,sp,-16
+  22              	.LCFI0:
+  23              		.cfi_def_cfa_offset 16
+  24              		.loc 1 10 3
+  25 0006 1546     		li	a2,5
+  26 0008 93850500 		addi	a1,a1,%lo(.LC0)
+  27 000c 0545     		li	a0,1
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   write(1, "nmi\n", 5);
+  28              		.loc 1 9 1
+  29 000e 06C6     		sw	ra,12(sp)
+  30              		.cfi_offset 1, -4
+  31              		.loc 1 10 3
+  32 0010 97000000 		call	write
+  32      E7800000 
+  33              	.LVL0:
+  11:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   _exit(1);
+  34              		.loc 1 11 3 is_stmt 1
+  35 0018 0545     		li	a0,1
+  36 001a 97000000 		call	_exit
+  36      E7800000 
+  37              	.LVL1:
+  38              		.cfi_endproc
+  39              	.LFE5:
+  41              		.section	.text.handle_trap,"ax",@progbits
+  42              		.align	1
+  43              		.weak	handle_trap
+  45              	handle_trap:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s 			page 2
+
+
+  46              	.LFB6:
+  12:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   return 0;
+  13:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** }
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** 
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** 
+  16:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** __attribute__((weak)) uintptr_t handle_trap(uintptr_t mcause, uintptr_t sp)
+  17:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c **** {
+  47              		.loc 1 17 1
+  48              		.cfi_startproc
+  49              	.LVL2:
+  18:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   if((mcause & 0xFFF) == 0xFFF) {
+  50              		.loc 1 18 3
+  17:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   if((mcause & 0xFFF) == 0xFFF) {
+  51              		.loc 1 17 1 is_stmt 0
+  52 0000 4111     		addi	sp,sp,-16
+  53              	.LCFI1:
+  54              		.cfi_def_cfa_offset 16
+  55              		.loc 1 18 14
+  56 0002 9347F5FF 		not	a5,a0
+  17:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   if((mcause & 0xFFF) == 0xFFF) {
+  57              		.loc 1 17 1
+  58 0006 22C4     		sw	s0,8(sp)
+  59 0008 06C6     		sw	ra,12(sp)
+  60              		.cfi_offset 8, -8
+  61              		.cfi_offset 1, -4
+  62              		.loc 1 18 5
+  63 000a 13974701 		slli	a4,a5,20
+  17:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   if((mcause & 0xFFF) == 0xFFF) {
+  64              		.loc 1 17 1
+  65 000e 2A84     		mv	s0,a0
+  66              		.loc 1 18 5
+  67 0010 05C3     		beq	a4,zero,.L7
+  68              	.LVL3:
+  69              	.L5:
+  19:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****       handle_nmi();
+  20:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   }
+  21:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   write(1, "trap\n", 5);
+  70              		.loc 1 21 3 is_stmt 1
+  71 0012 B7050000 		lui	a1,%hi(.LC1)
+  72 0016 1546     		li	a2,5
+  73 0018 93850500 		addi	a1,a1,%lo(.LC1)
+  74 001c 0545     		li	a0,1
+  75 001e 97000000 		call	write
+  75      E7800000 
+  76              	.LVL4:
+  22:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   //printf("In trap handler, the mcause is %d\n", mcause);
+  23:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   //printf("In trap handler, the mepc is 0x%x\n", read_csr(mepc));
+  24:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   //printf("In trap handler, the mtval is 0x%x\n", read_csr(mbadaddr));
+  25:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****   _exit(mcause);
+  77              		.loc 1 25 3
+  78 0026 2285     		mv	a0,s0
+  79 0028 97000000 		call	_exit
+  79      E7800000 
+  80              	.LVL5:
+  81              	.L7:
+  19:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\handlers.c ****       handle_nmi();
+  82              		.loc 1 19 7
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s 			page 3
+
+
+  83 0030 97000000 		call	handle_nmi
+  83      E7800000 
+  84              	.LVL6:
+  85 0038 E9BF     		j	.L5
+  86              		.cfi_endproc
+  87              	.LFE6:
+  89              		.section	.rodata.handle_nmi.str1.4,"aMS",@progbits,1
+  90              		.align	2
+  91              	.LC0:
+  92 0000 6E6D690A 		.string	"nmi\n"
+  92      00
+  93              		.section	.rodata.handle_trap.str1.4,"aMS",@progbits,1
+  94              		.align	2
+  95              	.LC1:
+  96 0000 74726170 		.string	"trap\n"
+  96      0A00
+  97              		.text
+  98              	.Letext0:
+  99              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 100              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 101              		.file 4 "c:\\mingw\\toolchain-gd32v-win\\compiler\\lib\\gcc\\riscv64-unknown-elf\\8.3.0\\include\\
+ 102              		.file 5 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_types.h"
+ 103              		.file 6 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\reent.h"
+ 104              		.file 7 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\lock.h"
+ 105              		.file 8 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\unistd.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 handlers.c
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:13     .text.handle_nmi:0000000000000000 handle_nmi
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:17     .text.handle_nmi:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:18     .text.handle_nmi:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:19     .text.handle_nmi:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:21     .text.handle_nmi:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:23     .text.handle_nmi:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:25     .text.handle_nmi:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:29     .text.handle_nmi:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:30     .text.handle_nmi:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:32     .text.handle_nmi:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:35     .text.handle_nmi:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:38     .text.handle_nmi:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:45     .text.handle_trap:0000000000000000 handle_trap
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:48     .text.handle_trap:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:50     .text.handle_trap:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:51     .text.handle_trap:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:52     .text.handle_trap:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:54     .text.handle_trap:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:56     .text.handle_trap:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:58     .text.handle_trap:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:60     .text.handle_trap:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:61     .text.handle_trap:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:63     .text.handle_trap:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:65     .text.handle_trap:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:67     .text.handle_trap:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:71     .text.handle_trap:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:78     .text.handle_trap:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:83     .text.handle_trap:0000000000000030 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:86     .text.handle_trap:000000000000003a .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:41     .text.handle_nmi:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:89     .text.handle_trap:000000000000003a .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:91     .rodata.handle_nmi.str1.4:0000000000000000 .LC0
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:95     .rodata.handle_trap.str1.4:0000000000000000 .LC1
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:81     .text.handle_trap:0000000000000030 .L7
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:69     .text.handle_trap:0000000000000012 .L5
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:1680   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2470   .debug_str:0000000000000345 .LASF131
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2464   .debug_str:00000000000002f4 .LASF132
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2450   .debug_str:000000000000026e .LASF133
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2312   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2320   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2358   .debug_str:00000000000000cd .LASF0
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2484   .debug_str:00000000000003fe .LASF1
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2490   .debug_str:000000000000041a .LASF2
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2428   .debug_str:0000000000000203 .LASF3
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2374   .debug_str:0000000000000112 .LASF4
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2420   .debug_str:00000000000001dd .LASF5
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2356   .debug_str:00000000000000bf .LASF6
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2342   .debug_str:0000000000000068 .LASF7
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2504   .debug_str:0000000000000455 .LASF9
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2412   .debug_str:00000000000001b9 .LASF8
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2326   .debug_str:0000000000000012 .LASF10
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2462   .debug_str:00000000000002e8 .LASF11
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2442   .debug_str:000000000000024e .LASF12
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s 			page 5
+
+
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2478   .debug_str:00000000000003db .LASF13
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2536   .debug_str:00000000000004ed .LASF14
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2570   .debug_str:0000000000000582 .LASF15
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2438   .debug_str:0000000000000240 .LASF16
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2414   .debug_str:00000000000001c6 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2528   .debug_str:00000000000004cb .LASF18
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2530   .debug_str:00000000000004d3 .LASF19
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2500   .debug_str:0000000000000442 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2556   .debug_str:0000000000000538 .LASF21
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2482   .debug_str:00000000000003ec .LASF22
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2398   .debug_str:000000000000017c .LASF23
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2402   .debug_str:000000000000018d .LASF28
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2548   .debug_str:0000000000000517 .LASF24
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2520   .debug_str:00000000000004ae .LASF25
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2396   .debug_str:0000000000000176 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2564   .debug_str:000000000000056d .LASF27
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2410   .debug_str:00000000000001b4 .LASF29
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2352   .debug_str:00000000000000b0 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2542   .debug_str:0000000000000501 .LASF31
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2364   .debug_str:00000000000000e5 .LASF32
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2594   .debug_str:00000000000005ed .LASF33
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2472   .debug_str:00000000000003bf .LASF34
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2456   .debug_str:00000000000002ce .LASF35
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2566   .debug_str:0000000000000572 .LASF36
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2492   .debug_str:0000000000000424 .LASF37
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2580   .debug_str:00000000000005ad .LASF38
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2368   .debug_str:00000000000000f4 .LASF39
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2392   .debug_str:0000000000000169 .LASF40
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2322   .debug_str:0000000000000000 .LASF41
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2552   .debug_str:000000000000052a .LASF42
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2378   .debug_str:0000000000000122 .LASF43
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2474   .debug_str:00000000000003c8 .LASF44
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2512   .debug_str:000000000000047e .LASF45
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2394   .debug_str:0000000000000171 .LASF46
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2494   .debug_str:000000000000042e .LASF47
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2362   .debug_str:00000000000000df .LASF48
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2324   .debug_str:000000000000000c .LASF49
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2502   .debug_str:000000000000044d .LASF50
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2376   .debug_str:000000000000011b .LASF51
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2422   .debug_str:00000000000001ef .LASF52
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2344   .debug_str:000000000000007f .LASF53
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2370   .debug_str:0000000000000102 .LASF54
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2406   .debug_str:00000000000001a4 .LASF55
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2454   .debug_str:00000000000002c7 .LASF56
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2532   .debug_str:00000000000004db .LASF57
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2584   .debug_str:00000000000005c7 .LASF58
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2360   .debug_str:00000000000000d9 .LASF59
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2576   .debug_str:000000000000059f .LASF60
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2382   .debug_str:0000000000000131 .LASF61
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2386   .debug_str:0000000000000142 .LASF62
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2336   .debug_str:0000000000000042 .LASF63
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2446   .debug_str:0000000000000260 .LASF64
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2332   .debug_str:000000000000002d .LASF65
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2448   .debug_str:0000000000000266 .LASF66
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2522   .debug_str:00000000000004b6 .LASF67
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2538   .debug_str:00000000000004f5 .LASF68
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2380   .debug_str:000000000000012a .LASF69
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s 			page 6
+
+
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2416   .debug_str:00000000000001cd .LASF70
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2400   .debug_str:0000000000000185 .LASF71
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2510   .debug_str:0000000000000479 .LASF72
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2328   .debug_str:000000000000001c .LASF73
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2518   .debug_str:0000000000000495 .LASF74
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2514   .debug_str:0000000000000483 .LASF75
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2476   .debug_str:00000000000003d0 .LASF76
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2516   .debug_str:000000000000048b .LASF77
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2436   .debug_str:0000000000000238 .LASF78
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2408   .debug_str:00000000000001aa .LASF79
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2592   .debug_str:00000000000005e8 .LASF80
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2480   .debug_str:00000000000003e2 .LASF81
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2418   .debug_str:00000000000001d5 .LASF82
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2384   .debug_str:000000000000013a .LASF83
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2486   .debug_str:000000000000040c .LASF84
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2430   .debug_str:0000000000000216 .LASF85
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2574   .debug_str:0000000000000595 .LASF86
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2372   .debug_str:000000000000010a .LASF87
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2366   .debug_str:00000000000000ef .LASF88
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2540   .debug_str:00000000000004fc .LASF89
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2498   .debug_str:000000000000043b .LASF90
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2568   .debug_str:000000000000057c .LASF91
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2424   .debug_str:00000000000001f5 .LASF92
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2496   .debug_str:0000000000000435 .LASF93
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2524   .debug_str:00000000000004bd .LASF94
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2526   .debug_str:00000000000004c5 .LASF95
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2546   .debug_str:0000000000000511 .LASF96
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2554   .debug_str:0000000000000533 .LASF97
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2562   .debug_str:0000000000000560 .LASF98
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2550   .debug_str:000000000000051d .LASF99
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2434   .debug_str:000000000000022b .LASF100
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2582   .debug_str:00000000000005b8 .LASF101
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2404   .debug_str:0000000000000195 .LASF102
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2506   .debug_str:0000000000000461 .LASF103
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2586   .debug_str:00000000000005ce .LASF104
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2508   .debug_str:000000000000046c .LASF105
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2590   .debug_str:00000000000005da .LASF106
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2350   .debug_str:00000000000000a2 .LASF107
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2572   .debug_str:000000000000058b .LASF108
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2432   .debug_str:000000000000021f .LASF109
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2558   .debug_str:0000000000000540 .LASF110
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2390   .debug_str:000000000000015b .LASF111
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2348   .debug_str:0000000000000093 .LASF112
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2388   .debug_str:000000000000014a .LASF113
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2338   .debug_str:0000000000000048 .LASF114
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2340   .debug_str:0000000000000057 .LASF115
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2488   .debug_str:0000000000000411 .LASF116
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2468   .debug_str:000000000000033e .LASF117
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2458   .debug_str:00000000000002d8 .LASF118
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2578   .debug_str:00000000000005a5 .LASF119
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2346   .debug_str:0000000000000088 .LASF134
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2534   .debug_str:00000000000004e1 .LASF120
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2560   .debug_str:000000000000054d .LASF121
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2440   .debug_str:0000000000000246 .LASF122
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2460   .debug_str:00000000000002e1 .LASF123
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2466   .debug_str:0000000000000337 .LASF124
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2544   .debug_str:000000000000050a .LASF125
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s 			page 7
+
+
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2588   .debug_str:00000000000005d3 .LASF126
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2452   .debug_str:00000000000002be .LASF127
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2334   .debug_str:0000000000000036 .LASF135
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:46     .text.handle_trap:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:87     .text.handle_trap:000000000000003a .LFE6
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2235   .debug_loc:0000000000000000 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2426   .debug_str:00000000000001fc .LASF128
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2248   .debug_loc:0000000000000020 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2259   .debug_loc:000000000000003e .LLST3
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:76     .text.handle_trap:0000000000000026 .LVL4
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:80     .text.handle_trap:0000000000000030 .LVL5
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:84     .text.handle_trap:0000000000000038 .LVL6
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2444   .debug_str:0000000000000255 .LASF136
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:14     .text.handle_nmi:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:39     .text.handle_nmi:0000000000000022 .LFE5
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2284   .debug_loc:0000000000000078 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:33     .text.handle_nmi:0000000000000018 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:37     .text.handle_nmi:0000000000000022 .LVL1
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2330   .debug_str:0000000000000027 .LASF129
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:2354   .debug_str:00000000000000b9 .LASF130
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:53     .text.handle_trap:0000000000000002 .LCFI1
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:49     .text.handle_trap:0000000000000000 .LVL2
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:68     .text.handle_trap:0000000000000012 .LVL3
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:22     .text.handle_nmi:0000000000000006 .LCFI0
+C:\Users\anton\AppData\Local\Temp\ccFD2A1H.s:107    .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+write
+_exit

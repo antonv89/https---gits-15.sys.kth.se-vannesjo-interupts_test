@@ -1,0 +1,360 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s 			page 1
+
+
+   1              		.file	"gd32vf103_dbg.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.dbg_id_get,"ax",@progbits
+  10              		.align	1
+  11              		.globl	dbg_id_get
+  13              	dbg_id_get:
+  14              	.LFB2:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_dbg.
+   1:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** /*!
+   2:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \file    gd32vf103_dbg.c
+   3:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \brief   DBG driver
+   4:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+   5:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \version 2019-06-05, V1.0.0, firmware for GD32VF103
+   6:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \version 2020-08-04, V1.1.0, firmware for GD32VF103
+   7:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** */
+   8:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+   9:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** /*
+  10:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+  12:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  13:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** are permitted provided that the following conditions are met:
+  14:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+  15:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  16:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****        list of conditions and the following disclaimer.
+  17:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  18:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****        this list of conditions and the following disclaimer in the documentation 
+  19:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****        and/or other materials provided with the distribution.
+  20:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  21:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****        may be used to endorse or promote products derived from this software without 
+  22:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****        specific prior written permission.
+  23:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+  24:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  25:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  26:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  27:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  28:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  30:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  31:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  32:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  33:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** OF SUCH DAMAGE.
+  34:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** */
+  35:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+  36:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** #include "gd32vf103_dbg.h"
+  37:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+  38:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** /*!
+  39:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \brief      read DBG_ID code register
+  40:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \param[in]  none
+  41:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \param[out] none
+  42:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \retval     DBG_ID code
+  43:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** */
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s 			page 2
+
+
+  44:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** uint32_t dbg_id_get(void)
+  45:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** {
+  16              		.loc 1 45 1
+  17              		.cfi_startproc
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     return DBG_ID;
+  18              		.loc 1 46 5
+  19              		.loc 1 46 12 is_stmt 0
+  20 0000 B72704E0 		li	a5,-536600576
+  21 0004 8843     		lw	a0,0(a5)
+  47:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** }
+  22              		.loc 1 47 1
+  23 0006 8280     		ret
+  24              		.cfi_endproc
+  25              	.LFE2:
+  27              		.section	.text.dbg_low_power_enable,"ax",@progbits
+  28              		.align	1
+  29              		.globl	dbg_low_power_enable
+  31              	dbg_low_power_enable:
+  32              	.LFB3:
+  48:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** /*!
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \brief      enable low power behavior when the mcu is in debug mode
+  51:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \param[in]  dbg_low_power:
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****                 one or more parameters can be selected which are shown as below:
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_LOW_POWER_SLEEP: keep debugger connection during sleep mode
+  54:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_LOW_POWER_DEEPSLEEP: keep debugger connection during deepsleep mode
+  55:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_LOW_POWER_STANDBY: keep debugger connection during standby mode
+  56:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \param[out] none
+  57:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \retval     none
+  58:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** */
+  59:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** void dbg_low_power_enable(uint32_t dbg_low_power)
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** {
+  33              		.loc 1 60 1 is_stmt 1
+  34              		.cfi_startproc
+  35              	.LVL0:
+  61:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     DBG_CTL |= dbg_low_power;
+  36              		.loc 1 61 5
+  37              		.loc 1 61 13 is_stmt 0
+  38 0000 372704E0 		li	a4,-536600576
+  39 0004 5C43     		lw	a5,4(a4)
+  40 0006 5D8D     		or	a0,a5,a0
+  41              	.LVL1:
+  42 0008 48C3     		sw	a0,4(a4)
+  62:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** }
+  43              		.loc 1 62 1
+  44 000a 8280     		ret
+  45              		.cfi_endproc
+  46              	.LFE3:
+  48              		.section	.text.dbg_low_power_disable,"ax",@progbits
+  49              		.align	1
+  50              		.globl	dbg_low_power_disable
+  52              	dbg_low_power_disable:
+  53              	.LFB4:
+  63:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** /*!
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \brief      disable low power behavior when the mcu is in debug mode
+  66:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \param[in]  dbg_low_power:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s 			page 3
+
+
+  67:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****                 one or more parameters can be selected which are shown as below:
+  68:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_LOW_POWER_SLEEP: donot keep debugger connection during sleep mode
+  69:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_LOW_POWER_DEEPSLEEP: donot keep debugger connection during deepsleep mode
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_LOW_POWER_STANDBY: donot keep debugger connection during standby mode
+  71:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \param[out] none
+  72:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \retval     none
+  73:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** */
+  74:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** void dbg_low_power_disable(uint32_t dbg_low_power)
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** {
+  54              		.loc 1 75 1 is_stmt 1
+  55              		.cfi_startproc
+  56              	.LVL2:
+  76:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     DBG_CTL &= ~dbg_low_power;
+  57              		.loc 1 76 5
+  58              		.loc 1 76 13 is_stmt 0
+  59 0000 B72704E0 		li	a5,-536600576
+  60 0004 D843     		lw	a4,4(a5)
+  61              		.loc 1 76 16
+  62 0006 1345F5FF 		not	a0,a0
+  63              	.LVL3:
+  64              		.loc 1 76 13
+  65 000a 798D     		and	a0,a0,a4
+  66              	.LVL4:
+  67 000c C8C3     		sw	a0,4(a5)
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** }
+  68              		.loc 1 77 1
+  69 000e 8280     		ret
+  70              		.cfi_endproc
+  71              	.LFE4:
+  73              		.section	.text.dbg_periph_enable,"ax",@progbits
+  74              		.align	1
+  75              		.globl	dbg_periph_enable
+  77              	dbg_periph_enable:
+  78              	.LFB5:
+  78:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** /*!
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \brief      enable peripheral behavior when the mcu is in debug mode
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \param[in]  dbg_periph: refer to dbg_periph_enum
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****                 one or more parameters can be selected which are shown as below:
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_FWDGT_HOLD : debug FWDGT kept when core is halted
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_WWDGT_HOLD : debug WWDGT kept when core is halted
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_CANx_HOLD (x=0,1): hold CANx counter when core is halted
+  86:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_I2Cx_HOLD (x=0,1): hold I2Cx smbus when core is halted
+  87:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_TIMERx_HOLD (x=0,1,2,3,4,5,6): hold TIMERx counter when core is halted
+  88:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \param[out] none
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \retval     none
+  90:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** */
+  91:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** void dbg_periph_enable(dbg_periph_enum dbg_periph)
+  92:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** {
+  79              		.loc 1 92 1 is_stmt 1
+  80              		.cfi_startproc
+  81              	.LVL5:
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     DBG_CTL |= (uint32_t)dbg_periph;
+  82              		.loc 1 93 5
+  83              		.loc 1 93 13 is_stmt 0
+  84 0000 372704E0 		li	a4,-536600576
+  85 0004 5C43     		lw	a5,4(a4)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s 			page 4
+
+
+  86 0006 5D8D     		or	a0,a5,a0
+  87              	.LVL6:
+  88 0008 48C3     		sw	a0,4(a4)
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** }
+  89              		.loc 1 94 1
+  90 000a 8280     		ret
+  91              		.cfi_endproc
+  92              	.LFE5:
+  94              		.section	.text.dbg_periph_disable,"ax",@progbits
+  95              		.align	1
+  96              		.globl	dbg_periph_disable
+  98              	dbg_periph_disable:
+  99              	.LFB6:
+  95:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** 
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** /*!
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \brief      disable peripheral behavior when the mcu is in debug mode
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \param[in]  dbg_periph: refer to dbg_periph_enum
+  99:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****                 one or more parameters can be selected which are shown as below:
+ 100:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_FWDGT_HOLD : debug FWDGT kept when core is halted
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_WWDGT_HOLD : debug WWDGT kept when core is halted
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_CANx_HOLD (x=0,1): hold CAN0 counter when core is halted
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_I2Cx_HOLD (x=0,1): hold I2Cx smbus when core is halted
+ 104:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****       \arg        DBG_TIMERx_HOLD (x=0,1,2,3,4,5,6): hold TIMERx counter when core is halted
+ 105:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \param[out] none
+ 106:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     \retval     none
+ 107:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** */
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** void dbg_periph_disable(dbg_periph_enum dbg_periph)
+ 109:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** {
+ 100              		.loc 1 109 1 is_stmt 1
+ 101              		.cfi_startproc
+ 102              	.LVL7:
+ 110:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c ****     DBG_CTL &= ~(uint32_t)dbg_periph;
+ 103              		.loc 1 110 5
+ 104              		.loc 1 110 13 is_stmt 0
+ 105 0000 B72704E0 		li	a5,-536600576
+ 106 0004 D843     		lw	a4,4(a5)
+ 107              		.loc 1 110 16
+ 108 0006 1345F5FF 		not	a0,a0
+ 109              	.LVL8:
+ 110              		.loc 1 110 13
+ 111 000a 798D     		and	a0,a0,a4
+ 112              	.LVL9:
+ 113 000c C8C3     		sw	a0,4(a5)
+ 111:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_dbg.c **** }
+ 114              		.loc 1 111 1
+ 115 000e 8280     		ret
+ 116              		.cfi_endproc
+ 117              	.LFE6:
+ 119              		.text
+ 120              	.Letext0:
+ 121              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 122              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 123              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_dbg
+ 124              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32vf103_dbg.c
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:13     .text.dbg_id_get:0000000000000000 dbg_id_get
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:17     .text.dbg_id_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:18     .text.dbg_id_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:19     .text.dbg_id_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:20     .text.dbg_id_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:23     .text.dbg_id_get:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:24     .text.dbg_id_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:31     .text.dbg_low_power_enable:0000000000000000 dbg_low_power_enable
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:34     .text.dbg_low_power_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:36     .text.dbg_low_power_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:37     .text.dbg_low_power_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:38     .text.dbg_low_power_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:44     .text.dbg_low_power_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:45     .text.dbg_low_power_enable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:52     .text.dbg_low_power_disable:0000000000000000 dbg_low_power_disable
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:55     .text.dbg_low_power_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:57     .text.dbg_low_power_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:58     .text.dbg_low_power_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:59     .text.dbg_low_power_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:62     .text.dbg_low_power_disable:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:65     .text.dbg_low_power_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:69     .text.dbg_low_power_disable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:70     .text.dbg_low_power_disable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:77     .text.dbg_periph_enable:0000000000000000 dbg_periph_enable
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:80     .text.dbg_periph_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:82     .text.dbg_periph_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:83     .text.dbg_periph_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:84     .text.dbg_periph_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:90     .text.dbg_periph_enable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:91     .text.dbg_periph_enable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:98     .text.dbg_periph_disable:0000000000000000 dbg_periph_disable
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:101    .text.dbg_periph_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:103    .text.dbg_periph_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:104    .text.dbg_periph_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:105    .text.dbg_periph_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:108    .text.dbg_periph_disable:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:111    .text.dbg_periph_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:115    .text.dbg_periph_disable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:116    .text.dbg_periph_disable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:27     .text.dbg_id_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:48     .text.dbg_low_power_enable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:73     .text.dbg_low_power_disable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:94     .text.dbg_periph_enable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:119    .text.dbg_periph_disable:0000000000000010 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:362    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:660    .debug_str:000000000000000b .LASF32
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:700    .debug_str:00000000000001a5 .LASF33
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:710    .debug_str:0000000000000245 .LASF34
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:642    .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:656    .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:698    .debug_str:0000000000000198 .LASF0
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:724    .debug_str:00000000000002e5 .LASF1
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:680    .debug_str:0000000000000109 .LASF2
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:716    .debug_str:00000000000002b3 .LASF3
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s 			page 6
+
+
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:686    .debug_str:0000000000000137 .LASF4
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:668    .debug_str:00000000000000ae .LASF5
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:692    .debug_str:000000000000016a .LASF9
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:684    .debug_str:0000000000000125 .LASF6
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:712    .debug_str:0000000000000295 .LASF7
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:704    .debug_str:000000000000020e .LASF8
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:718    .debug_str:00000000000002bd .LASF10
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:714    .debug_str:00000000000002a3 .LASF35
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:722    .debug_str:00000000000002d9 .LASF11
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:678    .debug_str:00000000000000fa .LASF12
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:670    .debug_str:00000000000000b7 .LASF13
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:726    .debug_str:00000000000002f1 .LASF14
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:690    .debug_str:000000000000015a .LASF15
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:708    .debug_str:0000000000000235 .LASF16
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:662    .debug_str:0000000000000085 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:666    .debug_str:00000000000000a0 .LASF18
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:672    .debug_str:00000000000000c6 .LASF19
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:702    .debug_str:0000000000000200 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:688    .debug_str:000000000000014a .LASF21
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:706    .debug_str:0000000000000225 .LASF22
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:728    .debug_str:0000000000000301 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:682    .debug_str:0000000000000117 .LASF24
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:674    .debug_str:00000000000000d4 .LASF25
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:720    .debug_str:00000000000002c6 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:99     .text.dbg_periph_disable:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:117    .text.dbg_periph_disable:0000000000000010 .LFE6
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:658    .debug_str:0000000000000000 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:551    .debug_loc:0000000000000000 .LLST3
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:730    .debug_str:0000000000000311 .LASF27
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:78     .text.dbg_periph_enable:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:92     .text.dbg_periph_enable:000000000000000c .LFE5
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:572    .debug_loc:000000000000002f .LLST2
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:676    .debug_str:00000000000000e4 .LASF29
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:53     .text.dbg_low_power_disable:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:71     .text.dbg_low_power_disable:0000000000000010 .LFE4
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:696    .debug_str:000000000000018a .LASF30
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:586    .debug_loc:0000000000000050 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:694    .debug_str:0000000000000175 .LASF31
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:32     .text.dbg_low_power_enable:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:46     .text.dbg_low_power_enable:000000000000000c .LFE3
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:607    .debug_loc:000000000000007f .LLST0
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:664    .debug_str:0000000000000095 .LASF36
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:14     .text.dbg_id_get:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:25     .text.dbg_id_get:0000000000000008 .LFE2
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:102    .text.dbg_periph_disable:0000000000000000 .LVL7
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:109    .text.dbg_periph_disable:000000000000000a .LVL8
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:112    .text.dbg_periph_disable:000000000000000c .LVL9
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:81     .text.dbg_periph_enable:0000000000000000 .LVL5
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:87     .text.dbg_periph_enable:0000000000000008 .LVL6
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:56     .text.dbg_low_power_disable:0000000000000000 .LVL2
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:63     .text.dbg_low_power_disable:000000000000000a .LVL3
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:66     .text.dbg_low_power_disable:000000000000000c .LVL4
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:35     .text.dbg_low_power_enable:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:41     .text.dbg_low_power_enable:0000000000000008 .LVL1
+C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s:126    .debug_info:0000000000000000 .Ldebug_info0
+
+NO UNDEFINED SYMBOLS
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccZ3BbPb.s 			page 7
+
+

@@ -1,0 +1,338 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s 			page 1
+
+
+   1              		.file	"fstat.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text._fstat,"ax",@progbits
+  10              		.align	1
+  11              		.globl	_fstat
+  13              	_fstat:
+  14              	.LFB1:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs/fstat.c"
+   1:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** /* See LICENSE of license details. */
+   2:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** 
+   3:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** #include <errno.h>
+   4:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** #include <unistd.h>
+   5:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** #include <sys/stat.h>
+   6:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** #include "stub.h"
+   7:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** 
+   8:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** int _fstat(int fd, struct stat* st)
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** {
+  16              		.loc 1 9 1
+  17              		.cfi_startproc
+  18              	.LVL0:
+  10:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c ****   if (isatty(fd)) {
+  19              		.loc 1 10 3
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c ****   if (isatty(fd)) {
+  20              		.loc 1 9 1 is_stmt 0
+  21 0000 4111     		addi	sp,sp,-16
+  22              	.LCFI0:
+  23              		.cfi_def_cfa_offset 16
+  24 0002 22C4     		sw	s0,8(sp)
+  25 0004 06C6     		sw	ra,12(sp)
+  26              		.cfi_offset 8, -8
+  27              		.cfi_offset 1, -4
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c ****   if (isatty(fd)) {
+  28              		.loc 1 9 1
+  29 0006 2E84     		mv	s0,a1
+  30              		.loc 1 10 7
+  31 0008 97000000 		call	isatty
+  31      E7800000 
+  32              	.LVL1:
+  33              		.loc 1 10 6
+  34 0010 01C9     		beq	a0,zero,.L3
+  11:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c ****     st->st_mode = S_IFCHR;
+  35              		.loc 1 11 5 is_stmt 1
+  36              		.loc 1 11 17 is_stmt 0
+  37 0012 8967     		li	a5,8192
+  38 0014 5CC0     		sw	a5,4(s0)
+  12:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c ****     return 0;
+  39              		.loc 1 12 5 is_stmt 1
+  40              		.loc 1 12 12 is_stmt 0
+  41 0016 0145     		li	a0,0
+  42              	.L1:
+  13:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c ****   }
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s 			page 2
+
+
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** 
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c ****   return _stub(EBADF);
+  16:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** }
+  43              		.loc 1 16 1
+  44 0018 B240     		lw	ra,12(sp)
+  45              		.cfi_remember_state
+  46              		.cfi_restore 1
+  47 001a 2244     		lw	s0,8(sp)
+  48              		.cfi_restore 8
+  49              	.LVL2:
+  50 001c 4101     		addi	sp,sp,16
+  51              	.LCFI1:
+  52              		.cfi_def_cfa_offset 0
+  53 001e 8280     		jr	ra
+  54              	.LVL3:
+  55              	.L3:
+  56              	.LCFI2:
+  57              		.cfi_restore_state
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\fstat.c **** }
+  58              		.loc 1 15 10
+  59 0020 7D55     		li	a0,-1
+  60 0022 DDBF     		j	.L1
+  61              		.cfi_endproc
+  62              	.LFE1:
+  64              		.text
+  65              	.Letext0:
+  66              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\lib\\gcc\\riscv64-unknown-elf\\8.3.0\\include\\
+  67              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+  68              		.file 4 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_types.h"
+  69              		.file 5 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\reent.h"
+  70              		.file 6 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\lock.h"
+  71              		.file 7 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\errno.h"
+  72              		.file 8 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_timeval.h"
+  73              		.file 9 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\types.h"
+  74              		.file 10 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\unistd.h"
+  75              		.file 11 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\time.h"
+  76              		.file 12 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\stat.h"
+  77              		.file 13 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs/stub.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 fstat.c
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:13     .text._fstat:0000000000000000 _fstat
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:17     .text._fstat:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:19     .text._fstat:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:20     .text._fstat:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:21     .text._fstat:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:23     .text._fstat:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:26     .text._fstat:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:27     .text._fstat:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:29     .text._fstat:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:31     .text._fstat:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:34     .text._fstat:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:36     .text._fstat:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:37     .text._fstat:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:40     .text._fstat:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:41     .text._fstat:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:44     .text._fstat:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:45     .text._fstat:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:46     .text._fstat:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:48     .text._fstat:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:52     .text._fstat:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:57     .text._fstat:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:59     .text._fstat:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:61     .text._fstat:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:64     .text._fstat:0000000000000024 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:55     .text._fstat:0000000000000020 .L3
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:42     .text._fstat:0000000000000018 .L1
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:1934   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2738   .debug_str:00000000000003c6 .LASF170
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2758   .debug_str:0000000000000497 .LASF171
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2720   .debug_str:0000000000000332 .LASF172
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2538   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2544   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2674   .debug_str:0000000000000264 .LASF0
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2596   .debug_str:0000000000000100 .LASF1
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2732   .debug_str:00000000000003ac .LASF2
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2710   .debug_str:000000000000030e .LASF8
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2598   .debug_str:000000000000010e .LASF3
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2762   .debug_str:00000000000004da .LASF4
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2770   .debug_str:00000000000004fd .LASF5
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2696   .debug_str:00000000000002c3 .LASF6
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2618   .debug_str:0000000000000167 .LASF7
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2650   .debug_str:00000000000001fa .LASF9
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2684   .debug_str:0000000000000291 .LASF10
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2574   .debug_str:0000000000000082 .LASF11
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2586   .debug_str:00000000000000cc .LASF12
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2616   .debug_str:000000000000015c .LASF13
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2744   .debug_str:0000000000000451 .LASF14
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2746   .debug_str:000000000000045d .LASF15
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2662   .debug_str:0000000000000233 .LASF16
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2838   .debug_str:0000000000000628 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2550   .debug_str:0000000000000014 .LASF18
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2810   .debug_str:00000000000005bb .LASF19
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2602   .debug_str:0000000000000120 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2548   .debug_str:000000000000000c .LASF21
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s 			page 4
+
+
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2822   .debug_str:00000000000005eb .LASF22
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2864   .debug_str:00000000000006a3 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2706   .debug_str:0000000000000300 .LASF24
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2676   .debug_str:0000000000000271 .LASF25
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2814   .debug_str:00000000000005c9 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2816   .debug_str:00000000000005d1 .LASF27
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2782   .debug_str:0000000000000530 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2892   .debug_str:0000000000000720 .LASF29
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2850   .debug_str:0000000000000659 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2756   .debug_str:0000000000000485 .LASF31
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2654   .debug_str:000000000000020b .LASF32
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2658   .debug_str:000000000000021c .LASF37
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2840   .debug_str:0000000000000630 .LASF33
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2806   .debug_str:00000000000005ac .LASF34
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2652   .debug_str:0000000000000205 .LASF35
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2858   .debug_str:000000000000068e .LASF36
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2672   .debug_str:000000000000025f .LASF38
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2592   .debug_str:00000000000000f2 .LASF39
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2832   .debug_str:0000000000000612 .LASF40
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2606   .debug_str:000000000000012f .LASF41
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2896   .debug_str:0000000000000733 .LASF42
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2740   .debug_str:0000000000000440 .LASF43
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2726   .debug_str:0000000000000392 .LASF44
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2860   .debug_str:0000000000000693 .LASF45
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2772   .debug_str:0000000000000507 .LASF46
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2876   .debug_str:00000000000006d8 .LASF47
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2610   .debug_str:000000000000013e .LASF48
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2644   .debug_str:00000000000001e7 .LASF49
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2546   .debug_str:0000000000000000 .LASF50
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2846   .debug_str:000000000000064b .LASF51
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2624   .debug_str:0000000000000181 .LASF52
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2742   .debug_str:0000000000000449 .LASF53
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2798   .debug_str:000000000000057c .LASF54
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2646   .debug_str:00000000000001ef .LASF55
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2774   .debug_str:0000000000000511 .LASF56
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2604   .debug_str:0000000000000129 .LASF57
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2552   .debug_str:000000000000001c .LASF58
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2784   .debug_str:000000000000053b .LASF59
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2622   .debug_str:000000000000017a .LASF60
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2686   .debug_str:00000000000002a3 .LASF61
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2578   .debug_str:00000000000000a3 .LASF62
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2612   .debug_str:000000000000014c .LASF63
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2664   .debug_str:000000000000023b .LASF64
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2724   .debug_str:000000000000038b .LASF65
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2818   .debug_str:00000000000005d9 .LASF66
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2880   .debug_str:00000000000006f2 .LASF67
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2600   .debug_str:000000000000011a .LASF68
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2872   .debug_str:00000000000006ca .LASF69
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2630   .debug_str:0000000000000197 .LASF70
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2638   .debug_str:00000000000001c0 .LASF71
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2568   .debug_str:000000000000005c .LASF72
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2712   .debug_str:0000000000000315 .LASF73
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2788   .debug_str:000000000000054d .LASF74
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2716   .debug_str:0000000000000322 .LASF75
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2808   .debug_str:00000000000005b4 .LASF76
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2826   .debug_str:00000000000005fc .LASF77
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2626   .debug_str:0000000000000189 .LASF78
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s 			page 5
+
+
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2678   .debug_str:0000000000000278 .LASF79
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2656   .debug_str:0000000000000214 .LASF80
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2796   .debug_str:0000000000000577 .LASF81
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2560   .debug_str:0000000000000039 .LASF82
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2804   .debug_str:0000000000000593 .LASF83
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2800   .debug_str:0000000000000581 .LASF84
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2632   .debug_str:00000000000001a0 .LASF85
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2802   .debug_str:0000000000000589 .LASF86
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2704   .debug_str:00000000000002f8 .LASF87
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2666   .debug_str:0000000000000241 .LASF88
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2890   .debug_str:000000000000071b .LASF89
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2752   .debug_str:0000000000000471 .LASF90
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2682   .debug_str:0000000000000289 .LASF91
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2636   .debug_str:00000000000001b8 .LASF92
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2764   .debug_str:00000000000004e8 .LASF93
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2698   .debug_str:00000000000002d6 .LASF94
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2868   .debug_str:00000000000006b6 .LASF95
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2614   .debug_str:0000000000000154 .LASF96
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2608   .debug_str:0000000000000139 .LASF97
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2828   .debug_str:0000000000000603 .LASF98
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2780   .debug_str:0000000000000529 .LASF99
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2862   .debug_str:000000000000069d .LASF100
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2692   .debug_str:00000000000002b6 .LASF101
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2778   .debug_str:0000000000000523 .LASF102
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2556   .debug_str:000000000000002a .LASF103
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2812   .debug_str:00000000000005c3 .LASF104
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2836   .debug_str:0000000000000622 .LASF105
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2848   .debug_str:0000000000000654 .LASF106
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2856   .debug_str:0000000000000681 .LASF107
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2842   .debug_str:0000000000000636 .LASF108
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2702   .debug_str:00000000000002eb .LASF109
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2878   .debug_str:00000000000006e3 .LASF110
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2660   .debug_str:0000000000000224 .LASF111
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2790   .debug_str:0000000000000556 .LASF112
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2882   .debug_str:00000000000006f9 .LASF113
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2794   .debug_str:000000000000056a .LASF114
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2888   .debug_str:000000000000070d .LASF115
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2590   .debug_str:00000000000000e4 .LASF116
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2866   .debug_str:00000000000006ac .LASF117
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2700   .debug_str:00000000000002df .LASF118
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2852   .debug_str:0000000000000661 .LASF119
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2642   .debug_str:00000000000001d9 .LASF120
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2584   .debug_str:00000000000000bd .LASF121
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2640   .debug_str:00000000000001c8 .LASF122
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2570   .debug_str:0000000000000062 .LASF123
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2572   .debug_str:0000000000000071 .LASF124
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2768   .debug_str:00000000000004f4 .LASF125
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2736   .debug_str:00000000000003bf .LASF126
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2728   .debug_str:000000000000039c .LASF127
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2874   .debug_str:00000000000006d0 .LASF128
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2580   .debug_str:00000000000000ac .LASF173
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2820   .debug_str:00000000000005df .LASF129
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2854   .debug_str:000000000000066e .LASF130
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2634   .debug_str:00000000000001ab .LASF131
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2786   .debug_str:0000000000000543 .LASF132
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2750   .debug_str:000000000000046a .LASF133
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2680   .debug_str:0000000000000280 .LASF134
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s 			page 6
+
+
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2870   .debug_str:00000000000006c0 .LASF135
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2898   .debug_str:000000000000073d .LASF136
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2688   .debug_str:00000000000002a9 .LASF137
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2748   .debug_str:0000000000000464 .LASF138
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2694   .debug_str:00000000000002bd .LASF139
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2648   .debug_str:00000000000001f4 .LASF140
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2558   .debug_str:0000000000000032 .LASF141
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2554   .debug_str:0000000000000022 .LASF142
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2708   .debug_str:0000000000000306 .LASF143
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2730   .debug_str:00000000000003a5 .LASF144
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2734   .debug_str:00000000000003b8 .LASF145
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2834   .debug_str:000000000000061b .LASF146
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2884   .debug_str:00000000000006fe .LASF147
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2722   .debug_str:0000000000000382 .LASF148
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2754   .debug_str:000000000000047b .LASF149
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2562   .debug_str:0000000000000044 .LASF150
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2588   .debug_str:00000000000000dc .LASF151
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2594   .debug_str:00000000000000fb .LASF152
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2564   .debug_str:000000000000004e .LASF153
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2766   .debug_str:00000000000004ed .LASF154
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2844   .debug_str:0000000000000643 .LASF155
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2760   .debug_str:00000000000004d1 .LASF156
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2690   .debug_str:00000000000002af .LASF157
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2566   .debug_str:0000000000000055 .LASF158
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2886   .debug_str:0000000000000705 .LASF159
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2718   .debug_str:000000000000032a .LASF160
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2824   .debug_str:00000000000005f3 .LASF161
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2668   .debug_str:000000000000024b .LASF162
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2894   .debug_str:000000000000072a .LASF163
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2670   .debug_str:0000000000000255 .LASF164
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2792   .debug_str:0000000000000561 .LASF165
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2620   .debug_str:0000000000000170 .LASF166
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2776   .debug_str:0000000000000518 .LASF167
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2576   .debug_str:0000000000000099 .LASF168
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2830   .debug_str:0000000000000608 .LASF169
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2628   .debug_str:0000000000000190 .LASF174
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:14     .text._fstat:0000000000000000 .LFB1
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:62     .text._fstat:0000000000000024 .LFE1
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2466   .debug_loc:0000000000000000 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2489   .debug_loc:0000000000000038 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2503   .debug_loc:0000000000000059 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:32     .text._fstat:0000000000000010 .LVL1
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2582   .debug_str:00000000000000b7 .LASF175
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:2714   .debug_str:000000000000031b .LASF176
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:22     .text._fstat:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:51     .text._fstat:000000000000001e .LCFI1
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:56     .text._fstat:0000000000000020 .LCFI2
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:18     .text._fstat:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:49     .text._fstat:000000000000001c .LVL2
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:54     .text._fstat:0000000000000020 .LVL3
+C:\Users\anton\AppData\Local\Temp\ccfrRZcq.s:79     .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+isatty

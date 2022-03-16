@@ -1,0 +1,454 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s 			page 1
+
+
+   1              		.file	"adc.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.ADC3powerUpInit,"ax",@progbits
+  10              		.align	1
+  11              		.globl	ADC3powerUpInit
+  13              	ADC3powerUpInit:
+  14              	.LFB2:
+  15              		.file 1 "adc.c"
+   1:adc.c         **** #include "adc.h"
+   2:adc.c         **** #include "gd32vf103.h"
+   3:adc.c         **** 
+   4:adc.c         **** void ADC3powerUpInit(int temp_enable) {
+  16              		.loc 1 4 39
+  17              		.cfi_startproc
+  18              	.LVL0:
+   5:adc.c         ****     rcu_periph_clock_enable(RCU_GPIOA);
+  19              		.loc 1 5 5
+   4:adc.c         ****     rcu_periph_clock_enable(RCU_GPIOA);
+  20              		.loc 1 4 39 is_stmt 0
+  21 0000 4111     		addi	sp,sp,-16
+  22              	.LCFI0:
+  23              		.cfi_def_cfa_offset 16
+  24 0002 26C2     		sw	s1,4(sp)
+  25              		.cfi_offset 9, -12
+  26 0004 AA84     		mv	s1,a0
+  27              		.loc 1 5 5
+  28 0006 13052060 		li	a0,1538
+  29              	.LVL1:
+   4:adc.c         ****     rcu_periph_clock_enable(RCU_GPIOA);
+  30              		.loc 1 4 39
+  31 000a 06C6     		sw	ra,12(sp)
+  32 000c 22C4     		sw	s0,8(sp)
+  33              		.cfi_offset 1, -4
+  34              		.cfi_offset 8, -8
+  35              		.loc 1 5 5
+  36 000e 97000000 		call	rcu_periph_clock_enable
+  36      E7800000 
+  37              	.LVL2:
+   6:adc.c         ****     rcu_periph_clock_enable(RCU_ADC0);
+  38              		.loc 1 6 5 is_stmt 1
+  39 0016 13059060 		li	a0,1545
+  40 001a 97000000 		call	rcu_periph_clock_enable
+  40      E7800000 
+  41              	.LVL3:
+   7:adc.c         ****     rcu_adc_clock_config(RCU_CKADC_CKAPB2_DIV8);
+  42              		.loc 1 7 5
+  43 0022 0D45     		li	a0,3
+  44 0024 97000000 		call	rcu_adc_clock_config
+  44      E7800000 
+  45              	.LVL4:
+   8:adc.c         **** 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s 			page 2
+
+
+   9:adc.c         ****     gpio_init(GPIOA, GPIO_MODE_AIN, GPIO_MODE_OUT_PP, GPIO_PIN_3);
+  46              		.loc 1 9 5
+  47 002c 37150140 		li	a0,1073811456
+  48 0030 A146     		li	a3,8
+  49 0032 4146     		li	a2,16
+  50 0034 8145     		li	a1,0
+  51 0036 13050580 		addi	a0,a0,-2048
+  52 003a 97000000 		call	gpio_init
+  52      E7800000 
+  53              	.LVL5:
+  10:adc.c         **** 
+  11:adc.c         ****     adc_deinit(ADC0);                                                   // Reset...
+  54              		.loc 1 11 5
+  55 0042 37240140 		li	s0,1073815552
+  56 0046 13050440 		addi	a0,s0,1024
+  57 004a 97000000 		call	adc_deinit
+  57      E7800000 
+  58              	.LVL6:
+  12:adc.c         ****     adc_mode_config(ADC_MODE_FREE);                                     // ADC0 & ADC1 runs indep.
+  59              		.loc 1 12 5
+  60 0052 0145     		li	a0,0
+  61 0054 97000000 		call	adc_mode_config
+  61      E7800000 
+  62              	.LVL7:
+  13:adc.c         ****     adc_special_function_config(ADC0, ADC_CONTINUOUS_MODE, DISABLE);    // Trigger each sample
+  63              		.loc 1 13 5
+  64 005c 0146     		li	a2,0
+  65 005e 8945     		li	a1,2
+  66 0060 13050440 		addi	a0,s0,1024
+  67 0064 97000000 		call	adc_special_function_config
+  67      E7800000 
+  68              	.LVL8:
+  14:adc.c         ****     adc_special_function_config(ADC0, ADC_SCAN_MODE, DISABLE);          // Scan mode disable
+  69              		.loc 1 14 5
+  70 006c 0146     		li	a2,0
+  71 006e 93050010 		li	a1,256
+  72 0072 13050440 		addi	a0,s0,1024
+  73 0076 97000000 		call	adc_special_function_config
+  73      E7800000 
+  74              	.LVL9:
+  15:adc.c         ****     adc_data_alignment_config(ADC0, ADC_DATAALIGN_RIGHT);               // Align ADC value right
+  75              		.loc 1 15 5
+  76 007e 8145     		li	a1,0
+  77 0080 13050440 		addi	a0,s0,1024
+  78 0084 97000000 		call	adc_data_alignment_config
+  78      E7800000 
+  79              	.LVL10:
+  16:adc.c         ****     adc_channel_length_config(ADC0, ADC_REGULAR_CHANNEL, 1);            // Convert one channel
+  80              		.loc 1 16 5
+  81 008c 0546     		li	a2,1
+  82 008e 8545     		li	a1,1
+  83 0090 13050440 		addi	a0,s0,1024
+  84 0094 97000000 		call	adc_channel_length_config
+  84      E7800000 
+  85              	.LVL11:
+  17:adc.c         **** 
+  18:adc.c         ****     adc_regular_channel_config(ADC0, 0, ADC_CHANNEL_3, 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s 			page 3
+
+
+  86              		.loc 1 18 5
+  87 009c 8946     		li	a3,2
+  88 009e 0D46     		li	a2,3
+  89 00a0 8145     		li	a1,0
+  90 00a2 13050440 		addi	a0,s0,1024
+  91 00a6 97000000 		call	adc_regular_channel_config
+  91      E7800000 
+  92              	.LVL12:
+  19:adc.c         ****                                ADC_SAMPLETIME_13POINT5);                // Conv. takes 13.5us
+  20:adc.c         ****     adc_external_trigger_source_config(ADC0, ADC_REGULAR_CHANNEL, 
+  93              		.loc 1 20 5
+  94 00ae 37060E00 		li	a2,917504
+  95 00b2 8545     		li	a1,1
+  96 00b4 13050440 		addi	a0,s0,1024
+  97 00b8 97000000 		call	adc_external_trigger_source_config
+  97      E7800000 
+  98              	.LVL13:
+  21:adc.c         ****                                        ADC0_1_EXTTRIG_REGULAR_NONE);    // SW Trigger
+  22:adc.c         ****     adc_external_trigger_config(ADC0, ADC_REGULAR_CHANNEL, ENABLE);     // Enable trigger
+  99              		.loc 1 22 5
+ 100 00c0 0546     		li	a2,1
+ 101 00c2 8545     		li	a1,1
+ 102 00c4 13050440 		addi	a0,s0,1024
+ 103 00c8 97000000 		call	adc_external_trigger_config
+ 103      E7800000 
+ 104              	.LVL14:
+  23:adc.c         ****     //adc_oversample_mode_config(ADC0, ADC_OVERSAMPLING_ALL_CONVERT,
+  24:adc.c         ****     //        ADC_OVERSAMPLING_SHIFT_8B, ADC_OVERSAMPLING_RATIO_MUL16); //Configura oversampling 16
+  25:adc.c         ****     //adc_oversample_mode_enable (ADC0);                                  //Enable -''-
+  26:adc.c         **** 
+  27:adc.c         ****     if (temp_enable) {                                                          // Add Ch16 Temp?
+ 105              		.loc 1 27 5
+ 106              		.loc 1 27 8 is_stmt 0
+ 107 00d0 95E8     		bne	s1,zero,.L8
+ 108              	.L2:
+  28:adc.c         ****         adc_special_function_config(ADC0, ADC_INSERTED_CHANNEL_AUTO, ENABLE);
+  29:adc.c         ****         adc_channel_length_config(ADC0, ADC_INSERTED_CHANNEL, 1);
+  30:adc.c         ****         adc_tempsensor_vrefint_enable();
+  31:adc.c         ****         adc_inserted_channel_config(ADC0, 0, ADC_CHANNEL_16, ADC_SAMPLETIME_239POINT5);
+  32:adc.c         ****     }
+  33:adc.c         **** 
+  34:adc.c         ****     adc_enable(ADC0);                                                   // ...enable!...
+ 109              		.loc 1 34 5 is_stmt 1
+ 110 00d2 37240140 		li	s0,1073815552
+ 111 00d6 13050440 		addi	a0,s0,1024
+ 112 00da 97000000 		call	adc_enable
+ 112      E7800000 
+ 113              	.LVL15:
+  35:adc.c         ****     //delay_1ms(1);
+  36:adc.c         ****     for (int i=0; i<0xFFFF; i++);                                       // ...wait 1ms...
+ 114              		.loc 1 36 5
+ 115              		.loc 1 36 10
+  37:adc.c         ****     adc_calibration_enable(ADC0);                                       // ...calibrate...
+ 116              		.loc 1 37 5
+ 117 00e2 13050440 		addi	a0,s0,1024
+ 118 00e6 97000000 		call	adc_calibration_enable
+ 118      E7800000 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s 			page 4
+
+
+ 119              	.LVL16:
+  38:adc.c         ****     //delay_1ms(1);                                                     // ...wait 1ms...
+  39:adc.c         ****     for (int i=0; i<0xFFFF; i++);
+ 120              		.loc 1 39 5
+ 121              		.loc 1 39 10
+  40:adc.c         ****     adc_software_trigger_enable(ADC0, ADC_REGULAR_CHANNEL);             // ...trigger 1:st conv!
+ 122              		.loc 1 40 5
+ 123 00ee 13050440 		addi	a0,s0,1024
+  41:adc.c         **** }...
+ 124              		.loc 1 41 1 is_stmt 0
+ 125 00f2 2244     		lw	s0,8(sp)
+ 126              		.cfi_remember_state
+ 127              		.cfi_restore 8
+ 128 00f4 B240     		lw	ra,12(sp)
+ 129              		.cfi_restore 1
+ 130 00f6 9244     		lw	s1,4(sp)
+ 131              		.cfi_restore 9
+ 132              	.LVL17:
+  40:adc.c         ****     adc_software_trigger_enable(ADC0, ADC_REGULAR_CHANNEL);             // ...trigger 1:st conv!
+ 133              		.loc 1 40 5
+ 134 00f8 8545     		li	a1,1
+ 135              		.loc 1 41 1
+ 136 00fa 4101     		addi	sp,sp,16
+ 137              	.LCFI1:
+ 138              		.cfi_def_cfa_offset 0
+  40:adc.c         ****     adc_software_trigger_enable(ADC0, ADC_REGULAR_CHANNEL);             // ...trigger 1:st conv!
+ 139              		.loc 1 40 5
+ 140 00fc 17030000 		tail	adc_software_trigger_enable
+ 140      67000300 
+ 141              	.LVL18:
+ 142              	.L8:
+ 143              	.LCFI2:
+ 144              		.cfi_restore_state
+  28:adc.c         ****         adc_special_function_config(ADC0, ADC_INSERTED_CHANNEL_AUTO, ENABLE);
+ 145              		.loc 1 28 9 is_stmt 1
+ 146 0104 13050440 		addi	a0,s0,1024
+ 147 0108 0546     		li	a2,1
+ 148 010a 93050040 		li	a1,1024
+ 149 010e 97000000 		call	adc_special_function_config
+ 149      E7800000 
+ 150              	.LVL19:
+  29:adc.c         ****         adc_channel_length_config(ADC0, ADC_INSERTED_CHANNEL, 1);
+ 151              		.loc 1 29 9
+ 152 0116 13050440 		addi	a0,s0,1024
+ 153 011a 0546     		li	a2,1
+ 154 011c 8945     		li	a1,2
+ 155 011e 97000000 		call	adc_channel_length_config
+ 155      E7800000 
+ 156              	.LVL20:
+  30:adc.c         ****         adc_tempsensor_vrefint_enable();
+ 157              		.loc 1 30 9
+ 158 0126 97000000 		call	adc_tempsensor_vrefint_enable
+ 158      E7800000 
+ 159              	.LVL21:
+  31:adc.c         ****         adc_inserted_channel_config(ADC0, 0, ADC_CHANNEL_16, ADC_SAMPLETIME_239POINT5);
+ 160              		.loc 1 31 9
+ 161 012e 9D46     		li	a3,7
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s 			page 5
+
+
+ 162 0130 4146     		li	a2,16
+ 163 0132 8145     		li	a1,0
+ 164 0134 13050440 		addi	a0,s0,1024
+ 165 0138 97000000 		call	adc_inserted_channel_config
+ 165      E7800000 
+ 166              	.LVL22:
+ 167 0140 49BF     		j	.L2
+ 168              		.cfi_endproc
+ 169              	.LFE2:
+ 171              		.text
+ 172              	.Letext0:
+ 173              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 174              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 175              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 176              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu
+ 177              		.file 6 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_gpi
+ 178              		.file 7 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Include/gd32vf103_adc
+ 179              		.file 8 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 adc.c
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:13     .text.ADC3powerUpInit:0000000000000000 ADC3powerUpInit
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:17     .text.ADC3powerUpInit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:19     .text.ADC3powerUpInit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:20     .text.ADC3powerUpInit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:21     .text.ADC3powerUpInit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:23     .text.ADC3powerUpInit:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:25     .text.ADC3powerUpInit:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:28     .text.ADC3powerUpInit:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:31     .text.ADC3powerUpInit:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:33     .text.ADC3powerUpInit:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:34     .text.ADC3powerUpInit:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:36     .text.ADC3powerUpInit:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:39     .text.ADC3powerUpInit:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:43     .text.ADC3powerUpInit:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:47     .text.ADC3powerUpInit:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:55     .text.ADC3powerUpInit:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:60     .text.ADC3powerUpInit:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:64     .text.ADC3powerUpInit:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:70     .text.ADC3powerUpInit:000000000000006c .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:76     .text.ADC3powerUpInit:000000000000007e .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:81     .text.ADC3powerUpInit:000000000000008c .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:87     .text.ADC3powerUpInit:000000000000009c .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:94     .text.ADC3powerUpInit:00000000000000ae .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:100    .text.ADC3powerUpInit:00000000000000c0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:106    .text.ADC3powerUpInit:00000000000000d0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:107    .text.ADC3powerUpInit:00000000000000d0 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:110    .text.ADC3powerUpInit:00000000000000d2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:115    .text.ADC3powerUpInit:00000000000000e2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:116    .text.ADC3powerUpInit:00000000000000e2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:117    .text.ADC3powerUpInit:00000000000000e2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:121    .text.ADC3powerUpInit:00000000000000ee .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:122    .text.ADC3powerUpInit:00000000000000ee .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:123    .text.ADC3powerUpInit:00000000000000ee .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:125    .text.ADC3powerUpInit:00000000000000f2 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:126    .text.ADC3powerUpInit:00000000000000f4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:127    .text.ADC3powerUpInit:00000000000000f4 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:129    .text.ADC3powerUpInit:00000000000000f6 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:131    .text.ADC3powerUpInit:00000000000000f8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:134    .text.ADC3powerUpInit:00000000000000f8 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:136    .text.ADC3powerUpInit:00000000000000fa .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:138    .text.ADC3powerUpInit:00000000000000fc .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:140    .text.ADC3powerUpInit:00000000000000fc .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:144    .text.ADC3powerUpInit:0000000000000104 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:146    .text.ADC3powerUpInit:0000000000000104 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:152    .text.ADC3powerUpInit:0000000000000116 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:158    .text.ADC3powerUpInit:0000000000000126 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:161    .text.ADC3powerUpInit:000000000000012e .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:168    .text.ADC3powerUpInit:0000000000000142 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:171    .text.ADC3powerUpInit:0000000000000142 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:142    .text.ADC3powerUpInit:0000000000000104 .L8
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:108    .text.ADC3powerUpInit:00000000000000d2 .L2
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:913    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1338   .debug_str:000000000000020d .LASF69
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1280   .debug_str:00000000000000bb .LASF70
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s 			page 7
+
+
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1354   .debug_str:00000000000002e4 .LASF71
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1244   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1250   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1342   .debug_str:0000000000000290 .LASF0
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1334   .debug_str:00000000000001ea .LASF1
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1398   .debug_str:0000000000000473 .LASF6
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1324   .debug_str:00000000000001a9 .LASF2
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1282   .debug_str:00000000000000c1 .LASF3
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1348   .debug_str:00000000000002bf .LASF4
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1300   .debug_str:000000000000012c .LASF5
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1276   .debug_str:00000000000000a8 .LASF7
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1366   .debug_str:000000000000039b .LASF8
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1274   .debug_str:000000000000009a .LASF9
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1336   .debug_str:00000000000001f6 .LASF10
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1284   .debug_str:00000000000000cb .LASF11
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1340   .debug_str:0000000000000287 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1252   .debug_str:0000000000000000 .LASF72
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1288   .debug_str:00000000000000dc .LASF13
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1396   .debug_str:000000000000046c .LASF14
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1286   .debug_str:00000000000000d3 .LASF15
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1358   .debug_str:0000000000000350 .LASF16
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1394   .debug_str:0000000000000464 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1392   .debug_str:000000000000045b .LASF18
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1380   .debug_str:00000000000003fe .LASF19
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1310   .debug_str:000000000000015b .LASF20
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1312   .debug_str:0000000000000166 .LASF21
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1314   .debug_str:0000000000000171 .LASF22
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1316   .debug_str:000000000000017c .LASF23
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1318   .debug_str:0000000000000187 .LASF24
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1320   .debug_str:0000000000000192 .LASF25
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1298   .debug_str:0000000000000122 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1304   .debug_str:000000000000013e .LASF27
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1306   .debug_str:0000000000000147 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1376   .debug_str:00000000000003e8 .LASF29
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1378   .debug_str:00000000000003f3 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1382   .debug_str:0000000000000408 .LASF31
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1384   .debug_str:0000000000000412 .LASF32
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1350   .debug_str:00000000000002d2 .LASF33
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1352   .debug_str:00000000000002db .LASF34
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1290   .debug_str:00000000000000e4 .LASF35
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1292   .debug_str:00000000000000ed .LASF36
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1332   .debug_str:00000000000001e1 .LASF37
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1346   .debug_str:00000000000002b7 .LASF38
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1362   .debug_str:0000000000000370 .LASF39
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1278   .debug_str:00000000000000b3 .LASF40
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1254   .debug_str:0000000000000010 .LASF41
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1260   .debug_str:0000000000000032 .LASF42
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1262   .debug_str:000000000000003c .LASF43
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1264   .debug_str:0000000000000046 .LASF44
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1266   .debug_str:0000000000000050 .LASF45
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1268   .debug_str:000000000000005a .LASF46
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1328   .debug_str:00000000000001cf .LASF47
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1330   .debug_str:00000000000001d8 .LASF48
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1308   .debug_str:0000000000000150 .LASF49
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1302   .debug_str:0000000000000135 .LASF50
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1374   .debug_str:00000000000003dd .LASF51
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1322   .debug_str:000000000000019d .LASF52
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s 			page 8
+
+
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1258   .debug_str:0000000000000022 .LASF73
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:14     .text.ADC3powerUpInit:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:169    .text.ADC3powerUpInit:0000000000000142 .LFE2
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1186   .debug_loc:0000000000000000 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1388   .debug_str:000000000000043a .LASF74
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1209   .debug_loc:0000000000000038 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:37     .text.ADC3powerUpInit:0000000000000016 .LVL2
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:41     .text.ADC3powerUpInit:0000000000000022 .LVL3
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:45     .text.ADC3powerUpInit:000000000000002c .LVL4
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:53     .text.ADC3powerUpInit:0000000000000042 .LVL5
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:58     .text.ADC3powerUpInit:0000000000000052 .LVL6
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:62     .text.ADC3powerUpInit:000000000000005c .LVL7
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:68     .text.ADC3powerUpInit:000000000000006c .LVL8
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:74     .text.ADC3powerUpInit:000000000000007e .LVL9
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:79     .text.ADC3powerUpInit:000000000000008c .LVL10
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:85     .text.ADC3powerUpInit:000000000000009c .LVL11
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:92     .text.ADC3powerUpInit:00000000000000ae .LVL12
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:98     .text.ADC3powerUpInit:00000000000000c0 .LVL13
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:104    .text.ADC3powerUpInit:00000000000000d0 .LVL14
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:113    .text.ADC3powerUpInit:00000000000000e2 .LVL15
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:119    .text.ADC3powerUpInit:00000000000000ee .LVL16
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:141    .text.ADC3powerUpInit:0000000000000104 .LVL18
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:150    .text.ADC3powerUpInit:0000000000000116 .LVL19
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:156    .text.ADC3powerUpInit:0000000000000126 .LVL20
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:159    .text.ADC3powerUpInit:000000000000012e .LVL21
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:166    .text.ADC3powerUpInit:0000000000000140 .LVL22
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1326   .debug_str:00000000000001b7 .LASF53
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1390   .debug_str:0000000000000446 .LASF54
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1372   .debug_str:00000000000003d3 .LASF55
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1256   .debug_str:0000000000000017 .LASF56
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1294   .debug_str:00000000000000f6 .LASF57
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1272   .debug_str:000000000000007e .LASF58
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1344   .debug_str:000000000000029d .LASF59
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1270   .debug_str:0000000000000064 .LASF60
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1370   .debug_str:00000000000003b8 .LASF61
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1364   .debug_str:0000000000000378 .LASF62
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1296   .debug_str:0000000000000106 .LASF63
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1368   .debug_str:00000000000003ad .LASF64
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1360   .debug_str:0000000000000359 .LASF65
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1356   .debug_str:0000000000000334 .LASF66
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1386   .debug_str:000000000000041c .LASF67
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:1400   .debug_str:000000000000047d .LASF68
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:22     .text.ADC3powerUpInit:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:137    .text.ADC3powerUpInit:00000000000000fc .LCFI1
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:143    .text.ADC3powerUpInit:0000000000000104 .LCFI2
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:18     .text.ADC3powerUpInit:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:29     .text.ADC3powerUpInit:000000000000000a .LVL1
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:132    .text.ADC3powerUpInit:00000000000000f8 .LVL17
+C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s:181    .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+rcu_periph_clock_enable
+rcu_adc_clock_config
+gpio_init
+adc_deinit
+adc_mode_config
+adc_special_function_config
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccaZZfa3.s 			page 9
+
+
+adc_data_alignment_config
+adc_channel_length_config
+adc_regular_channel_config
+adc_external_trigger_source_config
+adc_external_trigger_config
+adc_enable
+adc_calibration_enable
+adc_software_trigger_enable
+adc_tempsensor_vrefint_enable
+adc_inserted_channel_config

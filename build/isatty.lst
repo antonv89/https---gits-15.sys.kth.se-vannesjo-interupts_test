@@ -1,0 +1,91 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s 			page 1
+
+
+   1              		.file	"isatty.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text._isatty,"ax",@progbits
+  10              		.align	1
+  11              		.globl	_isatty
+  13              	_isatty:
+  14              	.LFB0:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs/isatty.c"
+   1:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c **** /* See LICENSE of license details. */
+   2:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c **** 
+   3:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c **** #include <unistd.h>
+   4:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c **** 
+   5:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c **** int _isatty(int fd)
+   6:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c **** {
+  16              		.loc 1 6 1
+  17              		.cfi_startproc
+  18              	.LVL0:
+   7:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c ****   if (fd == STDOUT_FILENO || fd == STDERR_FILENO)
+  19              		.loc 1 7 3
+  20              		.loc 1 7 27 is_stmt 0
+  21 0000 7D15     		addi	a0,a0,-1
+  22              	.LVL1:
+   8:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c ****     return 1;
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c **** 
+  10:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c ****   return 0;
+  11:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/stubs\isatty.c **** }
+  23              		.loc 1 11 1
+  24 0002 13352500 		sltiu	a0,a0,2
+  25              	.LVL2:
+  26 0006 8280     		ret
+  27              		.cfi_endproc
+  28              	.LFE0:
+  30              		.text
+  31              	.Letext0:
+  32              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\unistd.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 isatty.c
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:13     .text._isatty:0000000000000000 _isatty
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:17     .text._isatty:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:19     .text._isatty:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:20     .text._isatty:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:21     .text._isatty:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:24     .text._isatty:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:27     .text._isatty:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:30     .text._isatty:0000000000000008 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:174    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:346    .debug_str:0000000000000086 .LASF17
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:340    .debug_str:0000000000000022 .LASF18
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:356    .debug_str:0000000000000123 .LASF19
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:326    .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:332    .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:374    .debug_str:00000000000001c3 .LASF0
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:350    .debug_str:0000000000000107 .LASF1
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:370    .debug_str:00000000000001b1 .LASF2
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:360    .debug_str:000000000000017a .LASF3
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:354    .debug_str:000000000000011a .LASF4
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:342    .debug_str:000000000000005d .LASF5
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:334    .debug_str:0000000000000000 .LASF6
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:344    .debug_str:000000000000006f .LASF7
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:336    .debug_str:000000000000000e .LASF8
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:352    .debug_str:0000000000000115 .LASF9
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:364    .debug_str:0000000000000196 .LASF10
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:372    .debug_str:00000000000001bb .LASF11
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:368    .debug_str:00000000000001aa .LASF12
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:338    .debug_str:000000000000001b .LASF13
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:348    .debug_str:0000000000000100 .LASF14
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:358    .debug_str:0000000000000173 .LASF15
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:362    .debug_str:000000000000018d .LASF16
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:366    .debug_str:00000000000001a2 .LASF20
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:14     .text._isatty:0000000000000000 .LFB0
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:28     .text._isatty:0000000000000008 .LFE0
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:293    .debug_loc:0000000000000000 .LLST0
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:18     .text._isatty:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:22     .text._isatty:0000000000000002 .LVL1
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:25     .text._isatty:0000000000000006 .LVL2
+C:\Users\anton\AppData\Local\Temp\cc8pXIw3.s:34     .debug_info:0000000000000000 .Ldebug_info0
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,1078 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 1
+
+
+   1              		.file	"gd32vf103_rtc.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.rtc_configuration_mode_enter,"ax",@progbits
+  10              		.align	1
+  11              		.globl	rtc_configuration_mode_enter
+  13              	rtc_configuration_mode_enter:
+  14              	.LFB2:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_rtc.
+   1:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+   2:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \file    gd32vf103_rtc.c
+   3:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief   RTC driver
+   4:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     
+   5:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \version 2019-06-05, V1.0.0, firmware for GD32VF103
+   6:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \version 2020-08-04, V1.1.0, firmware for GD32VF103
+   7:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+   8:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+   9:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*
+  10:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+  12:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  13:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** are permitted provided that the following conditions are met:
+  14:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+  15:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  16:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****        list of conditions and the following disclaimer.
+  17:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  18:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****        this list of conditions and the following disclaimer in the documentation 
+  19:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****        and/or other materials provided with the distribution.
+  20:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  21:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****        may be used to endorse or promote products derived from this software without 
+  22:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****        specific prior written permission.
+  23:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+  24:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  25:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  26:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  27:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  28:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  30:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  31:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  32:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  33:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** OF SUCH DAMAGE.
+  34:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+  35:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+  36:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** #include "gd32vf103_rtc.h"
+  37:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+  38:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /* RTC register high / low bits mask */
+  39:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** #define RTC_HIGH_BITS_MASK         ((uint32_t)0x000F0000U)  /* RTC high bits mask */
+  40:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** #define RTC_LOW_BITS_MASK          ((uint32_t)0x0000FFFFU)  /* RTC low bits mask */
+  41:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+  42:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /* RTC register high bits offset */
+  43:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** #define RTC_HIGH_BITS_OFFSET       ((uint32_t)16U)
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 2
+
+
+  44:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+  45:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      enter RTC configuration mode
+  47:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  none
+  48:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+  51:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_configuration_mode_enter(void)
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+  16              		.loc 1 52 1
+  17              		.cfi_startproc
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_CTL |= RTC_CTL_CMF;
+  18              		.loc 1 53 5
+  19              		.loc 1 53 13 is_stmt 0
+  20 0000 37370040 		li	a4,1073754112
+  21 0004 83274780 		lw	a5,-2044(a4)
+  22 0008 93E70701 		ori	a5,a5,16
+  23 000c 2322F780 		sw	a5,-2044(a4)
+  54:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+  24              		.loc 1 54 1
+  25 0010 8280     		ret
+  26              		.cfi_endproc
+  27              	.LFE2:
+  29              		.section	.text.rtc_configuration_mode_exit,"ax",@progbits
+  30              		.align	1
+  31              		.globl	rtc_configuration_mode_exit
+  33              	rtc_configuration_mode_exit:
+  34              	.LFB3:
+  55:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+  56:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+  57:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      exit RTC configuration mode
+  58:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  none
+  59:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+  61:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+  62:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_configuration_mode_exit(void)
+  63:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+  35              		.loc 1 63 1 is_stmt 1
+  36              		.cfi_startproc
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_CTL &= ~RTC_CTL_CMF;
+  37              		.loc 1 64 5
+  38              		.loc 1 64 13 is_stmt 0
+  39 0000 37370040 		li	a4,1073754112
+  40 0004 83274780 		lw	a5,-2044(a4)
+  41 0008 BD9B     		andi	a5,a5,-17
+  42 000a 2322F780 		sw	a5,-2044(a4)
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+  43              		.loc 1 65 1
+  44 000e 8280     		ret
+  45              		.cfi_endproc
+  46              	.LFE3:
+  48              		.section	.text.rtc_counter_set,"ax",@progbits
+  49              		.align	1
+  50              		.globl	rtc_counter_set
+  52              	rtc_counter_set:
+  53              	.LFB4:
+  66:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 3
+
+
+  67:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+  68:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      set RTC counter value
+  69:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  cnt: RTC counter value
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+  71:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+  72:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+  73:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_counter_set(uint32_t cnt)
+  74:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+  54              		.loc 1 74 1 is_stmt 1
+  55              		.cfi_startproc
+  56              	.LVL0:
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     rtc_configuration_mode_enter();
+  57              		.loc 1 75 5
+  58              	.LBB14:
+  59              	.LBB15:
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+  60              		.loc 1 53 5
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+  61              		.loc 1 53 13 is_stmt 0
+  62 0000 B7370040 		li	a5,1073754112
+  63 0004 03A74780 		lw	a4,-2044(a5)
+  64              	.LBE15:
+  65              	.LBE14:
+  76:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the RTC counter high bits */
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_CNTH = (cnt >> RTC_HIGH_BITS_OFFSET);
+  66              		.loc 1 77 21
+  67 0008 93560501 		srli	a3,a0,16
+  78:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the RTC counter low bits */
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_CNTL = (cnt & RTC_LOW_BITS_MASK);
+  68              		.loc 1 79 21
+  69 000c 4205     		slli	a0,a0,16
+  70              	.LVL1:
+  71              	.LBB17:
+  72              	.LBB16:
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+  73              		.loc 1 53 13
+  74 000e 13670701 		ori	a4,a4,16
+  75 0012 23A2E780 		sw	a4,-2044(a5)
+  76              	.LBE16:
+  77              	.LBE17:
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the RTC counter low bits */
+  78              		.loc 1 77 5 is_stmt 1
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the RTC counter low bits */
+  79              		.loc 1 77 14 is_stmt 0
+  80 0016 23ACD780 		sw	a3,-2024(a5)
+  81              		.loc 1 79 5 is_stmt 1
+  82              		.loc 1 79 21 is_stmt 0
+  83 001a 4181     		srli	a0,a0,16
+  84              		.loc 1 79 14
+  85 001c 23AEA780 		sw	a0,-2020(a5)
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     rtc_configuration_mode_exit();
+  86              		.loc 1 80 5 is_stmt 1
+  87              	.LBB18:
+  88              	.LBB19:
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+  89              		.loc 1 64 5
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 4
+
+
+  90              		.loc 1 64 13 is_stmt 0
+  91 0020 03A74780 		lw	a4,-2044(a5)
+  92 0024 3D9B     		andi	a4,a4,-17
+  93 0026 23A2E780 		sw	a4,-2044(a5)
+  94              	.LBE19:
+  95              	.LBE18:
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+  96              		.loc 1 81 1
+  97 002a 8280     		ret
+  98              		.cfi_endproc
+  99              	.LFE4:
+ 101              		.section	.text.rtc_prescaler_set,"ax",@progbits
+ 102              		.align	1
+ 103              		.globl	rtc_prescaler_set
+ 105              	rtc_prescaler_set:
+ 106              	.LFB5:
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      set RTC prescaler value
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  psc: RTC prescaler value
+  86:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+  87:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+  88:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_prescaler_set(uint32_t psc)
+  90:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 107              		.loc 1 90 1 is_stmt 1
+ 108              		.cfi_startproc
+ 109              	.LVL2:
+  91:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     rtc_configuration_mode_enter();
+ 110              		.loc 1 91 5
+ 111              	.LBB20:
+ 112              	.LBB21:
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 113              		.loc 1 53 5
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 114              		.loc 1 53 13 is_stmt 0
+ 115 0000 B7370040 		li	a5,1073754112
+ 116 0004 83A64780 		lw	a3,-2044(a5)
+ 117              	.LBE21:
+ 118              	.LBE20:
+  92:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the RTC prescaler high bits */
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_PSCH = ((psc & RTC_HIGH_BITS_MASK) >> RTC_HIGH_BITS_OFFSET);
+ 119              		.loc 1 93 44
+ 120 0008 13570501 		srli	a4,a0,16
+ 121 000c 3D8B     		andi	a4,a4,15
+ 122              	.LBB23:
+ 123              	.LBB22:
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 124              		.loc 1 53 13
+ 125 000e 93E60601 		ori	a3,a3,16
+ 126 0012 23A2D780 		sw	a3,-2044(a5)
+ 127              	.LBE22:
+ 128              	.LBE23:
+ 129              		.loc 1 93 5 is_stmt 1
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the RTC prescaler low bits */
+  95:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_PSCL = (psc & RTC_LOW_BITS_MASK);
+ 130              		.loc 1 95 21 is_stmt 0
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 5
+
+
+ 131 0016 4205     		slli	a0,a0,16
+ 132              	.LVL3:
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the RTC prescaler low bits */
+ 133              		.loc 1 93 14
+ 134 0018 23A4E780 		sw	a4,-2040(a5)
+ 135              		.loc 1 95 5 is_stmt 1
+ 136              		.loc 1 95 21 is_stmt 0
+ 137 001c 4181     		srli	a0,a0,16
+ 138              		.loc 1 95 14
+ 139 001e 23A6A780 		sw	a0,-2036(a5)
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     rtc_configuration_mode_exit();
+ 140              		.loc 1 96 5 is_stmt 1
+ 141              	.LBB24:
+ 142              	.LBB25:
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 143              		.loc 1 64 5
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 144              		.loc 1 64 13 is_stmt 0
+ 145 0022 03A74780 		lw	a4,-2044(a5)
+ 146 0026 3D9B     		andi	a4,a4,-17
+ 147 0028 23A2E780 		sw	a4,-2044(a5)
+ 148              	.LBE25:
+ 149              	.LBE24:
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 150              		.loc 1 97 1
+ 151 002c 8280     		ret
+ 152              		.cfi_endproc
+ 153              	.LFE5:
+ 155              		.section	.text.rtc_lwoff_wait,"ax",@progbits
+ 156              		.align	1
+ 157              		.globl	rtc_lwoff_wait
+ 159              	rtc_lwoff_wait:
+ 160              	.LFB6:
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+  99:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 100:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      wait RTC last write operation finished flag set
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  none
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+ 104:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 105:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_lwoff_wait(void)
+ 106:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 161              		.loc 1 106 1 is_stmt 1
+ 162              		.cfi_startproc
+ 107:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* loop until LWOFF flag is set */
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     while(RESET == (RTC_CTL & RTC_CTL_LWOFF)){
+ 163              		.loc 1 108 5
+ 164              		.loc 1 108 21 is_stmt 0
+ 165 0000 37370040 		li	a4,1073754112
+ 166              	.L7:
+ 109:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }
+ 167              		.loc 1 109 5 is_stmt 1 discriminator 1
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }
+ 168              		.loc 1 108 21 is_stmt 0 discriminator 1
+ 169 0004 83274780 		lw	a5,-2044(a4)
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }
+ 170              		.loc 1 108 29 discriminator 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 6
+
+
+ 171 0008 93F70702 		andi	a5,a5,32
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }
+ 172              		.loc 1 108 10 discriminator 1
+ 173 000c E5DF     		beq	a5,zero,.L7
+ 110:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 174              		.loc 1 110 1
+ 175 000e 8280     		ret
+ 176              		.cfi_endproc
+ 177              	.LFE6:
+ 179              		.section	.text.rtc_register_sync_wait,"ax",@progbits
+ 180              		.align	1
+ 181              		.globl	rtc_register_sync_wait
+ 183              	rtc_register_sync_wait:
+ 184              	.LFB7:
+ 111:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+ 112:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 113:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      wait RTC registers synchronized flag set
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  none
+ 115:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 116:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 118:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_register_sync_wait(void)
+ 119:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 185              		.loc 1 119 1 is_stmt 1
+ 186              		.cfi_startproc
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* clear RSYNF flag */
+ 121:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_CTL &= ~RTC_CTL_RSYNF;
+ 187              		.loc 1 121 5
+ 188              		.loc 1 121 13 is_stmt 0
+ 189 0000 B7360040 		li	a3,1073754112
+ 190 0004 83A74680 		lw	a5,-2044(a3)
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* loop until RSYNF flag is set */
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     while(RESET == (RTC_CTL & RTC_CTL_RSYNF)){
+ 191              		.loc 1 123 21
+ 192 0008 37370040 		li	a4,1073754112
+ 121:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* loop until RSYNF flag is set */
+ 193              		.loc 1 121 13
+ 194 000c DD9B     		andi	a5,a5,-9
+ 195 000e 23A2F680 		sw	a5,-2044(a3)
+ 196              		.loc 1 123 5 is_stmt 1
+ 197              	.L11:
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }
+ 198              		.loc 1 124 5 discriminator 1
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }
+ 199              		.loc 1 123 21 is_stmt 0 discriminator 1
+ 200 0012 83274780 		lw	a5,-2044(a4)
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }
+ 201              		.loc 1 123 29 discriminator 1
+ 202 0016 A18B     		andi	a5,a5,8
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }
+ 203              		.loc 1 123 10 discriminator 1
+ 204 0018 EDDF     		beq	a5,zero,.L11
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 205              		.loc 1 125 1
+ 206 001a 8280     		ret
+ 207              		.cfi_endproc
+ 208              	.LFE7:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 7
+
+
+ 210              		.section	.text.rtc_alarm_config,"ax",@progbits
+ 211              		.align	1
+ 212              		.globl	rtc_alarm_config
+ 214              	rtc_alarm_config:
+ 215              	.LFB8:
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+ 127:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      set RTC alarm value
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  alarm: RTC alarm value
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 131:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+ 132:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 133:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_alarm_config(uint32_t alarm)
+ 134:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 216              		.loc 1 134 1 is_stmt 1
+ 217              		.cfi_startproc
+ 218              	.LVL4:
+ 135:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     rtc_configuration_mode_enter();
+ 219              		.loc 1 135 5
+ 220              	.LBB26:
+ 221              	.LBB27:
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 222              		.loc 1 53 5
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 223              		.loc 1 53 13 is_stmt 0
+ 224 0000 B7370040 		li	a5,1073754112
+ 225 0004 03A74780 		lw	a4,-2044(a5)
+ 226              	.LBE27:
+ 227              	.LBE26:
+ 136:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the alarm high bits */
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_ALRMH = (alarm >> RTC_HIGH_BITS_OFFSET);
+ 228              		.loc 1 137 24
+ 229 0008 93560501 		srli	a3,a0,16
+ 138:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the alarm low bits */
+ 139:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_ALRML = (alarm & RTC_LOW_BITS_MASK);
+ 230              		.loc 1 139 24
+ 231 000c 4205     		slli	a0,a0,16
+ 232              	.LVL5:
+ 233              	.LBB29:
+ 234              	.LBB28:
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 235              		.loc 1 53 13
+ 236 000e 13670701 		ori	a4,a4,16
+ 237 0012 23A2E780 		sw	a4,-2044(a5)
+ 238              	.LBE28:
+ 239              	.LBE29:
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the alarm low bits */
+ 240              		.loc 1 137 5 is_stmt 1
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* set the alarm low bits */
+ 241              		.loc 1 137 15 is_stmt 0
+ 242 0016 23A0D782 		sw	a3,-2016(a5)
+ 243              		.loc 1 139 5 is_stmt 1
+ 244              		.loc 1 139 24 is_stmt 0
+ 245 001a 4181     		srli	a0,a0,16
+ 246              		.loc 1 139 15
+ 247 001c 23A2A782 		sw	a0,-2012(a5)
+ 140:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     rtc_configuration_mode_exit();
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 8
+
+
+ 248              		.loc 1 140 5 is_stmt 1
+ 249              	.LBB30:
+ 250              	.LBB31:
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 251              		.loc 1 64 5
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 252              		.loc 1 64 13 is_stmt 0
+ 253 0020 03A74780 		lw	a4,-2044(a5)
+ 254 0024 3D9B     		andi	a4,a4,-17
+ 255 0026 23A2E780 		sw	a4,-2044(a5)
+ 256              	.LBE31:
+ 257              	.LBE30:
+ 141:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 258              		.loc 1 141 1
+ 259 002a 8280     		ret
+ 260              		.cfi_endproc
+ 261              	.LFE8:
+ 263              		.section	.text.rtc_counter_get,"ax",@progbits
+ 264              		.align	1
+ 265              		.globl	rtc_counter_get
+ 267              	rtc_counter_get:
+ 268              	.LFB9:
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 144:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      get RTC counter value
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  none
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 147:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     RTC counter value
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** uint32_t rtc_counter_get(void)
+ 150:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 269              		.loc 1 150 1 is_stmt 1
+ 270              		.cfi_startproc
+ 151:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     uint32_t temp = 0x0U;
+ 271              		.loc 1 151 5
+ 272              	.LVL6:
+ 152:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     
+ 153:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     temp = RTC_CNTL;
+ 273              		.loc 1 153 5
+ 274              		.loc 1 153 10 is_stmt 0
+ 275 0000 B7370040 		li	a5,1073754112
+ 276 0004 03A5C781 		lw	a0,-2020(a5)
+ 277              	.LVL7:
+ 154:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     temp |= (RTC_CNTH << RTC_HIGH_BITS_OFFSET);
+ 278              		.loc 1 154 5 is_stmt 1
+ 279              		.loc 1 154 14 is_stmt 0
+ 280 0008 83A78781 		lw	a5,-2024(a5)
+ 281              	.LVL8:
+ 155:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     return temp;
+ 282              		.loc 1 155 5 is_stmt 1
+ 154:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     temp |= (RTC_CNTH << RTC_HIGH_BITS_OFFSET);
+ 283              		.loc 1 154 23 is_stmt 0
+ 284 000c C207     		slli	a5,a5,16
+ 285              	.LVL9:
+ 156:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 286              		.loc 1 156 1
+ 287 000e 5D8D     		or	a0,a5,a0
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 9
+
+
+ 288              	.LVL10:
+ 289 0010 8280     		ret
+ 290              		.cfi_endproc
+ 291              	.LFE9:
+ 293              		.section	.text.rtc_divider_get,"ax",@progbits
+ 294              		.align	1
+ 295              		.globl	rtc_divider_get
+ 297              	rtc_divider_get:
+ 298              	.LFB10:
+ 157:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+ 158:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 159:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      get RTC divider value
+ 160:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  none
+ 161:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 162:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     RTC divider value
+ 163:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 164:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** uint32_t rtc_divider_get(void)
+ 165:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 299              		.loc 1 165 1 is_stmt 1
+ 300              		.cfi_startproc
+ 166:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     uint32_t temp = 0x00U;
+ 301              		.loc 1 166 5
+ 302              	.LVL11:
+ 167:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     temp = ((RTC_DIVH & RTC_DIVH_DIV) << RTC_HIGH_BITS_OFFSET);
+ 303              		.loc 1 168 5
+ 304              		.loc 1 168 14 is_stmt 0
+ 305 0000 37370040 		li	a4,1073754112
+ 306 0004 83270781 		lw	a5,-2032(a4)
+ 169:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     temp |= RTC_DIVL;
+ 307              		.loc 1 169 13
+ 308 0008 03254781 		lw	a0,-2028(a4)
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     temp |= RTC_DIVL;
+ 309              		.loc 1 168 10
+ 310 000c 37070F00 		li	a4,983040
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     temp |= RTC_DIVL;
+ 311              		.loc 1 168 39
+ 312 0010 C207     		slli	a5,a5,16
+ 168:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     temp |= RTC_DIVL;
+ 313              		.loc 1 168 10
+ 314 0012 F98F     		and	a5,a5,a4
+ 315              	.LVL12:
+ 316              		.loc 1 169 5 is_stmt 1
+ 170:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     return temp;
+ 317              		.loc 1 170 5
+ 171:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 318              		.loc 1 171 1 is_stmt 0
+ 319 0014 5D8D     		or	a0,a5,a0
+ 320              	.LVL13:
+ 321 0016 8280     		ret
+ 322              		.cfi_endproc
+ 323              	.LFE10:
+ 325              		.section	.text.rtc_flag_get,"ax",@progbits
+ 326              		.align	1
+ 327              		.globl	rtc_flag_get
+ 329              	rtc_flag_get:
+ 330              	.LFB11:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 10
+
+
+ 172:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+ 173:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 174:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      get RTC flag status 
+ 175:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  flag: specify which flag status to get
+ 176:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 177:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_FLAG_SECOND: second interrupt flag
+ 178:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_FLAG_ALARM: alarm interrupt flag
+ 179:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_FLAG_OVERFLOW: overflow interrupt flag
+ 180:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_FLAG_RSYN: registers synchronized flag
+ 181:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_FLAG_LWOF: last write operation finished flag
+ 182:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 183:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     SET or RESET
+ 184:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 185:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** FlagStatus rtc_flag_get(uint32_t flag)
+ 186:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 331              		.loc 1 186 1 is_stmt 1
+ 332              		.cfi_startproc
+ 333              	.LVL14:
+ 187:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     if(RESET != (RTC_CTL & flag)){
+ 334              		.loc 1 187 5
+ 335              		.loc 1 187 18 is_stmt 0
+ 336 0000 B7370040 		li	a5,1073754112
+ 337 0004 83A74780 		lw	a5,-2044(a5)
+ 338              		.loc 1 187 26
+ 339 0008 7D8D     		and	a0,a5,a0
+ 340              	.LVL15:
+ 188:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****         return SET;
+ 189:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }else{
+ 190:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****         return RESET;
+ 191:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }
+ 192:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 341              		.loc 1 192 1
+ 342 000a 3335A000 		snez	a0,a0
+ 343 000e 8280     		ret
+ 344              		.cfi_endproc
+ 345              	.LFE11:
+ 347              		.section	.text.rtc_flag_clear,"ax",@progbits
+ 348              		.align	1
+ 349              		.globl	rtc_flag_clear
+ 351              	rtc_flag_clear:
+ 352              	.LFB12:
+ 193:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+ 194:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 195:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      clear RTC flag status
+ 196:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  flag: specify which flag status to clear
+ 197:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****                 one or more parameters can be selected which are shown as below:
+ 198:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_FLAG_SECOND: second interrupt flag
+ 199:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_FLAG_ALARM: alarm interrupt flag
+ 200:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_FLAG_OVERFLOW: overflow interrupt flag
+ 201:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_FLAG_RSYN: registers synchronized flag
+ 202:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 203:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+ 204:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 205:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_flag_clear(uint32_t flag)
+ 206:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 353              		.loc 1 206 1 is_stmt 1
+ 354              		.cfi_startproc
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 11
+
+
+ 355              	.LVL16:
+ 207:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* clear RTC flag */
+ 208:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_CTL &= ~flag;
+ 356              		.loc 1 208 5
+ 357              		.loc 1 208 13 is_stmt 0
+ 358 0000 B7370040 		li	a5,1073754112
+ 359 0004 03A74780 		lw	a4,-2044(a5)
+ 360              		.loc 1 208 16
+ 361 0008 1345F5FF 		not	a0,a0
+ 362              	.LVL17:
+ 363              		.loc 1 208 13
+ 364 000c 798D     		and	a0,a0,a4
+ 365              	.LVL18:
+ 366 000e 23A2A780 		sw	a0,-2044(a5)
+ 209:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 367              		.loc 1 209 1
+ 368 0012 8280     		ret
+ 369              		.cfi_endproc
+ 370              	.LFE12:
+ 372              		.section	.text.rtc_interrupt_flag_get,"ax",@progbits
+ 373              		.align	1
+ 374              		.globl	rtc_interrupt_flag_get
+ 376              	rtc_interrupt_flag_get:
+ 377              	.LFB18:
+ 378              		.cfi_startproc
+ 379 0000 17030000 		tail	rtc_flag_get
+ 379      67000300 
+ 380              		.cfi_endproc
+ 381              	.LFE18:
+ 383              		.section	.text.rtc_interrupt_flag_clear,"ax",@progbits
+ 384              		.align	1
+ 385              		.globl	rtc_interrupt_flag_clear
+ 387              	rtc_interrupt_flag_clear:
+ 388              	.LFB20:
+ 389              		.cfi_startproc
+ 390 0000 17030000 		tail	rtc_flag_clear
+ 390      67000300 
+ 391              		.cfi_endproc
+ 392              	.LFE20:
+ 394              		.section	.text.rtc_interrupt_enable,"ax",@progbits
+ 395              		.align	1
+ 396              		.globl	rtc_interrupt_enable
+ 398              	rtc_interrupt_enable:
+ 399              	.LFB15:
+ 210:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+ 211:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 212:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      get RTC interrupt flag status 
+ 213:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  flag: specify which flag status to get
+ 214:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 215:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_FLAG_SECOND: second interrupt flag
+ 216:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_FLAG_ALARM: alarm interrupt flag
+ 217:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_FLAG_OVERFLOW: overflow interrupt flag
+ 218:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 219:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     SET or RESET
+ 220:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 221:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** FlagStatus rtc_interrupt_flag_get(uint32_t flag)
+ 222:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 12
+
+
+ 223:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     if(RESET != (RTC_CTL & flag)){
+ 224:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****         return SET;
+ 225:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }else{
+ 226:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****         return RESET;
+ 227:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     }
+ 228:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 229:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+ 230:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 231:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      clear RTC interrupt flag status
+ 232:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  flag: specify which flag status to clear
+ 233:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****                 one or more parameters can be selected which are shown as below:
+ 234:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_FLAG_SECOND: second interrupt flag
+ 235:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_FLAG_ALARM: alarm interrupt flag
+ 236:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_FLAG_OVERFLOW: overflow interrupt flag
+ 237:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 238:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+ 239:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 240:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_interrupt_flag_clear(uint32_t flag)
+ 241:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 242:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     /* clear RTC interrupt flag */
+ 243:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_CTL &= ~flag;
+ 244:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 245:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+ 246:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 247:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      enable RTC interrupt
+ 248:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  interrupt: specify which interrupt to enbale
+ 249:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****                 one or more parameters can be selected which are shown as below:
+ 250:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_SECOND: second interrupt
+ 251:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_ALARM: alarm interrupt
+ 252:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_OVERFLOW: overflow interrupt
+ 253:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 254:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+ 255:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 256:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_interrupt_enable(uint32_t interrupt)
+ 257:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 400              		.loc 1 257 1 is_stmt 1
+ 401              		.cfi_startproc
+ 402              	.LVL19:
+ 258:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_INTEN |= interrupt;
+ 403              		.loc 1 258 5
+ 404              		.loc 1 258 15 is_stmt 0
+ 405 0000 37370040 		li	a4,1073754112
+ 406 0004 83270780 		lw	a5,-2048(a4)
+ 407 0008 5D8D     		or	a0,a5,a0
+ 408              	.LVL20:
+ 409 000a 2320A780 		sw	a0,-2048(a4)
+ 259:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 410              		.loc 1 259 1
+ 411 000e 8280     		ret
+ 412              		.cfi_endproc
+ 413              	.LFE15:
+ 415              		.section	.text.rtc_interrupt_disable,"ax",@progbits
+ 416              		.align	1
+ 417              		.globl	rtc_interrupt_disable
+ 419              	rtc_interrupt_disable:
+ 420              	.LFB16:
+ 260:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 13
+
+
+ 261:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** /*!
+ 262:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \brief      disable RTC interrupt
+ 263:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[in]  interrupt: specify which interrupt to disbale
+ 264:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****                 one or more parameters can be selected which are shown as below:
+ 265:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_SECOND: second interrupt
+ 266:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_ALARM: alarm interrupt
+ 267:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****       \arg        RTC_INT_OVERFLOW: overflow interrupt
+ 268:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \param[out] none
+ 269:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     \retval     none
+ 270:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** */
+ 271:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** void rtc_interrupt_disable(uint32_t interrupt)
+ 272:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** {
+ 421              		.loc 1 272 1 is_stmt 1
+ 422              		.cfi_startproc
+ 423              	.LVL21:
+ 273:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c ****     RTC_INTEN &= ~interrupt;
+ 424              		.loc 1 273 5
+ 425              		.loc 1 273 15 is_stmt 0
+ 426 0000 B7370040 		li	a5,1073754112
+ 427 0004 03A70780 		lw	a4,-2048(a5)
+ 428              		.loc 1 273 18
+ 429 0008 1345F5FF 		not	a0,a0
+ 430              	.LVL22:
+ 431              		.loc 1 273 15
+ 432 000c 798D     		and	a0,a0,a4
+ 433              	.LVL23:
+ 434 000e 23A0A780 		sw	a0,-2048(a5)
+ 274:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_rtc.c **** }
+ 435              		.loc 1 274 1
+ 436 0012 8280     		ret
+ 437              		.cfi_endproc
+ 438              	.LFE16:
+ 440              		.text
+ 441              	.Letext0:
+ 442              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 443              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 444              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 445              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32vf103_rtc.c
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:13     .text.rtc_configuration_mode_enter:0000000000000000 rtc_configuration_mode_enter
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:17     .text.rtc_configuration_mode_enter:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:18     .text.rtc_configuration_mode_enter:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:19     .text.rtc_configuration_mode_enter:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:20     .text.rtc_configuration_mode_enter:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:25     .text.rtc_configuration_mode_enter:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:26     .text.rtc_configuration_mode_enter:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:33     .text.rtc_configuration_mode_exit:0000000000000000 rtc_configuration_mode_exit
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:36     .text.rtc_configuration_mode_exit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:37     .text.rtc_configuration_mode_exit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:38     .text.rtc_configuration_mode_exit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:39     .text.rtc_configuration_mode_exit:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:44     .text.rtc_configuration_mode_exit:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:45     .text.rtc_configuration_mode_exit:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:52     .text.rtc_counter_set:0000000000000000 rtc_counter_set
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:55     .text.rtc_counter_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:57     .text.rtc_counter_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:60     .text.rtc_counter_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:61     .text.rtc_counter_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:62     .text.rtc_counter_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:67     .text.rtc_counter_set:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:69     .text.rtc_counter_set:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:74     .text.rtc_counter_set:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:79     .text.rtc_counter_set:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:80     .text.rtc_counter_set:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:82     .text.rtc_counter_set:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:83     .text.rtc_counter_set:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:85     .text.rtc_counter_set:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:89     .text.rtc_counter_set:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:90     .text.rtc_counter_set:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:91     .text.rtc_counter_set:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:97     .text.rtc_counter_set:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:98     .text.rtc_counter_set:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:105    .text.rtc_prescaler_set:0000000000000000 rtc_prescaler_set
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:108    .text.rtc_prescaler_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:110    .text.rtc_prescaler_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:113    .text.rtc_prescaler_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:114    .text.rtc_prescaler_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:115    .text.rtc_prescaler_set:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:120    .text.rtc_prescaler_set:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:125    .text.rtc_prescaler_set:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:130    .text.rtc_prescaler_set:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:131    .text.rtc_prescaler_set:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:134    .text.rtc_prescaler_set:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:136    .text.rtc_prescaler_set:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:137    .text.rtc_prescaler_set:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:139    .text.rtc_prescaler_set:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:143    .text.rtc_prescaler_set:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:144    .text.rtc_prescaler_set:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:145    .text.rtc_prescaler_set:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:151    .text.rtc_prescaler_set:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:152    .text.rtc_prescaler_set:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:159    .text.rtc_lwoff_wait:0000000000000000 rtc_lwoff_wait
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:162    .text.rtc_lwoff_wait:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:163    .text.rtc_lwoff_wait:0000000000000000 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 15
+
+
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:164    .text.rtc_lwoff_wait:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:165    .text.rtc_lwoff_wait:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:168    .text.rtc_lwoff_wait:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:169    .text.rtc_lwoff_wait:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:171    .text.rtc_lwoff_wait:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:173    .text.rtc_lwoff_wait:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:175    .text.rtc_lwoff_wait:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:176    .text.rtc_lwoff_wait:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:183    .text.rtc_register_sync_wait:0000000000000000 rtc_register_sync_wait
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:186    .text.rtc_register_sync_wait:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:187    .text.rtc_register_sync_wait:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:188    .text.rtc_register_sync_wait:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:189    .text.rtc_register_sync_wait:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:192    .text.rtc_register_sync_wait:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:194    .text.rtc_register_sync_wait:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:198    .text.rtc_register_sync_wait:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:199    .text.rtc_register_sync_wait:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:200    .text.rtc_register_sync_wait:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:202    .text.rtc_register_sync_wait:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:204    .text.rtc_register_sync_wait:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:206    .text.rtc_register_sync_wait:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:207    .text.rtc_register_sync_wait:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:214    .text.rtc_alarm_config:0000000000000000 rtc_alarm_config
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:217    .text.rtc_alarm_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:219    .text.rtc_alarm_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:222    .text.rtc_alarm_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:223    .text.rtc_alarm_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:224    .text.rtc_alarm_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:229    .text.rtc_alarm_config:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:231    .text.rtc_alarm_config:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:236    .text.rtc_alarm_config:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:241    .text.rtc_alarm_config:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:242    .text.rtc_alarm_config:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:244    .text.rtc_alarm_config:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:245    .text.rtc_alarm_config:000000000000001a .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:247    .text.rtc_alarm_config:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:251    .text.rtc_alarm_config:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:252    .text.rtc_alarm_config:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:253    .text.rtc_alarm_config:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:259    .text.rtc_alarm_config:000000000000002a .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:260    .text.rtc_alarm_config:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:267    .text.rtc_counter_get:0000000000000000 rtc_counter_get
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:270    .text.rtc_counter_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:271    .text.rtc_counter_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:273    .text.rtc_counter_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:274    .text.rtc_counter_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:275    .text.rtc_counter_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:279    .text.rtc_counter_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:280    .text.rtc_counter_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:283    .text.rtc_counter_get:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:284    .text.rtc_counter_get:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:287    .text.rtc_counter_get:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:290    .text.rtc_counter_get:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:297    .text.rtc_divider_get:0000000000000000 rtc_divider_get
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:300    .text.rtc_divider_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:301    .text.rtc_divider_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:303    .text.rtc_divider_get:0000000000000000 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 16
+
+
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:304    .text.rtc_divider_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:305    .text.rtc_divider_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:308    .text.rtc_divider_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:310    .text.rtc_divider_get:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:312    .text.rtc_divider_get:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:314    .text.rtc_divider_get:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:317    .text.rtc_divider_get:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:318    .text.rtc_divider_get:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:319    .text.rtc_divider_get:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:322    .text.rtc_divider_get:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:329    .text.rtc_flag_get:0000000000000000 rtc_flag_get
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:332    .text.rtc_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:334    .text.rtc_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:335    .text.rtc_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:336    .text.rtc_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:339    .text.rtc_flag_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:342    .text.rtc_flag_get:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:344    .text.rtc_flag_get:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:351    .text.rtc_flag_clear:0000000000000000 rtc_flag_clear
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:354    .text.rtc_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:356    .text.rtc_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:357    .text.rtc_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:358    .text.rtc_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:361    .text.rtc_flag_clear:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:364    .text.rtc_flag_clear:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:368    .text.rtc_flag_clear:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:369    .text.rtc_flag_clear:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:376    .text.rtc_interrupt_flag_get:0000000000000000 rtc_interrupt_flag_get
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:378    .text.rtc_interrupt_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:380    .text.rtc_interrupt_flag_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:387    .text.rtc_interrupt_flag_clear:0000000000000000 rtc_interrupt_flag_clear
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:389    .text.rtc_interrupt_flag_clear:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:391    .text.rtc_interrupt_flag_clear:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:398    .text.rtc_interrupt_enable:0000000000000000 rtc_interrupt_enable
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:401    .text.rtc_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:403    .text.rtc_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:404    .text.rtc_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:405    .text.rtc_interrupt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:411    .text.rtc_interrupt_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:412    .text.rtc_interrupt_enable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:419    .text.rtc_interrupt_disable:0000000000000000 rtc_interrupt_disable
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:422    .text.rtc_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:424    .text.rtc_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:425    .text.rtc_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:426    .text.rtc_interrupt_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:429    .text.rtc_interrupt_disable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:432    .text.rtc_interrupt_disable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:436    .text.rtc_interrupt_disable:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:437    .text.rtc_interrupt_disable:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:29     .text.rtc_configuration_mode_enter:0000000000000012 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:48     .text.rtc_configuration_mode_exit:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:101    .text.rtc_counter_set:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:155    .text.rtc_prescaler_set:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:179    .text.rtc_lwoff_wait:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:210    .text.rtc_register_sync_wait:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:263    .text.rtc_alarm_config:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:293    .text.rtc_counter_get:0000000000000012 .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 17
+
+
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:325    .text.rtc_divider_get:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:347    .text.rtc_flag_get:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:372    .text.rtc_flag_clear:0000000000000014 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:415    .text.rtc_interrupt_enable:0000000000000010 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:440    .text.rtc_interrupt_disable:0000000000000014 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:166    .text.rtc_lwoff_wait:0000000000000004 .L7
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:197    .text.rtc_register_sync_wait:0000000000000012 .L11
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:880    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1546   .debug_str:0000000000000011 .LASF31
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1582   .debug_str:0000000000000190 .LASF32
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1598   .debug_str:0000000000000259 .LASF33
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1494   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1542   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1592   .debug_str:0000000000000219 .LASF0
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1612   .debug_str:00000000000002f8 .LASF1
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1590   .debug_str:000000000000020b .LASF2
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1604   .debug_str:00000000000002d0 .LASF3
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1564   .debug_str:0000000000000109 .LASF4
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1608   .debug_str:00000000000002e3 .LASF5
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1586   .debug_str:00000000000001fb .LASF9
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1576   .debug_str:0000000000000173 .LASF6
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1566   .debug_str:000000000000011c .LASF7
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1594   .debug_str:0000000000000226 .LASF8
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1606   .debug_str:00000000000002da .LASF10
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1602   .debug_str:00000000000002c0 .LASF34
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1580   .debug_str:000000000000018a .LASF11
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1570   .debug_str:0000000000000134 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1610   .debug_str:00000000000002ec .LASF13
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1554   .debug_str:00000000000000bb .LASF14
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:420    .text.rtc_interrupt_disable:0000000000000000 .LFB16
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:438    .text.rtc_interrupt_disable:0000000000000014 .LFE16
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1568   .debug_str:000000000000012a .LASF16
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1297   .debug_loc:0000000000000000 .LLST8
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1560   .debug_str:00000000000000e4 .LASF15
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:399    .text.rtc_interrupt_enable:0000000000000000 .LFB15
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:413    .text.rtc_interrupt_enable:0000000000000010 .LFE15
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1318   .debug_loc:000000000000002f .LLST7
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1614   .debug_str:0000000000000304 .LASF35
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1588   .debug_str:0000000000000206 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1572   .debug_str:000000000000013f .LASF36
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1548   .debug_str:000000000000008b .LASF18
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:352    .text.rtc_flag_clear:0000000000000000 .LFB12
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:370    .text.rtc_flag_clear:0000000000000014 .LFE12
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1332   .debug_loc:0000000000000050 .LLST6
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1558   .debug_str:00000000000000d7 .LASF19
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:330    .text.rtc_flag_get:0000000000000000 .LFB11
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:345    .text.rtc_flag_get:0000000000000010 .LFE11
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1353   .debug_loc:000000000000007f .LLST5
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1584   .debug_str:00000000000001eb .LASF20
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:298    .text.rtc_divider_get:0000000000000000 .LFB10
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:323    .text.rtc_divider_get:0000000000000018 .LFE10
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1578   .debug_str:0000000000000185 .LASF22
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1367   .debug_loc:00000000000000a0 .LLST4
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1616   .debug_str:000000000000031d .LASF21
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:268    .text.rtc_counter_get:0000000000000000 .LFB9
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:291    .text.rtc_counter_get:0000000000000012 .LFE9
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 18
+
+
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1388   .debug_loc:00000000000000cf .LLST3
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1544   .debug_str:0000000000000000 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:215    .text.rtc_alarm_config:0000000000000000 .LFB8
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:261    .text.rtc_alarm_config:000000000000002c .LFE8
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1556   .debug_str:00000000000000d1 .LASF24
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1415   .debug_loc:000000000000010b .LLST2
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:220    .text.rtc_alarm_config:0000000000000000 .LBB26
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:249    .text.rtc_alarm_config:0000000000000020 .LBB30
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:257    .text.rtc_alarm_config:000000000000002a .LBE30
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1600   .debug_str:00000000000002a9 .LASF25
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:184    .text.rtc_register_sync_wait:0000000000000000 .LFB7
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:208    .text.rtc_register_sync_wait:000000000000001c .LFE7
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1550   .debug_str:000000000000009a .LASF26
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:160    .text.rtc_lwoff_wait:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:177    .text.rtc_lwoff_wait:0000000000000010 .LFE6
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1552   .debug_str:00000000000000a9 .LASF27
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:106    .text.rtc_prescaler_set:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:153    .text.rtc_prescaler_set:000000000000002e .LFE5
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1429   .debug_loc:000000000000012c .LLST1
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:111    .text.rtc_prescaler_set:0000000000000000 .LBB20
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:141    .text.rtc_prescaler_set:0000000000000022 .LBB24
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:149    .text.rtc_prescaler_set:000000000000002c .LBE24
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1562   .debug_str:00000000000000f9 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:53     .text.rtc_counter_set:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:99     .text.rtc_counter_set:000000000000002c .LFE4
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1443   .debug_loc:000000000000014d .LLST0
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:58     .text.rtc_counter_set:0000000000000000 .LBB14
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:87     .text.rtc_counter_set:0000000000000020 .LBB18
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:95     .text.rtc_counter_set:000000000000002a .LBE18
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1596   .debug_str:000000000000023d .LASF29
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:1574   .debug_str:0000000000000156 .LASF30
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:14     .text.rtc_configuration_mode_enter:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:27     .text.rtc_configuration_mode_enter:0000000000000012 .LFE2
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:34     .text.rtc_configuration_mode_exit:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:46     .text.rtc_configuration_mode_exit:0000000000000010 .LFE3
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:423    .text.rtc_interrupt_disable:0000000000000000 .LVL21
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:430    .text.rtc_interrupt_disable:000000000000000c .LVL22
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:433    .text.rtc_interrupt_disable:000000000000000e .LVL23
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:402    .text.rtc_interrupt_enable:0000000000000000 .LVL19
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:408    .text.rtc_interrupt_enable:000000000000000a .LVL20
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:355    .text.rtc_flag_clear:0000000000000000 .LVL16
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:362    .text.rtc_flag_clear:000000000000000c .LVL17
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:365    .text.rtc_flag_clear:000000000000000e .LVL18
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:333    .text.rtc_flag_get:0000000000000000 .LVL14
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:340    .text.rtc_flag_get:000000000000000a .LVL15
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:302    .text.rtc_divider_get:0000000000000000 .LVL11
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:315    .text.rtc_divider_get:0000000000000014 .LVL12
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:320    .text.rtc_divider_get:0000000000000016 .LVL13
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:272    .text.rtc_counter_get:0000000000000000 .LVL6
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:277    .text.rtc_counter_get:0000000000000008 .LVL7
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:281    .text.rtc_counter_get:000000000000000c .LVL8
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:285    .text.rtc_counter_get:000000000000000e .LVL9
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:288    .text.rtc_counter_get:0000000000000010 .LVL10
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:218    .text.rtc_alarm_config:0000000000000000 .LVL4
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:232    .text.rtc_alarm_config:000000000000000e .LVL5
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:109    .text.rtc_prescaler_set:0000000000000000 .LVL2
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:132    .text.rtc_prescaler_set:0000000000000018 .LVL3
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s 			page 19
+
+
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:56     .text.rtc_counter_set:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:70     .text.rtc_counter_set:000000000000000e .LVL1
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:447    .debug_info:0000000000000000 .Ldebug_info0
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:65     .text.rtc_counter_set:0000000000000008 .LBE14
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:71     .text.rtc_counter_set:000000000000000e .LBB17
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:77     .text.rtc_counter_set:0000000000000016 .LBE17
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:118    .text.rtc_prescaler_set:0000000000000008 .LBE20
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:122    .text.rtc_prescaler_set:000000000000000e .LBB23
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:128    .text.rtc_prescaler_set:0000000000000016 .LBE23
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:227    .text.rtc_alarm_config:0000000000000008 .LBE26
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:233    .text.rtc_alarm_config:000000000000000e .LBB29
+C:\Users\anton\AppData\Local\Temp\ccA9U1fp.s:239    .text.rtc_alarm_config:0000000000000016 .LBE29
+
+NO UNDEFINED SYMBOLS

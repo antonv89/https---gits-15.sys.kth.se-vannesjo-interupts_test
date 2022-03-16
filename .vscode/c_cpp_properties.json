@@ -1,0 +1,30 @@
+{
+    "env": {
+        "myDefaultIncludePath": [
+            "${workspaceFolder}"
+        ],
+        "firmware_path": "C:/MinGW/toolchain-gd32v-win/firmware"
+    },
+    "configurations": [
+        {
+            "name": "GD32V Firmware Package",
+            "intelliSenseMode": "${default}",
+            "includePath": [
+                "${myDefaultIncludePath}",
+                "${firmware_path}/GD32VF103_standard_peripheral/Include",
+                "${firmware_path}/GD32VF103_standard_peripheral",
+                "${firmware_path}/RISCV/drivers",
+                "lib/**"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "compilerPath": "C:/MinGW/toolchain-gd32v-win/compiler/bin/riscv64-unknown-elf-gcc",
+            "compilerArgs": [
+                "-march=rv32imac",
+                "-mabi=ilp32",
+                "-mcmodel=medlow",
+                ""]
+        }
+    ],
+    "version": 4
+}

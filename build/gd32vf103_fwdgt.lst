@@ -1,0 +1,612 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 1
+
+
+   1              		.file	"gd32vf103_fwdgt.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.fwdgt_write_enable,"ax",@progbits
+  10              		.align	1
+  11              		.globl	fwdgt_write_enable
+  13              	fwdgt_write_enable:
+  14              	.LFB2:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source/gd32vf103_fwdg
+   1:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** /*!
+   2:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \file    gd32vf103_fwdgt.c
+   3:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \brief   FWDGT driver
+   4:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        
+   5:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \version 2019-06-05, V1.0.0, firmware for GD32VF103
+   6:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \version 2020-08-04, V1.1.0, firmware for GD32VF103
+   7:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** */
+   8:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+   9:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** /*
+  10:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+  12:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  13:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** are permitted provided that the following conditions are met:
+  14:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+  15:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  16:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        list of conditions and the following disclaimer.
+  17:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  18:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        this list of conditions and the following disclaimer in the documentation 
+  19:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        and/or other materials provided with the distribution.
+  20:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  21:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        may be used to endorse or promote products derived from this software without 
+  22:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        specific prior written permission.
+  23:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+  24:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  25:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  26:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  27:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  28:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  30:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  31:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  32:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  33:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** OF SUCH DAMAGE.
+  34:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** */
+  35:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+  36:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** #include "gd32vf103_fwdgt.h"
+  37:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+  38:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** /* write value to FWDGT_CTL_CMD bit field */
+  39:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** #define CTL_CMD(regval)             (BITS(0,15) & ((uint32_t)(regval) << 0))
+  40:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** /* write value to FWDGT_RLD_RLD bit field */
+  41:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** #define RLD_RLD(regval)             (BITS(0,11) & ((uint32_t)(regval) << 0))
+  42:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+  43:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** /*!
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 2
+
+
+  44:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \brief      enable write access to FWDGT_PSC and FWDGT_RLD
+  45:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[in]  none
+  46:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[out] none
+  47:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \retval     none
+  48:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** */
+  49:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** void fwdgt_write_enable(void)
+  50:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** {
+  16              		.loc 1 50 1
+  17              		.cfi_startproc
+  51:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_ENABLE;
+  18              		.loc 1 51 5
+  19              		.loc 1 51 15 is_stmt 0
+  20 0000 9567     		li	a5,20480
+  21 0002 37370040 		li	a4,1073754112
+  22 0006 93875755 		addi	a5,a5,1365
+  23 000a 1CC3     		sw	a5,0(a4)
+  52:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** }
+  24              		.loc 1 52 1
+  25 000c 8280     		ret
+  26              		.cfi_endproc
+  27              	.LFE2:
+  29              		.section	.text.fwdgt_write_disable,"ax",@progbits
+  30              		.align	1
+  31              		.globl	fwdgt_write_disable
+  33              	fwdgt_write_disable:
+  34              	.LFB3:
+  53:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+  54:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** /*!
+  55:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \brief      disable write access to FWDGT_PSC and FWDGT_RLD
+  56:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[in]  none
+  57:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[out] none
+  58:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \retval     none
+  59:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** */
+  60:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** void fwdgt_write_disable(void)
+  61:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** {
+  35              		.loc 1 61 1 is_stmt 1
+  36              		.cfi_startproc
+  62:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_DISABLE;
+  37              		.loc 1 62 5
+  38              		.loc 1 62 15 is_stmt 0
+  39 0000 B7370040 		li	a5,1073754112
+  40 0004 23A00700 		sw	zero,0(a5)
+  63:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** }
+  41              		.loc 1 63 1
+  42 0008 8280     		ret
+  43              		.cfi_endproc
+  44              	.LFE3:
+  46              		.section	.text.fwdgt_enable,"ax",@progbits
+  47              		.align	1
+  48              		.globl	fwdgt_enable
+  50              	fwdgt_enable:
+  51              	.LFB4:
+  64:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+  65:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** /*!
+  66:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \brief      start the free watchdog timer counter
+  67:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[in]  none
+  68:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[out] none
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 3
+
+
+  69:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \retval     none
+  70:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** */
+  71:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** void fwdgt_enable(void)
+  72:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** {
+  52              		.loc 1 72 1 is_stmt 1
+  53              		.cfi_startproc
+  73:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     FWDGT_CTL = FWDGT_KEY_ENABLE;
+  54              		.loc 1 73 5
+  55              		.loc 1 73 15 is_stmt 0
+  56 0000 B567     		li	a5,53248
+  57 0002 37370040 		li	a4,1073754112
+  58 0006 9387C7CC 		addi	a5,a5,-820
+  59 000a 1CC3     		sw	a5,0(a4)
+  74:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** }
+  60              		.loc 1 74 1
+  61 000c 8280     		ret
+  62              		.cfi_endproc
+  63              	.LFE4:
+  65              		.section	.text.fwdgt_counter_reload,"ax",@progbits
+  66              		.align	1
+  67              		.globl	fwdgt_counter_reload
+  69              	fwdgt_counter_reload:
+  70              	.LFB5:
+  75:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+  76:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** /*!
+  77:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \brief      reload the counter of FWDGT
+  78:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[in]  none
+  79:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[out] none
+  80:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \retval     none
+  81:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** */
+  82:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** void fwdgt_counter_reload(void)
+  83:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** {
+  71              		.loc 1 83 1 is_stmt 1
+  72              		.cfi_startproc
+  84:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     FWDGT_CTL = FWDGT_KEY_RELOAD;
+  73              		.loc 1 84 5
+  74              		.loc 1 84 15 is_stmt 0
+  75 0000 AD67     		li	a5,45056
+  76 0002 37370040 		li	a4,1073754112
+  77 0006 9387A7AA 		addi	a5,a5,-1366
+  78 000a 1CC3     		sw	a5,0(a4)
+  85:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** }
+  79              		.loc 1 85 1
+  80 000c 8280     		ret
+  81              		.cfi_endproc
+  82              	.LFE5:
+  84              		.section	.text.fwdgt_config,"ax",@progbits
+  85              		.align	1
+  86              		.globl	fwdgt_config
+  88              	fwdgt_config:
+  89              	.LFB6:
+  86:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+  87:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** /*!
+  88:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \brief      configure counter reload value, and prescaler divider value
+  89:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[in]  reload_value: specify reload value(0x0000 - 0x0FFF)
+  90:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[in]  prescaler_div: FWDGT prescaler value
+  91:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****                 only one parameter can be selected which is shown as below:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 4
+
+
+  92:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****       \arg        FWDGT_PSC_DIV4: FWDGT prescaler set to 4
+  93:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****       \arg        FWDGT_PSC_DIV8: FWDGT prescaler set to 8
+  94:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****       \arg        FWDGT_PSC_DIV16: FWDGT prescaler set to 16
+  95:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****       \arg        FWDGT_PSC_DIV32: FWDGT prescaler set to 32
+  96:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****       \arg        FWDGT_PSC_DIV64: FWDGT prescaler set to 64
+  97:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****       \arg        FWDGT_PSC_DIV128: FWDGT prescaler set to 128
+  98:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****       \arg        FWDGT_PSC_DIV256: FWDGT prescaler set to 256
+  99:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[out] none
+ 100:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 101:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** */
+ 102:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** ErrStatus fwdgt_config(uint16_t reload_value, uint8_t prescaler_div)
+ 103:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** {
+  90              		.loc 1 103 1 is_stmt 1
+  91              		.cfi_startproc
+  92              	.LVL0:
+ 104:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     uint32_t timeout = FWDGT_PSC_TIMEOUT;
+  93              		.loc 1 104 5
+ 105:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     uint32_t flag_status = RESET;
+  94              		.loc 1 105 5
+ 106:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****   
+ 107:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     /* enable write access to FWDGT_PSC,and FWDGT_RLD */
+ 108:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_ENABLE;
+  95              		.loc 1 108 5
+  96              		.loc 1 108 15 is_stmt 0
+  97 0000 9567     		li	a5,20480
+  98 0002 37370040 		li	a4,1073754112
+  99 0006 93875755 		addi	a5,a5,1365
+ 100 000a 1CC3     		sw	a5,0(a4)
+ 109:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     /* wait until the PUD flag to be reset */
+ 110:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     do{
+ 101              		.loc 1 110 5 is_stmt 1
+ 111:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        flag_status = FWDGT_STAT & FWDGT_STAT_PUD;
+ 102              		.loc 1 111 8
+ 103              		.loc 1 111 22 is_stmt 0
+ 104 000c 5C47     		lw	a5,12(a4)
+ 105              		.loc 1 111 20
+ 106 000e 37071000 		li	a4,1048576
+ 107 0012 7917     		addi	a4,a4,-2
+ 108 0014 858B     		andi	a5,a5,1
+ 109              	.LVL1:
+ 110              		.loc 1 111 22
+ 111 0016 B7360040 		li	a3,1073754112
+ 112 001a 21A0     		j	.L7
+ 113              	.LVL2:
+ 114              	.L9:
+ 115              		.loc 1 111 22 discriminator 2
+ 116 001c DC46     		lw	a5,12(a3)
+ 117              	.LVL3:
+ 118              		.loc 1 111 20 discriminator 2
+ 119 001e 858B     		andi	a5,a5,1
+ 120              	.LVL4:
+ 112:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     }while((--timeout > 0U) && ((uint32_t)RESET != flag_status));
+ 121              		.loc 1 112 5 discriminator 2
+ 122 0020 15CF     		beq	a4,zero,.L8
+ 123              	.L7:
+ 110:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        flag_status = FWDGT_STAT & FWDGT_STAT_PUD;
+ 124              		.loc 1 110 5 is_stmt 1 discriminator 1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 5
+
+
+ 111:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        flag_status = FWDGT_STAT & FWDGT_STAT_PUD;
+ 125              		.loc 1 111 8 discriminator 1
+ 126              	.LVL5:
+ 127 0022 7D17     		addi	a4,a4,-1
+ 128              	.LVL6:
+ 129              		.loc 1 112 29 is_stmt 0 discriminator 1
+ 130 0024 E5FF     		bne	a5,zero,.L9
+ 131              	.LVL7:
+ 132              	.L10:
+ 113:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     if((uint32_t)RESET != flag_status){
+ 115:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****         return ERROR;
+ 116:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     }
+ 117:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     /* configure FWDGT */
+ 118:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     FWDGT_PSC = (uint32_t)prescaler_div;
+ 133              		.loc 1 118 5 is_stmt 1
+ 134              		.loc 1 118 15 is_stmt 0
+ 135 0026 B7370040 		li	a5,1073754112
+ 136              	.LVL8:
+ 137 002a CCC3     		sw	a1,4(a5)
+ 119:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+ 120:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     timeout = FWDGT_RLD_TIMEOUT;
+ 138              		.loc 1 120 5 is_stmt 1
+ 139              	.LVL9:
+ 121:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     /* wait until the RUD flag to be reset */
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     do{
+ 140              		.loc 1 122 5
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        flag_status = FWDGT_STAT & FWDGT_STAT_RUD;
+ 141              		.loc 1 123 8
+ 142              		.loc 1 123 22 is_stmt 0
+ 143 002c DC47     		lw	a5,12(a5)
+ 144              		.loc 1 123 20
+ 145 002e 37071000 		li	a4,1048576
+ 146 0032 7917     		addi	a4,a4,-2
+ 147 0034 898B     		andi	a5,a5,2
+ 148              	.LVL10:
+ 149              		.loc 1 123 22
+ 150 0036 B7360040 		li	a3,1073754112
+ 151 003a 21A0     		j	.L12
+ 152              	.LVL11:
+ 153              	.L14:
+ 154              		.loc 1 123 22 discriminator 2
+ 155 003c DC46     		lw	a5,12(a3)
+ 156              	.LVL12:
+ 157              		.loc 1 123 20 discriminator 2
+ 158 003e 898B     		andi	a5,a5,2
+ 159              	.LVL13:
+ 124:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     }while((--timeout > 0U) && ((uint32_t)RESET != flag_status));
+ 160              		.loc 1 124 5 discriminator 2
+ 161 0040 0DC3     		beq	a4,zero,.L13
+ 162              	.L12:
+ 122:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        flag_status = FWDGT_STAT & FWDGT_STAT_RUD;
+ 163              		.loc 1 122 5 is_stmt 1 discriminator 1
+ 123:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****        flag_status = FWDGT_STAT & FWDGT_STAT_RUD;
+ 164              		.loc 1 123 8 discriminator 1
+ 165              	.LVL14:
+ 166 0042 7D17     		addi	a4,a4,-1
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 6
+
+
+ 167              	.LVL15:
+ 168              		.loc 1 124 29 is_stmt 0 discriminator 1
+ 169 0044 E5FF     		bne	a5,zero,.L14
+ 170              	.LVL16:
+ 171              	.L15:
+ 125:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****    
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     if((uint32_t)RESET != flag_status){
+ 127:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****         return ERROR;
+ 128:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     }
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     FWDGT_RLD = RLD_RLD(reload_value);
+ 172              		.loc 1 129 5 is_stmt 1
+ 173              		.loc 1 129 17 is_stmt 0
+ 174 0046 5205     		slli	a0,a0,20
+ 175              	.LVL17:
+ 176              		.loc 1 129 15
+ 177 0048 37370040 		li	a4,1073754112
+ 178              		.loc 1 129 17
+ 179 004c 5181     		srli	a0,a0,20
+ 130:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     /* reload the counter */
+ 131:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     FWDGT_CTL = FWDGT_KEY_RELOAD;
+ 180              		.loc 1 131 15
+ 181 004e AD67     		li	a5,45056
+ 182              	.LVL18:
+ 129:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     /* reload the counter */
+ 183              		.loc 1 129 15
+ 184 0050 08C7     		sw	a0,8(a4)
+ 185              		.loc 1 131 5 is_stmt 1
+ 186              		.loc 1 131 15 is_stmt 0
+ 187 0052 9387A7AA 		addi	a5,a5,-1366
+ 188 0056 1CC3     		sw	a5,0(a4)
+ 132:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+ 133:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     return SUCCESS;
+ 189              		.loc 1 133 5 is_stmt 1
+ 190              		.loc 1 133 12 is_stmt 0
+ 191 0058 0545     		li	a0,1
+ 134:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** }
+ 192              		.loc 1 134 1
+ 193 005a 8280     		ret
+ 194              	.LVL19:
+ 195              	.L8:
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****         return ERROR;
+ 196              		.loc 1 114 5 is_stmt 1
+ 114:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****         return ERROR;
+ 197              		.loc 1 114 7 is_stmt 0
+ 198 005c E9D7     		beq	a5,zero,.L10
+ 115:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     }
+ 199              		.loc 1 115 16
+ 200 005e 0145     		li	a0,0
+ 201              	.LVL20:
+ 202 0060 8280     		ret
+ 203              	.LVL21:
+ 204              	.L13:
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****         return ERROR;
+ 205              		.loc 1 126 5 is_stmt 1
+ 126:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****         return ERROR;
+ 206              		.loc 1 126 7 is_stmt 0
+ 207 0062 F5D3     		beq	a5,zero,.L15
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 7
+
+
+ 115:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     }
+ 208              		.loc 1 115 16
+ 209 0064 0145     		li	a0,0
+ 210              	.LVL22:
+ 211 0066 8280     		ret
+ 212              		.cfi_endproc
+ 213              	.LFE6:
+ 215              		.section	.text.fwdgt_flag_get,"ax",@progbits
+ 216              		.align	1
+ 217              		.globl	fwdgt_flag_get
+ 219              	fwdgt_flag_get:
+ 220              	.LFB7:
+ 135:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** 
+ 136:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** /*!
+ 137:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \brief      get flag state of FWDGT
+ 138:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[in]  flag: flag to get 
+ 139:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****                 only one parameter can be selected which is shown as below:
+ 140:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****       \arg        FWDGT_FLAG_PUD: a write operation to FWDGT_PSC register is on going
+ 141:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****       \arg        FWDGT_FLAG_RUD: a write operation to FWDGT_RLD register is on going
+ 142:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \param[out] none
+ 143:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     \retval     FlagStatus: SET or RESET
+ 144:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** */
+ 145:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** FlagStatus fwdgt_flag_get(uint16_t flag)
+ 146:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** {
+ 221              		.loc 1 146 1 is_stmt 1
+ 222              		.cfi_startproc
+ 223              	.LVL23:
+ 147:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     if(FWDGT_STAT & flag){
+ 224              		.loc 1 147 5
+ 225              		.loc 1 147 8 is_stmt 0
+ 226 0000 B7370040 		li	a5,1073754112
+ 227 0004 DC47     		lw	a5,12(a5)
+ 228              		.loc 1 147 19
+ 229 0006 7D8D     		and	a0,a0,a5
+ 230              	.LVL24:
+ 148:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****         return SET;
+ 149:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     }
+ 150:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     
+ 151:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c ****     return RESET;
+ 152:C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/Source\gd32vf103_fwdgt.c **** }
+ 231              		.loc 1 152 1
+ 232 0008 3335A000 		snez	a0,a0
+ 233 000c 8280     		ret
+ 234              		.cfi_endproc
+ 235              	.LFE7:
+ 237              		.text
+ 238              	.Letext0:
+ 239              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+ 240              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+ 241              		.file 4 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 242              		.file 5 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32vf103_fwdgt.c
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:13     .text.fwdgt_write_enable:0000000000000000 fwdgt_write_enable
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:17     .text.fwdgt_write_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:18     .text.fwdgt_write_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:19     .text.fwdgt_write_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:20     .text.fwdgt_write_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:25     .text.fwdgt_write_enable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:26     .text.fwdgt_write_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:33     .text.fwdgt_write_disable:0000000000000000 fwdgt_write_disable
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:36     .text.fwdgt_write_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:37     .text.fwdgt_write_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:38     .text.fwdgt_write_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:39     .text.fwdgt_write_disable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:42     .text.fwdgt_write_disable:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:43     .text.fwdgt_write_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:50     .text.fwdgt_enable:0000000000000000 fwdgt_enable
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:53     .text.fwdgt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:54     .text.fwdgt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:55     .text.fwdgt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:56     .text.fwdgt_enable:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:61     .text.fwdgt_enable:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:62     .text.fwdgt_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:69     .text.fwdgt_counter_reload:0000000000000000 fwdgt_counter_reload
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:72     .text.fwdgt_counter_reload:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:73     .text.fwdgt_counter_reload:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:74     .text.fwdgt_counter_reload:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:75     .text.fwdgt_counter_reload:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:80     .text.fwdgt_counter_reload:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:81     .text.fwdgt_counter_reload:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:88     .text.fwdgt_config:0000000000000000 fwdgt_config
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:91     .text.fwdgt_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:93     .text.fwdgt_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:94     .text.fwdgt_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:95     .text.fwdgt_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:96     .text.fwdgt_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:97     .text.fwdgt_config:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:102    .text.fwdgt_config:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:103    .text.fwdgt_config:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:104    .text.fwdgt_config:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:106    .text.fwdgt_config:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:111    .text.fwdgt_config:0000000000000016 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:116    .text.fwdgt_config:000000000000001c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:119    .text.fwdgt_config:000000000000001e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:122    .text.fwdgt_config:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:125    .text.fwdgt_config:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:127    .text.fwdgt_config:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:130    .text.fwdgt_config:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:134    .text.fwdgt_config:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:135    .text.fwdgt_config:0000000000000026 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:140    .text.fwdgt_config:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:141    .text.fwdgt_config:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:142    .text.fwdgt_config:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:143    .text.fwdgt_config:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:145    .text.fwdgt_config:000000000000002e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:150    .text.fwdgt_config:0000000000000036 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:155    .text.fwdgt_config:000000000000003c .L0 
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 9
+
+
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:158    .text.fwdgt_config:000000000000003e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:161    .text.fwdgt_config:0000000000000040 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:164    .text.fwdgt_config:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:166    .text.fwdgt_config:0000000000000042 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:169    .text.fwdgt_config:0000000000000044 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:173    .text.fwdgt_config:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:174    .text.fwdgt_config:0000000000000046 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:177    .text.fwdgt_config:0000000000000048 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:179    .text.fwdgt_config:000000000000004c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:181    .text.fwdgt_config:000000000000004e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:184    .text.fwdgt_config:0000000000000050 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:186    .text.fwdgt_config:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:187    .text.fwdgt_config:0000000000000052 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:190    .text.fwdgt_config:0000000000000058 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:191    .text.fwdgt_config:0000000000000058 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:193    .text.fwdgt_config:000000000000005a .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:197    .text.fwdgt_config:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:198    .text.fwdgt_config:000000000000005c .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:200    .text.fwdgt_config:000000000000005e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:206    .text.fwdgt_config:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:207    .text.fwdgt_config:0000000000000062 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:209    .text.fwdgt_config:0000000000000064 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:212    .text.fwdgt_config:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:219    .text.fwdgt_flag_get:0000000000000000 fwdgt_flag_get
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:222    .text.fwdgt_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:224    .text.fwdgt_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:225    .text.fwdgt_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:226    .text.fwdgt_flag_get:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:229    .text.fwdgt_flag_get:0000000000000006 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:232    .text.fwdgt_flag_get:0000000000000008 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:234    .text.fwdgt_flag_get:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:29     .text.fwdgt_write_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:46     .text.fwdgt_write_disable:000000000000000a .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:65     .text.fwdgt_enable:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:84     .text.fwdgt_counter_reload:000000000000000e .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:215    .text.fwdgt_config:0000000000000068 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:237    .text.fwdgt_flag_get:000000000000000e .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:123    .text.fwdgt_config:0000000000000022 .L7
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:195    .text.fwdgt_config:000000000000005c .L8
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:114    .text.fwdgt_config:000000000000001c .L9
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:162    .text.fwdgt_config:0000000000000042 .L12
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:204    .text.fwdgt_config:0000000000000062 .L13
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:153    .text.fwdgt_config:000000000000003c .L14
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:132    .text.fwdgt_config:0000000000000026 .L10
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:171    .text.fwdgt_config:0000000000000046 .L15
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:510    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:911    .debug_str:0000000000000000 .LASF32
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:951    .debug_str:000000000000016f .LASF33
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:957    .debug_str:00000000000001eb .LASF34
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:893    .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:909    .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:949    .debug_str:0000000000000162 .LASF0
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:977    .debug_str:00000000000002a2 .LASF1
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:913    .debug_str:000000000000007a .LASF4
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:923    .debug_str:00000000000000bf .LASF2
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:965    .debug_str:0000000000000261 .LASF3
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 10
+
+
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:935    .debug_str:0000000000000108 .LASF5
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:921    .debug_str:00000000000000ac .LASF6
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:917    .debug_str:000000000000008e .LASF7
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:941    .debug_str:0000000000000132 .LASF8
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:937    .debug_str:0000000000000113 .LASF9
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:959    .debug_str:000000000000023b .LASF10
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:953    .debug_str:00000000000001cc .LASF11
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:955    .debug_str:00000000000001e3 .LASF12
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:967    .debug_str:000000000000026b .LASF13
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:971    .debug_str:0000000000000287 .LASF14
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:963    .debug_str:0000000000000251 .LASF35
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:979    .debug_str:00000000000002ae .LASF15
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:927    .debug_str:00000000000000d5 .LASF16
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:973    .debug_str:0000000000000290 .LASF17
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:925    .debug_str:00000000000000cd .LASF18
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:915    .debug_str:0000000000000084 .LASF19
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:975    .debug_str:0000000000000296 .LASF20
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:981    .debug_str:00000000000002b4 .LASF21
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:220    .text.fwdgt_flag_get:0000000000000000 .LFB7
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:235    .text.fwdgt_flag_get:000000000000000e .LFE7
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:945    .debug_str:0000000000000151 .LASF23
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:733    .debug_loc:0000000000000000 .LLST3
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:939    .debug_str:0000000000000125 .LASF22
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:89     .text.fwdgt_config:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:213    .text.fwdgt_config:0000000000000068 .LFE6
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:933    .debug_str:00000000000000fb .LASF24
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:747    .debug_loc:0000000000000021 .LLST0
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:931    .debug_str:00000000000000ed .LASF25
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:961    .debug_str:0000000000000249 .LASF26
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:783    .debug_loc:0000000000000074 .LLST1
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:947    .debug_str:0000000000000156 .LASF27
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:842    .debug_loc:0000000000000106 .LLST2
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:919    .debug_str:0000000000000097 .LASF28
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:70     .text.fwdgt_counter_reload:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:82     .text.fwdgt_counter_reload:000000000000000e .LFE5
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:929    .debug_str:00000000000000e0 .LASF29
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:51     .text.fwdgt_enable:0000000000000000 .LFB4
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:63     .text.fwdgt_enable:000000000000000e .LFE4
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:943    .debug_str:000000000000013d .LASF30
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:34     .text.fwdgt_write_disable:0000000000000000 .LFB3
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:44     .text.fwdgt_write_disable:000000000000000a .LFE3
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:969    .debug_str:0000000000000274 .LASF31
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:14     .text.fwdgt_write_enable:0000000000000000 .LFB2
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:27     .text.fwdgt_write_enable:000000000000000e .LFE2
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:223    .text.fwdgt_flag_get:0000000000000000 .LVL23
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:230    .text.fwdgt_flag_get:0000000000000008 .LVL24
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:92     .text.fwdgt_config:0000000000000000 .LVL0
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:175    .text.fwdgt_config:0000000000000048 .LVL17
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:194    .text.fwdgt_config:000000000000005c .LVL19
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:201    .text.fwdgt_config:0000000000000060 .LVL20
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:203    .text.fwdgt_config:0000000000000062 .LVL21
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:210    .text.fwdgt_config:0000000000000066 .LVL22
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:109    .text.fwdgt_config:0000000000000016 .LVL1
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:113    .text.fwdgt_config:000000000000001c .LVL2
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:120    .text.fwdgt_config:0000000000000020 .LVL4
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:126    .text.fwdgt_config:0000000000000022 .LVL5
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:128    .text.fwdgt_config:0000000000000024 .LVL6
+GAS LISTING C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s 			page 11
+
+
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:131    .text.fwdgt_config:0000000000000026 .LVL7
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:139    .text.fwdgt_config:000000000000002c .LVL9
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:148    .text.fwdgt_config:0000000000000036 .LVL10
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:152    .text.fwdgt_config:000000000000003c .LVL11
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:159    .text.fwdgt_config:0000000000000040 .LVL13
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:165    .text.fwdgt_config:0000000000000042 .LVL14
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:167    .text.fwdgt_config:0000000000000044 .LVL15
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:170    .text.fwdgt_config:0000000000000046 .LVL16
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:117    .text.fwdgt_config:000000000000001e .LVL3
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:136    .text.fwdgt_config:000000000000002a .LVL8
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:156    .text.fwdgt_config:000000000000003e .LVL12
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:182    .text.fwdgt_config:0000000000000050 .LVL18
+C:\Users\anton\AppData\Local\Temp\ccxJ9ij2.s:244    .debug_info:0000000000000000 .Ldebug_info0
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,382 @@
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cciJsb6e.s 			page 1
+
+
+   1              		.file	"init.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text._init,"ax",@progbits
+  10              		.align	1
+  11              		.globl	_init
+  13              	_init:
+  14              	.LFB5:
+  15              		.file 1 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse/init.c"
+   1:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** //See LICENSE for license details.
+   2:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** #include <gd32vf103.h>
+   3:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** #include <stdint.h>
+   4:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** #include <stdio.h>
+   5:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** #include <unistd.h>
+   6:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** #include "riscv_encoding.h"
+   7:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** #include "n200_func.h"
+   8:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 
+   9:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** extern uint32_t disable_mcycle_minstret();
+  10:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** void _init()
+  11:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** {
+  16              		.loc 1 11 1
+  17              		.cfi_startproc
+  12:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	SystemInit();
+  18              		.loc 1 12 2
+  11:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	SystemInit();
+  19              		.loc 1 11 1 is_stmt 0
+  20 0000 4111     		addi	sp,sp,-16
+  21              	.LCFI0:
+  22              		.cfi_def_cfa_offset 16
+  23 0002 06C6     		sw	ra,12(sp)
+  24              		.cfi_offset 1, -4
+  25              		.loc 1 12 2
+  26 0004 97000000 		call	SystemInit
+  26      E7800000 
+  27              	.LVL0:
+  13:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 
+  14:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	//ECLIC init
+  15:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	eclic_init(ECLIC_NUM_INTERRUPTS);
+  28              		.loc 1 15 2 is_stmt 1
+  29 000c 13057005 		li	a0,87
+  30 0010 97000000 		call	eclic_init
+  30      E7800000 
+  31              	.LVL1:
+  16:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	eclic_mode_enable();
+  32              		.loc 1 16 2
+  33 0018 97000000 		call	eclic_mode_enable
+  33      E7800000 
+  34              	.LVL2:
+  17:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 
+  18:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	//printf("After ECLIC mode enabled, the mtvec value is %x \n\n\r", read_csr(mtvec));
+  19:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 
+  20:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	// // It must be NOTED:
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cciJsb6e.s 			page 2
+
+
+  21:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	//  //    * In the RISC-V arch, if user mode and PMP supported, then by default if PMP is not conf
+  22:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	//  //      with valid entries, then user mode cannot access any memory, and cannot execute any in
+  23:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	//  //    * So if switch to user-mode and still want to continue, then you must configure PMP firs
+  24:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	//pmp_open_all_space();
+  25:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	//switch_m2u_mode();
+  26:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	
+  27:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c ****     /* Before enter into main, add the cycle/instret disable by default to save power,
+  28:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c ****     only use them when needed to measure the cycle/instret */
+  29:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 	disable_mcycle_minstret();
+  35              		.loc 1 29 2
+  30:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** }
+  36              		.loc 1 30 1 is_stmt 0
+  37 0020 B240     		lw	ra,12(sp)
+  38              		.cfi_restore 1
+  39 0022 4101     		addi	sp,sp,16
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 0
+  29:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** }
+  42              		.loc 1 29 2
+  43 0024 17030000 		tail	disable_mcycle_minstret
+  43      67000300 
+  44              	.LVL3:
+  45              		.cfi_endproc
+  46              	.LFE5:
+  48              		.section	.text._fini,"ax",@progbits
+  49              		.align	1
+  50              		.globl	_fini
+  52              	_fini:
+  53              	.LFB6:
+  31:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** 
+  32:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** void _fini()
+  33:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** {
+  54              		.loc 1 33 1 is_stmt 1
+  55              		.cfi_startproc
+  34:C:/MinGW/toolchain-gd32v-win/firmware/RISCV/env_Eclipse\init.c **** }
+  56              		.loc 1 34 1
+  57 0000 8280     		ret
+  58              		.cfi_endproc
+  59              	.LFE6:
+  61              		.text
+  62              	.Letext0:
+  63              		.file 2 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\machine\\_default
+  64              		.file 3 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_stdint.h"
+  65              		.file 4 "c:\\mingw\\toolchain-gd32v-win\\compiler\\lib\\gcc\\riscv64-unknown-elf\\8.3.0\\include\\
+  66              		.file 5 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\_types.h"
+  67              		.file 6 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\reent.h"
+  68              		.file 7 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\lock.h"
+  69              		.file 8 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+  70              		.file 9 "c:\\mingw\\toolchain-gd32v-win\\compiler\\riscv64-unknown-elf\\include\\sys\\unistd.h"
+  71              		.file 10 "C:/MinGW/toolchain-gd32v-win/firmware/RISCV/drivers/n200_func.h"
+  72              		.file 11 "C:/MinGW/toolchain-gd32v-win/firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cciJsb6e.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 init.c
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:13     .text._init:0000000000000000 _init
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:17     .text._init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:18     .text._init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:19     .text._init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:20     .text._init:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:22     .text._init:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:24     .text._init:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:26     .text._init:0000000000000004 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:29     .text._init:000000000000000c .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:33     .text._init:0000000000000018 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:36     .text._init:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:37     .text._init:0000000000000020 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:38     .text._init:0000000000000022 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:41     .text._init:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:43     .text._init:0000000000000024 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:45     .text._init:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:52     .text._fini:0000000000000000 _fini
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:55     .text._fini:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:56     .text._fini:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:57     .text._fini:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:58     .text._fini:0000000000000002 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:48     .text._init:000000000000002c .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:61     .text._fini:0000000000000002 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:1818   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2630   .debug_str:0000000000000572 .LASF199
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2624   .debug_str:000000000000050f .LASF200
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2596   .debug_str:0000000000000446 .LASF201
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2396   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2404   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2604   .debug_str:00000000000004b0 .LASF202
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2522   .debug_str:00000000000002ca .LASF0
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2812   .debug_str:00000000000009a5 .LASF1
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2754   .debug_str:0000000000000862 .LASF2
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2516   .debug_str:000000000000029b .LASF3
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2626   .debug_str:000000000000054e .LASF4
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2574   .debug_str:00000000000003ee .LASF5
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2792   .debug_str:0000000000000933 .LASF6
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2744   .debug_str:0000000000000827 .LASF7
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2576   .debug_str:00000000000003f9 .LASF8
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2784   .debug_str:0000000000000908 .LASF9
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2664   .debug_str:00000000000006a7 .LASF10
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2766   .debug_str:00000000000008ad .LASF11
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2816   .debug_str:00000000000009bc .LASF12
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2442   .debug_str:00000000000000ed .LASF13
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2620   .debug_str:00000000000004fa .LASF14
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2666   .debug_str:00000000000006b4 .LASF15
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2678   .debug_str:00000000000006ea .LASF16
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2438   .debug_str:00000000000000cf .LASF17
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2502   .debug_str:0000000000000246 .LASF18
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2552   .debug_str:0000000000000369 .LASF19
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2640   .debug_str:0000000000000617 .LASF20
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2776   .debug_str:00000000000008d8 .LASF21
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2410   .debug_str:0000000000000016 .LASF22
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2446   .debug_str:0000000000000107 .LASF23
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cciJsb6e.s 			page 4
+
+
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2512   .debug_str:0000000000000283 .LASF24
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2412   .debug_str:0000000000000029 .LASF25
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2456   .debug_str:0000000000000156 .LASF26
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2506   .debug_str:0000000000000267 .LASF27
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2496   .debug_str:000000000000021c .LASF28
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2544   .debug_str:000000000000033a .LASF29
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2470   .debug_str:0000000000000197 .LASF30
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2786   .debug_str:0000000000000911 .LASF31
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2448   .debug_str:0000000000000113 .LASF32
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2616   .debug_str:00000000000004e7 .LASF33
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2660   .debug_str:0000000000000695 .LASF34
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2726   .debug_str:00000000000007cc .LASF35
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2658   .debug_str:0000000000000688 .LASF36
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2740   .debug_str:0000000000000814 .LASF37
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2422   .debug_str:0000000000000060 .LASF38
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2804   .debug_str:0000000000000975 .LASF39
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2536   .debug_str:000000000000030d .LASF40
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2582   .debug_str:0000000000000410 .LASF41
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2480   .debug_str:00000000000001cb .LASF42
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2652   .debug_str:000000000000066b .LASF43
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2710   .debug_str:0000000000000787 .LASF44
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2768   .debug_str:00000000000008b8 .LASF45
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2734   .debug_str:00000000000007f4 .LASF46
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2810   .debug_str:0000000000000995 .LASF47
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2526   .debug_str:00000000000002e1 .LASF48
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2484   .debug_str:00000000000001e9 .LASF49
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2622   .debug_str:0000000000000505 .LASF50
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2644   .debug_str:0000000000000631 .LASF51
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2514   .debug_str:0000000000000290 .LASF52
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2542   .debug_str:000000000000032e .LASF53
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2588   .debug_str:0000000000000427 .LASF54
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2798   .debug_str:0000000000000956 .LASF55
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2646   .debug_str:000000000000063c .LASF56
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2608   .debug_str:00000000000004be .LASF57
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2500   .debug_str:0000000000000233 .LASF58
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2520   .debug_str:00000000000002b7 .LASF59
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2566   .debug_str:00000000000003bd .LASF60
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2414   .debug_str:0000000000000037 .LASF61
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2430   .debug_str:0000000000000096 .LASF62
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2558   .debug_str:0000000000000396 .LASF63
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2572   .debug_str:00000000000003e3 .LASF64
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2628   .debug_str:000000000000055d .LASF65
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2730   .debug_str:00000000000007de .LASF66
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2462   .debug_str:0000000000000172 .LASF67
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2748   .debug_str:0000000000000846 .LASF68
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2408   .debug_str:000000000000000c .LASF69
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2746   .debug_str:0000000000000833 .LASF70
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2488   .debug_str:00000000000001fd .LASF71
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2736   .debug_str:0000000000000803 .LASF75
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2556   .debug_str:0000000000000384 .LASF72
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2504   .debug_str:0000000000000259 .LASF73
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2432   .debug_str:00000000000000a4 .LASF74
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2762   .debug_str:0000000000000897 .LASF76
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2548   .debug_str:0000000000000351 .LASF186
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2716   .debug_str:00000000000007a5 .LASF77
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2642   .debug_str:000000000000062a .LASF78
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2458   .debug_str:0000000000000164 .LASF79
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cciJsb6e.s 			page 5
+
+
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2714   .debug_str:000000000000079d .LASF80
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2778   .debug_str:00000000000008eb .LASF81
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2580   .debug_str:000000000000040a .LASF82
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2546   .debug_str:000000000000034a .LASF83
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2706   .debug_str:0000000000000777 .LASF84
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2708   .debug_str:000000000000077f .LASF85
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2682   .debug_str:0000000000000704 .LASF86
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2756   .debug_str:000000000000086f .LASF87
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2650   .debug_str:0000000000000659 .LASF88
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2670   .debug_str:00000000000006c8 .LASF89
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2534   .debug_str:0000000000000305 .LASF94
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2738   .debug_str:000000000000080e .LASF90
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2700   .debug_str:0000000000000762 .LASF91
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2528   .debug_str:00000000000002eb .LASF92
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2772   .debug_str:00000000000008cd .LASF93
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2510   .debug_str:000000000000027e .LASF95
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2454   .debug_str:000000000000014d .LASF96
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2750   .debug_str:0000000000000854 .LASF97
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2472   .debug_str:00000000000001a6 .LASF98
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2814   .debug_str:00000000000009b2 .LASF99
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2632   .debug_str:00000000000005ec .LASF100
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2602   .debug_str:00000000000004a6 .LASF101
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2712   .debug_str:0000000000000793 .LASF102
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2672   .debug_str:00000000000006d1 .LASF103
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2794   .debug_str:000000000000093c .LASF104
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2476   .debug_str:00000000000001b5 .LASF105
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2416   .debug_str:0000000000000045 .LASF106
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2406   .debug_str:0000000000000000 .LASF107
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2732   .debug_str:00000000000007eb .LASF108
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2492   .debug_str:000000000000020d .LASF109
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2634   .debug_str:00000000000005f5 .LASF110
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2692   .debug_str:0000000000000732 .LASF111
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2524   .debug_str:00000000000002dc .LASF112
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2674   .debug_str:00000000000006db .LASF113
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2468   .debug_str:0000000000000191 .LASF114
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2728   .debug_str:00000000000007d8 .LASF115
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2684   .debug_str:000000000000070f .LASF116
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2490   .debug_str:0000000000000206 .LASF117
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2770   .debug_str:00000000000008c7 .LASF118
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2434   .debug_str:00000000000000bb .LASF119
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2478   .debug_str:00000000000001c3 .LASF120
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2540   .debug_str:0000000000000328 .LASF121
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2600   .debug_str:000000000000049f .LASF122
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2742   .debug_str:0000000000000821 .LASF123
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2460   .debug_str:000000000000016b .LASF124
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2466   .debug_str:000000000000018b .LASF125
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2788   .debug_str:0000000000000925 .LASF126
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2724   .debug_str:00000000000007c3 .LASF127
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2612   .debug_str:00000000000004d8 .LASF128
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2560   .debug_str:00000000000003a5 .LASF129
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2590   .debug_str:0000000000000433 .LASF130
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2686   .debug_str:0000000000000717 .LASF131
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2676   .debug_str:00000000000006e2 .LASF132
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2702   .debug_str:000000000000076a .LASF133
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2720   .debug_str:00000000000007b7 .LASF134
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2494   .debug_str:0000000000000215 .LASF135
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2550   .debug_str:0000000000000361 .LASF136
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cciJsb6e.s 			page 6
+
+
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2532   .debug_str:00000000000002fd .LASF137
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2690   .debug_str:000000000000072d .LASF138
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2420   .debug_str:0000000000000055 .LASF139
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2698   .debug_str:0000000000000749 .LASF140
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2694   .debug_str:0000000000000737 .LASF141
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2636   .debug_str:00000000000005fd .LASF142
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2696   .debug_str:000000000000073f .LASF143
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2578   .debug_str:0000000000000402 .LASF144
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2498   .debug_str:0000000000000229 .LASF145
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2808   .debug_str:0000000000000990 .LASF146
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2648   .debug_str:000000000000064f .LASF147
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2554   .debug_str:000000000000037c .LASF148
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2508   .debug_str:0000000000000276 .LASF149
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2586   .debug_str:0000000000000422 .LASF150
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2424   .debug_str:000000000000006d .LASF151
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2782   .debug_str:00000000000008fe .LASF152
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2486   .debug_str:00000000000001f5 .LASF153
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2474   .debug_str:00000000000001b0 .LASF154
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2722   .debug_str:00000000000007be .LASF155
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2680   .debug_str:00000000000006fd .LASF156
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2774   .debug_str:00000000000008d2 .LASF157
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2562   .debug_str:00000000000003ab .LASF158
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2662   .debug_str:00000000000006a1 .LASF159
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2418   .debug_str:000000000000004d .LASF160
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2704   .debug_str:0000000000000771 .LASF161
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2592   .debug_str:0000000000000439 .LASF162
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2752   .debug_str:000000000000085d .LASF163
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2764   .debug_str:00000000000008a0 .LASF164
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2464   .debug_str:000000000000017e .LASF165
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2570   .debug_str:00000000000003d6 .LASF166
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2796   .debug_str:0000000000000947 .LASF167
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2638   .debug_str:0000000000000608 .LASF168
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2564   .debug_str:00000000000003b2 .LASF169
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2800   .debug_str:0000000000000969 .LASF170
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2688   .debug_str:0000000000000720 .LASF171
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2806   .debug_str:0000000000000982 .LASF172
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2452   .debug_str:000000000000013f .LASF173
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2780   .debug_str:00000000000008f4 .LASF174
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2568   .debug_str:00000000000003ca .LASF175
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2758   .debug_str:0000000000000877 .LASF176
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2518   .debug_str:00000000000002a9 .LASF177
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2444   .debug_str:00000000000000f8 .LASF178
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2538   .debug_str:0000000000000317 .LASF179
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2426   .debug_str:0000000000000076 .LASF180
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2428   .debug_str:0000000000000085 .LASF181
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2668   .debug_str:00000000000006bf .LASF182
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2618   .debug_str:00000000000004f3 .LASF183
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2606   .debug_str:00000000000004b5 .LASF184
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2790   .debug_str:000000000000092b .LASF185
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2440   .debug_str:00000000000000e2 .LASF203
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2530   .debug_str:00000000000002f1 .LASF187
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2760   .debug_str:0000000000000884 .LASF188
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2584   .debug_str:000000000000041a .LASF189
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2610   .debug_str:00000000000004d1 .LASF190
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2614   .debug_str:00000000000004e0 .LASF191
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2594   .debug_str:000000000000043f .LASF192
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2802   .debug_str:000000000000096e .LASF193
+GAS LISTING C:\Users\anton\AppData\Local\Temp\cciJsb6e.s 			page 7
+
+
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2598   .debug_str:0000000000000496 .LASF194
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2654   .debug_str:0000000000000677 .LASF204
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:53     .text._fini:0000000000000000 .LFB6
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:59     .text._fini:0000000000000002 .LFE6
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2718   .debug_str:00000000000007b1 .LASF205
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:14     .text._init:0000000000000000 .LFB5
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:46     .text._init:000000000000002c .LFE5
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2363   .debug_loc:0000000000000000 .LLST0
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:27     .text._init:000000000000000c .LVL0
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:31     .text._init:0000000000000018 .LVL1
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:34     .text._init:0000000000000020 .LVL2
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:44     .text._init:000000000000002c .LVL3
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2656   .debug_str:000000000000067d .LASF195
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2436   .debug_str:00000000000000c4 .LASF196
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2482   .debug_str:00000000000001d7 .LASF197
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:2450   .debug_str:0000000000000127 .LASF198
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:21     .text._init:0000000000000002 .LCFI0
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:40     .text._init:0000000000000024 .LCFI1
+C:\Users\anton\AppData\Local\Temp\cciJsb6e.s:74     .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+SystemInit
+eclic_init
+eclic_mode_enable
+disable_mcycle_minstret
